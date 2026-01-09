@@ -137,7 +137,7 @@
         <div class="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
             <img src="logo.png" onerror="this.src='https://via.placeholder.com/300?text=Logo+Wokami'" alt="Wokami Logo" class="h-32 w-32 object-contain rounded-full bg-white mb-6 shadow-lg border-4 border-red-600">
             <h1 class="text-5xl md:text-6xl font-bold mb-4 brand-font">WOKAMI</h1>
-            <p class="text-xl text-gray-300 font-light italic">El fuego del wok. El alma del sushi.</p>
+            <p class="text-xl text-gray-300 font-light italic">El fuego del wok. El arte del sushi.</p>
             <div class="mt-8">
                 <span class="inline-block w-16 h-1 bg-red-600 rounded-full"></span>
             </div>
@@ -856,7 +856,7 @@
                     cookieFlavor = "Triple Chocolate";
                     break;
                 case 6: // Sábado
-                    promoMessage = "⭐ SÁBADO ESPECIAL: Prueba nuestro Aguachile Roll";
+                    promoMessage = "🍪 SÁBADO DULCE: 3x2 en Galletas New York 🍪";
                     cookieFlavor = "Nuez de Macadamia";
                     break;
             }
@@ -927,6 +927,7 @@
             // Separar items para aplicar lógica
             const wokItems = cart.filter(i => i.category === 'wok').sort((a,b) => a.price - b.price);
             const rollItems = cart.filter(i => i.category === 'rollo').sort((a,b) => a.price - b.price);
+            const cookieItems = cart.filter(i => i.name === 'Galletas New York').sort((a,b) => a.price - b.price);
             
             // Calculamos subtotal
             cart.forEach(item => subtotal += item.price);
@@ -944,6 +945,14 @@
                 const freeCount = Math.floor(rollItems.length / 3);
                 for(let i=0; i<freeCount; i++) {
                     discount += rollItems[i].price;
+                }
+            }
+
+            // LOGICA SÁBADO (3x2 en GALLETAS)
+            if (day === 6) {
+                const freeCount = Math.floor(cookieItems.length / 3);
+                for(let i=0; i<freeCount; i++) {
+                    discount += cookieItems[i].price;
                 }
             }
 
