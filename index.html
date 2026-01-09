@@ -152,7 +152,7 @@
             <h2 class="text-3xl font-bold mb-8 text-black category-header">ENTRADAS <span class="text-sm font-normal text-gray-500 ml-2">Starters</span></h2>
             <div class="grid md:grid-cols-2 gap-6">
                 <!-- Item: Verduras -->
-                <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex h-32 md:h-40">
+                <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex">
                     <div class="w-32 md:w-40 flex-shrink-0 bg-gray-200">
                         <img src="verduras.jpg" onerror="this.src='https://via.placeholder.com/300?text=Verduras'" class="w-full h-full object-cover">
                     </div>
@@ -162,7 +162,7 @@
                                 <h3 class="text-lg md:text-xl font-bold text-gray-900 leading-tight">Verduras tempura</h3>
                                 <span class="text-[10px] font-bold text-white bg-red-600 px-1.5 rounded-full">Hot</span>
                             </div>
-                            <p class="text-gray-600 text-xs md:text-sm mt-1 line-clamp-2">Brócoli, Zanahoria y coliflor fritos en tempura.</p>
+                            <p class="text-gray-600 text-xs md:text-sm mt-1">Brócoli, Zanahoria y coliflor fritos en tempura, acompañados de salsa de anguila.</p>
                         </div>
                         <div class="flex justify-between items-center mt-2">
                             <span class="text-lg font-bold text-gray-900">$60</span>
@@ -171,8 +171,8 @@
                     </div>
                 </div>
                 
-                <!-- Item: Kushiagues -->
-                <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex h-32 md:h-40">
+                <!-- Item: Kushiagues (Con Selector) -->
+                <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex">
                     <div class="w-32 md:w-40 flex-shrink-0 bg-gray-200">
                         <img src="kushiagues.jpg" onerror="this.src='https://via.placeholder.com/300?text=Kushiagues'" class="w-full h-full object-cover">
                     </div>
@@ -182,11 +182,21 @@
                                 <h3 class="text-lg md:text-xl font-bold text-gray-900 leading-tight">Kushiagues</h3>
                                 <span class="text-[10px] font-bold text-white bg-red-600 px-1.5 rounded-full">Hot</span>
                             </div>
-                            <p class="text-gray-600 text-xs md:text-sm mt-1 line-clamp-2">3 pzs. Brochetas empanizadas a tu elección: Queso Philadelphia, Manchego, Camarón con Philadelphia, Camarón con Manchego o Plátano Macho con Philadelphia.</p>
+                            <p class="text-gray-600 text-xs md:text-sm mt-1 mb-2">3 pzs. Elige tu relleno favorito:</p>
+                            
+                            <!-- Selector de Opciones -->
+                            <select id="kushiage-select" class="w-full text-xs border border-gray-300 rounded p-1 mb-2 bg-gray-50 focus:border-red-500 outline-none">
+                                <option value="Mixtos">Mixtos</option>
+                                <option value="Queso Philadelphia">Queso Philadelphia</option>
+                                <option value="Queso Manchego">Queso Manchego</option>
+                                <option value="Camarón con Philadelphia">Camarón c/ Philadelphia</option>
+                                <option value="Camarón con Manchego">Camarón c/ Manchego</option>
+                                <option value="Plátano Macho con Philadelphia">Plátano c/ Philadelphia</option>
+                            </select>
                         </div>
-                        <div class="flex justify-between items-center mt-2">
+                        <div class="flex justify-between items-center mt-1">
                             <span class="text-lg font-bold text-gray-900">$65</span>
-                            <button onclick="addToCart('Kushiagues', 65, 'entrada')" class="text-xs bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition"><i class="fas fa-plus"></i></button>
+                            <button onclick="addKushiageFromSelect()" class="text-xs bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -429,7 +439,10 @@
             <div class="grid lg:grid-cols-2 gap-8">
                 <!-- Yakimeshi -->
                 <div class="bg-white border-t-4 border-red-600 shadow-md rounded-b-lg h-full overflow-hidden">
-                    <img src="yakimeshi.jpg" onerror="this.src='https://via.placeholder.com/600x200?text=Yakimeshi'" class="w-full h-48 object-cover">
+                    <!-- AÑADIDO: Contenedor gris para la imagen -->
+                    <div class="h-48 w-full bg-gray-200 relative">
+                        <img src="yakimeshi.jpg" onerror="this.src='https://via.placeholder.com/600x200?text=Yakimeshi'" class="w-full h-full object-cover">
+                    </div>
                     <div class="p-8">
                         <div class="flex justify-between items-center mb-4 border-b border-gray-100 pb-2">
                             <h3 class="text-2xl font-bold uppercase tracking-wide brand-font">Yakimeshi</h3>
@@ -486,7 +499,10 @@
 
                 <!-- Lo Mein -->
                 <div class="bg-white border-t-4 border-black shadow-md rounded-b-lg h-full overflow-hidden">
-                    <img src="lomein.jpg" onerror="this.src='https://via.placeholder.com/600x200?text=Lo+Mein'" class="w-full h-48 object-cover">
+                    <!-- AÑADIDO: Contenedor gris para la imagen -->
+                    <div class="h-48 w-full bg-gray-200 relative">
+                        <img src="lomein.jpg" onerror="this.src='https://via.placeholder.com/600x200?text=Lo+Mein'" class="w-full h-full object-cover">
+                    </div>
                     <div class="p-8">
                         <div class="flex justify-between items-center mb-4 border-b border-gray-100 pb-2">
                             <h3 class="text-2xl font-bold uppercase tracking-wide brand-font">Lo Mein</h3>
@@ -548,7 +564,7 @@
             <h2 class="text-3xl font-bold mb-8 text-black category-header">POSTRES <span class="text-sm font-normal text-gray-500 ml-2">Desserts</span></h2>
             <div class="grid md:grid-cols-2 gap-6">
                 <!-- Item: Mochis -->
-                <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex h-32 md:h-40">
+                <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex">
                     <div class="w-32 md:w-40 flex-shrink-0 bg-gray-200">
                         <img src="mochis.jpg" onerror="this.src='https://via.placeholder.com/300?text=Mochis'" class="w-full h-full object-cover">
                     </div>
@@ -565,7 +581,7 @@
                 </div>
                 
                 <!-- Item: Tempura Helado -->
-                <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex h-32 md:h-40">
+                <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex">
                     <div class="w-32 md:w-40 flex-shrink-0 bg-gray-200">
                         <img src="helado.jpg" onerror="this.src='https://via.placeholder.com/300?text=Tempura+Helado'" class="w-full h-full object-cover">
                     </div>
@@ -582,7 +598,7 @@
                 </div>
 
                 <!-- Item: Galletas -->
-                <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex h-32 md:h-40">
+                <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex">
                     <div class="w-32 md:w-40 flex-shrink-0 bg-gray-200">
                         <img src="galletas.jpg" onerror="this.src='https://via.placeholder.com/300?text=Galletas'" class="w-full h-full object-cover">
                     </div>
@@ -605,7 +621,7 @@
             <h2 class="text-3xl font-bold mb-8 text-black category-header">BEBIDAS <span class="text-sm font-normal text-gray-500 ml-2">Drinks</span></h2>
             <div class="grid md:grid-cols-2 gap-6">
                 <!-- Item: Aguas -->
-                <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex h-24 md:h-32">
+                <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex">
                     <div class="w-24 md:w-32 flex-shrink-0 bg-gray-200">
                         <img src="aguas.jpg" onerror="this.src='https://via.placeholder.com/300?text=Aguas'" class="w-full h-full object-cover">
                     </div>
@@ -622,7 +638,7 @@
                 </div>
 
                 <!-- Item: Refrescos -->
-                <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex h-24 md:h-32">
+                <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex">
                     <div class="w-24 md:w-32 flex-shrink-0 bg-gray-200">
                         <img src="refrescos.jpg" onerror="this.src='https://via.placeholder.com/300?text=Refrescos'" class="w-full h-full object-cover">
                     </div>
@@ -680,6 +696,94 @@
         <span class="font-bold hidden md:inline" id="cart-text">Pedir Ahora</span>
     </button>
 
+    <!-- MODAL DE PREFERENCIAS -->
+    <div id="preferences-modal" class="fixed inset-0 bg-black bg-opacity-50 z-[100] hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-md p-6 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="toggleModal()" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            
+            <h3 class="text-xl font-bold text-center mb-6 brand-font border-b pb-2">Finalizar Pedido</h3>
+            
+            <div class="space-y-6">
+                <!-- Opción de Cubiertos -->
+                <div>
+                    <p class="font-bold text-gray-800 mb-2"><i class="fas fa-utensils mr-2 text-red-600"></i>¿Qué cubiertos necesitas?</p>
+                    <div class="flex gap-4">
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="cutlery" value="Palillos" checked class="text-red-600 focus:ring-red-500">
+                            <span class="text-sm">Palillos</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="cutlery" value="Tenedores" class="text-red-600 focus:ring-red-500">
+                            <span class="text-sm">Tenedores</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="cutlery" value="Sin cubiertos" class="text-red-600 focus:ring-red-500">
+                            <span class="text-sm">Ninguno</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Opción de Soya -->
+                <div>
+                    <p class="font-bold text-gray-800 mb-2"><i class="fas fa-pepper-hot mr-2 text-red-600"></i>¿Cómo quieres tu soya?</p>
+                    <div class="flex flex-col gap-2">
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="soy_sauce" value="Con Chile (Toreada)" class="text-red-600 focus:ring-red-500">
+                            <span class="text-sm">Con Chile (Toreada)</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="soy_sauce" value="Sin Chile (Natural)" checked class="text-red-600 focus:ring-red-500">
+                            <span class="text-sm">Sin Chile (Natural)</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="soy_sauce" value="Sin soya" class="text-red-600 focus:ring-red-500">
+                            <span class="text-sm">No necesito soya</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Aderezos Extra -->
+                <div>
+                    <p class="font-bold text-gray-800 mb-2"><i class="fas fa-plus-circle mr-2 text-red-600"></i>¿Deseas extras?</p>
+                    <div class="space-y-2">
+                        <!-- Soya Extra -->
+                        <label class="flex items-center gap-2 cursor-pointer bg-red-50 p-2 rounded hover:bg-red-100 border border-red-100">
+                            <input type="checkbox" name="extra_soy" value="Soya Extra" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
+                            <span class="text-sm font-bold text-red-800">Soya Extra (+$10)</span>
+                        </label>
+
+                        <!-- Aderezos ($15) -->
+                        <label class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100">
+                            <input type="checkbox" name="extra_dressing" value="Aderezo Chipotle" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
+                            <span class="text-sm">Aderezo Chipotle (+$15)</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100">
+                            <input type="checkbox" name="extra_dressing" value="Sriracha" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
+                            <span class="text-sm">Sriracha (+$15)</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100">
+                            <input type="checkbox" name="extra_dressing" value="Pesto de Cilantro" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
+                            <span class="text-sm">Pesto de Cilantro (+$15)</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100">
+                            <input type="checkbox" name="extra_dressing" value="Chips de Jalapeño" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
+                            <span class="text-sm">Chips de Jalapeño (+$15)</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 flex gap-3">
+                <button onclick="toggleModal()" class="flex-1 px-4 py-2 border border-gray-300 rounded text-gray-600 hover:bg-gray-100 text-sm font-bold">Cancelar</button>
+                <button onclick="submitOrderWithPreferences()" class="flex-1 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 text-sm font-bold flex items-center justify-center gap-2">
+                    <i class="fab fa-whatsapp"></i> Enviar Pedido
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- SCRIPTS -->
     <script>
         // --- LÓGICA DINÁMICA DE FECHA Y HORA ---
@@ -734,7 +838,7 @@
                     cookieFlavor = "Chispas de Chocolate";
                     break;
                 case 3: // Miércoles
-                    promoMessage = "🍣 ¡Mitad de semana! Pide tu Kushiage GRATIS en compra mayor a $300";
+                    promoMessage = "🥤 ¡Mitad de semana! En compras mayores a $300, tu AGUA FRESCA es GRATIS";
                     cookieFlavor = "Red Velvet";
                     break;
                 case 4: // Jueves
@@ -759,9 +863,9 @@
                 }
             }
 
-            if (flavorText) {
-                flavorText.innerText = cookieFlavor;
-            }
+            // if (flavorText) {
+            //     flavorText.innerText = cookieFlavor;
+            // }
         }
 
         function initSmoothScroll() {
@@ -799,6 +903,12 @@
             cart.push({name: name, price: price, category: category});
             updateCartButton();
             showToast(`Agregado: ${name}`);
+        }
+
+        function addKushiageFromSelect() {
+            const select = document.getElementById('kushiage-select');
+            const flavor = select.value;
+            addToCart(`Kushiagues (${flavor})`, 65, 'entrada');
         }
 
         function calculateCart() {
@@ -855,31 +965,79 @@
             setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
         }
 
+        // --- LÓGICA DEL MODAL ---
+        function toggleModal() {
+            const modal = document.getElementById('preferences-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        // Función original modificada para abrir el modal si hay items
         function sendOrder() {
             if (cart.length === 0) {
                 // Si el carrito está vacío, usamos el link directo
                 window.open("https://wa.me/message/P4FK7RF2G2RWH1", "_blank");
                 return;
             }
+            // Si hay items, abrimos el modal de preferencias
+            toggleModal();
+        }
 
-            const { subtotal, discount, total } = calculateCart();
+        function submitOrderWithPreferences() {
+            // Obtener preferencias
+            const cutlery = document.querySelector('input[name="cutlery"]:checked').value;
+            const soySauce = document.querySelector('input[name="soy_sauce"]:checked').value;
+
+            // Obtener extras (Aderezos $15)
+            const extraDressings = [];
+            document.querySelectorAll('input[name="extra_dressing"]:checked').forEach(checkbox => {
+                extraDressings.push(checkbox.value);
+            });
+            const dressingsCost = extraDressings.length * 15;
+
+            // Obtener Soya Extra ($10)
+            const extraSoyCheckbox = document.querySelector('input[name="extra_soy"]:checked');
+            const hasExtraSoy = extraSoyCheckbox !== null;
+            const soyCost = hasExtraSoy ? 10 : 0;
+
+            // Costo total de extras
+            const totalExtrasCost = dressingsCost + soyCost;
+
+            // Calcular totales
+            const { subtotal, discount, total: baseTotal } = calculateCart();
+            const finalTotal = baseTotal + totalExtrasCost;
+            
+            // Construir mensaje
             let message = "Hola Wokami! Quiero ordenar:%0A";
             
             cart.forEach((item) => {
                 message += `- ${item.name} ($${item.price})%0A`;
             });
             
+            // Sección de Extras en el mensaje
+            if (totalExtrasCost > 0) {
+                message += `%0A--- Extras ($${totalExtrasCost}) ---%0A`;
+                if (hasExtraSoy) {
+                    message += `+ Soya Extra ($10)%0A`;
+                }
+                extraDressings.forEach(d => message += `+ ${d} ($15)%0A`);
+            }
+            
             if (discount > 0) {
-                message += `%0ASubtotal: $${subtotal}`;
+                message += `%0ASubtotal: $${subtotal + totalExtrasCost}`;
                 message += `%0ADescuento Promo: -$${discount}`;
             }
             
-            message += `%0ATotal Final: $${total}`;
+            message += `%0ATotal Final: $${finalTotal}`;
+            
+            // Añadir preferencias al mensaje
+            message += `%0A%0A--- Preferencias ---%0A`;
+            message += `🥢 Cubiertos: ${cutlery}%0A`;
+            message += `🍶 Soya: ${soySauce}`;
+            
             message += "%0A%0A(Envía este mensaje para confirmar tu pedido)";
             
-            // NOTA: Para enviar el pedido con texto, se necesita el número de teléfono real (no el link corto)
-            // Asegúrate de cambiar la variable phoneNumber arriba con tu número de 10 dígitos.
             window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
+            toggleModal(); // Cerrar modal después de enviar
         }
         
         function sendOrderGeneric() {
