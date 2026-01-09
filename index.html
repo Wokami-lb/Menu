@@ -206,8 +206,10 @@
         <!-- Sección Principal de Rollos -->
         <section id="rollos" class="mb-16">
             
-            <div class="bg-red-50 text-red-800 px-4 py-3 rounded-lg border border-red-200 text-sm font-medium shadow-sm mb-8 flex items-center justify-center text-center">
-                <span><i class="fas fa-info-circle mr-2 text-lg"></i>Elige tu rollo: <strong>Empanizado</strong> o <strong>Natural</strong> (Excepto America Roll)</span>
+            <div class="bg-red-50 text-red-800 px-4 py-3 rounded-lg border border-red-200 text-sm font-medium shadow-sm mb-8 flex flex-col md:flex-row items-center justify-center text-center gap-2">
+                <span><i class="fas fa-info-circle mr-2 text-lg"></i>Elige: <strong>Empanizado</strong> o <strong>Natural</strong> (Excepto America Roll)</span>
+                <span class="hidden md:inline text-red-300">|</span>
+                <span><i class="fas fa-leaf mr-2"></i>Todos incluyen porción de <strong>Chips de Camote</strong></span>
             </div>
 
             <!-- Categoría 1: ROLLOS ($120) -->
@@ -756,6 +758,10 @@
 
                         <!-- Aderezos ($15) -->
                         <label class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100">
+                            <input type="checkbox" name="extra_dressing" value="Salsa de Anguila" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
+                            <span class="text-sm">Salsa de Anguila (+$15)</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100">
                             <input type="checkbox" name="extra_dressing" value="Aderezo Chipotle" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
                             <span class="text-sm">Aderezo Chipotle (+$15)</span>
                         </label>
@@ -768,8 +774,8 @@
                             <span class="text-sm">Pesto de Cilantro (+$15)</span>
                         </label>
                         <label class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100">
-                            <input type="checkbox" name="extra_dressing" value="Chips de Jalapeño" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
-                            <span class="text-sm">Chips de Jalapeño (+$15)</span>
+                            <input type="checkbox" name="extra_dressing" value="Aderezo de Chips de Jalapeño" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
+                            <span class="text-sm">Aderezo de Chips de Jalapeño (+$15)</span>
                         </label>
                     </div>
                 </div>
