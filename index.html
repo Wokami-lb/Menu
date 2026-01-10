@@ -137,7 +137,7 @@
         <div class="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
             <img src="logo.png" onerror="this.src='https://via.placeholder.com/300?text=Logo+Wokami'" alt="Wokami Logo" class="h-32 w-32 object-contain rounded-full bg-white mb-6 shadow-lg border-4 border-red-600">
             <h1 class="text-5xl md:text-6xl font-bold mb-4 brand-font">WOKAMI</h1>
-            <p class="text-xl text-gray-300 font-light italic">El fuego del wok. El arte del sushi.</p>
+            <p class="text-xl text-gray-300 font-light italic">El fuego del wok. El alma del sushi.</p>
             <div class="mt-8">
                 <span class="inline-block w-16 h-1 bg-red-600 rounded-full"></span>
             </div>
@@ -698,30 +698,52 @@
         <span class="font-bold hidden md:inline" id="cart-text">Pedir Ahora</span>
     </button>
 
-    <!-- MODAL DE PREFERENCIAS -->
+    <!-- MODAL DE PREFERENCIAS Y CARRITO -->
     <div id="preferences-modal" class="fixed inset-0 bg-black bg-opacity-50 z-[100] hidden flex items-center justify-center p-4">
         <div class="bg-white rounded-lg shadow-xl w-full max-w-md p-6 relative max-h-[90vh] overflow-y-auto">
             <button onclick="toggleModal()" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
                 <i class="fas fa-times text-xl"></i>
             </button>
             
-            <h3 class="text-xl font-bold text-center mb-6 brand-font border-b pb-2">Finalizar Pedido</h3>
+            <h3 class="text-xl font-bold text-center mb-4 brand-font border-b pb-2">Tu Pedido</h3>
+            
+            <!-- SECCIÓN NUEVA: RESUMEN DEL CARRITO (EDITABLE) -->
+            <div id="cart-items-container" class="mb-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
+                <!-- Aquí se inyectan los items con JS -->
+                <ul id="cart-list" class="space-y-2 text-sm mb-4"></ul>
+                
+                <!-- Totales -->
+                <div class="border-t border-gray-300 pt-2 space-y-1 text-right text-sm">
+                    <div class="flex justify-between text-gray-600">
+                        <span>Subtotal:</span>
+                        <span id="modal-subtotal">$0</span>
+                    </div>
+                    <div id="modal-discount-row" class="flex justify-between text-red-600 font-bold hidden">
+                        <span>Descuento Promo:</span>
+                        <span id="modal-discount">-$0</span>
+                    </div>
+                    <div class="flex justify-between text-lg font-bold text-gray-900 mt-2">
+                        <span>Total:</span>
+                        <span id="modal-total">$0</span>
+                    </div>
+                </div>
+            </div>
             
             <div class="space-y-6">
-                <!-- Opción de Cubiertos -->
+                <!-- Opción de Cubiertos (Ahora Selección Múltiple) -->
                 <div>
                     <p class="font-bold text-gray-800 mb-2"><i class="fas fa-utensils mr-2 text-red-600"></i>¿Qué cubiertos necesitas?</p>
-                    <div class="flex gap-4">
-                        <label class="flex items-center gap-2 cursor-pointer">
-                            <input type="radio" name="cutlery" value="Palillos" checked class="text-red-600 focus:ring-red-500">
+                    <div class="flex gap-4 flex-wrap">
+                        <label class="flex items-center gap-2 cursor-pointer bg-gray-50 px-3 py-2 rounded hover:bg-gray-100 border border-transparent hover:border-gray-300 transition-all">
+                            <input type="checkbox" name="cutlery" value="Palillos" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
                             <span class="text-sm">Palillos</span>
                         </label>
-                        <label class="flex items-center gap-2 cursor-pointer">
-                            <input type="radio" name="cutlery" value="Tenedores" class="text-red-600 focus:ring-red-500">
+                        <label class="flex items-center gap-2 cursor-pointer bg-gray-50 px-3 py-2 rounded hover:bg-gray-100 border border-transparent hover:border-gray-300 transition-all">
+                            <input type="checkbox" name="cutlery" value="Tenedores" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
                             <span class="text-sm">Tenedores</span>
                         </label>
-                        <label class="flex items-center gap-2 cursor-pointer">
-                            <input type="radio" name="cutlery" value="Sin cubiertos" class="text-red-600 focus:ring-red-500">
+                        <label class="flex items-center gap-2 cursor-pointer bg-gray-50 px-3 py-2 rounded hover:bg-gray-100 border border-transparent hover:border-gray-300 transition-all">
+                            <input type="checkbox" name="cutlery" value="Sin cubiertos" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
                             <span class="text-sm">Ninguno</span>
                         </label>
                     </div>
@@ -752,29 +774,29 @@
                     <div class="space-y-2">
                         <!-- Soya Extra -->
                         <label class="flex items-center gap-2 cursor-pointer bg-red-50 p-2 rounded hover:bg-red-100 border border-red-100">
-                            <input type="checkbox" name="extra_soy" value="Soya Extra" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
+                            <input type="checkbox" name="extra_soy" value="Soya Extra" onchange="updateModalTotals()" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
                             <span class="text-sm font-bold text-red-800">Soya Extra (+$10)</span>
                         </label>
 
                         <!-- Aderezos ($15) -->
                         <label class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100">
-                            <input type="checkbox" name="extra_dressing" value="Salsa de Anguila" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
+                            <input type="checkbox" name="extra_dressing" value="Salsa de Anguila" onchange="updateModalTotals()" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
                             <span class="text-sm">Salsa de Anguila (+$15)</span>
                         </label>
                         <label class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100">
-                            <input type="checkbox" name="extra_dressing" value="Aderezo Chipotle" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
+                            <input type="checkbox" name="extra_dressing" value="Aderezo Chipotle" onchange="updateModalTotals()" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
                             <span class="text-sm">Aderezo Chipotle (+$15)</span>
                         </label>
                         <label class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100">
-                            <input type="checkbox" name="extra_dressing" value="Sriracha" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
+                            <input type="checkbox" name="extra_dressing" value="Sriracha" onchange="updateModalTotals()" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
                             <span class="text-sm">Sriracha (+$15)</span>
                         </label>
                         <label class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100">
-                            <input type="checkbox" name="extra_dressing" value="Pesto de Cilantro" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
+                            <input type="checkbox" name="extra_dressing" value="Pesto de Cilantro" onchange="updateModalTotals()" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
                             <span class="text-sm">Pesto de Cilantro (+$15)</span>
                         </label>
                         <label class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100">
-                            <input type="checkbox" name="extra_dressing" value="Aderezo de Chips de Jalapeño" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
+                            <input type="checkbox" name="extra_dressing" value="Aderezo de Chips de Jalapeño" onchange="updateModalTotals()" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
                             <span class="text-sm">Aderezo de Chips de Jalapeño (+$15)</span>
                         </label>
                     </div>
@@ -782,7 +804,7 @@
             </div>
 
             <div class="mt-8 flex gap-3">
-                <button onclick="toggleModal()" class="flex-1 px-4 py-2 border border-gray-300 rounded text-gray-600 hover:bg-gray-100 text-sm font-bold">Cancelar</button>
+                <button onclick="toggleModal()" class="flex-1 px-4 py-2 border border-gray-300 rounded text-gray-600 hover:bg-gray-100 text-sm font-bold">Seguir Pidiendo</button>
                 <button onclick="submitOrderWithPreferences()" class="flex-1 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 text-sm font-bold flex items-center justify-center gap-2">
                     <i class="fab fa-whatsapp"></i> Enviar Pedido
                 </button>
@@ -807,20 +829,29 @@
 
             // 1. ESTADO ABIERTO/CERRADO
             const statusBadge = document.getElementById('status-badge');
-            const isOpenDay = dayOfWeek >= 2 && dayOfWeek <= 6;
+            const isOpenDay = dayOfWeek >= 2 && dayOfWeek <= 6; // Martes a Sábado
             
             if (isOpenDay) {
-                if (hour >= 14 && hour < 20) {
-                    statusBadge.textContent = "ABIERTO";
-                    statusBadge.className = "text-[10px] px-2 py-0.5 rounded font-bold uppercase tracking-wider bg-green-500 text-white animate-pulse";
-                } else if (hour === 13 && minutes >= 30) {
+                // Lógica de horarios
+                if (hour === 13 && minutes >= 30) {
+                    // 1:30 PM - 1:59 PM
                     statusBadge.textContent = "ABRIMOS PRONTO";
                     statusBadge.className = "text-[10px] px-2 py-0.5 rounded font-bold uppercase tracking-wider bg-yellow-500 text-white animate-pulse";
+                } else if (hour === 19 && minutes >= 30) {
+                    // 7:30 PM - 7:59 PM
+                    statusBadge.textContent = "CERRAMOS PRONTO";
+                    statusBadge.className = "text-[10px] px-2 py-0.5 rounded font-bold uppercase tracking-wider bg-orange-500 text-white animate-pulse";
+                } else if (hour >= 14 && hour < 20) {
+                    // 2:00 PM - 7:29 PM (y hasta las 8 si no cayó en el anterior)
+                    statusBadge.textContent = "ABIERTO";
+                    statusBadge.className = "text-[10px] px-2 py-0.5 rounded font-bold uppercase tracking-wider bg-green-500 text-white animate-pulse";
                 } else {
+                    // Fuera de horario
                     statusBadge.textContent = "CERRADO";
                     statusBadge.className = "text-[10px] px-2 py-0.5 rounded font-bold uppercase tracking-wider bg-gray-500 text-white";
                 }
             } else {
+                // Días cerrados (Domingo/Lunes)
                 statusBadge.textContent = "CERRADO";
                 statusBadge.className = "text-[10px] px-2 py-0.5 rounded font-bold uppercase tracking-wider bg-gray-500 text-white";
             }
@@ -911,6 +942,18 @@
             showToast(`Agregado: ${name}`);
         }
 
+        // FUNCIÓN NUEVA: ELIMINAR DEL CARRITO
+        function removeFromCart(index) {
+            cart.splice(index, 1); // Elimina el item en la posición 'index'
+            updateCartButton(); // Actualiza el botón flotante
+            renderCartItems(); // Vuelve a dibujar la lista en el modal
+            
+            // Si el carrito se queda vacío, cerramos el modal
+            if (cart.length === 0) {
+                toggleModal();
+            }
+        }
+
         function addKushiageFromSelect() {
             const select = document.getElementById('kushiage-select');
             const flavor = select.value;
@@ -962,6 +1005,8 @@
 
         function updateCartButton() {
             const btnText = document.getElementById('cart-text');
+            if (!btnText) return; // Validación de seguridad para evitar error null
+            
             const { total } = calculateCart();
             const count = cart.length;
 
@@ -984,6 +1029,72 @@
         function toggleModal() {
             const modal = document.getElementById('preferences-modal');
             modal.classList.toggle('hidden');
+            // Al abrir, nos aseguramos que los totales estén correctos
+            if (!modal.classList.contains('hidden')) {
+                renderCartItems();
+            }
+        }
+
+        // FUNCIÓN NUEVA: CALCULAR Y MOSTRAR TOTALES EN EL MODAL EN TIEMPO REAL
+        function updateModalTotals() {
+            // Calcular base del carrito
+            const { subtotal, discount, total } = calculateCart();
+
+            // Calcular extras seleccionados
+            let extrasCost = 0;
+            
+            // Soya
+            const extraSoyCheckbox = document.querySelector('input[name="extra_soy"]:checked');
+            if (extraSoyCheckbox) extrasCost += 10;
+
+            // Aderezos
+            const extraDressings = document.querySelectorAll('input[name="extra_dressing"]:checked');
+            extrasCost += extraDressings.length * 15;
+
+            // Actualizar elementos DOM
+            const subtotalEl = document.getElementById('modal-subtotal');
+            const discountRow = document.getElementById('modal-discount-row');
+            const discountEl = document.getElementById('modal-discount');
+            const totalEl = document.getElementById('modal-total');
+
+            // Mostrar
+            subtotalEl.innerText = `$${subtotal + extrasCost}`;
+            
+            if (discount > 0) {
+                discountRow.classList.remove('hidden');
+                discountEl.innerText = `-$${discount}`;
+            } else {
+                discountRow.classList.add('hidden');
+            }
+            
+            totalEl.innerText = `$${total + extrasCost}`;
+        }
+
+        // FUNCIÓN MODIFICADA: RENDERIZAR ITEMS
+        function renderCartItems() {
+            const listContainer = document.getElementById('cart-list');
+            
+            // Limpiar lista actual
+            listContainer.innerHTML = '';
+
+            // Generar lista de items
+            cart.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.className = 'flex justify-between items-center border-b border-gray-100 pb-1 last:border-0';
+                li.innerHTML = `
+                    <span class="truncate pr-2">${item.name}</span>
+                    <div class="flex items-center gap-3">
+                        <span class="font-medium">$${item.price}</span>
+                        <button onclick="removeFromCart(${index})" class="text-red-500 hover:text-red-700 p-1" title="Eliminar">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                `;
+                listContainer.appendChild(li);
+            });
+
+            // Llamamos a la función de actualización de totales para incluir los extras marcados
+            updateModalTotals();
         }
 
         // Función original modificada para abrir el modal si hay items
@@ -993,14 +1104,27 @@
                 window.open("https://wa.me/message/P4FK7RF2G2RWH1", "_blank");
                 return;
             }
-            // Si hay items, abrimos el modal de preferencias
-            toggleModal();
+            // Renderizamos los items antes de mostrar el modal
+            renderCartItems();
+            
+            // Mostrar modal
+            const modal = document.getElementById('preferences-modal');
+            modal.classList.remove('hidden');
         }
 
         function submitOrderWithPreferences() {
-            // Obtener preferencias
-            const cutlery = document.querySelector('input[name="cutlery"]:checked').value;
-            const soySauce = document.querySelector('input[name="soy_sauce"]:checked').value;
+            // Obtener preferencias (Cubiertos - Ahora permite múltiples)
+            const cutlerySelected = [];
+            document.querySelectorAll('input[name="cutlery"]:checked').forEach(checkbox => {
+                cutlerySelected.push(checkbox.value);
+            });
+            // Si no selecciona nada, ponemos "Ninguno" por defecto, o unimos los seleccionados con comas
+            const cutleryString = cutlerySelected.length > 0 ? cutlerySelected.join(', ') : 'Ninguno';
+
+            // Obtener Soya (Sigue siendo opción única)
+            const soySauceElement = document.querySelector('input[name="soy_sauce"]:checked');
+            // Protección por si no hay selección (aunque hay uno checked por defecto)
+            const soySauce = soySauceElement ? soySauceElement.value : 'Sin Chile (Natural)';
 
             // Obtener extras (Aderezos $15)
             const extraDressings = [];
@@ -1046,7 +1170,7 @@
             
             // Añadir preferencias al mensaje
             message += `%0A%0A--- Preferencias ---%0A`;
-            message += `🥢 Cubiertos: ${cutlery}%0A`;
+            message += `🥢 Cubiertos: ${cutleryString}%0A`;
             message += `🍶 Soya: ${soySauce}`;
             
             message += "%0A%0A(Envía este mensaje para confirmar tu pedido)";
