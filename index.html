@@ -186,7 +186,6 @@
                             
                             <!-- Selector de Opciones -->
                             <select id="kushiage-select" class="w-full text-xs border border-gray-300 rounded p-1 mb-2 bg-gray-50 focus:border-red-500 outline-none">
-                                <option value="Mixtos">Mixtos</option>
                                 <option value="Queso Philadelphia">Queso Philadelphia</option>
                                 <option value="Queso Manchego">Queso Manchego</option>
                                 <option value="Camarón con Philadelphia">Camarón c/ Philadelphia</option>
@@ -630,7 +629,7 @@
                     <div class="p-4 flex-grow flex justify-between items-center">
                         <div>
                             <h3 class="text-lg md:text-xl font-bold text-gray-900">Aguas Frescas</h3>
-                            <p class="text-gray-600 text-sm mt-1">Deliciosos sabores naturales del día.</p>
+                            <p class="text-gray-600 text-sm mt-1">1lt. Deliciosos sabores naturales del día.</p>
                         </div>
                         <div class="flex flex-col items-end">
                             <span class="text-lg font-bold text-gray-900 mb-1">$35</span>
@@ -640,14 +639,14 @@
                 </div>
 
                 <!-- Item: Refrescos -->
-                <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex">
+                <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex h-24 md:h-32">
                     <div class="w-24 md:w-32 flex-shrink-0 bg-gray-200">
                         <img src="refrescos.jpg" onerror="this.src='https://via.placeholder.com/300?text=Refrescos'" class="w-full h-full object-cover">
                     </div>
                     <div class="p-4 flex-grow flex justify-between items-center">
                         <div>
                             <h3 class="text-lg md:text-xl font-bold text-gray-900">Refrescos</h3>
-                            <p class="text-gray-600 text-sm mt-1">Familia Coca-Cola.</p>
+                            <p class="text-gray-600 text-sm mt-1">600ml. Familia Coca-Cola.</p>
                         </div>
                         <div class="flex flex-col items-end">
                             <span class="text-lg font-bold text-gray-900 mb-1">$30</span>
@@ -800,6 +799,12 @@
                             <span class="text-sm">Aderezo de Chips de Jalapeño (+$15)</span>
                         </label>
                     </div>
+                </div>
+
+                <!-- Notas / Instrucciones Especiales -->
+                <div>
+                    <p class="font-bold text-gray-800 mb-2"><i class="fas fa-comment-alt mr-2 text-red-600"></i>Notas / Instrucciones</p>
+                    <textarea id="order-notes" rows="2" class="w-full text-sm border border-gray-300 rounded p-2 bg-gray-50 focus:border-red-500 outline-none" placeholder="Ej. Sin cebolla, extra servilletas, alérgico a..."></textarea>
                 </div>
             </div>
 
@@ -1118,13 +1123,14 @@
             document.querySelectorAll('input[name="cutlery"]:checked').forEach(checkbox => {
                 cutlerySelected.push(checkbox.value);
             });
-            // Si no selecciona nada, ponemos "Ninguno" por defecto, o unimos los seleccionados con comas
             const cutleryString = cutlerySelected.length > 0 ? cutlerySelected.join(', ') : 'Ninguno';
 
-            // Obtener Soya (Sigue siendo opción única)
+            // Obtener Soya
             const soySauceElement = document.querySelector('input[name="soy_sauce"]:checked');
-            // Protección por si no hay selección (aunque hay uno checked por defecto)
             const soySauce = soySauceElement ? soySauceElement.value : 'Sin Chile (Natural)';
+
+            // Obtener Notas
+            const notes = document.getElementById('order-notes').value.trim();
 
             // Obtener extras (Aderezos $15)
             const extraDressings = [];
@@ -1172,6 +1178,11 @@
             message += `%0A%0A--- Preferencias ---%0A`;
             message += `🥢 Cubiertos: ${cutleryString}%0A`;
             message += `🍶 Soya: ${soySauce}`;
+
+            // Añadir notas si existen
+            if (notes) {
+                message += `%0A📝 Notas: ${encodeURIComponent(notes)}`;
+            }
             
             message += "%0A%0A(Envía este mensaje para confirmar tu pedido)";
             
