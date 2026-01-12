@@ -136,6 +136,12 @@
         <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/sushi.png')]"></div>
         <div class="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
             <img src="logo.png" onerror="this.src='https://via.placeholder.com/300?text=Logo+Wokami'" alt="Wokami Logo" class="h-32 w-32 object-contain rounded-full bg-white mb-6 shadow-lg border-4 border-red-600">
+            
+            <!-- ANUNCIO DE INAUGURACIÓN -->
+            <div class="bg-red-600 text-white px-6 py-2 rounded-full text-sm md:text-base font-bold tracking-widest mb-6 shadow-lg animate-bounce uppercase">
+                🎉 ¡Gran Inauguración este Martes! 🎉
+            </div>
+
             <h1 class="text-5xl md:text-6xl font-bold mb-4 brand-font">WOKAMI</h1>
             <p class="text-xl text-gray-300 font-light italic">El fuego del wok. El alma del sushi.</p>
             <div class="mt-8">
@@ -474,10 +480,10 @@
                                 </div>
                             </li>
                             <li class="flex justify-between items-center text-sm text-gray-700">
-                                <span><i class="fas fa-bacon text-red-400 mr-2"></i>Con Arrachera</span>
+                                <span><i class="fas fa-bacon text-red-400 mr-2"></i>Con Res</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$120</span>
-                                    <button onclick="addToCart('Yakimeshi Arrachera', 120, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle"></i></button>
+                                    <button onclick="addToCart('Yakimeshi Res', 120, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle"></i></button>
                                 </div>
                             </li>
                             <li class="flex justify-between items-center text-sm text-gray-700 font-medium bg-gray-50 p-2 rounded">
@@ -534,10 +540,10 @@
                                 </div>
                             </li>
                             <li class="flex justify-between items-center text-sm text-gray-700">
-                                <span><i class="fas fa-bacon text-red-400 mr-2"></i>Con Arrachera</span>
+                                <span><i class="fas fa-bacon text-red-400 mr-2"></i>Con Res</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$120</span>
-                                    <button onclick="addToCart('Lo Mein Arrachera', 120, 'wok')" class="text-black hover:text-gray-700"><i class="fas fa-plus-circle"></i></button>
+                                    <button onclick="addToCart('Lo Mein Res', 120, 'wok')" class="text-black hover:text-gray-700"><i class="fas fa-plus-circle"></i></button>
                                 </div>
                             </li>
                             <li class="flex justify-between items-center text-sm text-gray-700 font-medium bg-gray-50 p-2 rounded">
@@ -639,7 +645,7 @@
                 </div>
 
                 <!-- Item: Refrescos -->
-                <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex h-24 md:h-32">
+                <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex">
                     <div class="w-24 md:w-32 flex-shrink-0 bg-gray-200">
                         <img src="refrescos.jpg" onerror="this.src='https://via.placeholder.com/300?text=Refrescos'" class="w-full h-full object-cover">
                     </div>
@@ -878,11 +884,11 @@
             switch(dayOfWeek) {
                 case 0: // Domingo
                 case 1: // Lunes
-                    promoMessage = "¡Nos vemos el martes! (Hoy descansamos)";
+                    promoMessage = "¡Nos vemos el martes en la GRAN INAUGURACIÓN! (Hoy descansamos)";
                     cookieFlavor = "No disponible hoy";
                     break;
                 case 2: // Martes
-                    promoMessage = "🔥 MARTES DE 3x2 en Wok & Bowls 🔥";
+                    promoMessage = "🎉 ¡HOY ES NUESTRA GRAN INAUGURACIÓN! 🔥 3x2 en Wok & Bowls 🔥";
                     cookieFlavor = "Chispas de Chocolate";
                     break;
                 case 3: // Miércoles
