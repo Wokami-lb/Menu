@@ -118,7 +118,7 @@
             <div class="flex items-center gap-3">
                 <div class="flex items-center gap-2 hover:opacity-90 transition-opacity">
                     <!-- LOGO PEQUEÑO: Circular y sin fondo (transparente) -->
-                    <img src="logo.png" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2252/2252076.png'" alt="Wokami Logo" class="h-12 w-12 object-cover rounded-full">
+                    <img src="logo.png" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2252/2252076.png'" alt="Wokami Logo" class="h-10 w-10 object-cover rounded-full">
                     <a href="#" class="text-xl md:text-2xl font-bold tracking-widest brand-font text-white hover:text-red-500 transition-colors">WOKAMI</a>
                 </div>
                 <!-- INDICADOR DE ESTADO -->
@@ -214,7 +214,8 @@
                         </div>
                         <div class="flex justify-between items-center mt-1">
                             <span class="text-lg font-bold text-gray-900">$65</span>
-                            <button onclick="addKushiageFromSelect()" class="text-xs bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition shadow-md font-bold uppercase tracking-wider"><i class="fas fa-plus mr-1"></i> Agregar</button>
+                            <!-- Botón ajustado a solo ícono para mejor alineación -->
+                            <button onclick="addKushiageFromSelect()" class="text-xs bg-red-600 text-white px-3 py-1.5 rounded hover:bg-red-700 transition shadow-md"><i class="fas fa-plus text-sm"></i></button>
                         </div>
                     </div>
                 </div>
@@ -251,7 +252,7 @@
                                     <strong>Por fuera:</strong> Mango con chile tajín, ajonjolí y salsa de anguila.
                                 </p>
                             </div>
-                            <button onclick="addToCart('America Roll', 120, 'rollo')" class="self-start text-xs font-bold uppercase tracking-wider text-white bg-red-600 border border-red-600 px-4 py-2 rounded hover:bg-red-700 transition shadow-md w-full md:w-auto">Ordenar</button>
+                            <button onclick="addToCart('America Roll', 120, 'rollo')" class="self-start text-xs font-bold uppercase tracking-wider text-white bg-red-600 border border-red-600 px-4 py-1.5 rounded hover:bg-red-700 transition shadow-md w-full md:w-auto">Ordenar</button>
                         </div>
                     </div>
 
@@ -272,8 +273,8 @@
                                 </p>
                             </div>
                             <div class="flex gap-2">
-                                <button onclick="addToCart('Banana Roll (Natural)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-2 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
-                                <button onclick="addToCart('Banana Roll (Empanizado)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-white bg-red-600 border border-red-600 px-2 py-2 rounded hover:bg-red-700 transition shadow-md">Empanizado</button>
+                                <button onclick="addToCart('Banana Roll (Natural)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-1.5 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
+                                <button onclick="addToCart('Banana Roll (Empanizado)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-white bg-red-600 border border-red-600 px-2 py-1.5 rounded hover:bg-red-700 transition shadow-md">Empanizado</button>
                             </div>
                         </div>
                     </div>
@@ -295,8 +296,8 @@
                                 </p>
                             </div>
                             <div class="flex gap-2">
-                                <button onclick="addToCart('Kamikaze Roll (Natural)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-2 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
-                                <button onclick="addToCart('Kamikaze Roll (Empanizado)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-white bg-red-600 border border-red-600 px-2 py-2 rounded hover:bg-red-700 transition shadow-md">Empanizado</button>
+                                <button onclick="addToCart('Kamikaze Roll (Natural)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-1.5 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
+                                <button onclick="addToCart('Kamikaze Roll (Empanizado)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-white bg-red-600 border border-red-600 px-2 py-1.5 rounded hover:bg-red-700 transition shadow-md">Empanizado</button>
                             </div>
                         </div>
                     </div>
@@ -318,8 +319,8 @@
                                 </p>
                             </div>
                             <div class="flex gap-2">
-                                <button onclick="addToCart('Cheese Roll (Natural)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-2 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
-                                <button onclick="addToCart('Cheese Roll (Empanizado)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-white bg-red-600 border border-red-600 px-2 py-2 rounded hover:bg-red-700 transition shadow-md">Empanizado</button>
+                                <button onclick="addToCart('Cheese Roll (Natural)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-1.5 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
+                                <button onclick="addToCart('Cheese Roll (Empanizado)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-white bg-red-600 border border-red-600 px-2 py-1.5 rounded hover:bg-red-700 transition shadow-md">Empanizado</button>
                             </div>
                         </div>
                     </div>
@@ -341,8 +342,8 @@
                                 </p>
                             </div>
                             <div class="flex gap-2">
-                                <button onclick="addToCart('California Roll (Natural)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-2 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
-                                <button onclick="addToCart('California Roll (Empanizado)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-white bg-red-600 border border-red-600 px-2 py-2 rounded hover:bg-red-700 transition shadow-md">Empanizado</button>
+                                <button onclick="addToCart('California Roll (Natural)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-1.5 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
+                                <button onclick="addToCart('California Roll (Empanizado)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-white bg-red-600 border border-red-600 px-2 py-1.5 rounded hover:bg-red-700 transition shadow-md">Empanizado</button>
                             </div>
                         </div>
                     </div>
@@ -364,8 +365,8 @@
                                 </p>
                             </div>
                             <div class="flex gap-2">
-                                <button onclick="addToCart('Norteñito Roll (Natural)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-2 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
-                                <button onclick="addToCart('Norteñito Roll (Empanizado)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-white bg-red-600 border border-red-600 px-2 py-2 rounded hover:bg-red-700 transition shadow-md">Empanizado</button>
+                                <button onclick="addToCart('Norteñito Roll (Natural)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-1.5 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
+                                <button onclick="addToCart('Norteñito Roll (Empanizado)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-white bg-red-600 border border-red-600 px-2 py-1.5 rounded hover:bg-red-700 transition shadow-md">Empanizado</button>
                             </div>
                         </div>
                     </div>
@@ -395,8 +396,8 @@
                                 </p>
                             </div>
                             <div class="flex gap-2">
-                                <button onclick="addToCart('Grinch Roll (Natural)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-2 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
-                                <button onclick="addToCart('Grinch Roll (Empanizado)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-white bg-red-600 border border-red-600 px-2 py-2 rounded hover:bg-red-700 transition shadow-md">Empanizado</button>
+                                <button onclick="addToCart('Grinch Roll (Natural)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-1.5 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
+                                <button onclick="addToCart('Grinch Roll (Empanizado)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-white bg-red-600 border border-red-600 px-2 py-1.5 rounded hover:bg-red-700 transition shadow-md">Empanizado</button>
                             </div>
                         </div>
                     </div>
@@ -418,8 +419,8 @@
                                 </p>
                             </div>
                             <div class="flex gap-2">
-                                <button onclick="addToCart('Spicy Tuna Roll (Natural)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-2 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
-                                <button onclick="addToCart('Spicy Tuna Roll (Empanizado)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-white bg-red-600 border border-red-600 px-2 py-2 rounded hover:bg-red-700 transition shadow-md">Empanizado</button>
+                                <button onclick="addToCart('Spicy Tuna Roll (Natural)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-1.5 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
+                                <button onclick="addToCart('Spicy Tuna Roll (Empanizado)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-white bg-red-600 border border-red-600 px-2 py-1.5 rounded hover:bg-red-700 transition shadow-md">Empanizado</button>
                             </div>
                         </div>
                     </div>
@@ -441,8 +442,8 @@
                                 </p>
                             </div>
                             <div class="flex gap-2">
-                                <button onclick="addToCart('Aguachile Roll (Natural)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-2 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
-                                <button onclick="addToCart('Aguachile Roll (Empanizado)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-white bg-red-600 border border-red-600 px-2 py-2 rounded hover:bg-red-700 transition shadow-md">Empanizado</button>
+                                <button onclick="addToCart('Aguachile Roll (Natural)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-1.5 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
+                                <button onclick="addToCart('Aguachile Roll (Empanizado)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-white bg-red-600 border border-red-600 px-2 py-1.5 rounded hover:bg-red-700 transition shadow-md">Empanizado</button>
                             </div>
                         </div>
                     </div>
@@ -464,8 +465,8 @@
                                 </p>
                             </div>
                             <div class="flex gap-2">
-                                <button onclick="addToCart('A la Diabla Roll (Natural)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-2 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
-                                <button onclick="addToCart('A la Diabla Roll (Empanizado)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-white bg-red-600 border border-red-600 px-2 py-2 rounded hover:bg-red-700 transition shadow-md">Empanizado</button>
+                                <button onclick="addToCart('A la Diabla Roll (Natural)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-1.5 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
+                                <button onclick="addToCart('A la Diabla Roll (Empanizado)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-white bg-red-600 border border-red-600 px-2 py-1.5 rounded hover:bg-red-700 transition shadow-md">Empanizado</button>
                             </div>
                         </div>
                     </div>
@@ -619,7 +620,7 @@
                         </div>
                         <div class="flex justify-between items-center mt-2">
                             <span class="text-lg font-bold text-gray-900">$55</span>
-                            <button onclick="addToCart('Mochis', 55, 'postre')" class="text-xs bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition shadow-md font-bold uppercase tracking-wider"><i class="fas fa-plus mr-1"></i> Agregar</button>
+                            <button onclick="addToCart('Mochis', 55, 'postre')" class="text-xs bg-red-600 text-white px-3 py-1.5 rounded hover:bg-red-700 transition shadow-md"><i class="fas fa-plus text-sm"></i></button>
                         </div>
                     </div>
                 </div>
@@ -636,7 +637,7 @@
                         </div>
                         <div class="flex justify-between items-center mt-2">
                             <span class="text-lg font-bold text-gray-900">$65</span>
-                            <button disabled class="text-xs bg-gray-400 text-white px-3 py-1 rounded cursor-not-allowed font-bold">Agotado por hoy</button>
+                            <button disabled class="text-xs bg-gray-400 text-white px-3 py-1.5 rounded cursor-not-allowed font-bold">Agotado</button>
                         </div>
                     </div>
                 </div>
@@ -654,7 +655,7 @@
                         </div>
                         <div class="flex justify-between items-center mt-2">
                             <span class="text-lg font-bold text-gray-900">$45</span>
-                            <button onclick="addToCart('Galletas New York', 45, 'postre')" class="text-xs bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition shadow-md font-bold uppercase tracking-wider"><i class="fas fa-plus mr-1"></i> Agregar</button>
+                            <button onclick="addToCart('Galletas New York', 45, 'postre')" class="text-xs bg-red-600 text-white px-3 py-1.5 rounded hover:bg-red-700 transition shadow-md"><i class="fas fa-plus text-sm"></i></button>
                         </div>
                     </div>
                 </div>
@@ -677,7 +678,7 @@
                         </div>
                         <div class="flex flex-col items-end">
                             <span class="text-lg font-bold text-gray-900 mb-1">$35</span>
-                            <button onclick="addToCart('Agua Fresca', 35, 'bebida')" class="text-xs bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition shadow-md font-bold uppercase tracking-wider"><i class="fas fa-plus mr-1"></i> Agregar</button>
+                            <button onclick="addToCart('Agua Fresca', 35, 'bebida')" class="text-xs bg-red-600 text-white px-3 py-1.5 rounded hover:bg-red-700 transition shadow-md"><i class="fas fa-plus text-sm"></i></button>
                         </div>
                     </div>
                 </div>
@@ -694,7 +695,7 @@
                         </div>
                         <div class="flex flex-col items-end">
                             <span class="text-lg font-bold text-gray-900 mb-1">$30</span>
-                            <button onclick="addToCart('Refresco', 30, 'bebida')" class="text-xs bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition shadow-md font-bold uppercase tracking-wider"><i class="fas fa-plus mr-1"></i> Agregar</button>
+                            <button onclick="addToCart('Refresco', 30, 'bebida')" class="text-xs bg-red-600 text-white px-3 py-1.5 rounded hover:bg-red-700 transition shadow-md"><i class="fas fa-plus text-sm"></i></button>
                         </div>
                     </div>
                 </div>
@@ -743,20 +744,20 @@
 
     <!-- MODAL DE PREFERENCIAS Y CARRITO -->
     <div id="preferences-modal" class="fixed inset-0 bg-black bg-opacity-50 z-[100] hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-lg shadow-xl w-full max-w-md p-6 relative max-h-[90vh] overflow-y-auto">
-            <button onclick="toggleModal()" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-md p-6 relative max-h-[90vh] overflow-y-auto flex flex-col">
+            <button onclick="toggleModal()" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 z-10 bg-white rounded-full p-1">
                 <i class="fas fa-times text-xl"></i>
             </button>
             
-            <h3 class="text-xl font-bold text-center mb-4 brand-font border-b pb-2">Tu Pedido</h3>
+            <h3 class="text-xl font-bold text-center mb-4 brand-font border-b pb-2 flex-shrink-0">Tu Pedido</h3>
             
             <!-- SECCIÓN NUEVA: RESUMEN DEL CARRITO (EDITABLE) -->
-            <div id="cart-items-container" class="mb-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
+            <div id="cart-items-container" class="mb-4 bg-gray-50 p-3 rounded-lg border border-gray-200 flex-shrink-0">
                 <!-- Aquí se inyectan los items con JS -->
-                <ul id="cart-list" class="space-y-2 text-sm mb-4"></ul>
+                <ul id="cart-list" class="space-y-2 text-sm mb-3 max-h-32 overflow-y-auto"></ul>
                 
                 <!-- Totales -->
-                <div class="border-t border-gray-300 pt-2 space-y-1 text-right text-sm">
+                <div class="border-t border-gray-300 pt-2 space-y-1 text-right text-xs md:text-sm">
                     <div class="flex justify-between text-gray-600">
                         <span>Subtotal:</span>
                         <span id="modal-subtotal">$0</span>
@@ -765,7 +766,7 @@
                         <span>Descuento Promo:</span>
                         <span id="modal-discount">-$0</span>
                     </div>
-                    <div class="flex justify-between text-lg font-bold text-gray-900 mt-2">
+                    <div class="flex justify-between text-base font-bold text-gray-900 mt-1">
                         <span>Total:</span>
                         <span id="modal-total">$0</span>
                     </div>
@@ -797,15 +798,15 @@
                     <p class="font-bold text-gray-800 mb-2"><i class="fas fa-pepper-hot mr-2 text-red-600"></i>¿Cómo quieres tu soya?</p>
                     <div class="flex flex-col gap-2">
                         <label class="flex items-center gap-2 cursor-pointer">
-                            <input type="radio" name="soy_sauce" value="Con Chile (Toreada)" class="text-red-600 focus:ring-red-500">
+                            <input type="radio" name="soy_sauce" value="Con Chile (Toreada)" class="text-red-600 focus:ring-red-500 h-3 w-3">
                             <span class="text-sm">Con Chile (Toreada)</span>
                         </label>
                         <label class="flex items-center gap-2 cursor-pointer">
-                            <input type="radio" name="soy_sauce" value="Sin Chile (Natural)" checked class="text-red-600 focus:ring-red-500">
+                            <input type="radio" name="soy_sauce" value="Sin Chile (Natural)" checked class="text-red-600 focus:ring-red-500 h-3 w-3">
                             <span class="text-sm">Sin Chile (Natural)</span>
                         </label>
                         <label class="flex items-center gap-2 cursor-pointer">
-                            <input type="radio" name="soy_sauce" value="Sin soya" class="text-red-600 focus:ring-red-500">
+                            <input type="radio" name="soy_sauce" value="Sin soya" class="text-red-600 focus:ring-red-500 h-3 w-3">
                             <span class="text-sm">No necesito soya</span>
                         </label>
                     </div>
@@ -819,8 +820,8 @@
                     <div class="mb-3">
                         <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">Complementos ($10)</h4>
                         <label class="flex items-center gap-2 cursor-pointer bg-red-50 p-2 rounded hover:bg-red-100 border border-red-100">
-                            <input type="checkbox" name="extra_soy" value="Soya Extra" onchange="updateModalTotals()" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
-                            <span class="text-sm font-bold text-red-800">Soya Extra</span>
+                            <input type="checkbox" name="extra_item" value="Soya Extra" data-price="10" onchange="updateModalTotals()" class="text-red-600 rounded h-3 w-3">
+                            <span class="text-sm font-bold text-red-800">Soya Extra (+$10)</span>
                         </label>
                     </div>
 
@@ -829,23 +830,23 @@
                         <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">Salsas y Aderezos ($15)</h4>
                         <div class="grid grid-cols-2 gap-2">
                             <label class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100 border border-gray-100">
-                                <input type="checkbox" name="extra_dressing" value="Salsa de Anguila" onchange="updateModalTotals()" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
-                                <span class="text-xs md:text-sm">Anguila</span>
+                                <input type="checkbox" name="extra_item" value="Salsa de Anguila" data-price="15" onchange="updateModalTotals()" class="text-red-600 rounded h-3 w-3">
+                                <span class="text-xs md:text-sm">Anguila (+$15)</span>
                             </label>
                             <label class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100 border border-gray-100">
-                                <input type="checkbox" name="extra_dressing" value="Aderezo Chipotle" onchange="updateModalTotals()" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
-                                <span class="text-xs md:text-sm">Chipotle</span>
+                                <input type="checkbox" name="extra_item" value="Aderezo Chipotle" data-price="15" onchange="updateModalTotals()" class="text-red-600 rounded h-3 w-3">
+                                <span class="text-xs md:text-sm">Chipotle (+$15)</span>
                             </label>
                             <label class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100 border border-gray-100">
-                                <input type="checkbox" name="extra_dressing" value="Sriracha" onchange="updateModalTotals()" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
-                                <span class="text-xs md:text-sm">Sriracha</span>
+                                <input type="checkbox" name="extra_item" value="Sriracha" data-price="15" onchange="updateModalTotals()" class="text-red-600 rounded h-3 w-3">
+                                <span class="text-xs md:text-sm">Sriracha (+$15)</span>
                             </label>
                             <label class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100 border border-gray-100">
-                                <input type="checkbox" name="extra_dressing" value="Pesto de Cilantro" onchange="updateModalTotals()" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
-                                <span class="text-xs md:text-sm">Pesto</span>
+                                <input type="checkbox" name="extra_item" value="Pesto de Cilantro" data-price="15" onchange="updateModalTotals()" class="text-red-600 rounded h-3 w-3">
+                                <span class="text-xs md:text-sm">Pesto de Cilantro (+$15)</span>
                             </label>
                             <label class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100 border border-gray-100 col-span-2 opacity-50 cursor-not-allowed">
-                                <input type="checkbox" name="extra_dressing" value="Aderezo de Chips de Jalapeño" disabled class="text-gray-400 focus:ring-gray-300 rounded h-4 w-4">
+                                <input type="checkbox" name="extra_item" value="Aderezo de Chips de Jalapeño" data-price="15" onchange="updateModalTotals()" class="text-red-600 rounded h-3 w-3" disabled>
                                 <span class="text-xs md:text-sm text-gray-500">Aderezo Chips Jalapeño (Agotado)</span>
                             </label>
                         </div>
@@ -856,12 +857,12 @@
                         <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">Quesos Extra ($20)</h4>
                         <div class="grid grid-cols-2 gap-2">
                             <label class="flex items-center gap-2 cursor-pointer bg-yellow-50 p-2 rounded hover:bg-yellow-100 border border-yellow-100">
-                                <input type="checkbox" name="extra_cheese" value="Extra Philadelphia" onchange="updateModalTotals()" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
-                                <span class="text-xs md:text-sm font-medium">Philadelphia</span>
+                                <input type="checkbox" name="extra_item" value="Extra Queso Philadelphia" data-price="20" onchange="updateModalTotals()" class="text-red-600 rounded h-3 w-3">
+                                <span class="text-xs md:text-sm font-medium">Philadelphia (+$20)</span>
                             </label>
                             <label class="flex items-center gap-2 cursor-pointer bg-yellow-50 p-2 rounded hover:bg-yellow-100 border border-yellow-100">
-                                <input type="checkbox" name="extra_cheese" value="Extra Queso Manchego" onchange="updateModalTotals()" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
-                                <span class="text-xs md:text-sm font-medium">Manchego</span>
+                                <input type="checkbox" name="extra_item" value="Extra Queso Manchego" data-price="20" onchange="updateModalTotals()" class="text-red-600 rounded h-3 w-3">
+                                <span class="text-xs md:text-sm font-medium">Manchego (+$20)</span>
                             </label>
                         </div>
                     </div>
@@ -1124,20 +1125,12 @@
             // Calcular base del carrito
             const { subtotal, discount, total } = calculateCart();
 
-            // Calcular extras seleccionados
+            // Calcular extras seleccionados (Usando data-price)
             let extrasCost = 0;
             
-            // Soya
-            const extraSoyCheckbox = document.querySelector('input[name="extra_soy"]:checked');
-            if (extraSoyCheckbox) extrasCost += 10;
-
-            // Aderezos ($15)
-            const extraDressings = document.querySelectorAll('input[name="extra_dressing"]:checked');
-            extrasCost += extraDressings.length * 15;
-
-            // Quesos ($20) - NUEVA LÓGICA
-            const extraCheeses = document.querySelectorAll('input[name="extra_cheese"]:checked');
-            extrasCost += extraCheeses.length * 20;
+            document.querySelectorAll('input[name="extra_item"]:checked').forEach(checkbox => {
+                extrasCost += parseInt(checkbox.dataset.price || 0);
+            });
 
             // Actualizar elementos DOM
             const subtotalEl = document.getElementById('modal-subtotal');
@@ -1208,7 +1201,7 @@
             });
             const cutleryString = cutlerySelected.length > 0 ? cutlerySelected.join(', ') : 'Ninguno';
 
-            // Obtener Soya
+            // Obtener Soya (Radio)
             const soySauceElement = document.querySelector('input[name="soy_sauce"]:checked');
             const soySauce = soySauceElement ? soySauceElement.value : 'Sin Chile (Natural)';
 
@@ -1218,27 +1211,16 @@
             // Obtener Notas
             const notes = document.getElementById('order-notes').value.trim();
 
-            // Obtener extras (Aderezos $15)
-            const extraDressings = [];
-            document.querySelectorAll('input[name="extra_dressing"]:checked').forEach(checkbox => {
-                extraDressings.push(checkbox.value);
+            // Obtener Extras seleccionados (Generalizado)
+            const extraItems = [];
+            let totalExtrasCost = 0;
+            
+            document.querySelectorAll('input[name="extra_item"]:checked').forEach(checkbox => {
+                const price = parseInt(checkbox.dataset.price || 0);
+                // Usamos el value del checkbox para el nombre
+                extraItems.push(`${checkbox.value} ($${price})`);
+                totalExtrasCost += price;
             });
-            const dressingsCost = extraDressings.length * 15;
-
-            // Obtener quesos ($20)
-            const extraCheeses = [];
-            document.querySelectorAll('input[name="extra_cheese"]:checked').forEach(checkbox => {
-                extraCheeses.push(checkbox.value);
-            });
-            const cheesesCost = extraCheeses.length * 20;
-
-            // Obtener Soya Extra ($10)
-            const extraSoyCheckbox = document.querySelector('input[name="extra_soy"]:checked');
-            const hasExtraSoy = extraSoyCheckbox !== null;
-            const soyCost = hasExtraSoy ? 10 : 0;
-
-            // Costo total de extras
-            const totalExtrasCost = dressingsCost + soyCost + cheesesCost;
 
             // Calcular totales
             const { subtotal, discount, total: baseTotal } = calculateCart();
@@ -1252,13 +1234,9 @@
             });
             
             // Sección de Extras en el mensaje
-            if (totalExtrasCost > 0) {
+            if (extraItems.length > 0) {
                 message += `%0A--- Extras ($${totalExtrasCost}) ---%0A`;
-                if (hasExtraSoy) {
-                    message += `+ Soya Extra ($10)%0A`;
-                }
-                extraDressings.forEach(d => message += `+ ${d} ($15)%0A`);
-                extraCheeses.forEach(c => message += `+ ${c} ($20)%0A`);
+                extraItems.forEach(itemStr => message += `+ ${itemStr}%0A`);
             }
             
             if (discount > 0) {
