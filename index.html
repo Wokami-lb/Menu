@@ -609,7 +609,8 @@
                     <div class="p-4 flex-grow flex flex-col justify-between">
                         <div>
                             <h3 class="text-lg md:text-xl font-bold text-gray-900">Mochis</h3>
-                            <p class="text-gray-600 text-xs md:text-sm mt-1 line-clamp-2">Pastelillo de arroz. Relleno: Nieve o Mousse de Queso.</p>
+                            <!-- AHORA ES DINÁMICO CON ID 'mochi-flavor' -->
+                            <p class="text-gray-600 text-xs md:text-sm mt-1 line-clamp-2">Pastelillo de arroz. Relleno: <strong id="mochi-flavor" class="text-red-600">Nieve o Mousse de Queso</strong>.</p>
                         </div>
                         <div class="flex justify-between items-center mt-2">
                             <span class="text-lg font-bold text-gray-900">$55</span>
@@ -643,7 +644,8 @@
                     <div class="p-4 flex-grow flex flex-col justify-between">
                         <div>
                             <h3 class="text-lg md:text-xl font-bold text-gray-900">Galletas New York</h3>
-                            <p class="text-gray-600 text-xs md:text-sm mt-1">Estilo New York. ¡Pregunta por el sabor del día!</p>
+                            <!-- REACTIVADO EL ID 'flavor-of-day' PARA MOSTRAR SABOR -->
+                            <p class="text-gray-600 text-xs md:text-sm mt-1">Estilo New York. Sabor de hoy: <strong id="flavor-of-day" class="text-red-600">Pregunta por el sabor</strong></p>
                         </div>
                         <div class="flex justify-between items-center mt-2">
                             <span class="text-lg font-bold text-gray-900">$45</span>
@@ -908,19 +910,22 @@
             const promoBanner = document.getElementById('daily-promo');
             const promoText = document.getElementById('daily-promo-text');
             const flavorText = document.getElementById('flavor-of-day');
+            const mochiText = document.getElementById('mochi-flavor');
 
             let promoMessage = "";
-            let cookieFlavor = "Sorpresa";
+            let cookieFlavor = "Pregunta por el sabor"; // Default
+            let mochiFlavor = "Nieve o Mousse de Queso"; // Default
 
             switch(dayOfWeek) {
                 case 0: // Domingo
                 case 1: // Lunes
-                    promoMessage = "¡Nos vemos el martes en la GRAN INAUGURACIÓN! (Hoy descansamos)";
+                    promoMessage = "¡Nos vemos el martes en la GRAN INAUGURACIÓN! (Solo servicio a domicilio 🛵)";
                     cookieFlavor = "No disponible hoy";
                     break;
                 case 2: // Martes
                     promoMessage = "🎉 ¡HOY ES NUESTRA GRAN INAUGURACIÓN! 🔥 3x2 en Wok & Bowls 🔥";
-                    cookieFlavor = "Chispas de Chocolate";
+                    cookieFlavor = "Nutella";
+                    mochiFlavor = "Fresa";
                     break;
                 case 3: // Miércoles
                     promoMessage = "🥤 ¡Mitad de semana! En compras mayores a $300, tu AGUA FRESCA es GRATIS";
@@ -948,9 +953,13 @@
                 }
             }
 
-            // if (flavorText) {
-            //     flavorText.innerText = cookieFlavor;
-            // }
+            if (flavorText) {
+                flavorText.innerText = cookieFlavor;
+            }
+            
+            if (mochiText) {
+                mochiText.innerText = mochiFlavor;
+            }
         }
 
         function initSmoothScroll() {
