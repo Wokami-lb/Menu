@@ -37,19 +37,40 @@
             transform: translateY(-2px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
+        /* Estilo mejorado para headers de categoría */
         .category-header {
             position: relative;
             display: inline-block;
+            padding-bottom: 5px;
         }
         .category-header::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
-            width: 60%;
-            height: 3px;
+            width: 40%;
+            height: 4px;
             background-color: var(--wokami-red);
+            border-radius: 2px;
         }
+        /* Efecto Hover en Navegación */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--wokami-red);
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
         /* Notificación Toast */
         #toast {
             visibility: hidden;
@@ -90,44 +111,48 @@
         <span id="daily-promo-text"></span>
     </div>
 
-    <!-- Navbar / Header -->
+    <!-- Navbar / Header CORREGIDO -->
     <header id="main-header" class="bg-black text-white sticky top-0 z-50 shadow-lg">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo y Marca -->
             <div class="flex items-center gap-3">
-                <div class="text-2xl font-bold tracking-widest brand-font flex items-center gap-2">
-                    <img src="logo.png" onerror="this.src='https://via.placeholder.com/150?text=Logo+Wokami'" alt="Wokami Logo" class="h-10 w-10 object-contain rounded-full bg-white">
-                    <a href="#" class="hover:text-red-500 transition-colors nav-link">WOKAMI</a>
+                <div class="flex items-center gap-2 hover:opacity-90 transition-opacity">
+                    <!-- LOGO PEQUEÑO: Circular y sin fondo (transparente) -->
+                    <img src="logo.png" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2252/2252076.png'" alt="Wokami Logo" class="h-12 w-12 object-cover rounded-full">
+                    <a href="#" class="text-xl md:text-2xl font-bold tracking-widest brand-font text-white hover:text-red-500 transition-colors">WOKAMI</a>
                 </div>
-                <!-- INDICADOR DE ESTADO (Abierto/Cerrado) -->
-                <span id="status-badge" class="text-[10px] px-2 py-0.5 rounded font-bold uppercase tracking-wider bg-gray-600 text-gray-300">
+                <!-- INDICADOR DE ESTADO -->
+                <span id="status-badge" class="hidden sm:inline-block text-[10px] px-2 py-0.5 rounded font-bold uppercase tracking-wider bg-gray-600 text-gray-300 ml-2">
                     Cargando...
                 </span>
             </div>
             
             <!-- Desktop Navigation -->
-            <nav class="hidden md:flex gap-6 text-sm uppercase tracking-wide">
-                <a href="#entradas" class="hover:text-red-500 transition-colors nav-link">Entradas</a>
-                <a href="#rollos" class="hover:text-red-500 transition-colors nav-link">Rollos</a>
-                <a href="#rollos-especiales" class="hover:text-red-500 transition-colors nav-link">Rollos Esp.</a>
-                <a href="#wok" class="hover:text-red-500 transition-colors nav-link">Wok</a>
-                <a href="#postres" class="hover:text-red-500 transition-colors nav-link">Postres</a>
-                <a href="#bebidas" class="hover:text-red-500 transition-colors nav-link">Bebidas</a>
+            <nav class="hidden lg:flex gap-8 text-sm font-bold uppercase tracking-wide">
+                <a href="#entradas" class="nav-link hover:text-red-500 transition-colors py-1">Entradas</a>
+                <a href="#rollos" class="nav-link hover:text-red-500 transition-colors py-1">Rollos</a>
+                <a href="#rollos-especiales" class="nav-link hover:text-red-500 transition-colors py-1">Especiales</a>
+                <a href="#wok" class="nav-link hover:text-red-500 transition-colors py-1">Wok</a>
+                <a href="#postres" class="nav-link hover:text-red-500 transition-colors py-1">Postres</a>
+                <a href="#bebidas" class="nav-link hover:text-red-500 transition-colors py-1">Bebidas</a>
             </nav>
 
             <!-- Mobile Menu Button -->
-            <button class="md:hidden text-white" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
-                <i class="fas fa-bars text-xl"></i>
+            <button class="lg:hidden text-white p-2 focus:outline-none" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <i class="fas fa-bars text-2xl"></i>
             </button>
         </div>
         
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden bg-neutral-900 md:hidden p-4 border-t border-gray-800">
-            <a href="#entradas" class="block py-2 text-gray-300 hover:text-white nav-link">Entradas</a>
-            <a href="#rollos" class="block py-2 text-gray-300 hover:text-white nav-link">Rollos</a>
-            <a href="#rollos-especiales" class="block py-2 text-gray-300 hover:text-white nav-link">Rollos Especiales</a>
-            <a href="#wok" class="block py-2 text-gray-300 hover:text-white nav-link">Wok & Bowls</a>
-            <a href="#postres" class="block py-2 text-gray-300 hover:text-white nav-link">Postres</a>
-            <a href="#bebidas" class="block py-2 text-gray-300 hover:text-white nav-link">Bebidas</a>
+        <div id="mobile-menu" class="hidden bg-neutral-900 lg:hidden border-t border-gray-800">
+            <div class="flex flex-col p-4 space-y-3">
+                <a href="#entradas" class="text-gray-300 hover:text-white hover:bg-neutral-800 px-3 py-2 rounded transition-colors font-medium">Entradas</a>
+                <a href="#rollos" class="text-gray-300 hover:text-white hover:bg-neutral-800 px-3 py-2 rounded transition-colors font-medium">Rollos</a>
+                <a href="#rollos-especiales" class="text-gray-300 hover:text-white hover:bg-neutral-800 px-3 py-2 rounded transition-colors font-medium">Rollos Especiales</a>
+                <a href="#wok" class="text-gray-300 hover:text-white hover:bg-neutral-800 px-3 py-2 rounded transition-colors font-medium">Wok & Bowls</a>
+                <a href="#postres" class="text-gray-300 hover:text-white hover:bg-neutral-800 px-3 py-2 rounded transition-colors font-medium">Postres</a>
+                <a href="#bebidas" class="text-gray-300 hover:text-white hover:bg-neutral-800 px-3 py-2 rounded transition-colors font-medium">Bebidas</a>
+            </div>
         </div>
     </header>
 
@@ -135,10 +160,15 @@
     <div class="relative bg-black text-white py-16 px-4 text-center overflow-hidden">
         <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/sushi.png')]"></div>
         <div class="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
-            <img src="logo.png" onerror="this.src='https://via.placeholder.com/300?text=Logo+Wokami'" alt="Wokami Logo" class="h-32 w-32 object-contain rounded-full bg-white mb-6 shadow-lg border-4 border-red-600">
+            
+            <!-- LOGO PRINCIPAL: Circular Grande -->
+            <!-- Mantenemos bg-white aquí para que resalte sobre el fondo negro, pero totalmente circular -->
+            <div class="mb-6 transform hover:scale-105 transition-transform duration-500">
+                <img src="logo.png" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2252/2252076.png'" alt="Wokami Logo" class="h-40 w-40 object-cover rounded-full border-4 border-red-600 shadow-2xl bg-white">
+            </div>
             
             <!-- ANUNCIO DE INAUGURACIÓN -->
-            <div class="bg-red-600 text-white px-6 py-2 rounded-full text-sm md:text-base font-bold tracking-widest mb-4 shadow-lg animate-bounce uppercase">
+            <div class="bg-gradient-to-r from-red-700 to-red-500 text-white px-6 py-2 rounded-full text-sm md:text-base font-bold tracking-widest mb-4 shadow-lg animate-bounce uppercase border border-red-400">
                 🎉 ¡Gran Inauguración este Martes! 🎉
             </div>
 
@@ -150,10 +180,10 @@
                 </p>
             </div>
 
-            <h1 class="text-5xl md:text-6xl font-bold mb-4 brand-font">WOKAMI</h1>
-            <p class="text-xl text-gray-300 font-light italic">El fuego del wok. El alma del sushi.</p>
-            <div class="mt-8">
-                <span class="inline-block w-16 h-1 bg-red-600 rounded-full"></span>
+            <h1 class="text-5xl md:text-7xl font-bold mb-2 brand-font tracking-tight">WOKAMI</h1>
+            <p class="text-lg md:text-xl text-gray-300 font-light italic tracking-wide">El fuego del wok. El alma del sushi.</p>
+            <div class="mt-8 flex justify-center">
+                <span class="inline-block w-24 h-1 bg-red-600 rounded-full"></span>
             </div>
         </div>
     </div>
@@ -162,14 +192,13 @@
     <main class="container mx-auto px-4 py-12 max-w-5xl">
 
         <!-- Entradas -->
-        <section id="entradas" class="mb-16">
-            <h2 class="text-3xl font-bold mb-8 text-black category-header">ENTRADAS <span class="text-sm font-normal text-gray-500 ml-2">Starters</span></h2>
+        <section id="entradas" class="mb-16 scroll-mt-24">
+            <h2 class="text-3xl font-bold mb-8 text-black category-header">ENTRADAS <span class="text-sm font-normal text-gray-500 ml-2 italic">Starters</span></h2>
             <div class="grid md:grid-cols-2 gap-6">
                 <!-- Item: Verduras -->
-                <!-- AÑADIDO: min-h-32 para asegurar altura mínima de imagen -->
-                <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex min-h-32">
-                    <div class="w-32 md:w-40 flex-shrink-0 bg-gray-200 relative">
-                        <img src="verduras.jpg" onerror="this.src='https://placehold.co/300x300?text=Trabajando+en+Imagen'" class="w-full h-full object-cover object-center absolute inset-0">
+                <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex min-h-32 group">
+                    <div class="w-32 md:w-40 flex-shrink-0 bg-gray-200 relative overflow-hidden">
+                        <img src="https://placehold.co/300x300?text=Verduras+Tempura" class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="p-4 flex-grow flex flex-col justify-between">
                         <div>
@@ -181,15 +210,15 @@
                         </div>
                         <div class="flex justify-between items-center mt-2">
                             <span class="text-lg font-bold text-gray-900">$60</span>
-                            <button onclick="addToCart('Verduras Tempura', 60, 'entrada')" class="text-xs bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition"><i class="fas fa-plus"></i></button>
+                            <button onclick="addToCart('Verduras Tempura', 60, 'entrada')" class="text-xs bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition shadow-md font-bold uppercase tracking-wider"><i class="fas fa-plus mr-1"></i> Agregar</button>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Item: Kushiagues (Con Selector) -->
-                <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex min-h-32">
-                    <div class="w-32 md:w-40 flex-shrink-0 bg-gray-200 relative">
-                        <img src="kushiagues.jpg" onerror="this.src='https://placehold.co/300x300?text=Trabajando+en+Imagen'" class="w-full h-full object-cover object-center absolute inset-0">
+                <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex min-h-32 group">
+                    <div class="w-32 md:w-40 flex-shrink-0 bg-gray-200 relative overflow-hidden">
+                        <img src="https://placehold.co/300x300?text=Kushiagues" class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="p-4 flex-grow flex flex-col justify-between">
                         <div>
@@ -200,7 +229,7 @@
                             <p class="text-gray-600 text-xs md:text-sm mt-1 mb-2">3 pzs. Elige tu relleno favorito:</p>
                             
                             <!-- Selector de Opciones -->
-                            <select id="kushiage-select" class="w-full text-xs border border-gray-300 rounded p-1 mb-2 bg-gray-50 focus:border-red-500 outline-none">
+                            <select id="kushiage-select" class="w-full text-xs border border-gray-300 rounded p-1 mb-2 bg-gray-50 focus:border-red-500 outline-none cursor-pointer hover:bg-gray-50">
                                 <option value="Queso Philadelphia">Queso Philadelphia</option>
                                 <option value="Queso Manchego">Queso Manchego</option>
                                 <option value="Camarón con Philadelphia">Camarón c/ Philadelphia</option>
@@ -210,7 +239,7 @@
                         </div>
                         <div class="flex justify-between items-center mt-1">
                             <span class="text-lg font-bold text-gray-900">$65</span>
-                            <button onclick="addKushiageFromSelect()" class="text-xs bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition">Agregar</button>
+                            <button onclick="addKushiageFromSelect()" class="text-xs bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition shadow-md font-bold uppercase tracking-wider"><i class="fas fa-plus mr-1"></i> Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -218,7 +247,7 @@
         </section>
 
         <!-- Sección Principal de Rollos -->
-        <section id="rollos" class="mb-16">
+        <section id="rollos" class="mb-16 scroll-mt-24">
             
             <div class="bg-red-50 text-red-800 px-4 py-3 rounded-lg border border-red-200 text-sm font-medium shadow-sm mb-8 flex flex-col md:flex-row items-center justify-center text-center gap-2">
                 <span><i class="fas fa-info-circle mr-2 text-lg"></i>Elige: <strong>Empanizado</strong> o <strong>Natural</strong> (Excepto America Roll)</span>
@@ -228,13 +257,13 @@
 
             <!-- Categoría 1: ROLLOS ($120) -->
             <div class="mb-12">
-                <h2 class="text-3xl font-bold text-black category-header mb-8">ROLLOS <span class="text-sm font-normal text-gray-500 ml-2">Classic Rolls</span></h2>
+                <h2 class="text-3xl font-bold text-black category-header mb-8">ROLLOS <span class="text-sm font-normal text-gray-500 ml-2 italic">Classic Rolls</span></h2>
                 <div class="grid lg:grid-cols-2 gap-8">
                     
                     <!-- America Roll -->
-                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full">
-                        <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group">
-                            <img src="america.jpg" onerror="this.src='https://placehold.co/400x300?text=Trabajando+en+Imagen'" alt="America Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow">
+                        <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
+                            <img src="https://placehold.co/400x300?text=America+Roll" alt="America Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
                         </div>
                         <div class="p-6 md:w-2/3 flex flex-col justify-between">
                             <div>
@@ -247,14 +276,14 @@
                                     <strong>Por fuera:</strong> Mango con chile tajín, ajonjolí y salsa de anguila.
                                 </p>
                             </div>
-                            <button onclick="addToCart('America Roll', 120, 'rollo')" class="self-start text-xs font-bold uppercase tracking-wider text-red-600 border border-red-600 px-3 py-1 rounded hover:bg-red-600 hover:text-white transition">Ordenar</button>
+                            <button onclick="addToCart('America Roll', 120, 'rollo')" class="self-start text-xs font-bold uppercase tracking-wider text-white bg-red-600 border border-red-600 px-4 py-2 rounded hover:bg-red-700 transition shadow-md w-full md:w-auto">Ordenar</button>
                         </div>
                     </div>
 
                     <!-- Banana Roll -->
-                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full">
-                        <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group">
-                            <img src="banana.jpg" onerror="this.src='https://placehold.co/400x300?text=Trabajando+en+Imagen'" alt="Banana Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow">
+                        <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
+                            <img src="https://placehold.co/400x300?text=Banana+Roll" alt="Banana Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
                         </div>
                         <div class="p-6 md:w-2/3 flex flex-col justify-between">
                             <div>
@@ -268,16 +297,16 @@
                                 </p>
                             </div>
                             <div class="flex gap-2">
-                                <button onclick="addToCart('Banana Roll (Natural)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-1 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
-                                <button onclick="addToCart('Banana Roll (Empanizado)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-red-600 border border-red-600 px-2 py-1 rounded hover:bg-red-600 hover:text-white transition">Empanizado</button>
+                                <button onclick="addToCart('Banana Roll (Natural)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-2 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
+                                <button onclick="addToCart('Banana Roll (Empanizado)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-white bg-red-600 border border-red-600 px-2 py-2 rounded hover:bg-red-700 transition shadow-md">Empanizado</button>
                             </div>
                         </div>
                     </div>
 
                     <!-- Kamikaze Roll -->
-                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full">
-                        <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group">
-                            <img src="kamikaze.jpg" onerror="this.src='https://placehold.co/400x300?text=Trabajando+en+Imagen'" alt="Kamikaze Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow">
+                        <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
+                            <img src="https://placehold.co/400x300?text=Kamikaze+Roll" alt="Kamikaze Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
                         </div>
                         <div class="p-6 md:w-2/3 flex flex-col justify-between">
                             <div>
@@ -291,16 +320,16 @@
                                 </p>
                             </div>
                             <div class="flex gap-2">
-                                <button onclick="addToCart('Kamikaze Roll (Natural)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-1 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
-                                <button onclick="addToCart('Kamikaze Roll (Empanizado)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-red-600 border border-red-600 px-2 py-1 rounded hover:bg-red-600 hover:text-white transition">Empanizado</button>
+                                <button onclick="addToCart('Kamikaze Roll (Natural)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-2 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
+                                <button onclick="addToCart('Kamikaze Roll (Empanizado)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-white bg-red-600 border border-red-600 px-2 py-2 rounded hover:bg-red-700 transition shadow-md">Empanizado</button>
                             </div>
                         </div>
                     </div>
 
                     <!-- Cheese Roll -->
-                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full">
-                        <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group">
-                            <img src="cheese.jpg" onerror="this.src='https://placehold.co/400x300?text=Trabajando+en+Imagen'" alt="Cheese Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow">
+                        <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
+                            <img src="https://placehold.co/400x300?text=Cheese+Roll" alt="Cheese Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
                         </div>
                         <div class="p-6 md:w-2/3 flex flex-col justify-between">
                             <div>
@@ -314,16 +343,16 @@
                                 </p>
                             </div>
                             <div class="flex gap-2">
-                                <button onclick="addToCart('Cheese Roll (Natural)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-1 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
-                                <button onclick="addToCart('Cheese Roll (Empanizado)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-red-600 border border-red-600 px-2 py-1 rounded hover:bg-red-600 hover:text-white transition">Empanizado</button>
+                                <button onclick="addToCart('Cheese Roll (Natural)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-2 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
+                                <button onclick="addToCart('Cheese Roll (Empanizado)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-white bg-red-600 border border-red-600 px-2 py-2 rounded hover:bg-red-700 transition shadow-md">Empanizado</button>
                             </div>
                         </div>
                     </div>
 
                     <!-- California Roll -->
-                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full">
-                        <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group">
-                            <img src="california.jpg" onerror="this.src='https://placehold.co/400x300?text=Trabajando+en+Imagen'" alt="California Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow">
+                        <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
+                            <img src="https://placehold.co/400x300?text=California+Roll" alt="California Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
                         </div>
                         <div class="p-6 md:w-2/3 flex flex-col justify-between">
                             <div>
@@ -337,16 +366,16 @@
                                 </p>
                             </div>
                             <div class="flex gap-2">
-                                <button onclick="addToCart('California Roll (Natural)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-1 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
-                                <button onclick="addToCart('California Roll (Empanizado)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-red-600 border border-red-600 px-2 py-1 rounded hover:bg-red-600 hover:text-white transition">Empanizado</button>
+                                <button onclick="addToCart('California Roll (Natural)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-2 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
+                                <button onclick="addToCart('California Roll (Empanizado)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-white bg-red-600 border border-red-600 px-2 py-2 rounded hover:bg-red-700 transition shadow-md">Empanizado</button>
                             </div>
                         </div>
                     </div>
 
                     <!-- Norteñito Roll -->
-                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full">
-                        <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group">
-                            <img src="nortenito.jpg" onerror="this.src='https://placehold.co/400x300?text=Trabajando+en+Imagen'" alt="Norteñito Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow">
+                        <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
+                            <img src="https://placehold.co/400x300?text=Nortenito+Roll" alt="Norteñito Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
                         </div>
                         <div class="p-6 md:w-2/3 flex flex-col justify-between">
                             <div>
@@ -360,8 +389,8 @@
                                 </p>
                             </div>
                             <div class="flex gap-2">
-                                <button onclick="addToCart('Norteñito Roll (Natural)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-1 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
-                                <button onclick="addToCart('Norteñito Roll (Empanizado)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-red-600 border border-red-600 px-2 py-1 rounded hover:bg-red-600 hover:text-white transition">Empanizado</button>
+                                <button onclick="addToCart('Norteñito Roll (Natural)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-2 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
+                                <button onclick="addToCart('Norteñito Roll (Empanizado)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-white bg-red-600 border border-red-600 px-2 py-2 rounded hover:bg-red-700 transition shadow-md">Empanizado</button>
                             </div>
                         </div>
                     </div>
@@ -370,14 +399,14 @@
             </div>
 
             <!-- Categoría 2: ROLLOS ESPECIALES ($150) -->
-            <div id="rollos-especiales">
-                <h2 class="text-3xl font-bold text-black category-header mb-8">ROLLOS ESPECIALES <span class="text-sm font-normal text-gray-500 ml-2">Signature Rolls</span></h2>
+            <div id="rollos-especiales" class="scroll-mt-24">
+                <h2 class="text-3xl font-bold text-black category-header mb-8">ROLLOS ESPECIALES <span class="text-sm font-normal text-gray-500 ml-2 italic">Signature Rolls</span></h2>
                 <div class="grid lg:grid-cols-2 gap-8">
                     
                     <!-- Grinch Roll -->
-                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full">
-                        <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group">
-                            <img src="grinch.jpg" onerror="this.src='https://placehold.co/400x300?text=Trabajando+en+Imagen'" alt="Grinch Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow">
+                        <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
+                            <img src="https://placehold.co/400x300?text=Grinch+Roll" alt="Grinch Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
                         </div>
                         <div class="p-6 md:w-2/3 flex flex-col justify-between">
                             <div>
@@ -391,16 +420,16 @@
                                 </p>
                             </div>
                             <div class="flex gap-2">
-                                <button onclick="addToCart('Grinch Roll (Natural)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-1 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
-                                <button onclick="addToCart('Grinch Roll (Empanizado)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-red-600 border border-red-600 px-2 py-1 rounded hover:bg-red-600 hover:text-white transition">Empanizado</button>
+                                <button onclick="addToCart('Grinch Roll (Natural)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-2 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
+                                <button onclick="addToCart('Grinch Roll (Empanizado)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-white bg-red-600 border border-red-600 px-2 py-2 rounded hover:bg-red-700 transition shadow-md">Empanizado</button>
                             </div>
                         </div>
                     </div>
 
                     <!-- Spicy Tuna Roll -->
-                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full">
-                        <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group">
-                            <img src="spicy.jpg" onerror="this.src='https://placehold.co/400x300?text=Trabajando+en+Imagen'" alt="Spicy Tuna Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow">
+                        <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
+                            <img src="https://placehold.co/400x300?text=Spicy+Tuna+Roll" alt="Spicy Tuna Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
                         </div>
                         <div class="p-6 md:w-2/3 flex flex-col justify-between">
                             <div>
@@ -414,16 +443,16 @@
                                 </p>
                             </div>
                             <div class="flex gap-2">
-                                <button onclick="addToCart('Spicy Tuna Roll (Natural)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-1 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
-                                <button onclick="addToCart('Spicy Tuna Roll (Empanizado)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-red-600 border border-red-600 px-2 py-1 rounded hover:bg-red-600 hover:text-white transition">Empanizado</button>
+                                <button onclick="addToCart('Spicy Tuna Roll (Natural)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-2 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
+                                <button onclick="addToCart('Spicy Tuna Roll (Empanizado)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-white bg-red-600 border border-red-600 px-2 py-2 rounded hover:bg-red-700 transition shadow-md">Empanizado</button>
                             </div>
                         </div>
                     </div>
 
                     <!-- Aguachile Roll -->
-                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full">
-                        <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group">
-                            <img src="aguachile.jpg" onerror="this.src='https://placehold.co/400x300?text=Trabajando+en+Imagen'" alt="Aguachile Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow">
+                        <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
+                            <img src="https://placehold.co/400x300?text=Aguachile+Roll" alt="Aguachile Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
                         </div>
                         <div class="p-6 md:w-2/3 flex flex-col justify-between">
                             <div>
@@ -437,16 +466,16 @@
                                 </p>
                             </div>
                             <div class="flex gap-2">
-                                <button onclick="addToCart('Aguachile Roll (Natural)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-1 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
-                                <button onclick="addToCart('Aguachile Roll (Empanizado)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-red-600 border border-red-600 px-2 py-1 rounded hover:bg-red-600 hover:text-white transition">Empanizado</button>
+                                <button onclick="addToCart('Aguachile Roll (Natural)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-2 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
+                                <button onclick="addToCart('Aguachile Roll (Empanizado)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-white bg-red-600 border border-red-600 px-2 py-2 rounded hover:bg-red-700 transition shadow-md">Empanizado</button>
                             </div>
                         </div>
                     </div>
 
                     <!-- A la Diabla Roll -->
-                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full">
-                        <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group">
-                            <img src="diabla.jpg" onerror="this.src='https://placehold.co/400x300?text=Trabajando+en+Imagen'" alt="A la Diabla Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow">
+                        <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
+                            <img src="https://placehold.co/400x300?text=Diabla+Roll" alt="A la Diabla Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
                         </div>
                         <div class="p-6 md:w-2/3 flex flex-col justify-between">
                             <div>
@@ -460,8 +489,8 @@
                                 </p>
                             </div>
                             <div class="flex gap-2">
-                                <button onclick="addToCart('A la Diabla Roll (Natural)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-1 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
-                                <button onclick="addToCart('A la Diabla Roll (Empanizado)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-red-600 border border-red-600 px-2 py-1 rounded hover:bg-red-600 hover:text-white transition">Empanizado</button>
+                                <button onclick="addToCart('A la Diabla Roll (Natural)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-2 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
+                                <button onclick="addToCart('A la Diabla Roll (Empanizado)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-white bg-red-600 border border-red-600 px-2 py-2 rounded hover:bg-red-700 transition shadow-md">Empanizado</button>
                             </div>
                         </div>
                     </div>
@@ -472,15 +501,15 @@
         </section>
 
         <!-- Wok & Principales -->
-        <section id="wok" class="mb-16">
-            <h2 class="text-3xl font-bold mb-8 text-black category-header">WOK & BOWLS <span class="text-sm font-normal text-gray-500 ml-2">Main Courses</span></h2>
+        <section id="wok" class="mb-16 scroll-mt-24">
+            <h2 class="text-3xl font-bold mb-8 text-black category-header">WOK & BOWLS <span class="text-sm font-normal text-gray-500 ml-2 italic">Main Courses</span></h2>
             
             <div class="grid lg:grid-cols-2 gap-8">
                 <!-- Yakimeshi -->
-                <div class="bg-white border-t-4 border-red-600 shadow-md rounded-b-lg h-full overflow-hidden">
+                <div class="bg-white border-t-4 border-red-600 shadow-md rounded-b-lg h-full overflow-hidden hover:shadow-xl transition-shadow">
                     <!-- AÑADIDO: Contenedor gris para la imagen -->
-                    <div class="h-48 w-full bg-gray-200 relative">
-                        <img src="yakimeshi.jpg" onerror="this.src='https://placehold.co/600x200?text=Trabajando+en+Imagen'" class="w-full h-full object-cover object-center">
+                    <div class="h-48 w-full bg-gray-200 relative overflow-hidden group">
+                        <img src="https://placehold.co/600x200?text=Yakimeshi" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-8">
                         <div class="flex justify-between items-center mb-4 border-b border-gray-100 pb-2">
@@ -490,46 +519,46 @@
                         <p class="text-gray-600 italic mb-6">Arroz frito salteado al wok con calabaza y zanahoria.</p>
                         
                         <ul class="space-y-3">
-                            <li class="flex justify-between items-center text-sm text-gray-700">
+                            <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-1 rounded transition-colors">
                                 <span><i class="fas fa-leaf text-green-600 mr-2"></i>Verduras (Base)</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$70</span>
-                                    <button onclick="addToCart('Yakimeshi Verduras', 70, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle"></i></button>
+                                    <button onclick="addToCart('Yakimeshi Verduras', 70, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
-                            <li class="flex justify-between items-center text-sm text-gray-700">
+                            <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-1 rounded transition-colors">
                                 <span><i class="fas fa-drumstick-bite text-orange-400 mr-2"></i>Con Pollo</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$100</span>
-                                    <button onclick="addToCart('Yakimeshi Pollo', 100, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle"></i></button>
+                                    <button onclick="addToCart('Yakimeshi Pollo', 100, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
-                            <li class="flex justify-between items-center text-sm text-gray-700">
+                            <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-1 rounded transition-colors">
                                 <span><i class="fas fa-shrimp text-pink-500 mr-2"></i>Con Camarón</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$120</span>
-                                    <button onclick="addToCart('Yakimeshi Camarón', 120, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle"></i></button>
+                                    <button onclick="addToCart('Yakimeshi Camarón', 120, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
-                            <li class="flex justify-between items-center text-sm text-gray-700">
+                            <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-1 rounded transition-colors">
                                 <span><i class="fas fa-bacon text-red-400 mr-2"></i>Con Res</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$120</span>
-                                    <button onclick="addToCart('Yakimeshi Res', 120, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle"></i></button>
+                                    <button onclick="addToCart('Yakimeshi Res', 120, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
                             <li class="flex justify-between items-center text-sm text-gray-700 font-medium bg-gray-50 p-2 rounded">
                                 <span><i class="fas fa-utensils text-gray-500 mr-2"></i>Mixto (Elige 2 proteínas)</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$130</span>
-                                    <button onclick="addToCart('Yakimeshi Mixto', 130, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle"></i></button>
+                                    <button onclick="addToCart('Yakimeshi Mixto', 130, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
-                            <li class="flex justify-between items-center text-sm text-gray-700 font-bold bg-red-50 p-2 rounded text-red-900">
-                                <span><i class="fas fa-star text-yellow-500 mr-2"></i>Especial (3 proteínas, Aguacate y Kushiages mini)</span>
+                            <li class="flex justify-between items-center text-sm text-gray-700 font-bold bg-red-50 p-2 rounded text-red-900 border border-red-100">
+                                <span><i class="fas fa-star text-yellow-500 mr-2"></i>Especial (3 proteínas +)</span>
                                 <div class="flex items-center gap-2">
                                     <span>$150</span>
-                                    <button onclick="addToCart('Yakimeshi Especial', 150, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle"></i></button>
+                                    <button onclick="addToCart('Yakimeshi Especial', 150, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
                         </ul>
@@ -537,10 +566,10 @@
                 </div>
 
                 <!-- Lo Mein -->
-                <div class="bg-white border-t-4 border-black shadow-md rounded-b-lg h-full overflow-hidden">
+                <div class="bg-white border-t-4 border-black shadow-md rounded-b-lg h-full overflow-hidden hover:shadow-xl transition-shadow">
                     <!-- AÑADIDO: Contenedor gris para la imagen -->
-                    <div class="h-48 w-full bg-gray-200 relative">
-                        <img src="lomein.jpg" onerror="this.src='https://placehold.co/600x200?text=Trabajando+en+Imagen'" class="w-full h-full object-cover object-center">
+                    <div class="h-48 w-full bg-gray-200 relative overflow-hidden group">
+                        <img src="https://placehold.co/600x200?text=Lo+Mein" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-8">
                         <div class="flex justify-between items-center mb-4 border-b border-gray-100 pb-2">
@@ -550,46 +579,46 @@
                         <p class="text-gray-600 italic mb-6">Pasta salteada con zanahoria, cebolla, brócoli y col morada, bañada en salsa a base de soya, acompañada de pesto de cilantro.</p>
                         
                         <ul class="space-y-3 mt-8">
-                            <li class="flex justify-between items-center text-sm text-gray-700">
+                            <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-1 rounded transition-colors">
                                 <span><i class="fas fa-leaf text-green-600 mr-2"></i>Vegetariano</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$70</span>
-                                    <button onclick="addToCart('Lo Mein Vegetariano', 70, 'wok')" class="text-black hover:text-gray-700"><i class="fas fa-plus-circle"></i></button>
+                                    <button onclick="addToCart('Lo Mein Vegetariano', 70, 'wok')" class="text-black hover:text-gray-700"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
-                            <li class="flex justify-between items-center text-sm text-gray-700">
+                            <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-1 rounded transition-colors">
                                 <span><i class="fas fa-drumstick-bite text-orange-400 mr-2"></i>Con Pollo</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$100</span>
-                                    <button onclick="addToCart('Lo Mein Pollo', 100, 'wok')" class="text-black hover:text-gray-700"><i class="fas fa-plus-circle"></i></button>
+                                    <button onclick="addToCart('Lo Mein Pollo', 100, 'wok')" class="text-black hover:text-gray-700"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
-                            <li class="flex justify-between items-center text-sm text-gray-700">
+                            <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-1 rounded transition-colors">
                                 <span><i class="fas fa-shrimp text-pink-500 mr-2"></i>Con Camarón</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$120</span>
-                                    <button onclick="addToCart('Lo Mein Camarón', 120, 'wok')" class="text-black hover:text-gray-700"><i class="fas fa-plus-circle"></i></button>
+                                    <button onclick="addToCart('Lo Mein Camarón', 120, 'wok')" class="text-black hover:text-gray-700"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
-                            <li class="flex justify-between items-center text-sm text-gray-700">
+                            <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-1 rounded transition-colors">
                                 <span><i class="fas fa-bacon text-red-400 mr-2"></i>Con Res</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$120</span>
-                                    <button onclick="addToCart('Lo Mein Arrachera', 120, 'wok')" class="text-black hover:text-gray-700"><i class="fas fa-plus-circle"></i></button>
+                                    <button onclick="addToCart('Lo Mein Arrachera', 120, 'wok')" class="text-black hover:text-gray-700"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
                             <li class="flex justify-between items-center text-sm text-gray-700 font-medium bg-gray-50 p-2 rounded">
                                 <span><i class="fas fa-utensils text-gray-500 mr-2"></i>Mixto (Elige 2 proteínas)</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$130</span>
-                                    <button onclick="addToCart('Lo Mein Mixto', 130, 'wok')" class="text-black hover:text-gray-700"><i class="fas fa-plus-circle"></i></button>
+                                    <button onclick="addToCart('Lo Mein Mixto', 130, 'wok')" class="text-black hover:text-gray-700"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
-                            <li class="flex justify-between items-center text-sm text-gray-700 font-bold bg-red-50 p-2 rounded text-red-900">
+                            <li class="flex justify-between items-center text-sm text-gray-700 font-bold bg-red-50 p-2 rounded text-red-900 border border-red-100">
                                 <span><i class="fas fa-star text-yellow-600 mr-2"></i>Especial (Elige 3 proteínas)</span>
                                 <div class="flex items-center gap-2">
                                     <span>$150</span>
-                                    <button onclick="addToCart('Lo Mein Especial', 150, 'wok')" class="text-black hover:text-gray-700"><i class="fas fa-plus-circle"></i></button>
+                                    <button onclick="addToCart('Lo Mein Especial', 150, 'wok')" class="text-black hover:text-gray-700"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
                         </ul>
@@ -599,13 +628,13 @@
         </section>
 
         <!-- Postres -->
-        <section id="postres" class="mb-16">
-            <h2 class="text-3xl font-bold mb-8 text-black category-header">POSTRES <span class="text-sm font-normal text-gray-500 ml-2">Desserts</span></h2>
+        <section id="postres" class="mb-16 scroll-mt-24">
+            <h2 class="text-3xl font-bold mb-8 text-black category-header">POSTRES <span class="text-sm font-normal text-gray-500 ml-2 italic">Desserts</span></h2>
             <div class="grid md:grid-cols-2 gap-6">
                 <!-- Item: Mochis -->
-                <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex min-h-32">
-                    <div class="w-32 md:w-40 flex-shrink-0 bg-gray-200 relative">
-                        <img src="mochis.jpg" onerror="this.src='https://placehold.co/300x300?text=Trabajando+en+Imagen'" class="w-full h-full object-cover object-center absolute inset-0">
+                <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex min-h-32 group">
+                    <div class="w-32 md:w-40 flex-shrink-0 bg-gray-200 relative overflow-hidden">
+                        <img src="https://placehold.co/300x300?text=Mochis" class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="p-4 flex-grow flex flex-col justify-between">
                         <div>
@@ -615,15 +644,15 @@
                         </div>
                         <div class="flex justify-between items-center mt-2">
                             <span class="text-lg font-bold text-gray-900">$55</span>
-                            <button onclick="addToCart('Mochis', 55, 'postre')" class="text-xs bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition"><i class="fas fa-plus"></i></button>
+                            <button onclick="addToCart('Mochis', 55, 'postre')" class="text-xs bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition shadow-md font-bold uppercase tracking-wider"><i class="fas fa-plus mr-1"></i> Agregar</button>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Item: Tempura Helado -->
-                <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex min-h-32">
+                <!-- Item: Tempura Helado (AGOTADO) -->
+                <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex min-h-32 opacity-75 grayscale">
                     <div class="w-32 md:w-40 flex-shrink-0 bg-gray-200 relative">
-                        <img src="helado.jpg" onerror="this.src='https://placehold.co/300x300?text=Trabajando+en+Imagen'" class="w-full h-full object-cover object-center absolute inset-0">
+                        <img src="https://placehold.co/300x300?text=Tempura+Helado" class="w-full h-full object-cover object-center absolute inset-0">
                     </div>
                     <div class="p-4 flex-grow flex flex-col justify-between">
                         <div>
@@ -632,15 +661,15 @@
                         </div>
                         <div class="flex justify-between items-center mt-2">
                             <span class="text-lg font-bold text-gray-900">$65</span>
-                            <button onclick="addToCart('Tempura Helado', 65, 'postre')" class="text-xs bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition"><i class="fas fa-plus"></i></button>
+                            <button disabled class="text-xs bg-gray-400 text-white px-3 py-1 rounded cursor-not-allowed font-bold">Agotado por hoy</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Item: Galletas -->
-                <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex min-h-32">
-                    <div class="w-32 md:w-40 flex-shrink-0 bg-gray-200 relative">
-                        <img src="galletas.jpg" onerror="this.src='https://placehold.co/300x300?text=Trabajando+en+Imagen'" class="w-full h-full object-cover object-center absolute inset-0">
+                <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex min-h-32 group">
+                    <div class="w-32 md:w-40 flex-shrink-0 bg-gray-200 relative overflow-hidden">
+                        <img src="https://placehold.co/300x300?text=Galletas" class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="p-4 flex-grow flex flex-col justify-between">
                         <div>
@@ -650,7 +679,7 @@
                         </div>
                         <div class="flex justify-between items-center mt-2">
                             <span class="text-lg font-bold text-gray-900">$45</span>
-                            <button onclick="addToCart('Galletas New York', 45, 'postre')" class="text-xs bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition"><i class="fas fa-plus"></i></button>
+                            <button onclick="addToCart('Galletas New York', 45, 'postre')" class="text-xs bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition shadow-md font-bold uppercase tracking-wider"><i class="fas fa-plus mr-1"></i> Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -658,13 +687,13 @@
         </section>
 
         <!-- Bebidas -->
-        <section id="bebidas" class="mb-16">
-            <h2 class="text-3xl font-bold mb-8 text-black category-header">BEBIDAS <span class="text-sm font-normal text-gray-500 ml-2">Drinks</span></h2>
+        <section id="bebidas" class="mb-16 scroll-mt-24">
+            <h2 class="text-3xl font-bold mb-8 text-black category-header">BEBIDAS <span class="text-sm font-normal text-gray-500 ml-2 italic">Drinks</span></h2>
             <div class="grid md:grid-cols-2 gap-6">
                 <!-- Item: Aguas -->
-                <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex min-h-32">
-                    <div class="w-32 md:w-40 flex-shrink-0 bg-gray-200 relative">
-                        <img src="aguas.jpg" onerror="this.src='https://placehold.co/300x300?text=Trabajando+en+Imagen'" class="w-full h-full object-cover object-center absolute inset-0">
+                <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex min-h-32 group">
+                    <div class="w-32 md:w-40 flex-shrink-0 bg-gray-200 relative overflow-hidden">
+                        <img src="https://placehold.co/300x300?text=Aguas+Frescas" class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="p-4 flex-grow flex justify-between items-center">
                         <div>
@@ -673,15 +702,15 @@
                         </div>
                         <div class="flex flex-col items-end">
                             <span class="text-lg font-bold text-gray-900 mb-1">$35</span>
-                            <button onclick="addToCart('Agua Fresca', 35, 'bebida')" class="text-xs bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition"><i class="fas fa-plus"></i></button>
+                            <button onclick="addToCart('Agua Fresca', 35, 'bebida')" class="text-xs bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition shadow-md font-bold uppercase tracking-wider"><i class="fas fa-plus mr-1"></i> Agregar</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Item: Refrescos -->
-                <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex min-h-32">
-                    <div class="w-32 md:w-40 flex-shrink-0 bg-gray-200 relative">
-                        <img src="refrescos.jpg" onerror="this.src='https://placehold.co/300x300?text=Trabajando+en+Imagen'" class="w-full h-full object-cover object-center absolute inset-0">
+                <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex min-h-32 group">
+                    <div class="w-32 md:w-40 flex-shrink-0 bg-gray-200 relative overflow-hidden">
+                        <img src="https://placehold.co/300x300?text=Refrescos" class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="p-4 flex-grow flex justify-between items-center">
                         <div>
@@ -690,7 +719,7 @@
                         </div>
                         <div class="flex flex-col items-end">
                             <span class="text-lg font-bold text-gray-900 mb-1">$30</span>
-                            <button onclick="addToCart('Refresco', 30, 'bebida')" class="text-xs bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition"><i class="fas fa-plus"></i></button>
+                            <button onclick="addToCart('Refresco', 30, 'bebida')" class="text-xs bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition shadow-md font-bold uppercase tracking-wider"><i class="fas fa-plus mr-1"></i> Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -807,37 +836,59 @@
                     </div>
                 </div>
 
-                <!-- Aderezos Extra -->
+                <!-- Aderezos Extra (REDIMENSIONADO Y AGRUPADO) -->
                 <div>
                     <p class="font-bold text-gray-800 mb-2"><i class="fas fa-plus-circle mr-2 text-red-600"></i>¿Deseas extras?</p>
-                    <div class="space-y-2">
-                        <!-- Soya Extra -->
+                    
+                    <!-- GRUPO 1: BÁSICOS ($10) -->
+                    <div class="mb-3">
+                        <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">Complementos ($10)</h4>
                         <label class="flex items-center gap-2 cursor-pointer bg-red-50 p-2 rounded hover:bg-red-100 border border-red-100">
                             <input type="checkbox" name="extra_soy" value="Soya Extra" onchange="updateModalTotals()" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
-                            <span class="text-sm font-bold text-red-800">Soya Extra (+$10)</span>
+                            <span class="text-sm font-bold text-red-800">Soya Extra</span>
                         </label>
+                    </div>
 
-                        <!-- Aderezos ($15) -->
-                        <label class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100">
-                            <input type="checkbox" name="extra_dressing" value="Salsa de Anguila" onchange="updateModalTotals()" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
-                            <span class="text-sm">Salsa de Anguila (+$15)</span>
-                        </label>
-                        <label class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100">
-                            <input type="checkbox" name="extra_dressing" value="Aderezo Chipotle" onchange="updateModalTotals()" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
-                            <span class="text-sm">Aderezo Chipotle (+$15)</span>
-                        </label>
-                        <label class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100">
-                            <input type="checkbox" name="extra_dressing" value="Sriracha" onchange="updateModalTotals()" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
-                            <span class="text-sm">Sriracha (+$15)</span>
-                        </label>
-                        <label class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100">
-                            <input type="checkbox" name="extra_dressing" value="Pesto de Cilantro" onchange="updateModalTotals()" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
-                            <span class="text-sm">Pesto de Cilantro (+$15)</span>
-                        </label>
-                        <label class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100">
-                            <input type="checkbox" name="extra_dressing" value="Aderezo de Chips de Jalapeño" onchange="updateModalTotals()" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
-                            <span class="text-sm">Aderezo de Chips de Jalapeño (+$15)</span>
-                        </label>
+                    <!-- GRUPO 2: SALSAS Y ADEREZOS ($15) -->
+                    <div class="mb-3">
+                        <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">Salsas y Aderezos ($15)</h4>
+                        <div class="grid grid-cols-2 gap-2">
+                            <label class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100 border border-gray-100">
+                                <input type="checkbox" name="extra_dressing" value="Salsa de Anguila" onchange="updateModalTotals()" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
+                                <span class="text-xs md:text-sm">Anguila</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100 border border-gray-100">
+                                <input type="checkbox" name="extra_dressing" value="Aderezo Chipotle" onchange="updateModalTotals()" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
+                                <span class="text-xs md:text-sm">Chipotle</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100 border border-gray-100">
+                                <input type="checkbox" name="extra_dressing" value="Sriracha" onchange="updateModalTotals()" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
+                                <span class="text-xs md:text-sm">Sriracha</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100 border border-gray-100">
+                                <input type="checkbox" name="extra_dressing" value="Pesto de Cilantro" onchange="updateModalTotals()" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
+                                <span class="text-xs md:text-sm">Pesto</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100 border border-gray-100 col-span-2">
+                                <input type="checkbox" name="extra_dressing" value="Aderezo de Chips de Jalapeño" onchange="updateModalTotals()" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
+                                <span class="text-xs md:text-sm">Aderezo Chips Jalapeño</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- GRUPO 3: QUESOS ($20) - NUEVA SECCIÓN -->
+                    <div>
+                        <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">Quesos Extra ($20)</h4>
+                        <div class="grid grid-cols-2 gap-2">
+                            <label class="flex items-center gap-2 cursor-pointer bg-yellow-50 p-2 rounded hover:bg-yellow-100 border border-yellow-100">
+                                <input type="checkbox" name="extra_cheese" value="Extra Philadelphia" onchange="updateModalTotals()" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
+                                <span class="text-xs md:text-sm font-medium">Philadelphia</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer bg-yellow-50 p-2 rounded hover:bg-yellow-100 border border-yellow-100">
+                                <input type="checkbox" name="extra_cheese" value="Extra Queso Manchego" onchange="updateModalTotals()" class="text-red-600 focus:ring-red-500 rounded h-4 w-4">
+                                <span class="text-xs md:text-sm font-medium">Manchego</span>
+                            </label>
+                        </div>
                     </div>
                 </div>
 
@@ -1109,6 +1160,10 @@
             const extraDressings = document.querySelectorAll('input[name="extra_dressing"]:checked');
             extrasCost += extraDressings.length * 15;
 
+            // Quesos ($20) - NUEVA LÓGICA
+            const extraCheeses = document.querySelectorAll('input[name="extra_cheese"]:checked');
+            extrasCost += extraCheeses.length * 20;
+
             // Actualizar elementos DOM
             const subtotalEl = document.getElementById('modal-subtotal');
             const discountRow = document.getElementById('modal-discount-row');
@@ -1195,13 +1250,20 @@
             });
             const dressingsCost = extraDressings.length * 15;
 
+            // Obtener quesos ($20)
+            const extraCheeses = [];
+            document.querySelectorAll('input[name="extra_cheese"]:checked').forEach(checkbox => {
+                extraCheeses.push(checkbox.value);
+            });
+            const cheesesCost = extraCheeses.length * 20;
+
             // Obtener Soya Extra ($10)
             const extraSoyCheckbox = document.querySelector('input[name="extra_soy"]:checked');
             const hasExtraSoy = extraSoyCheckbox !== null;
             const soyCost = hasExtraSoy ? 10 : 0;
 
             // Costo total de extras
-            const totalExtrasCost = dressingsCost + soyCost;
+            const totalExtrasCost = dressingsCost + soyCost + cheesesCost;
 
             // Calcular totales
             const { subtotal, discount, total: baseTotal } = calculateCart();
@@ -1221,6 +1283,7 @@
                     message += `+ Soya Extra ($10)%0A`;
                 }
                 extraDressings.forEach(d => message += `+ ${d} ($15)%0A`);
+                extraCheeses.forEach(c => message += `+ ${c} ($20)%0A`);
             }
             
             if (discount > 0) {
