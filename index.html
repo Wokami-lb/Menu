@@ -118,7 +118,7 @@
             <div class="flex items-center gap-3">
                 <div class="flex items-center gap-2 hover:opacity-90 transition-opacity">
                     <!-- LOGO PEQUEÑO: Circular y sin fondo (transparente) -->
-                    <img src="logo.png" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2252/2252076.png'" alt="Wokami Logo" class="h-10 w-10 object-cover rounded-full">
+                    <img src="logo.png" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2252/2252076.png'" alt="Wokami Logo" class="h-12 w-12 object-cover rounded-full">
                     <a href="#" class="text-xl md:text-2xl font-bold tracking-widest brand-font text-white hover:text-red-500 transition-colors">WOKAMI</a>
                 </div>
                 <!-- INDICADOR DE ESTADO -->
@@ -162,7 +162,6 @@
         <div class="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
             
             <!-- LOGO PRINCIPAL: Circular Grande -->
-            <!-- Mantenemos bg-white aquí para que resalte sobre el fondo negro, pero totalmente circular -->
             <div class="mb-6 transform hover:scale-105 transition-transform duration-500">
                 <img src="logo.png" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2252/2252076.png'" alt="Wokami Logo" class="h-40 w-40 object-cover rounded-full border-4 border-red-600 shadow-2xl bg-white">
             </div>
@@ -541,11 +540,14 @@
                     </div>
                 </div>
 
-                <!-- Lo Mein -->
-                <div class="bg-white border-t-4 border-black shadow-md rounded-b-lg h-full overflow-hidden hover:shadow-xl transition-shadow">
+                <!-- Lo Mein (AGOTADO) -->
+                <div class="bg-white border-t-4 border-gray-600 shadow-sm rounded-b-lg h-full overflow-hidden opacity-75 grayscale">
                     <!-- AÑADIDO: Contenedor gris para la imagen -->
                     <div class="h-48 w-full bg-gray-200 relative overflow-hidden group">
                         <img src="lomein.jpg" onerror="this.src='https://placehold.co/600x200?text=Lo+Mein'" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                            <span class="text-white font-bold text-2xl border-4 border-white px-4 py-2 rounded transform -rotate-6 tracking-widest">AGOTADO</span>
+                        </div>
                     </div>
                     <div class="p-8">
                         <div class="flex justify-between items-center mb-4 border-b border-gray-100 pb-2">
@@ -559,42 +561,42 @@
                                 <span><i class="fas fa-leaf text-green-600 mr-2"></i>Vegetariano</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$70</span>
-                                    <button onclick="addToCart('Lo Mein Vegetariano', 70, 'wok')" class="text-black hover:text-gray-700"><i class="fas fa-plus-circle fa-lg"></i></button>
+                                    <button disabled class="text-gray-400 cursor-not-allowed"><i class="fas fa-ban fa-lg"></i></button>
                                 </div>
                             </li>
                             <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-1 rounded transition-colors">
                                 <span><i class="fas fa-drumstick-bite text-orange-400 mr-2"></i>Con Pollo</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$100</span>
-                                    <button onclick="addToCart('Lo Mein Pollo', 100, 'wok')" class="text-black hover:text-gray-700"><i class="fas fa-plus-circle fa-lg"></i></button>
+                                    <button disabled class="text-gray-400 cursor-not-allowed"><i class="fas fa-ban fa-lg"></i></button>
                                 </div>
                             </li>
                             <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-1 rounded transition-colors">
                                 <span><i class="fas fa-shrimp text-pink-500 mr-2"></i>Con Camarón</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$120</span>
-                                    <button onclick="addToCart('Lo Mein Camarón', 120, 'wok')" class="text-black hover:text-gray-700"><i class="fas fa-plus-circle fa-lg"></i></button>
+                                    <button disabled class="text-gray-400 cursor-not-allowed"><i class="fas fa-ban fa-lg"></i></button>
                                 </div>
                             </li>
                             <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-1 rounded transition-colors">
                                 <span><i class="fas fa-bacon text-red-400 mr-2"></i>Con Res</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$120</span>
-                                    <button onclick="addToCart('Lo Mein Arrachera', 120, 'wok')" class="text-black hover:text-gray-700"><i class="fas fa-plus-circle fa-lg"></i></button>
+                                    <button disabled class="text-gray-400 cursor-not-allowed"><i class="fas fa-ban fa-lg"></i></button>
                                 </div>
                             </li>
                             <li class="flex justify-between items-center text-sm text-gray-700 font-medium bg-gray-50 p-2 rounded">
                                 <span><i class="fas fa-utensils text-gray-500 mr-2"></i>Mixto (Elige 2 proteínas)</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$130</span>
-                                    <button onclick="addToCart('Lo Mein Mixto', 130, 'wok')" class="text-black hover:text-gray-700"><i class="fas fa-plus-circle fa-lg"></i></button>
+                                    <button disabled class="text-gray-400 cursor-not-allowed"><i class="fas fa-ban fa-lg"></i></button>
                                 </div>
                             </li>
                             <li class="flex justify-between items-center text-sm text-gray-700 font-bold bg-red-50 p-2 rounded text-red-900 border border-red-100">
                                 <span><i class="fas fa-star text-yellow-600 mr-2"></i>Especial (Elige 3 proteínas)</span>
                                 <div class="flex items-center gap-2">
                                     <span>$150</span>
-                                    <button onclick="addToCart('Lo Mein Especial', 150, 'wok')" class="text-black hover:text-gray-700"><i class="fas fa-plus-circle fa-lg"></i></button>
+                                    <button disabled class="text-gray-400 cursor-not-allowed"><i class="fas fa-ban fa-lg"></i></button>
                                 </div>
                             </li>
                         </ul>
@@ -637,7 +639,7 @@
                         </div>
                         <div class="flex justify-between items-center mt-2">
                             <span class="text-lg font-bold text-gray-900">$65</span>
-                            <button disabled class="text-xs bg-gray-400 text-white px-3 py-1.5 rounded cursor-not-allowed font-bold">Agotado</button>
+                            <button disabled class="text-xs bg-gray-400 text-white px-3 py-1.5 rounded cursor-not-allowed font-bold">Agotado por hoy</button>
                         </div>
                     </div>
                 </div>
