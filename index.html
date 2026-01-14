@@ -358,7 +358,7 @@
                 <h2 class="text-3xl font-bold text-black category-header mb-8">ROLLOS ESPECIALES <span class="text-sm font-normal text-gray-500 ml-2 italic">Signature Rolls</span></h2>
                 <div class="grid lg:grid-cols-2 gap-8">
                     
-                    <!-- Kamikaze Roll - REVERTIDO A ESPECIALES -->
+                    <!-- Kamikaze Roll - MOVED HERE -->
                     <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow">
                         <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
                             <img src="kamikaze.jpg" onerror="this.src='https://via.placeholder.com/400x300?text=Kamikaze+Roll'" alt="Kamikaze Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
@@ -374,6 +374,7 @@
                                     <strong>Por fuera:</strong> Salmón flameado y salsa de anguila.
                                 </p>
                             </div>
+                            <!-- Botón único Ordenar, igual que America Roll -->
                             <button onclick="addToCart('Kamikaze Roll', 150, 'rollo')" class="self-start text-xs font-bold uppercase tracking-wider text-white bg-red-600 border border-red-600 px-4 py-1.5 rounded hover:bg-red-700 transition shadow-md w-full md:w-auto">Ordenar</button>
                         </div>
                     </div>
@@ -943,8 +944,8 @@
             const mochiText = document.getElementById('mochi-flavor');
 
             let promoMessage = "";
-            let cookieFlavor = "Pregunta por el sabor"; // Default
-            let mochiFlavor = "Nieve o Mousse de Queso"; // Default
+            let cookieFlavor = "Nutella"; // Default cambiado
+            let mochiFlavor = "Nieve de Fresa"; // Default cambiado
 
             switch(dayOfWeek) {
                 case 0: // Domingo
@@ -959,7 +960,8 @@
                     break;
                 case 3: // Miércoles
                     promoMessage = "🥤 ¡Mitad de semana! En compras mayores a $300, tu AGUA FRESCA es GRATIS";
-                    cookieFlavor = "Red Velvet";
+                    cookieFlavor = "Nutella"; // Changed from Red Velvet
+                    mochiFlavor = "Nieve de Fresa"; // Added
                     break;
                 case 4: // Jueves
                     promoMessage = "🍣 JUEVES DE 3x2 en Todos los Rollos 🍣";
