@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menú Wokami</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
@@ -109,28 +106,22 @@
 </head>
 <body class="antialiased min-h-screen pb-24">
 
-    <!-- BANNER DE PROMOCIÓN DINÁMICA (Se oculta/muestra con JS) -->
     <div id="daily-promo" class="hidden bg-red-600 text-white text-center py-2 px-4 text-sm font-bold promo-banner">
         <span id="daily-promo-text"></span>
     </div>
 
-    <!-- Navbar / Header CORREGIDO -->
     <header id="main-header" class="bg-black text-white sticky top-0 z-50 shadow-lg">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <!-- Logo y Marca -->
             <div class="flex items-center gap-3">
                 <div class="flex items-center gap-2 hover:opacity-90 transition-opacity">
-                    <!-- LOGO PEQUEÑO: Circular y sin fondo (transparente) -->
                     <img src="logo.png" onerror="this.src='https://via.placeholder.com/150?text=Wokami'" alt="Wokami Logo" class="h-12 w-12 object-cover rounded-full">
                     <a href="#" class="text-xl md:text-2xl font-bold tracking-widest brand-font text-white hover:text-red-500 transition-colors">WOKAMI</a>
                 </div>
-                <!-- INDICADOR DE ESTADO -->
                 <span id="status-badge" class="hidden sm:inline-block text-[10px] px-2 py-0.5 rounded font-bold uppercase tracking-wider bg-gray-600 text-gray-300 ml-2">
                     Cargando...
                 </span>
             </div>
             
-            <!-- Desktop Navigation -->
             <nav class="hidden lg:flex gap-8 text-sm font-bold uppercase tracking-wide">
                 <a href="#entradas" class="nav-link hover:text-red-500 transition-colors py-1">Entradas</a>
                 <a href="#rollos" class="nav-link hover:text-red-500 transition-colors py-1">Rollos</a>
@@ -140,13 +131,11 @@
                 <a href="#bebidas" class="nav-link hover:text-red-500 transition-colors py-1">Bebidas</a>
             </nav>
 
-            <!-- Mobile Menu Button -->
             <button class="lg:hidden text-white p-2 focus:outline-none" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
                 <i class="fas fa-bars text-2xl"></i>
             </button>
         </div>
         
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden bg-neutral-900 lg:hidden border-t border-gray-800">
             <div class="flex flex-col p-4 space-y-3">
                 <a href="#entradas" class="text-gray-300 hover:text-white hover:bg-neutral-800 px-3 py-2 rounded transition-colors font-medium">Entradas</a>
@@ -159,17 +148,14 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <div class="relative bg-black text-white py-16 px-4 text-center overflow-hidden">
         <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/sushi.png')]"></div>
         <div class="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
             
-            <!-- LOGO PRINCIPAL: Circular Grande -->
             <div class="mb-6 transform hover:scale-105 transition-transform duration-500">
                 <img src="logo.png" onerror="this.src='https://via.placeholder.com/300?text=Wokami'" alt="Wokami Logo" class="h-40 w-40 object-cover rounded-full border-4 border-red-600 shadow-2xl bg-white">
             </div>
             
-            <!-- AVISO DE IMÁGENES -->
             <div class="bg-gray-900 bg-opacity-60 px-4 py-2 rounded-lg mb-6 border border-gray-700 inline-block">
                 <p class="text-gray-300 text-xs md:text-sm flex items-center justify-center gap-2">
                     <i class="fas fa-camera text-yellow-500"></i> 
@@ -185,14 +171,31 @@
         </div>
     </div>
 
-    <!-- Main Content -->
     <main class="container mx-auto px-4 py-12 max-w-5xl">
 
-        <!-- Entradas -->
+        <section class="mb-12">
+            <div class="bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 text-white rounded-xl p-6 shadow-lg relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-white opacity-10 rounded-full blur-2xl"></div>
+                
+                <div class="flex items-center gap-4 z-10">
+                    <div class="bg-white text-pink-600 p-3 rounded-full shadow-md flex-shrink-0">
+                        <i class="fab fa-instagram text-3xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-xl md:text-2xl brand-font">¡GANA UNA KUSHIAGUE GRATIS! 🍡</h3>
+                        <p class="text-sm md:text-base font-medium mt-1">Sube una historia con tu pedido, etiquétanos y muéstrala en tu próxima compra.</p>
+                    </div>
+                </div>
+                
+                <a href="https://www.instagram.com/wokami_sushi?igsh=NWYzYW82dG81eWdm" target="_blank" class="bg-white text-pink-600 font-bold py-2 px-6 rounded-full hover:scale-105 transition-transform shadow-md z-10 text-sm uppercase tracking-wide">
+                    Ir a Instagram
+                </a>
+            </div>
+        </section>
+
         <section id="entradas" class="mb-16 scroll-mt-24">
             <h2 class="text-3xl font-bold mb-8 text-black category-header">ENTRADAS <span class="text-sm font-normal text-gray-500 ml-2 italic">Starters</span></h2>
             <div class="grid md:grid-cols-2 gap-6">
-                <!-- Item: Kushiagues (Con Selector) -->
                 <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex min-h-32 group">
                     <div class="w-32 md:w-40 flex-shrink-0 bg-gray-200 relative overflow-hidden">
                         <img src="kushiagues.jpg" onerror="this.src='https://via.placeholder.com/300?text=Kushiagues'" class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition-transform duration-500">
@@ -205,7 +208,6 @@
                             </div>
                             <p class="text-gray-600 text-xs md:text-sm mt-1 mb-2">3 pzs. Elige tu relleno favorito:</p>
                             
-                            <!-- Selector de Opciones -->
                             <select id="kushiage-select" class="w-full text-xs border border-gray-300 rounded p-1 mb-2 bg-gray-50 focus:border-red-500 outline-none cursor-pointer hover:bg-gray-50">
                                 <option value="Queso Philadelphia">Queso Philadelphia</option>
                                 <option value="Queso Manchego">Queso Manchego</option>
@@ -216,7 +218,6 @@
                         </div>
                         <div class="flex justify-between items-center mt-1">
                             <span class="text-lg font-bold text-gray-900">$65</span>
-                            <!-- Botón ajustado a solo ícono para mejor alineación -->
                             <button onclick="addKushiageFromSelect()" class="text-xs bg-red-600 text-white px-3 py-1.5 rounded hover:bg-red-700 transition shadow-md"><i class="fas fa-plus text-sm"></i></button>
                         </div>
                     </div>
@@ -224,7 +225,6 @@
             </div>
         </section>
 
-        <!-- Sección Principal de Rollos -->
         <section id="rollos" class="mb-16 scroll-mt-24">
             
             <div class="bg-red-50 text-red-800 px-4 py-3 rounded-lg border border-red-200 text-sm font-medium shadow-sm mb-8 flex flex-col md:flex-row items-center justify-center text-center gap-2">
@@ -233,12 +233,10 @@
                 <span><i class="fas fa-leaf mr-2"></i>Todos incluyen porción de <strong>Chips de Camote</strong></span>
             </div>
 
-            <!-- Categoría 1: ROLLOS ($120) -->
             <div class="mb-12">
                 <h2 class="text-3xl font-bold text-black category-header mb-8">ROLLOS <span class="text-sm font-normal text-gray-500 ml-2 italic">Classic Rolls</span></h2>
                 <div class="grid lg:grid-cols-2 gap-8">
                     
-                    <!-- America Roll -->
                     <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow">
                         <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
                             <img src="america.jpg" onerror="this.src='https://via.placeholder.com/400x300?text=America+Roll'" alt="America Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
@@ -258,7 +256,6 @@
                         </div>
                     </div>
 
-                    <!-- Banana Roll -->
                     <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow">
                         <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
                             <img src="banana.jpg" onerror="this.src='https://via.placeholder.com/400x300?text=Banana+Roll'" alt="Banana Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
@@ -281,7 +278,6 @@
                         </div>
                     </div>
 
-                    <!-- Cheese Roll -->
                     <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow">
                         <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
                             <img src="cheese.jpg" onerror="this.src='https://via.placeholder.com/400x300?text=Cheese+Roll'" alt="Cheese Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
@@ -304,7 +300,6 @@
                         </div>
                     </div>
 
-                    <!-- California Roll -->
                     <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow">
                         <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
                             <img src="california.jpg" onerror="this.src='https://via.placeholder.com/400x300?text=California+Roll'" alt="California Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
@@ -327,7 +322,6 @@
                         </div>
                     </div>
 
-                    <!-- Norteñito Roll -->
                     <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow">
                         <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
                             <img src="nortenito.jpg" onerror="this.src='https://via.placeholder.com/400x300?text=Nortenito+Roll'" alt="Norteñito Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
@@ -353,12 +347,10 @@
                 </div>
             </div>
 
-            <!-- Categoría 2: ROLLOS ESPECIALES ($150) -->
             <div id="rollos-especiales" class="scroll-mt-24">
                 <h2 class="text-3xl font-bold text-black category-header mb-8">ROLLOS ESPECIALES <span class="text-sm font-normal text-gray-500 ml-2 italic">Signature Rolls</span></h2>
                 <div class="grid lg:grid-cols-2 gap-8">
                     
-                    <!-- Kamikaze Roll - MOVED HERE -->
                     <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow">
                         <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
                             <img src="kamikaze.jpg" onerror="this.src='https://via.placeholder.com/400x300?text=Kamikaze+Roll'" alt="Kamikaze Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
@@ -374,12 +366,10 @@
                                     <strong>Por fuera:</strong> Salmón flameado y salsa de anguila.
                                 </p>
                             </div>
-                            <!-- Botón único Ordenar, igual que America Roll -->
                             <button onclick="addToCart('Kamikaze Roll', 150, 'rollo')" class="self-start text-xs font-bold uppercase tracking-wider text-white bg-red-600 border border-red-600 px-4 py-1.5 rounded hover:bg-red-700 transition shadow-md w-full md:w-auto">Ordenar</button>
                         </div>
                     </div>
 
-                    <!-- Grinch Roll -->
                     <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow">
                         <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
                             <img src="grinch.jpg" onerror="this.src='https://via.placeholder.com/400x300?text=Grinch+Roll'" alt="Grinch Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
@@ -402,7 +392,6 @@
                         </div>
                     </div>
 
-                    <!-- Spicy Tuna Roll -->
                     <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow">
                         <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
                             <img src="spicy.jpg" onerror="this.src='https://via.placeholder.com/400x300?text=Spicy+Tuna+Roll'" alt="Spicy Tuna Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
@@ -425,7 +414,6 @@
                         </div>
                     </div>
 
-                    <!-- Aguachile Roll -->
                     <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow">
                         <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
                             <img src="aguachile.jpg" onerror="this.src='https://via.placeholder.com/400x300?text=Aguachile+Roll'" alt="Aguachile Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
@@ -448,7 +436,6 @@
                         </div>
                     </div>
 
-                    <!-- A la Diabla Roll -->
                     <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow">
                         <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
                             <img src="diabla.jpg" onerror="this.src='https://via.placeholder.com/400x300?text=Diabla+Roll'" alt="A la Diabla Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
@@ -476,14 +463,11 @@
 
         </section>
 
-        <!-- Wok & Principales -->
         <section id="wok" class="mb-16 scroll-mt-24">
             <h2 class="text-3xl font-bold mb-8 text-black category-header">WOK & BOWLS <span class="text-sm font-normal text-gray-500 ml-2 italic">Main Courses</span></h2>
             
             <div class="grid lg:grid-cols-2 gap-8">
-                <!-- Yakimeshi -->
                 <div class="bg-white border-t-4 border-red-600 shadow-md rounded-b-lg h-full overflow-hidden hover:shadow-xl transition-shadow">
-                    <!-- AÑADIDO: Contenedor gris para la imagen -->
                     <div class="h-48 w-full bg-gray-200 relative overflow-hidden group">
                         <img src="yakimeshi.jpg" onerror="this.src='https://via.placeholder.com/600x200?text=Yakimeshi'" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
                     </div>
@@ -541,9 +525,7 @@
                     </div>
                 </div>
 
-                <!-- Lo Mein (AGOTADO) -->
                 <div class="bg-white border-t-4 border-gray-600 shadow-sm rounded-b-lg h-full overflow-hidden opacity-75 grayscale">
-                    <!-- AÑADIDO: Contenedor gris para la imagen -->
                     <div class="h-48 w-full bg-gray-200 relative overflow-hidden group">
                         <img src="lomein.jpg" onerror="this.src='https://via.placeholder.com/600x200?text=Lo+Mein'" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
@@ -606,11 +588,9 @@
             </div>
         </section>
 
-        <!-- Postres -->
         <section id="postres" class="mb-16 scroll-mt-24">
             <h2 class="text-3xl font-bold mb-8 text-black category-header">POSTRES <span class="text-sm font-normal text-gray-500 ml-2 italic">Desserts</span></h2>
             <div class="grid md:grid-cols-2 gap-6">
-                <!-- Item: Mochis -->
                 <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex min-h-32 group">
                     <div class="w-32 md:w-40 flex-shrink-0 bg-gray-200 relative overflow-hidden">
                         <img src="mochis.jpg" onerror="this.src='https://via.placeholder.com/300x300?text=Mochis'" class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition-transform duration-500">
@@ -618,8 +598,7 @@
                     <div class="p-4 flex-grow flex flex-col justify-between">
                         <div>
                             <h3 class="text-lg md:text-xl font-bold text-gray-900">Mochis</h3>
-                            <!-- AHORA ES DINÁMICO CON ID 'mochi-flavor' -->
-                            <p class="text-gray-600 text-xs md:text-sm mt-1 line-clamp-2">Pastelillo de arroz. Relleno: <strong id="mochi-flavor" class="text-red-600">Nieve o Mousse de Queso</strong>.</p>
+                            <p class="text-gray-600 text-xs md:text-sm mt-1 line-clamp-2">Pastelillo de arroz. Relleno: <strong id="mochi-flavor" class="text-red-600">Nieve de Fresa</strong>.</p>
                         </div>
                         <div class="flex justify-between items-center mt-2">
                             <span class="text-lg font-bold text-gray-900">$55</span>
@@ -628,7 +607,6 @@
                     </div>
                 </div>
                 
-                <!-- Item: Tempura Helado (AGOTADO) -->
                 <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex min-h-32 opacity-75 grayscale">
                     <div class="w-32 md:w-40 flex-shrink-0 bg-gray-200 relative">
                         <img src="helado.jpg" onerror="this.src='https://via.placeholder.com/300x300?text=Tempura+Helado'" class="w-full h-full object-cover object-center absolute inset-0">
@@ -645,7 +623,6 @@
                     </div>
                 </div>
 
-                <!-- Item: Galletas -->
                 <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex min-h-32 group">
                     <div class="w-32 md:w-40 flex-shrink-0 bg-gray-200 relative overflow-hidden">
                         <img src="galletas.jpg" onerror="this.src='https://via.placeholder.com/300x300?text=Galletas'" class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition-transform duration-500">
@@ -653,7 +630,6 @@
                     <div class="p-4 flex-grow flex flex-col justify-between">
                         <div>
                             <h3 class="text-lg md:text-xl font-bold text-gray-900">Galletas New York</h3>
-                            <!-- REACTIVADO EL ID 'flavor-of-day' PARA MOSTRAR SABOR -->
                             <p class="text-gray-600 text-xs md:text-sm mt-1">Estilo New York. Sabor de hoy: <strong id="flavor-of-day" class="text-red-600">Pregunta por el sabor</strong></p>
                         </div>
                         <div class="flex justify-between items-center mt-2">
@@ -665,11 +641,9 @@
             </div>
         </section>
 
-        <!-- Bebidas -->
         <section id="bebidas" class="mb-16 scroll-mt-24">
             <h2 class="text-3xl font-bold mb-8 text-black category-header">BEBIDAS <span class="text-sm font-normal text-gray-500 ml-2 italic">Drinks</span></h2>
             <div class="grid md:grid-cols-2 gap-6">
-                <!-- Item: Aguas -->
                 <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex min-h-32 group">
                     <div class="w-32 md:w-40 flex-shrink-0 bg-gray-200 relative overflow-hidden">
                         <img src="aguas.jpg" onerror="this.src='https://via.placeholder.com/300x300?text=Aguas+Frescas'" class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition-transform duration-500">
@@ -686,7 +660,6 @@
                     </div>
                 </div>
 
-                <!-- Item: Refrescos -->
                 <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex min-h-32 group">
                     <div class="w-32 md:w-40 flex-shrink-0 bg-gray-200 relative overflow-hidden">
                         <img src="refrescos.jpg" onerror="this.src='https://via.placeholder.com/300x300?text=Refrescos'" class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition-transform duration-500">
@@ -705,7 +678,6 @@
             </div>
         </section>
 
-        <!-- Footer Info -->
         <footer class="mt-20 border-t border-gray-300 pt-10 text-center">
             <div class="flex justify-center items-center gap-2 mb-4">
                 <span class="text-red-600 text-2xl">●</span> 
@@ -713,19 +685,15 @@
             </div>
             <p class="text-gray-500 text-sm mb-2">Abierto de martes a sábado de 2:00 PM a 8:00 PM</p>
             
-            <!-- REDES SOCIALES -->
             <div class="flex justify-center gap-6 mt-4 text-gray-700">
-                <!-- Instagram -->
                 <a href="https://www.instagram.com/wokami_sushi?igsh=NWYzYW82dG81eWdm" target="_blank" class="hover:text-red-600 transition-colors transform hover:scale-110">
                     <i class="fab fa-instagram text-3xl"></i>
                 </a>
                 
-                <!-- Facebook -->
                 <a href="https://www.facebook.com/share/1DLwFajUXz/" target="_blank" class="hover:text-blue-600 transition-colors transform hover:scale-110">
                     <i class="fab fa-facebook text-3xl"></i>
                 </a>
                 
-                <!-- WhatsApp Footer -->
                 <a href="javascript:sendOrderGeneric()" class="hover:text-green-600 transition-colors transform hover:scale-110">
                     <i class="fab fa-whatsapp text-3xl"></i>
                 </a>
@@ -736,16 +704,13 @@
 
     </main>
 
-    <!-- TOAST NOTIFICACION -->
     <div id="toast">Producto agregado</div>
 
-    <!-- BOTÓN FLOTANTE INTELIGENTE -->
     <button onclick="sendOrder()" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition z-50 flex items-center gap-2 hover:scale-105 transform duration-200">
         <i class="fab fa-whatsapp text-2xl"></i>
         <span class="font-bold hidden md:inline" id="cart-text">Pedir Ahora</span>
     </button>
 
-    <!-- MODAL DE PREFERENCIAS Y CARRITO -->
     <div id="preferences-modal" class="fixed inset-0 bg-black bg-opacity-50 z-[100] hidden flex items-center justify-center p-4">
         <div class="bg-white rounded-lg shadow-xl w-full max-w-md p-6 relative max-h-[90vh] overflow-y-auto flex flex-col">
             <button onclick="toggleModal()" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 z-10 bg-white rounded-full p-1">
@@ -754,12 +719,9 @@
             
             <h3 class="text-xl font-bold text-center mb-4 brand-font border-b pb-2 flex-shrink-0">Tu Pedido</h3>
             
-            <!-- SECCIÓN NUEVA: RESUMEN DEL CARRITO (EDITABLE) -->
             <div id="cart-items-container" class="mb-4 bg-gray-50 p-3 rounded-lg border border-gray-200 flex-shrink-0">
-                <!-- Aquí se inyectan los items con JS -->
                 <ul id="cart-list" class="space-y-2 text-sm mb-3 max-h-32 overflow-y-auto"></ul>
                 
-                <!-- Totales -->
                 <div class="border-t border-gray-300 pt-2 space-y-1 text-right text-xs md:text-sm">
                     <div class="flex justify-between text-gray-600">
                         <span>Subtotal:</span>
@@ -777,7 +739,6 @@
             </div>
             
             <div class="space-y-6">
-                <!-- Opción de Cubiertos (Ahora Selección Múltiple) -->
                 <div>
                     <p class="font-bold text-gray-800 mb-2"><i class="fas fa-utensils mr-2 text-red-600"></i>¿Qué cubiertos necesitas?</p>
                     <div class="flex gap-4 flex-wrap">
@@ -796,7 +757,6 @@
                     </div>
                 </div>
 
-                <!-- Opción de Soya -->
                 <div>
                     <p class="font-bold text-gray-800 mb-2"><i class="fas fa-pepper-hot mr-2 text-red-600"></i>¿Cómo quieres tu soya?</p>
                     <div class="flex flex-col gap-2">
@@ -815,11 +775,9 @@
                     </div>
                 </div>
 
-                <!-- Aderezos Extra (REDIMENSIONADO Y AGRUPADO) -->
                 <div>
                     <p class="font-bold text-gray-800 mb-2"><i class="fas fa-plus-circle mr-2 text-red-600"></i>¿Deseas extras?</p>
                     
-                    <!-- GRUPO 1: BÁSICOS ($10) -->
                     <div class="mb-3">
                         <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">Complementos ($10)</h4>
                         <label class="flex items-center gap-2 cursor-pointer bg-red-50 p-2 rounded hover:bg-red-100 border border-red-100">
@@ -828,7 +786,6 @@
                         </label>
                     </div>
 
-                    <!-- GRUPO 2: SALSAS Y ADEREZOS ($15) -->
                     <div class="mb-3">
                         <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">Salsas y Aderezos ($15)</h4>
                         <div class="grid grid-cols-2 gap-2">
@@ -855,7 +812,6 @@
                         </div>
                     </div>
 
-                    <!-- GRUPO 3: QUESOS ($20) - NUEVA SECCIÓN -->
                     <div>
                         <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">Quesos Extra ($20)</h4>
                         <div class="grid grid-cols-2 gap-2">
@@ -871,13 +827,11 @@
                     </div>
                 </div>
 
-                <!-- Dirección de Entrega -->
                 <div>
                     <p class="font-bold text-gray-800 mb-2"><i class="fas fa-map-marker-alt mr-2 text-red-600"></i>Dirección de Entrega</p>
                     <textarea id="delivery-address" rows="2" class="w-full text-sm border border-gray-300 rounded p-2 bg-gray-50 focus:border-red-500 outline-none placeholder-gray-500" placeholder="Calle, número, colonia, referencias..."></textarea>
                 </div>
 
-                <!-- Notas / Instrucciones Especiales -->
                 <div>
                     <p class="font-bold text-gray-800 mb-2"><i class="fas fa-comment-alt mr-2 text-red-600"></i>Notas / Instrucciones</p>
                     <textarea id="order-notes" rows="2" class="w-full text-sm border border-gray-300 rounded p-2 bg-gray-50 focus:border-red-500 outline-none placeholder-gray-500" placeholder="Ej. Sin cebolla, extra servilletas, alérgico a..."></textarea>
@@ -893,7 +847,6 @@
         </div>
     </div>
 
-    <!-- SCRIPTS -->
     <script>
         // --- LÓGICA DINÁMICA DE FECHA Y HORA ---
         document.addEventListener('DOMContentLoaded', function() {
@@ -964,16 +917,16 @@
                     mochiFlavor = "Nieve de Fresa"; // Added
                     break;
                 case 4: // Jueves
-                    promoMessage = "🍣 JUEVES DE 3x2 en Todos los Rollos 🍣";
-                    cookieFlavor = "Avena y Pasas";
+                    promoMessage = "👫 JUEVES DE AMIGOS: 3 Rollos Clásicos por $300 👫";
+                    cookieFlavor = "Churro y Nutella";
                     break;
                 case 5: // Viernes
                     promoMessage = "🎉 ¡Viernes de Wokami! Disfruta el inicio del fin de semana.";
-                    cookieFlavor = "Triple Chocolate";
+                    cookieFlavor = "Churro y Nutella";
                     break;
                 case 6: // Sábado
                     promoMessage = "🍪 SÁBADO DULCE: 3x2 en Galletas New York 🍪";
-                    cookieFlavor = "Nuez de Macadamia";
+                    cookieFlavor = "Churro y Nutella";
                     break;
             }
 
@@ -1072,12 +1025,18 @@
                 }
             }
 
-            // LOGICA JUEVES (3x2 en ROLLOS)
+            // LOGICA JUEVES (3 Rollos Clásicos por $300)
             if (day === 4) {
-                const freeCount = Math.floor(rollItems.length / 3);
-                for(let i=0; i<freeCount; i++) {
-                    discount += rollItems[i].price;
-                }
+                // Filtramos solo los rollos que cuestan $120 (Clásicos)
+                // Ignoramos los especiales de $150
+                const classicRolls = cart.filter(i => i.category === 'rollo' && i.price === 120);
+                
+                // Calculamos cuántos paquetes de 3 se formaron
+                const setsOfThree = Math.floor(classicRolls.length / 3);
+                
+                // 3 rollos a $120 son $360. La promo es $300.
+                // El ahorro es de $60 por cada paquete de 3.
+                discount += setsOfThree * 60;
             }
 
             // LOGICA SÁBADO (3x2 en GALLETAS)
