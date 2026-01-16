@@ -174,22 +174,27 @@
     <main class="container mx-auto px-4 py-12 max-w-5xl">
 
         <section class="mb-12">
-            <div class="bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 text-white rounded-xl p-6 shadow-lg relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-4">
-                <div class="absolute -top-10 -right-10 w-40 h-40 bg-white opacity-10 rounded-full blur-2xl"></div>
+            <div class="bg-gradient-to-br from-neutral-900 to-black text-white rounded-xl p-6 shadow-xl border-l-4 border-red-600 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-red-600 rounded-full opacity-10 blur-xl"></div>
                 
-                <div class="flex items-center gap-4 z-10">
-                    <div class="bg-white text-pink-600 p-3 rounded-full shadow-md flex-shrink-0">
-                        <i class="fab fa-instagram text-3xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-xl md:text-2xl brand-font">¡GANA UNA KUSHIAGUE GRATIS! 🍡</h3>
-                        <p class="text-sm md:text-base font-medium mt-1">Sube una historia con tu pedido, etiquétanos y muéstrala en tu próxima compra.</p>
-                    </div>
+                <div class="relative z-10 text-center md:text-left flex-1">
+                    <h3 class="font-bold text-xl md:text-2xl brand-font flex items-center justify-center md:justify-start gap-2 mb-2">
+                        <i class="fas fa-gift text-red-500"></i> ¡GANA UNA KUSHIAGUE!
+                    </h3>
+                    <p class="text-gray-300 text-sm md:text-base leading-relaxed">
+                        Sube una historia con tu pedido, etiquétanos y <span class="text-white font-bold">muéstrala en tu próxima compra</span> para recibir tu regalo.
+                    </p>
                 </div>
                 
-                <a href="https://www.instagram.com/wokami_sushi?igsh=NWYzYW82dG81eWdm" target="_blank" class="bg-white text-pink-600 font-bold py-2 px-6 rounded-full hover:scale-105 transition-transform shadow-md z-10 text-sm uppercase tracking-wide">
-                    Ir a Instagram
-                </a>
+                <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto relative z-10">
+                    <a href="https://www.facebook.com/share/1DLwFajUXz/" target="_blank" class="flex items-center justify-center gap-2 bg-[#1877F2] hover:bg-[#156bd4] text-white py-3 px-6 rounded-lg font-bold transition-all transform hover:-translate-y-1 shadow-md w-full sm:w-auto text-sm uppercase tracking-wide">
+                        <i class="fab fa-facebook-f text-lg"></i> Facebook
+                    </a>
+                    
+                    <a href="https://www.instagram.com/wokami_sushi?igsh=NWYzYW82dG81eWdm" target="_blank" class="flex items-center justify-center gap-2 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 hover:opacity-90 text-white py-3 px-6 rounded-lg font-bold transition-all transform hover:-translate-y-1 shadow-md w-full sm:w-auto text-sm uppercase tracking-wide">
+                        <i class="fab fa-instagram text-lg"></i> Instagram
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -394,28 +399,6 @@
 
                     <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow">
                         <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
-                            <img src="spicy.jpg" onerror="this.src='https://via.placeholder.com/400x300?text=Spicy+Tuna+Roll'" alt="Spicy Tuna Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
-                        </div>
-                        <div class="p-6 md:w-2/3 flex flex-col justify-between">
-                            <div>
-                                <div class="flex justify-between items-start mb-2">
-                                    <h3 class="text-xl font-bold text-black brand-font">Spicy Tuna Roll</h3>
-                                    <span class="text-red-600 font-bold text-lg">$150</span>
-                                </div>
-                                <p class="text-gray-600 text-sm mb-4">
-                                    <strong>Por dentro:</strong> Ensalada de atún fresco spicy y aguacate.<br>
-                                    <strong>Por fuera:</strong> Alga nori.
-                                </p>
-                            </div>
-                            <div class="flex gap-2">
-                                <button onclick="addToCart('Spicy Tuna Roll (Natural)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-gray-700 border border-gray-400 px-2 py-1.5 rounded hover:bg-gray-700 hover:text-white transition">Natural</button>
-                                <button onclick="addToCart('Spicy Tuna Roll (Empanizado)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase tracking-wider text-white bg-red-600 border border-red-600 px-2 py-1.5 rounded hover:bg-red-700 transition shadow-md">Empanizado</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow">
-                        <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
                             <img src="aguachile.jpg" onerror="this.src='https://via.placeholder.com/400x300?text=Aguachile+Roll'" alt="Aguachile Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
                         </div>
                         <div class="p-6 md:w-2/3 flex flex-col justify-between">
@@ -525,12 +508,9 @@
                     </div>
                 </div>
 
-                <div class="bg-white border-t-4 border-gray-600 shadow-sm rounded-b-lg h-full overflow-hidden opacity-75 grayscale">
+                <div class="bg-white border-t-4 border-red-600 shadow-md rounded-b-lg h-full overflow-hidden hover:shadow-xl transition-shadow">
                     <div class="h-48 w-full bg-gray-200 relative overflow-hidden group">
                         <img src="lomein.jpg" onerror="this.src='https://via.placeholder.com/600x200?text=Lo+Mein'" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                            <span class="text-white font-bold text-2xl border-4 border-white px-4 py-2 rounded transform -rotate-6 tracking-widest">AGOTADO</span>
-                        </div>
                     </div>
                     <div class="p-8">
                         <div class="flex justify-between items-center mb-4 border-b border-gray-100 pb-2">
@@ -544,42 +524,42 @@
                                 <span><i class="fas fa-leaf text-green-600 mr-2"></i>Vegetariano</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$70</span>
-                                    <button disabled class="text-gray-400 cursor-not-allowed"><i class="fas fa-ban fa-lg"></i></button>
+                                    <button onclick="addToCart('Lo Mein Vegetariano', 70, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
                             <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-1 rounded transition-colors">
                                 <span><i class="fas fa-drumstick-bite text-orange-400 mr-2"></i>Con Pollo</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$100</span>
-                                    <button disabled class="text-gray-400 cursor-not-allowed"><i class="fas fa-ban fa-lg"></i></button>
+                                    <button onclick="addToCart('Lo Mein Pollo', 100, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
                             <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-1 rounded transition-colors">
                                 <span><i class="fas fa-shrimp text-pink-500 mr-2"></i>Con Camarón</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$120</span>
-                                    <button disabled class="text-gray-400 cursor-not-allowed"><i class="fas fa-ban fa-lg"></i></button>
+                                    <button onclick="addToCart('Lo Mein Camarón', 120, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
                             <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-1 rounded transition-colors">
                                 <span><i class="fas fa-bacon text-red-400 mr-2"></i>Con Res</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$120</span>
-                                    <button disabled class="text-gray-400 cursor-not-allowed"><i class="fas fa-ban fa-lg"></i></button>
+                                    <button onclick="addToCart('Lo Mein Res', 120, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
                             <li class="flex justify-between items-center text-sm text-gray-700 font-medium bg-gray-50 p-2 rounded">
                                 <span><i class="fas fa-utensils text-gray-500 mr-2"></i>Mixto (Elige 2 proteínas)</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$130</span>
-                                    <button disabled class="text-gray-400 cursor-not-allowed"><i class="fas fa-ban fa-lg"></i></button>
+                                    <button onclick="addToCart('Lo Mein Mixto', 130, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
                             <li class="flex justify-between items-center text-sm text-gray-700 font-bold bg-red-50 p-2 rounded text-red-900 border border-red-100">
                                 <span><i class="fas fa-star text-yellow-600 mr-2"></i>Especial (Elige 3 proteínas)</span>
                                 <div class="flex items-center gap-2">
                                     <span>$150</span>
-                                    <button disabled class="text-gray-400 cursor-not-allowed"><i class="fas fa-ban fa-lg"></i></button>
+                                    <button onclick="addToCart('Lo Mein Especial', 150, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
                         </ul>
@@ -805,9 +785,9 @@
                                 <input type="checkbox" name="extra_item" value="Pesto de Cilantro" data-price="15" onchange="updateModalTotals()" class="text-red-600 rounded h-3 w-3">
                                 <span class="text-xs md:text-sm">Pesto de Cilantro (+$15)</span>
                             </label>
-                            <label class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100 border border-gray-100 col-span-2 opacity-50 cursor-not-allowed">
-                                <input type="checkbox" name="extra_item" value="Aderezo de Chips de Jalapeño" data-price="15" onchange="updateModalTotals()" class="text-red-600 rounded h-3 w-3" disabled>
-                                <span class="text-xs md:text-sm text-gray-500">Aderezo Chips Jalapeño (Agotado)</span>
+                            <label class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100 border border-gray-100 col-span-2">
+                                <input type="checkbox" name="extra_item" value="Aderezo de Chips de Jalapeño" data-price="15" onchange="updateModalTotals()" class="text-red-600 rounded h-3 w-3">
+                                <span class="text-xs md:text-sm">Aderezo Chips Jalapeño (+$15)</span>
                             </label>
                         </div>
                     </div>
