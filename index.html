@@ -138,12 +138,12 @@
         
         <div id="mobile-menu" class="hidden bg-neutral-900 lg:hidden border-t border-gray-800">
             <div class="flex flex-col p-4 space-y-3">
-                <a href="#entradas" class="text-gray-300 hover:text-white hover:bg-neutral-800 px-3 py-2 rounded transition-colors font-medium">Entradas</a>
-                <a href="#rollos" class="text-gray-300 hover:text-white hover:bg-neutral-800 px-3 py-2 rounded transition-colors font-medium">Rollos</a>
-                <a href="#rollos-especiales" class="text-gray-300 hover:text-white hover:bg-neutral-800 px-3 py-2 rounded transition-colors font-medium">Rollos Especiales</a>
-                <a href="#wok" class="text-gray-300 hover:text-white hover:bg-neutral-800 px-3 py-2 rounded transition-colors font-medium">Wok & Bowls</a>
-                <a href="#postres" class="text-gray-300 hover:text-white hover:bg-neutral-800 px-3 py-2 rounded transition-colors font-medium">Postres</a>
-                <a href="#bebidas" class="text-gray-300 hover:text-white hover:bg-neutral-800 px-3 py-2 rounded transition-colors font-medium">Bebidas</a>
+                <a href="#entradas" class="mobile-nav-link text-gray-300 hover:text-white hover:bg-neutral-800 px-3 py-2 rounded transition-colors font-medium">Entradas</a>
+                <a href="#rollos" class="mobile-nav-link text-gray-300 hover:text-white hover:bg-neutral-800 px-3 py-2 rounded transition-colors font-medium">Rollos</a>
+                <a href="#rollos-especiales" class="mobile-nav-link text-gray-300 hover:text-white hover:bg-neutral-800 px-3 py-2 rounded transition-colors font-medium">Rollos Especiales</a>
+                <a href="#wok" class="mobile-nav-link text-gray-300 hover:text-white hover:bg-neutral-800 px-3 py-2 rounded transition-colors font-medium">Wok & Bowls</a>
+                <a href="#postres" class="mobile-nav-link text-gray-300 hover:text-white hover:bg-neutral-800 px-3 py-2 rounded transition-colors font-medium">Postres</a>
+                <a href="#bebidas" class="mobile-nav-link text-gray-300 hover:text-white hover:bg-neutral-800 px-3 py-2 rounded transition-colors font-medium">Bebidas</a>
             </div>
         </div>
     </header>
@@ -517,7 +517,7 @@
                             <h3 class="text-2xl font-bold uppercase tracking-wide brand-font">Lo Mein</h3>
                             <span class="text-4xl text-black font-bold" style="font-family: 'Noto Sans JP', sans-serif;">麵</span>
                         </div>
-                        <p class="text-gray-600 italic mb-6">Pasta salteada con zanahoria, cebolla, brócoli y col morada, bañada en salsa a base de soya, acompañada de pesto de cilantro.</p>
+                        <p class="text-gray-600 italic mb-6">Pasta salteada con zanahoria, cebolla, brócoli, champiñones y col morada, bañada en salsa a base de soya, acompañada de pesto de cilantro.</p>
                         
                         <ul class="space-y-3 mt-8">
                             <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-1 rounded transition-colors">
@@ -928,29 +928,40 @@
         }
 
         function initSmoothScroll() {
+            // Selecciona enlaces de escritorio y añade soporte para enlaces móviles
             const navLinks = document.querySelectorAll('.nav-link');
+            const mobileLinks = document.querySelectorAll('.mobile-nav-link'); // Nuevo selector para móvil
             const mobileMenu = document.getElementById('mobile-menu');
             const header = document.getElementById('main-header');
 
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    if (href.startsWith('#')) {
-                        e.preventDefault();
-                        const targetId = href.substring(1);
-                        const targetElement = document.getElementById(targetId);
-                        if (targetElement) {
-                            const headerHeight = header.offsetHeight;
-                            const elementPosition = targetElement.getBoundingClientRect().top;
-                            const offsetPosition = elementPosition + window.pageYOffset - headerHeight - 20;
-                            
-                            window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-                            if (!mobileMenu.classList.contains('hidden')) {
-                                mobileMenu.classList.add('hidden');
-                            }
+            const handleScroll = (e, link) => {
+                const href = link.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = href.substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        const headerHeight = header.offsetHeight;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerHeight - 20;
+                        
+                        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+                        
+                        // LÓGICA AGREGADA: Cierra el menú móvil si está abierto
+                        if (!mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
                         }
                     }
-                });
+                }
+            };
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => handleScroll(e, link));
+            });
+
+            // Agrega el listener a los enlaces móviles
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', (e) => handleScroll(e, link));
             });
         }
 
