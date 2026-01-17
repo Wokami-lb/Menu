@@ -498,7 +498,10 @@
                                 </div>
                             </li>
                             <li class="flex justify-between items-center text-sm text-gray-700 font-bold bg-red-50 p-2 rounded text-red-900 border border-red-100">
-                                <span><i class="fas fa-star text-yellow-500 mr-2"></i>Especial (3 proteínas +)</span>
+                                <div class="flex flex-col">
+                                    <span><i class="fas fa-star text-yellow-500 mr-2"></i>Especial (3 proteínas)</span>
+                                    <span class="text-[10px] font-normal text-red-800 ml-6 leading-tight">3 proteínas a tu elección, aguacate y 2 kushiagues mini.</span>
+                                </div>
                                 <div class="flex items-center gap-2">
                                     <span>$150</span>
                                     <button onclick="addToCart('Yakimeshi Especial', 150, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle fa-lg"></i></button>
@@ -523,43 +526,50 @@
                             <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-1 rounded transition-colors">
                                 <span><i class="fas fa-leaf text-green-600 mr-2"></i>Vegetariano</span>
                                 <div class="flex items-center gap-2">
-                                    <span class="font-bold">$70</span>
-                                    <button onclick="addToCart('Lo Mein Vegetariano', 70, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle fa-lg"></i></button>
+                                    <span class="font-bold">$65</span>
+                                    <button onclick="addToCart('Lo Mein Vegetariano', 65, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
                             <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-1 rounded transition-colors">
                                 <span><i class="fas fa-drumstick-bite text-orange-400 mr-2"></i>Con Pollo</span>
                                 <div class="flex items-center gap-2">
-                                    <span class="font-bold">$100</span>
-                                    <button onclick="addToCart('Lo Mein Pollo', 100, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle fa-lg"></i></button>
-                                </div>
-                            </li>
-                            <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-1 rounded transition-colors">
-                                <span><i class="fas fa-shrimp text-pink-500 mr-2"></i>Con Camarón</span>
-                                <div class="flex items-center gap-2">
-                                    <span class="font-bold">$120</span>
-                                    <button onclick="addToCart('Lo Mein Camarón', 120, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle fa-lg"></i></button>
+                                    <span class="font-bold">$80</span>
+                                    <button onclick="addToCart('Lo Mein Pollo', 80, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
                             <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-1 rounded transition-colors">
                                 <span><i class="fas fa-bacon text-red-400 mr-2"></i>Con Res</span>
                                 <div class="flex items-center gap-2">
-                                    <span class="font-bold">$120</span>
-                                    <button onclick="addToCart('Lo Mein Res', 120, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle fa-lg"></i></button>
+                                    <span class="font-bold">$80</span>
+                                    <button onclick="addToCart('Lo Mein Res', 80, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle fa-lg"></i></button>
+                                </div>
+                            </li>
+                            <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-1 rounded transition-colors">
+                                <span><i class="fas fa-shrimp text-pink-500 mr-2"></i>Con Camarón</span>
+                                <div class="flex items-center gap-2">
+                                    <span class="font-bold">$95</span>
+                                    <button onclick="addToCart('Lo Mein Camarón', 95, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
                             <li class="flex justify-between items-center text-sm text-gray-700 font-medium bg-gray-50 p-2 rounded">
-                                <span><i class="fas fa-utensils text-gray-500 mr-2"></i>Mixto (Elige 2 proteínas)</span>
+                                <span><i class="fas fa-utensils text-gray-500 mr-2"></i>Mixto (Pollo y Res)</span>
                                 <div class="flex items-center gap-2">
-                                    <span class="font-bold">$130</span>
-                                    <button onclick="addToCart('Lo Mein Mixto', 130, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle fa-lg"></i></button>
+                                    <span class="font-bold">$95</span>
+                                    <button onclick="addToCart('Lo Mein Mixto (Pollo/Res)', 95, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle fa-lg"></i></button>
+                                </div>
+                            </li>
+                             <li class="flex justify-between items-center text-sm text-gray-700 font-medium bg-gray-50 p-2 rounded">
+                                <span><i class="fas fa-utensils text-gray-500 mr-2"></i>Mixto (Con Camarón)</span>
+                                <div class="flex items-center gap-2">
+                                    <span class="font-bold">$105</span>
+                                    <button onclick="addToCart('Lo Mein Mixto (Con Camarón)', 105, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
                             <li class="flex justify-between items-center text-sm text-gray-700 font-bold bg-red-50 p-2 rounded text-red-900 border border-red-100">
-                                <span><i class="fas fa-star text-yellow-600 mr-2"></i>Especial (Elige 3 proteínas)</span>
+                                <span><i class="fas fa-star text-yellow-600 mr-2"></i>Especial (3 proteínas)</span>
                                 <div class="flex items-center gap-2">
-                                    <span>$150</span>
-                                    <button onclick="addToCart('Lo Mein Especial', 150, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle fa-lg"></i></button>
+                                    <span>$120</span>
+                                    <button onclick="addToCart('Lo Mein Especial', 120, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
                         </ul>
@@ -663,7 +673,7 @@
                 <span class="text-red-600 text-2xl">●</span> 
                 <span class="text-2xl font-bold brand-font">WOKAMI</span>
             </div>
-            <p class="text-gray-500 text-sm mb-2">Abierto de martes a sábado de 2:00 PM a 8:00 PM</p>
+            <p class="text-gray-500 text-sm mb-2">Abierto de miércoles a domingo de 2:00 PM a 8:00 PM</p>
             
             <div class="flex justify-center gap-6 mt-4 text-gray-700">
                 <a href="https://www.instagram.com/wokami_sushi?igsh=NWYzYW82dG81eWdm" target="_blank" class="hover:text-red-600 transition-colors transform hover:scale-110">
@@ -710,6 +720,10 @@
                     <div id="modal-discount-row" class="flex justify-between text-red-600 font-bold hidden">
                         <span>Descuento Promo:</span>
                         <span id="modal-discount">-$0</span>
+                    </div>
+                     <div id="modal-coupon-row" class="flex justify-between text-green-600 font-bold hidden">
+                        <span>Descuento Cupón:</span>
+                        <span id="modal-coupon-discount">-$0</span>
                     </div>
                     <div class="flex justify-between text-base font-bold text-gray-900 mt-1">
                         <span>Total:</span>
@@ -806,6 +820,15 @@
                         </div>
                     </div>
                 </div>
+                
+                <div class="mb-4 pt-4 border-t border-gray-200">
+                    <p class="font-bold text-gray-800 mb-2"><i class="fas fa-ticket-alt mr-2 text-red-600"></i>¿Tienes un cupón?</p>
+                    <div class="flex gap-2">
+                        <input type="text" id="coupon-code" class="flex-1 text-sm border border-gray-300 rounded p-2 uppercase" placeholder="Código">
+                        <button onclick="applyCoupon()" class="bg-gray-800 text-white px-4 py-2 rounded text-sm font-bold hover:bg-black transition-colors">Aplicar</button>
+                    </div>
+                    <p id="coupon-message" class="text-xs mt-1 font-bold"></p>
+                </div>
 
                 <div>
                     <p class="font-bold text-gray-800 mb-2"><i class="fas fa-map-marker-alt mr-2 text-red-600"></i>Dirección de Entrega</p>
@@ -842,8 +865,9 @@
             const minutes = now.getMinutes();
 
             // 1. ESTADO ABIERTO/CERRADO
+            // Abierto de Miércoles (3) a Domingo (0)
             const statusBadge = document.getElementById('status-badge');
-            const isOpenDay = dayOfWeek >= 2 && dayOfWeek <= 6; // Martes a Sábado
+            const isOpenDay = (dayOfWeek >= 3) || (dayOfWeek === 0); 
             
             if (isOpenDay) {
                 // Lógica de horarios
@@ -865,7 +889,7 @@
                     statusBadge.className = "text-[10px] px-2 py-0.5 rounded font-bold uppercase tracking-wider bg-gray-500 text-white";
                 }
             } else {
-                // Días cerrados (Domingo/Lunes)
+                // Días cerrados (Lunes y Martes)
                 statusBadge.textContent = "CERRADO";
                 statusBadge.className = "text-[10px] px-2 py-0.5 rounded font-bold uppercase tracking-wider bg-gray-500 text-white";
             }
@@ -881,15 +905,10 @@
             let mochiFlavor = "Nieve de Fresa"; // Default cambiado
 
             switch(dayOfWeek) {
-                case 0: // Domingo
-                case 1: // Lunes
-                    promoMessage = "¡Nos vemos el martes en la GRAN INAUGURACIÓN! (Solo servicio a domicilio 🛵)";
+                case 1: // Lunes (Cerrado)
+                case 2: // Martes (Cerrado)
+                    promoMessage = "¡Nos vemos el miércoles! (Cerrado lunes y martes)";
                     cookieFlavor = "No disponible hoy";
-                    break;
-                case 2: // Martes
-                    promoMessage = "🎉 ¡HOY ES NUESTRA GRAN INAUGURACIÓN! 🔥 3x2 en Wok & Bowls 🔥";
-                    cookieFlavor = "Nutella";
-                    mochiFlavor = "Fresa";
                     break;
                 case 3: // Miércoles
                     promoMessage = "🥤 ¡Mitad de semana! En compras mayores a $300, tu AGUA FRESCA es GRATIS";
@@ -908,12 +927,16 @@
                     promoMessage = "🍪 SÁBADO DULCE: 3x2 en Galletas New York 🍪";
                     cookieFlavor = "Churro y Nutella";
                     break;
+                case 0: // Domingo (Nuevo día abierto)
+                    promoMessage = "☀️ ¡Domingo familiar en Wokami! Disfruta el fin de semana.";
+                    cookieFlavor = "Churro y Nutella";
+                    break;
             }
 
             if (promoMessage) {
                 promoText.innerText = promoMessage;
                 promoBanner.classList.remove('hidden');
-                if(dayOfWeek === 0 || dayOfWeek === 1) {
+                if(dayOfWeek === 1 || dayOfWeek === 2) {
                     promoBanner.className = "bg-gray-800 text-white text-center py-2 px-4 text-sm font-bold";
                 }
             }
@@ -967,6 +990,7 @@
 
         // --- CARRITO DE COMPRAS CON LÓGICA DE PROMOCIONES ---
         let cart = [];
+        let appliedCouponCode = null; // Variable para almacenar el cupón aplicado
         const phoneNumber = "5214433580280"; // Número actualizado
 
         function addToCart(name, price, category = 'other') {
@@ -1008,7 +1032,7 @@
             // Calculamos subtotal
             cart.forEach(item => subtotal += item.price);
 
-            // LOGICA MARTES (3x2 en WOK)
+            // LOGICA MARTES (Ya no aplica porque está cerrado, pero se deja por si acaso)
             if (day === 2) { 
                 const freeCount = Math.floor(wokItems.length / 3);
                 for(let i=0; i<freeCount; i++) {
@@ -1068,41 +1092,139 @@
         function toggleModal() {
             const modal = document.getElementById('preferences-modal');
             modal.classList.toggle('hidden');
-            // Al abrir, nos aseguramos que los totales estén correctos
+            // Al abrir, nos aseguramos que los totales estén correctos y el cupón se reinicie visualmente si es necesario
             if (!modal.classList.contains('hidden')) {
                 renderCartItems();
+                // Opcional: limpiar mensaje de cupón al abrir
+                // document.getElementById('coupon-message').innerText = '';
+            }
+        }
+
+        // --- LÓGICA DE CUPONES ---
+        function applyCoupon() {
+            const codeInput = document.getElementById('coupon-code');
+            const messageEl = document.getElementById('coupon-message');
+            const addressField = document.getElementById('delivery-address'); // Obtener referencia al campo
+            const code = codeInput.value.trim().toUpperCase();
+            
+            // Verificamos si hay promociones activas
+            const { discount } = calculateCart(); 
+            const now = new Date();
+            const day = now.getDay();
+            const isWeekend = (day === 0 || day === 6); // Domingo (0) o Sábado (6)
+
+            // Reseteo por defecto del estado visual del campo
+            addressField.style.backgroundColor = ""; 
+
+            // Si hay un descuento de promoción activo (> 0), el cupón no es válido
+            if (discount > 0) {
+                messageEl.className = "text-xs mt-1 font-bold text-red-600";
+                messageEl.innerText = "Este cupón no es acumulable con las promociones activas.";
+                appliedCouponCode = null;
+                updateModalTotals();
+                return;
+            }
+
+            if (code === 'WOK5') {
+                appliedCouponCode = 'WOK5';
+                messageEl.className = "text-xs mt-1 font-bold text-green-600";
+                messageEl.innerText = "¡Cupón aplicado! (5% Descuento)";
+                updateModalTotals();
+            } else if (code === 'PREPA10') {
+                if (isWeekend) {
+                    messageEl.className = "text-xs mt-1 font-bold text-red-600";
+                    messageEl.innerText = "El cupón PREPA10 solo es válido entre semana (Mié-Vie).";
+                    appliedCouponCode = null;
+                } else {
+                    appliedCouponCode = 'PREPA10';
+                    messageEl.className = "text-xs mt-1 font-bold text-green-600";
+                    messageEl.innerText = "¡Cupón PREPA10 aplicado! (10% Descuento)";
+                    
+                    // --- AUTO-UPDATE ADDRESS LOGIC ---
+                    addressField.value = "Escuela Preparatoria Regional De La Barca UDEG";
+                    addressField.readOnly = true; 
+                    addressField.classList.add('bg-gray-200', 'cursor-not-allowed'); 
+                }
+                updateModalTotals();
+            } else if (code === '') {
+                appliedCouponCode = null;
+                messageEl.innerText = "";
+                updateModalTotals();
+            } else {
+                appliedCouponCode = null;
+                messageEl.className = "text-xs mt-1 font-bold text-red-600";
+                messageEl.innerText = "Código inválido";
+                updateModalTotals();
+            }
+
+            // Si cambiamos de cupón y ya no es PREPA10, liberar el campo
+            if (appliedCouponCode !== 'PREPA10') {
+                 // Si el campo tiene la dirección de la prepa, limpiarlo para evitar confusión
+                 if(addressField.value === "Escuela Preparatoria Regional De La Barca UDEG") {
+                     addressField.value = "";
+                 }
+                 addressField.readOnly = false;
+                 addressField.classList.remove('bg-gray-200', 'cursor-not-allowed');
             }
         }
 
         // FUNCIÓN NUEVA: CALCULAR Y MOSTRAR TOTALES EN EL MODAL EN TIEMPO REAL
         function updateModalTotals() {
-            // Calcular base del carrito
-            const { subtotal, discount, total } = calculateCart();
+            // Calcular base del carrito y descuento diario
+            const { subtotal, discount: dailyDiscount } = calculateCart();
 
             // Calcular extras seleccionados (Usando data-price)
             let extrasCost = 0;
-            
             document.querySelectorAll('input[name="extra_item"]:checked').forEach(checkbox => {
                 extrasCost += parseInt(checkbox.dataset.price || 0);
             });
+
+            // Calcular Descuento de Cupón
+            let couponDiscount = 0;
+            // El cupón solo aplica si NO hay descuento diario activo
+            if (dailyDiscount === 0) {
+                if (appliedCouponCode === 'WOK5') {
+                    couponDiscount = Math.round(subtotal * 0.05); 
+                } else if (appliedCouponCode === 'PREPA10') {
+                    couponDiscount = Math.round(subtotal * 0.10);
+                }
+            }
+
+            // Calcular Total Final
+            const finalTotal = subtotal + extrasCost - dailyDiscount - couponDiscount;
 
             // Actualizar elementos DOM
             const subtotalEl = document.getElementById('modal-subtotal');
             const discountRow = document.getElementById('modal-discount-row');
             const discountEl = document.getElementById('modal-discount');
+            
+            const couponRow = document.getElementById('modal-coupon-row');
+            const couponEl = document.getElementById('modal-coupon-discount');
+            
             const totalEl = document.getElementById('modal-total');
 
-            // Mostrar
+            // Mostrar Subtotal
             subtotalEl.innerText = `$${subtotal + extrasCost}`;
             
-            if (discount > 0) {
+            // Mostrar Descuento Diario
+            if (dailyDiscount > 0) {
                 discountRow.classList.remove('hidden');
-                discountEl.innerText = `-$${discount}`;
+                discountEl.innerText = `-$${dailyDiscount}`;
+                // Si hay descuento diario, forzamos ocultar cupón y limpiar variable (doble seguridad visual)
+                couponRow.classList.add('hidden');
             } else {
                 discountRow.classList.add('hidden');
+                
+                // Mostrar Descuento Cupón si aplica
+                if (couponDiscount > 0) {
+                    couponRow.classList.remove('hidden');
+                    couponEl.innerText = `-$${couponDiscount}`;
+                } else {
+                    couponRow.classList.add('hidden');
+                }
             }
             
-            totalEl.innerText = `$${total + extrasCost}`;
+            totalEl.innerText = `$${finalTotal}`;
         }
 
         // FUNCIÓN MODIFICADA: RENDERIZAR ITEMS
@@ -1177,8 +1299,20 @@
             });
 
             // Calcular totales
-            const { subtotal, discount, total: baseTotal } = calculateCart();
-            const finalTotal = baseTotal + totalExtrasCost;
+            const { subtotal, discount: dailyDiscount } = calculateCart();
+            
+            // Recalcular cupón para el mensaje
+            let couponDiscount = 0;
+            // Solo aplicamos cupón si no hay descuento diario activo
+            if (dailyDiscount === 0) {
+                if (appliedCouponCode === 'WOK5') {
+                    couponDiscount = Math.round(subtotal * 0.05); 
+                } else if (appliedCouponCode === 'PREPA10') {
+                    couponDiscount = Math.round(subtotal * 0.10);
+                }
+            }
+
+            const finalTotal = subtotal + totalExtrasCost - dailyDiscount - couponDiscount;
             
             // Construir mensaje
             let message = "Hola Wokami! Quiero ordenar:%0A";
@@ -1193,9 +1327,13 @@
                 extraItems.forEach(itemStr => message += `+ ${itemStr}%0A`);
             }
             
-            if (discount > 0) {
+            if (dailyDiscount > 0) {
                 message += `%0ASubtotal: $${subtotal + totalExtrasCost}`;
-                message += `%0ADescuento Promo: -$${discount}`;
+                message += `%0ADescuento Promo: -$${dailyDiscount}`;
+            } else if (couponDiscount > 0) {
+                // Solo mostramos subtotal si hay descuento de cupón
+                message += `%0ASubtotal: $${subtotal + totalExtrasCost}`;
+                message += `%0ADescuento Cupón (${appliedCouponCode}): -$${couponDiscount}`;
             }
             
             message += `%0ATotal Final: $${finalTotal}`;
