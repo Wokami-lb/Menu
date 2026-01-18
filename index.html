@@ -555,14 +555,14 @@
                                 <span><i class="fas fa-utensils text-gray-500 mr-2"></i>Mixto (Pollo y Res)</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$95</span>
-                                    <button onclick="addToCart('Lo Mein Mixto (Pollo/Res)', 95, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle fa-lg"></i></button>
+                                    <button onclick="addToCart('Lo Mein Mixto (Pollo y Res)', 95, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
-                             <li class="flex justify-between items-center text-sm text-gray-700 font-medium bg-gray-50 p-2 rounded">
-                                <span><i class="fas fa-utensils text-gray-500 mr-2"></i>Mixto (Con Camarón)</span>
+                            <li class="flex justify-between items-center text-sm text-gray-700 font-medium bg-gray-50 p-2 rounded">
+                                <span><i class="fas fa-utensils text-gray-500 mr-2"></i>Mixto (Camarón + 1)</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$105</span>
-                                    <button onclick="addToCart('Lo Mein Mixto (Con Camarón)', 105, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle fa-lg"></i></button>
+                                    <button onclick="addToCart('Lo Mein Mixto (Camarón + 1)', 105, 'wok')" class="text-red-600 hover:text-red-800"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
                             <li class="flex justify-between items-center text-sm text-gray-700 font-bold bg-red-50 p-2 rounded text-red-900 border border-red-100">
@@ -928,7 +928,7 @@
                     cookieFlavor = "Churro y Nutella";
                     break;
                 case 0: // Domingo (Nuevo día abierto)
-                    promoMessage = "☀️ ¡Domingo familiar en Wokami! Disfruta el fin de semana.";
+                    promoMessage = "☀️ ¡Domingo familiar! Usa el cupón FAMILIA: 10% de descuento en pedidos mayores a $500 ☀️";
                     cookieFlavor = "Churro y Nutella";
                     break;
             }
@@ -1108,7 +1108,7 @@
             const code = codeInput.value.trim().toUpperCase();
             
             // Verificamos si hay promociones activas
-            const { discount } = calculateCart(); 
+            const { discount, subtotal } = calculateCart(); 
             const now = new Date();
             const day = now.getDay();
             const isWeekend = (day === 0 || day === 6); // Domingo (0) o Sábado (6)
@@ -1144,6 +1144,24 @@
                     addressField.value = "Escuela Preparatoria Regional De La Barca UDEG";
                     addressField.readOnly = true; 
                     addressField.classList.add('bg-gray-200', 'cursor-not-allowed'); 
+                }
+                updateModalTotals();
+            } else if (code === 'FAMILIA') {
+                // Validamos que sea Domingo (0)
+                if (day !== 0) {
+                    messageEl.className = "text-xs mt-1 font-bold text-red-600";
+                    messageEl.innerText = "El cupón FAMILIA solo es válido los domingos.";
+                    appliedCouponCode = null;
+                } 
+                // Validamos el monto mínimo
+                else if (subtotal < 500) {
+                    messageEl.className = "text-xs mt-1 font-bold text-red-600";
+                    messageEl.innerText = `Te faltan $${500 - subtotal} para usar este cupón (Mínimo $500).`;
+                    appliedCouponCode = null;
+                } else {
+                    appliedCouponCode = 'FAMILIA';
+                    messageEl.className = "text-xs mt-1 font-bold text-green-600";
+                    messageEl.innerText = "¡Cupón FAMILIA aplicado! (10% Descuento)";
                 }
                 updateModalTotals();
             } else if (code === '') {
@@ -1187,6 +1205,13 @@
                     couponDiscount = Math.round(subtotal * 0.05); 
                 } else if (appliedCouponCode === 'PREPA10') {
                     couponDiscount = Math.round(subtotal * 0.10);
+                } else if (appliedCouponCode === 'FAMILIA') {
+                    // Doble verificación: si por alguna razón bajaron items y el total es < 500, no aplicar descuento
+                    if (subtotal >= 500) {
+                        couponDiscount = Math.round(subtotal * 0.10);
+                    } else {
+                        couponDiscount = 0; // Se anula si bajó del mínimo
+                    }
                 }
             }
 
@@ -1309,6 +1334,10 @@
                     couponDiscount = Math.round(subtotal * 0.05); 
                 } else if (appliedCouponCode === 'PREPA10') {
                     couponDiscount = Math.round(subtotal * 0.10);
+                } else if (appliedCouponCode === 'FAMILIA') {
+                    if (subtotal >= 500) {
+                        couponDiscount = Math.round(subtotal * 0.10);
+                    }
                 }
             }
 
