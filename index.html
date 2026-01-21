@@ -625,9 +625,9 @@
                     </div>
                 </div>
                 
-                <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex min-h-32 opacity-75 grayscale">
-                    <div class="w-32 md:w-40 flex-shrink-0 bg-gray-200 relative">
-                        <img src="helado.jpg" onerror="this.src='https://via.placeholder.com/300x300?text=Tempura+Helado'" class="w-full h-full object-cover object-center absolute inset-0">
+                <div class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex min-h-32 group">
+                    <div class="w-32 md:w-40 flex-shrink-0 bg-gray-200 relative overflow-hidden">
+                        <img src="helado.jpg" onerror="this.src='https://via.placeholder.com/300x300?text=Tempura+Helado'" class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="p-4 flex-grow flex flex-col justify-between">
                         <div>
@@ -635,8 +635,8 @@
                             <p class="text-gray-600 text-xs md:text-sm mt-1 line-clamp-2">Helado frito en tempura crujiente con chocolate.</p>
                         </div>
                         <div class="flex justify-between items-center mt-2">
-                            <span class="text-lg font-bold text-gray-900">$65</span>
-                            <button disabled class="text-xs bg-gray-400 text-white px-3 py-1.5 rounded cursor-not-allowed font-bold">Agotado por hoy</button>
+                            <span class="text-lg font-bold text-gray-900">$75</span>
+                            <button onclick="addToCart('Tempura Helado', 75, 'postre')" class="text-xs bg-red-600 text-white px-3 py-1.5 rounded hover:bg-red-700 transition shadow-md"><i class="fas fa-plus text-sm"></i></button>
                         </div>
                     </div>
                 </div>
@@ -888,7 +888,7 @@
 
         function updateDynamicContent() {
             const now = new Date();
-            const dayOfWeek = now.getDay(); // 0=Domingo, 1=Lunes, 2=Martes... 4=Jueves...
+            const dayOfWeek = now.getDay(); // 0=Domingo, 1=Lunes, 2=Martes, 3=Miercoles...
             const hour = now.getHours();
             const minutes = now.getMinutes();
 
@@ -922,15 +922,15 @@
                 statusBadge.className = "text-[10px] px-2 py-0.5 rounded font-bold uppercase tracking-wider bg-gray-500 text-white";
             }
 
-            // 2. PROMOCIONES DEL DÍA & SABOR DE GALLETA
+            // 2. PROMOCIONES DEL DÍA & SABOR DE GALLETA (ACTUALIZADO A NUEVA SECUENCIA)
             const promoBanner = document.getElementById('daily-promo');
             const promoText = document.getElementById('daily-promo-text');
             const flavorText = document.getElementById('flavor-of-day');
             const mochiText = document.getElementById('mochi-flavor');
 
             let promoMessage = "";
-            let cookieFlavor = "Nutella"; // Default cambiado
-            let mochiFlavor = "Nieve de Fresa"; // Default cambiado
+            let cookieFlavor = "Nutella"; 
+            let mochiFlavor = "Nieve de Fresa";
 
             switch(dayOfWeek) {
                 case 1: // Lunes (Cerrado)
@@ -938,25 +938,25 @@
                     promoMessage = "¡Nos vemos el miércoles! (Cerrado lunes y martes)";
                     cookieFlavor = "No disponible hoy";
                     break;
-                case 3: // Miércoles
-                    promoMessage = "🥤 ¡Mitad de semana! En compras mayores a $300, tu AGUA FRESCA es GRATIS";
-                    cookieFlavor = "Nutella"; // Changed from Red Velvet
-                    mochiFlavor = "Nieve de Fresa"; // Added
+                case 3: // Miércoles (Antes Martes: Promo Wok)
+                    promoMessage = "🍛 MIÉRCOLES DE WOK: ¡3x2 en Yakimeshis y Lo Mein! 🍛";
+                    cookieFlavor = "Coco tostado con chocolate y especias"; 
+                    mochiFlavor = "Nieve de Fresa"; 
                     break;
-                case 4: // Jueves
-                    promoMessage = "👫 JUEVES DE AMIGOS: 3 Rollos Clásicos por $300 👫";
+                case 4: // Jueves (Antes Miércoles: Promo Agua)
+                    promoMessage = "🥤 JUEVES REFRESCANTE: En compras > $300, tu AGUA FRESCA es GRATIS";
+                    cookieFlavor = "Coco tostado con chocolate y especias";
+                    break;
+                case 5: // Viernes (Antes Jueves: Promo Rollos)
+                    promoMessage = "👫 VIERNES DE AMIGOS: 3 Rollos Clásicos por $300 👫";
                     cookieFlavor = "Churro y Nutella";
                     break;
-                case 5: // Viernes
-                    promoMessage = "🎉 ¡Viernes de Wokami! Disfruta el inicio del fin de semana.";
+                case 6: // Sábado (Día estándar)
+                    promoMessage = "🎉 ¡Sábado de Wokami! Disfruta el fin de semana.";
                     cookieFlavor = "Churro y Nutella";
                     break;
-                case 6: // Sábado
-                    promoMessage = "🍪 SÁBADO DULCE: 3x2 en Galletas New York 🍪";
-                    cookieFlavor = "Churro y Nutella";
-                    break;
-                case 0: // Domingo (Nuevo día abierto)
-                    promoMessage = "☀️ ¡Domingo familiar en Wokami! Disfruta el fin de semana.";
+                case 0: // Domingo (Antes Sábado: Promo Galletas)
+                    promoMessage = "🍪 DOMINGO DULCE: 3x2 en Galletas New York 🍪";
                     cookieFlavor = "Churro y Nutella";
                     break;
             }
@@ -1047,7 +1047,7 @@
 
         function calculateCart() {
             const now = new Date();
-            const day = now.getDay();
+            const day = now.getDay(); // 0=Domingo, 3=Miercoles, 4=Jueves, 5=Viernes
             let subtotal = 0;
             let discount = 0;
             let details = "";
@@ -1060,16 +1060,16 @@
             // Calculamos subtotal
             cart.forEach(item => subtotal += item.price);
 
-            // LOGICA MARTES (Ya no aplica porque está cerrado, pero se deja por si acaso)
-            if (day === 2) { 
+            // LOGICA RECORRIDA: MIÉRCOLES (Antes Martes - 3x2 Wok)
+            if (day === 3) { 
                 const freeCount = Math.floor(wokItems.length / 3);
                 for(let i=0; i<freeCount; i++) {
-                    discount += wokItems[i].price;
+                    discount += wokItems[i].price; // Descuenta el de menor valor
                 }
             }
 
-            // LOGICA JUEVES (3 Rollos Clásicos por $300)
-            if (day === 4) {
+            // LOGICA RECORRIDA: VIERNES (Antes Jueves - 3 Rollos x $300)
+            if (day === 5) {
                 // Filtramos solo los rollos que cuestan $120 (Clásicos)
                 // Ignoramos los especiales de $150
                 const classicRolls = cart.filter(i => i.category === 'rollo' && i.price === 120);
@@ -1082,8 +1082,8 @@
                 discount += setsOfThree * 60;
             }
 
-            // LOGICA SÁBADO (3x2 en GALLETAS)
-            if (day === 6) {
+            // LOGICA RECORRIDA: DOMINGO (Antes Sábado - 3x2 Galletas)
+            if (day === 0) {
                 const freeCount = Math.floor(cookieItems.length / 3);
                 for(let i=0; i<freeCount; i++) {
                     discount += cookieItems[i].price;
@@ -1139,7 +1139,8 @@
             const { discount } = calculateCart(); 
             const now = new Date();
             const day = now.getDay();
-            const isWeekend = (day === 0 || day === 6); // Domingo (0) o Sábado (6)
+            // Fin de semana ahora es Sábado(6) y Domingo(0)
+            const isWeekend = (day === 0 || day === 6); 
 
             // Reseteo por defecto del estado visual del campo
             addressField.style.backgroundColor = ""; 
