@@ -929,7 +929,7 @@
             const mochiText = document.getElementById('mochi-flavor');
 
             let promoMessage = "";
-            let cookieFlavor = "Nutella"; 
+            let cookieFlavor = "Coco tostado con chocolate y especias"; 
             let mochiFlavor = "Nieve de Fresa";
 
             switch(dayOfWeek) {
@@ -939,7 +939,7 @@
                     cookieFlavor = "No disponible hoy";
                     break;
                 case 3: // Miércoles (Antes Martes: Promo Wok)
-                    promoMessage = "🍛 MIÉRCOLES DE WOK: ¡3x2 en Yakimeshis y Lo Mein! 🍛";
+                    promoMessage = "🍛 MIÉRCOLES DE WOK: ¡3x2 en Yakimeshis y Woks! 🍛";
                     cookieFlavor = "Coco tostado con chocolate y especias"; 
                     mochiFlavor = "Nieve de Fresa"; 
                     break;
@@ -949,15 +949,15 @@
                     break;
                 case 5: // Viernes (Antes Jueves: Promo Rollos)
                     promoMessage = "👫 VIERNES DE AMIGOS: 3 Rollos Clásicos por $300 👫";
-                    cookieFlavor = "Churro y Nutella";
+                    cookieFlavor = "Coco tostado con chocolate y especias";
                     break;
                 case 6: // Sábado (Día estándar)
                     promoMessage = "🎉 ¡Sábado de Wokami! Disfruta el fin de semana.";
-                    cookieFlavor = "Churro y Nutella";
+                    cookieFlavor = "Coco tostado con chocolate y especias";
                     break;
                 case 0: // Domingo (Antes Sábado: Promo Galletas)
                     promoMessage = "🍪 DOMINGO DULCE: 3x2 en Galletas New York 🍪";
-                    cookieFlavor = "Churro y Nutella";
+                    cookieFlavor = "Coco tostado con chocolate y especias";
                     break;
             }
 
@@ -1136,7 +1136,7 @@
             const code = codeInput.value.trim().toUpperCase();
             
             // Verificamos si hay promociones activas
-            const { discount } = calculateCart(); 
+            const { subtotal, discount } = calculateCart(); 
             const now = new Date();
             const day = now.getDay();
             // Fin de semana ahora es Sábado(6) y Domingo(0)
@@ -1173,6 +1173,22 @@
                     addressField.value = "Escuela Preparatoria Regional De La Barca UDEG";
                     addressField.readOnly = true; 
                     addressField.classList.add('bg-gray-200', 'cursor-not-allowed'); 
+                }
+                updateModalTotals();
+            } else if (code === 'FAMILIA') {
+                // Validación para cupón FAMILIA
+                if (day !== 0) { // 0 es Domingo
+                    messageEl.className = "text-xs mt-1 font-bold text-red-600";
+                    messageEl.innerText = "El cupón FAMILIA solo es válido los domingos.";
+                    appliedCouponCode = null;
+                } else if (subtotal < 500) {
+                    messageEl.className = "text-xs mt-1 font-bold text-red-600";
+                    messageEl.innerText = "El cupón FAMILIA requiere una compra mínima de $500.";
+                    appliedCouponCode = null;
+                } else {
+                    appliedCouponCode = 'FAMILIA';
+                    messageEl.className = "text-xs mt-1 font-bold text-green-600";
+                    messageEl.innerText = "¡Cupón FAMILIA aplicado! (10% Descuento)";
                 }
                 updateModalTotals();
             } else if (code === '') {
@@ -1215,6 +1231,8 @@
                 if (appliedCouponCode === 'WOK5') {
                     couponDiscount = Math.round(subtotal * 0.05); 
                 } else if (appliedCouponCode === 'PREPA10') {
+                    couponDiscount = Math.round(subtotal * 0.10);
+                } else if (appliedCouponCode === 'FAMILIA') {
                     couponDiscount = Math.round(subtotal * 0.10);
                 }
             }
@@ -1337,6 +1355,8 @@
                 if (appliedCouponCode === 'WOK5') {
                     couponDiscount = Math.round(subtotal * 0.05); 
                 } else if (appliedCouponCode === 'PREPA10') {
+                    couponDiscount = Math.round(subtotal * 0.10);
+                } else if (appliedCouponCode === 'FAMILIA') {
                     couponDiscount = Math.round(subtotal * 0.10);
                 }
             }
