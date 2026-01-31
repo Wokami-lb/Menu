@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,10 +8,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Great+Vibes&display=swap"
-        rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    
     <script>
         // [FEBRERO] Configuracion de colores rosa para Tailwind.
         tailwind.config = {
@@ -31,46 +28,37 @@
         :root {
             /* [FEBRERO] PALETA DE COLORES TEMPORAL */
             --wokami-red: #D80000;
-            --love-pink: #FF4D80;
+            --love-pink: #FF4D80; 
             --wokami-black: #1a1a1a;
-
+            
             /* [FEBRERO] REVERTIR A: --wokami-paper: #f9f7f2; */
-            --wokami-paper: #FFF0F5;
+            --wokami-paper: #FFF0F5; 
         }
-
         body {
             font-family: 'Noto Sans JP', sans-serif;
             background-color: var(--wokami-paper);
             color: var(--wokami-black);
-
+            
             /* [FEBRERO] CAMBIAR COLOR DE PUNTOS DE FONDO */
-            /* REVERTIR A: radial-gradient(#e5e5e5 1px, transparent 1px); */
             background-image: radial-gradient(#ffb7c5 1.5px, transparent 1.5px);
-            background-size: 25px 25px;
+            background-size: 25px 25px; 
         }
-
-        h1,
-        h2,
-        h3,
-        .brand-font {
+        h1, h2, h3, .brand-font {
             font-family: 'Cinzel', serif;
         }
-
         /* [FEBRERO] CLASE NUEVA PARA LETRA CURSIVA. */
         .script-font {
             font-family: 'Great Vibes', cursive;
         }
-
+        
         /* [FEBRERO] ESTILOS DE ENCABEZADOS ROMANTICOS */
         .category-header {
             position: relative;
             display: inline-block;
             padding-bottom: 5px;
         }
-
         .category-header::after {
-            content: '♥';
-            /* [FEBRERO] ELIMINAR ESTO */
+            content: '♥'; /* [FEBRERO] ELIMINAR ESTO */
             position: absolute;
             bottom: -5px;
             right: -20px;
@@ -78,31 +66,25 @@
             font-size: 1.2rem;
             animation: beat 1.5s infinite;
         }
-
         .category-header::before {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 60%;
-            /* REVERTIR A: 40% */
-            height: 3px;
-            /* REVERTIR A: 4px */
-            /* REVERTIR A: background-color: var(--wokami-red); */
-            background: linear-gradient(to right, var(--wokami-red), var(--love-pink));
+            width: 60%; /* REVERTIR A: 40% */
+            height: 3px; /* REVERTIR A: 4px */
+            background: linear-gradient(to right, var(--wokami-red), var(--love-pink)); 
             border-radius: 2px;
         }
 
         /* [FEBRERO] BORDES ROSAS EN TARJETAS */
         .menu-item-card {
             transition: all 0.3s ease;
-            border: 1px solid rgba(255, 182, 193, 0.4);
+            border: 1px solid rgba(255, 182, 193, 0.4); 
         }
-
         .menu-item-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px -5px rgba(255, 77, 128, 0.15);
-            /* Sombra rosa */
+            box-shadow: 0 10px 20px -5px rgba(255, 77, 128, 0.15); /* Sombra rosa */
             border-color: var(--love-pink);
         }
 
@@ -112,7 +94,6 @@
             border: none;
             color: white;
         }
-
         .btn-valentine:hover {
             background: linear-gradient(45deg, #b30000, #e91e63);
             box-shadow: 0 0 10px rgba(255, 77, 128, 0.4);
@@ -120,17 +101,9 @@
 
         /* [FEBRERO] ANIMACIONES DEL CORAZON. */
         @keyframes beat {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.2);
-            }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
         }
-
         .heart-beat {
             animation: beat 1.5s infinite;
         }
@@ -146,28 +119,16 @@
             pointer-events: none;
             z-index: 1;
         }
-
         .heart {
             position: absolute;
             font-size: 1rem;
             color: rgba(255, 255, 255, 0.3);
             animation: float 6s linear infinite;
         }
-
         @keyframes float {
-            0% {
-                transform: translateY(100%) rotate(0deg);
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 0.8;
-            }
-
-            100% {
-                transform: translateY(-100%) rotate(360deg);
-                opacity: 0;
-            }
+            0% { transform: translateY(100%) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            100% { transform: translateY(-100%) rotate(360deg); opacity: 0; }
         }
 
         /* Toast Modificado */
@@ -178,20 +139,18 @@
             background: linear-gradient(to right, #333, #555);
             color: #fff;
             text-align: center;
-            border-radius: 50px;
-            /* REVERTIR A: 8px */
+            border-radius: 50px; /* REVERTIR A: 8px */
             padding: 16px;
             position: fixed;
             z-index: 100;
             left: 50%;
             bottom: 80px;
             transform: translateX(-50%);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             font-size: 14px;
             opacity: 0;
             transition: opacity 0.3s, bottom 0.3s;
         }
-
         #toast.show {
             visibility: visible;
             opacity: 1;
@@ -199,74 +158,56 @@
         }
     </style>
 </head>
-
 <body class="antialiased min-h-screen pb-24 selection:bg-pink-200">
 
-    <div id="daily-promo"
-        class="hidden bg-gradient-to-r from-red-600 via-pink-600 to-red-600 text-white text-center py-2 px-4 text-sm font-bold promo-banner shadow-md">
+    <div id="daily-promo" class="hidden bg-gradient-to-r from-red-600 via-pink-600 to-red-600 text-white text-center py-2 px-4 text-sm font-bold promo-banner shadow-md">
         <span id="daily-promo-text"><i class="fas fa-heart mr-2"></i></span>
     </div>
 
-    <header id="main-header"
-        class="bg-black/95 backdrop-blur-sm text-white sticky top-0 z-50 shadow-lg border-b border-pink-900/50">
+    <header id="main-header" class="bg-black/95 backdrop-blur-sm text-white sticky top-0 z-50 shadow-lg border-b border-pink-900/50">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center gap-3">
                 <div class="flex items-center gap-2 hover:opacity-90 transition-opacity">
-                    <img src="logo.png" onerror="this.src='https://via.placeholder.com/150?text=Wokami'"
-                        alt="Wokami Logo" class="h-12 w-12 object-cover rounded-full border-2 border-pink-500">
+                    <img src="logo.png" onerror="this.src='https://via.placeholder.com/150?text=Wokami'" alt="Wokami Logo" class="h-12 w-12 object-cover rounded-full border-2 border-pink-500">
                     <div class="flex flex-col">
-                        <a href="#"
-                            class="text-xl md:text-2xl font-bold tracking-widest brand-font text-white hover:text-pink-400 transition-colors">WOKAMI</a>
-                        <span class="text-[8px] tracking-[0.2em] text-pink-400 uppercase hidden md:block">Love &
-                            Sushi</span>
+                        <a href="#" class="text-xl md:text-2xl font-bold tracking-widest brand-font text-white hover:text-pink-400 transition-colors">WOKAMI</a>
+                        <span class="text-[8px] tracking-[0.2em] text-pink-400 uppercase hidden md:block">Love & Sushi</span>
                     </div>
                 </div>
-                <span id="status-badge"
-                    class="hidden sm:inline-block text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ml-2">
+                <span id="status-badge" class="hidden sm:inline-block text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ml-2">
                     Cargando...
                 </span>
             </div>
-
+            
             <nav class="hidden lg:flex gap-8 text-sm font-bold uppercase tracking-wide">
                 <a href="#entradas" class="hover:text-pink-400 transition-colors py-1 nav-link">Entradas</a>
                 <a href="#rollos" class="hover:text-pink-400 transition-colors py-1 nav-link">Rollos</a>
-                <a href="#rollos-especiales" class="text-pink-400 hover:text-white transition-colors py-1 nav-link"><i
-                        class="fas fa-heart text-xs mr-1"></i>Especiales</a>
+                <a href="#rollos-especiales" class="text-pink-400 hover:text-white transition-colors py-1 nav-link"><i class="fas fa-heart text-xs mr-1"></i>Especiales</a>
                 <a href="#wok" class="hover:text-pink-400 transition-colors py-1 nav-link">Wok</a>
                 <a href="#postres" class="hover:text-pink-400 transition-colors py-1 nav-link">Postres</a>
                 <a href="#bebidas" class="hover:text-pink-400 transition-colors py-1 nav-link">Bebidas</a>
             </nav>
 
-            <button class="lg:hidden text-white p-2 focus:outline-none"
-                onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+            <button class="lg:hidden text-white p-2 focus:outline-none" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
                 <i class="fas fa-bars text-2xl text-pink-500"></i>
             </button>
         </div>
-
+        
         <div id="mobile-menu" class="hidden bg-neutral-900 lg:hidden border-t border-pink-900">
             <div class="flex flex-col p-4 space-y-3 text-center">
-                <a href="#entradas"
-                    class="mobile-nav-link text-gray-300 hover:text-pink-400 hover:bg-neutral-800 px-3 py-2 rounded transition-colors font-medium">Entradas</a>
-                <a href="#rollos"
-                    class="mobile-nav-link text-gray-300 hover:text-pink-400 hover:bg-neutral-800 px-3 py-2 rounded transition-colors font-medium">Rollos</a>
-                <a href="#rollos-especiales"
-                    class="mobile-nav-link text-pink-400 hover:text-white hover:bg-neutral-800 px-3 py-2 rounded transition-colors font-medium">Rollos
-                    Especiales ♥</a>
-                <a href="#wok"
-                    class="mobile-nav-link text-gray-300 hover:text-pink-400 hover:bg-neutral-800 px-3 py-2 rounded transition-colors font-medium">Wok
-                    & Bowls</a>
-                <a href="#postres"
-                    class="mobile-nav-link text-gray-300 hover:text-pink-400 hover:bg-neutral-800 px-3 py-2 rounded transition-colors font-medium">Postres</a>
-                <a href="#bebidas"
-                    class="mobile-nav-link text-gray-300 hover:text-pink-400 hover:bg-neutral-800 px-3 py-2 rounded-colors font-medium">Bebidas</a>
+                <a href="#entradas" class="mobile-nav-link text-gray-300 hover:text-pink-400 hover:bg-neutral-800 px-3 py-2 rounded transition-colors font-medium">Entradas</a>
+                <a href="#rollos" class="mobile-nav-link text-gray-300 hover:text-pink-400 hover:bg-neutral-800 px-3 py-2 rounded transition-colors font-medium">Rollos</a>
+                <a href="#rollos-especiales" class="mobile-nav-link text-pink-400 hover:text-white hover:bg-neutral-800 px-3 py-2 rounded transition-colors font-medium">Rollos Especiales ♥</a>
+                <a href="#wok" class="mobile-nav-link text-gray-300 hover:text-pink-400 hover:bg-neutral-800 px-3 py-2 rounded transition-colors font-medium">Wok & Bowls</a>
+                <a href="#postres" class="mobile-nav-link text-gray-300 hover:text-pink-400 hover:bg-neutral-800 px-3 py-2 rounded transition-colors font-medium">Postres</a>
+                <a href="#bebidas" class="mobile-nav-link text-gray-300 hover:text-pink-400 hover:bg-neutral-800 px-3 py-2 rounded-colors font-medium">Bebidas</a>
             </div>
         </div>
     </header>
 
     <div class="relative bg-gradient-to-b from-black to-gray-900 text-white py-16 px-4 text-center overflow-hidden">
-        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/sushi.png')]">
-        </div>
-
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/sushi.png')]"></div>
+        
         <div class="hearts-container">
             <i class="fas fa-heart heart" style="left: 10%; animation-delay: 0s;"></i>
             <i class="fas fa-heart heart" style="left: 30%; animation-delay: 2s;"></i>
@@ -276,31 +217,23 @@
         </div>
 
         <div class="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
-
+            
             <div class="mb-6 transform hover:scale-105 transition-transform duration-500 relative">
-                <div
-                    class="absolute -inset-1 bg-gradient-to-r from-red-600 to-pink-600 rounded-full blur opacity-75 animate-pulse">
-                </div>
-                <img src="logo.png" onerror="this.src='https://via.placeholder.com/300?text=Wokami'" alt="Wokami Logo"
-                    class="relative h-40 w-40 object-cover rounded-full border-4 border-black shadow-2xl bg-white">
+                <div class="absolute -inset-1 bg-gradient-to-r from-red-600 to-pink-600 rounded-full blur opacity-75 animate-pulse"></div>
+                <img src="logo.png" onerror="this.src='https://via.placeholder.com/300?text=Wokami'" alt="Wokami Logo" class="relative h-40 w-40 object-cover rounded-full border-4 border-black shadow-2xl bg-white">
             </div>
-
-            <h1 class="text-5xl md:text-7xl font-bold mb-1 brand-font tracking-tight text-white drop-shadow-lg">WOKAMI
-            </h1>
-
-            <p class="text-2xl md:text-3xl text-pink-500 font-light script-font mb-8">El fuego del wok. El alma del
-                sushi.</p>
-
+            
+            <h1 class="text-5xl md:text-7xl font-bold mb-1 brand-font tracking-tight text-white drop-shadow-lg">WOKAMI</h1>
+            
+            <p class="text-2xl md:text-3xl text-pink-500 font-light script-font mb-8">El fuego del wok. El alma del sushi.</p>
+            
             <a href="#aguachile-roll-target" class="group block max-w-sm w-full mx-auto">
-                <div
-                    class="bg-white/10 backdrop-blur-md border border-pink-500/30 rounded-full p-2 pr-4 flex items-center gap-4 hover:bg-white/20 transition-all duration-300 cursor-pointer">
-                    <div
-                        class="bg-gradient-to-br from-pink-500 to-red-600 text-white h-10 w-10 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg heart-beat">
+                <div class="bg-white/10 backdrop-blur-md border border-pink-500/30 rounded-full p-2 pr-4 flex items-center gap-4 hover:bg-white/20 transition-all duration-300 cursor-pointer">
+                    <div class="bg-gradient-to-br from-pink-500 to-red-600 text-white h-10 w-10 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg heart-beat">
                         <i class="fas fa-heart text-sm"></i>
                     </div>
                     <div class="text-left flex-grow">
-                        <p class="text-pink-300 text-[9px] font-bold uppercase tracking-widest mb-0.5">El Favorito de
-                            Cupido</p>
+                        <p class="text-pink-300 text-[9px] font-bold uppercase tracking-widest mb-0.5">El Favorito de Cupido</p>
                         <h3 class="text-white text-base font-bold brand-font leading-none">AGUACHILE ROLL</h3>
                     </div>
                     <div class="text-pink-400 group-hover:translate-x-1 transition-transform">
@@ -314,32 +247,25 @@
     <main class="container mx-auto px-4 py-12 max-w-5xl">
 
         <section class="mb-12">
-            <div
-                class="bg-white rounded-xl p-6 shadow-xl border border-pink-100 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6 group hover:shadow-2xl transition-all">
+            <div class="bg-white rounded-xl p-6 shadow-xl border border-pink-100 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6 group hover:shadow-2xl transition-all">
                 <div class="absolute top-0 right-0 w-32 h-32 bg-pink-100 rounded-bl-full opacity-50 z-0"></div>
                 <div class="absolute bottom-0 left-0 w-24 h-24 bg-red-50 rounded-tr-full opacity-50 z-0"></div>
-
+                
                 <div class="relative z-10 text-center md:text-left flex-1">
-                    <h3
-                        class="font-bold text-xl md:text-2xl brand-font flex items-center justify-center md:justify-start gap-2 mb-2 text-gray-800">
-                        <i class="fas fa-gift text-pink-500 heart-beat"></i> <span
-                            class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-pink-600">¡REGALO DE
-                            CITA!</span>
+                    <h3 class="font-bold text-xl md:text-2xl brand-font flex items-center justify-center md:justify-start gap-2 mb-2 text-gray-800">
+                        <i class="fas fa-gift text-pink-500 heart-beat"></i> <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-pink-600">¡REGALO DE CITA!</span>
                     </h3>
                     <p class="text-gray-600 text-sm md:text-base leading-relaxed">
-                        Etiqueta a tu persona favorita en una historia con tu pedido y gana una <span
-                            class="text-pink-600 font-bold">Kushiague GRATIS</span> en tu próxima visita.
+                        Etiqueta a tu persona favorita en una historia con tu pedido y gana una <span class="text-pink-600 font-bold">Kushiague GRATIS</span> en tu próxima visita.
                     </p>
                 </div>
-
+                
                 <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto relative z-10">
-                    <a href="https://www.facebook.com/share/1DLwFajUXz/" target="_blank"
-                        class="flex items-center justify-center gap-2 bg-[#1877F2] hover:bg-[#156bd4] text-white py-3 px-6 rounded-full font-bold transition-all transform hover:-translate-y-1 shadow-lg shadow-blue-500/30 w-full sm:w-auto text-sm uppercase tracking-wide">
+                    <a href="https://www.facebook.com/share/1DLwFajUXz/" target="_blank" class="flex items-center justify-center gap-2 bg-[#1877F2] hover:bg-[#156bd4] text-white py-3 px-6 rounded-full font-bold transition-all transform hover:-translate-y-1 shadow-lg shadow-blue-500/30 w-full sm:w-auto text-sm uppercase tracking-wide">
                         <i class="fab fa-facebook-f text-lg"></i> Facebook
                     </a>
-
-                    <a href="https://www.instagram.com/wokami_sushi?igsh=NWYzYW82dG81eWdm" target="_blank"
-                        class="flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 hover:opacity-90 text-white py-3 px-6 rounded-full font-bold transition-all transform hover:-translate-y-1 shadow-lg shadow-pink-500/30 w-full sm:w-auto text-sm uppercase tracking-wide">
+                    
+                    <a href="https://www.instagram.com/wokami_sushi?igsh=NWYzYW82dG81eWdm" target="_blank" class="flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 hover:opacity-90 text-white py-3 px-6 rounded-full font-bold transition-all transform hover:-translate-y-1 shadow-lg shadow-pink-500/30 w-full sm:w-auto text-sm uppercase tracking-wide">
                         <i class="fab fa-instagram text-lg"></i> Participar
                     </a>
                 </div>
@@ -347,26 +273,21 @@
         </section>
 
         <section id="entradas" class="mb-16 scroll-mt-24">
-            <h2 class="text-3xl font-bold mb-8 text-black category-header">ENTRADAS <span
-                    class="text-sm font-normal text-gray-400 ml-2 italic script-font text-2xl">Para empezar...</span>
-            </h2>
+            <h2 class="text-3xl font-bold mb-8 text-black category-header">ENTRADAS <span class="text-sm font-normal text-gray-400 ml-2 italic script-font text-2xl">Para empezar...</span></h2>
             <div class="grid md:grid-cols-2 gap-6">
                 <div class="menu-item-card bg-white rounded-lg shadow-sm overflow-hidden flex min-h-32 group">
                     <div class="w-32 md:w-40 flex-shrink-0 bg-gray-200 relative overflow-hidden">
-                        <img src="kushiagues.jpg" onerror="this.src='https://via.placeholder.com/300?text=Kushiagues'"
-                            class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition-transform duration-500">
+                        <img src="kushiagues.jpg" onerror="this.src='https://via.placeholder.com/300?text=Kushiagues'" class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="p-4 flex-grow flex flex-col justify-between">
                         <div>
                             <div class="flex items-baseline gap-2">
                                 <h3 class="text-lg md:text-xl font-bold text-gray-900 leading-tight">Kushiagues</h3>
-                                <span
-                                    class="text-[10px] font-bold text-white bg-gradient-to-r from-red-500 to-pink-500 px-2 py-0.5 rounded-full shadow-sm">Hot</span>
+                                <span class="text-[10px] font-bold text-white bg-gradient-to-r from-red-500 to-pink-500 px-2 py-0.5 rounded-full shadow-sm">Hot</span>
                             </div>
-                            <p class="text-gray-600 text-xs md:text-sm mt-1 mb-2">3 pzs. Ideales para compartir.</p>
-
-                            <select id="kushiage-select"
-                                class="w-full text-xs border border-pink-200 rounded p-1.5 mb-2 bg-pink-50/30 focus:border-pink-500 outline-none cursor-pointer hover:bg-pink-50">
+                            <p class="text-gray-600 text-xs md:text-sm mt-1 mb-2">3 pzs. Ideales para compartir. Elige tu relleno:</p>
+                            
+                            <select id="kushiage-select" class="w-full text-xs border border-pink-200 rounded p-1.5 mb-2 bg-pink-50/30 focus:border-pink-500 outline-none cursor-pointer hover:bg-pink-50">
                                 <option value="Queso Philadelphia">Queso Philadelphia</option>
                                 <option value="Queso Manchego">Queso Manchego</option>
                                 <option value="Camarón con Philadelphia">Camarón c/ Philadelphia</option>
@@ -376,9 +297,7 @@
                         </div>
                         <div class="flex justify-between items-center mt-1">
                             <span class="text-lg font-bold text-gray-800">$65</span>
-                            <button onclick="addKushiageFromSelect()"
-                                class="text-xs btn-valentine px-4 py-1.5 rounded-full transition shadow-md font-bold"><i
-                                    class="fas fa-plus mr-1"></i> Agregar</button>
+                            <button onclick="addKushiageFromSelect()" class="text-xs btn-valentine px-4 py-1.5 rounded-full transition shadow-md font-bold"><i class="fas fa-plus mr-1"></i> Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -386,29 +305,20 @@
         </section>
 
         <section id="rollos" class="mb-16 scroll-mt-24">
-
-            <div
-                class="bg-pink-50 text-pink-800 px-4 py-3 rounded-lg border border-pink-200 text-sm font-medium shadow-sm mb-8 flex flex-col md:flex-row items-center justify-center text-center gap-2">
-                <span><i class="fas fa-heart text-pink-500 mr-2"></i>Elige: <strong>Empanizado</strong> o
-                    <strong>Natural</strong> <span class="text-xs text-red-500 font-bold ml-1 block md:inline">(Excepto
-                        America, Kamikaze y Grinch Roll)</span></span>
+            
+            <div class="bg-pink-50 text-pink-800 px-4 py-3 rounded-lg border border-pink-200 text-sm font-medium shadow-sm mb-8 flex flex-col md:flex-row items-center justify-center text-center gap-2">
+                <span><i class="fas fa-heart text-pink-500 mr-2"></i>Elige: <strong>Empanizado</strong> o <strong>Natural</strong> <span class="text-xs text-red-500 font-bold ml-1 block md:inline">(Excepto America, Kamikaze y Grinch Roll)</span></span>
                 <span class="hidden md:inline text-pink-300">|</span>
                 <span><i class="fas fa-leaf mr-2 text-green-600"></i>Incluye <strong>Chips de Camote</strong></span>
             </div>
 
             <div class="mb-12">
-                <h2 class="text-3xl font-bold text-black category-header mb-8">ROLLOS CLÁSICOS <span
-                        class="text-sm font-normal text-gray-400 ml-2 italic script-font text-2xl">Los de siempre</span>
-                </h2>
+                <h2 class="text-3xl font-bold text-black category-header mb-8">ROLLOS CLÁSICOS <span class="text-sm font-normal text-gray-400 ml-2 italic script-font text-2xl">Los de siempre</span></h2>
                 <div class="grid lg:grid-cols-2 gap-8">
-
-                    <div
-                        class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow menu-item-card">
+                    
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow menu-item-card">
                         <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
-                            <img src="america.jpg"
-                                onerror="this.src='https://via.placeholder.com/400x300?text=America+Roll'"
-                                alt="America Roll"
-                                class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
+                            <img src="america.jpg" onerror="this.src='https://via.placeholder.com/400x300?text=America+Roll'" alt="America Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
                         </div>
                         <div class="p-6 md:w-2/3 flex flex-col justify-between">
                             <div>
@@ -417,21 +327,17 @@
                                     <span class="text-red-600 font-bold text-lg">$120</span>
                                 </div>
                                 <p class="text-gray-600 text-sm mb-4">
-                                    Mango fresco con chile tajín por fuera. Un toque dulce y picante como el amor.
+                                    <strong>Por dentro:</strong> Camarones empanizados, aguacate y queso crema.<br>
+                                    <strong>Por fuera:</strong> Mango con chile tajín, ajonjolí y salsa de anguila.
                                 </p>
                             </div>
-                            <button onclick="addToCart('America Roll', 120, 'rollo')"
-                                class="self-start text-xs font-bold uppercase tracking-wider btn-valentine px-6 py-2 rounded-full shadow-md w-full md:w-auto">Ordenar</button>
+                            <button onclick="addToCart('America Roll', 120, 'rollo')" class="self-start text-xs font-bold uppercase tracking-wider btn-valentine px-6 py-2 rounded-full shadow-md w-full md:w-auto">Ordenar</button>
                         </div>
                     </div>
 
-                    <div
-                        class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow menu-item-card">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow menu-item-card">
                         <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
-                            <img src="banana.jpg"
-                                onerror="this.src='https://via.placeholder.com/400x300?text=Banana+Roll'"
-                                alt="Banana Roll"
-                                class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
+                            <img src="banana.jpg" onerror="this.src='https://via.placeholder.com/400x300?text=Banana+Roll'" alt="Banana Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
                         </div>
                         <div class="p-6 md:w-2/3 flex flex-col justify-between">
                             <div>
@@ -440,25 +346,20 @@
                                     <span class="text-red-600 font-bold text-lg">$120</span>
                                 </div>
                                 <p class="text-gray-600 text-sm mb-4">
-                                    Plátano macho frito por fuera. Dulce y crujiente.
+                                    <strong>Por dentro:</strong> Queso crema, aguacate y camarón.<br>
+                                    <strong>Por fuera:</strong> Plátano macho frito, ajonjolí y salsa de anguila.
                                 </p>
                             </div>
                             <div class="flex gap-2">
-                                <button onclick="addToCart('Banana Roll (Natural)', 120, 'rollo')"
-                                    class="flex-1 text-xs font-bold uppercase text-gray-600 border border-gray-300 px-2 py-1.5 rounded hover:bg-gray-100 transition">Natural</button>
-                                <button onclick="addToCart('Banana Roll (Empanizado)', 120, 'rollo')"
-                                    class="flex-1 text-xs font-bold uppercase text-white btn-valentine px-2 py-1.5 rounded shadow-md">Empanizado</button>
+                                <button onclick="addToCart('Banana Roll (Natural)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase text-gray-600 border border-gray-300 px-2 py-1.5 rounded hover:bg-gray-100 transition">Natural</button>
+                                <button onclick="addToCart('Banana Roll (Empanizado)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase text-white btn-valentine px-2 py-1.5 rounded shadow-md">Empanizado</button>
                             </div>
                         </div>
                     </div>
 
-                    <div
-                        class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow menu-item-card">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow menu-item-card">
                         <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
-                            <img src="cheese.jpg"
-                                onerror="this.src='https://via.placeholder.com/400x300?text=Cheese+Roll'"
-                                alt="Cheese Roll"
-                                class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
+                            <img src="cheese.jpg" onerror="this.src='https://via.placeholder.com/400x300?text=Cheese+Roll'" alt="Cheese Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
                         </div>
                         <div class="p-6 md:w-2/3 flex flex-col justify-between">
                             <div>
@@ -467,26 +368,20 @@
                                     <span class="text-red-600 font-bold text-lg">$120</span>
                                 </div>
                                 <p class="text-gray-600 text-sm mb-4">
-                                    Pollo empanizado y <strong>mucho queso gratinado spicy</strong>. Para los amantes
-                                    intensos del queso.
+                                    <strong>Por dentro:</strong> Tiras de pollo empanizado, queso crema y aguacate.<br>
+                                    <strong>Por fuera:</strong> Cubierto de queso gratinado spicy, salsa de anguila y ajonjolí.
                                 </p>
                             </div>
                             <div class="flex gap-2">
-                                <button onclick="addToCart('Cheese Roll (Natural)', 120, 'rollo')"
-                                    class="flex-1 text-xs font-bold uppercase text-gray-600 border border-gray-300 px-2 py-1.5 rounded hover:bg-gray-100 transition">Natural</button>
-                                <button onclick="addToCart('Cheese Roll (Empanizado)', 120, 'rollo')"
-                                    class="flex-1 text-xs font-bold uppercase text-white btn-valentine px-2 py-1.5 rounded shadow-md">Empanizado</button>
+                                <button onclick="addToCart('Cheese Roll (Natural)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase text-gray-600 border border-gray-300 px-2 py-1.5 rounded hover:bg-gray-100 transition">Natural</button>
+                                <button onclick="addToCart('Cheese Roll (Empanizado)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase text-white btn-valentine px-2 py-1.5 rounded shadow-md">Empanizado</button>
                             </div>
                         </div>
                     </div>
 
-                    <div
-                        class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow menu-item-card">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow menu-item-card">
                         <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
-                            <img src="california.jpg"
-                                onerror="this.src='https://via.placeholder.com/400x300?text=California+Roll'"
-                                alt="California Roll"
-                                class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
+                            <img src="california.jpg" onerror="this.src='https://via.placeholder.com/400x300?text=California+Roll'" alt="California Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
                         </div>
                         <div class="p-6 md:w-2/3 flex flex-col justify-between">
                             <div>
@@ -495,25 +390,20 @@
                                     <span class="text-red-600 font-bold text-lg">$120</span>
                                 </div>
                                 <p class="text-gray-600 text-sm mb-4">
-                                    Camarón, queso crema y aguacate. El clásico que nunca falla.
+                                    <strong>Por dentro:</strong> Camarón, queso crema, aguacate y pepino.<br>
+                                    <strong>Por fuera:</strong> Tampico.
                                 </p>
                             </div>
                             <div class="flex gap-2">
-                                <button onclick="addToCart('California Roll (Natural)', 120, 'rollo')"
-                                    class="flex-1 text-xs font-bold uppercase text-gray-600 border border-gray-300 px-2 py-1.5 rounded hover:bg-gray-100 transition">Natural</button>
-                                <button onclick="addToCart('California Roll (Empanizado)', 120, 'rollo')"
-                                    class="flex-1 text-xs font-bold uppercase text-white btn-valentine px-2 py-1.5 rounded shadow-md">Empanizado</button>
+                                <button onclick="addToCart('California Roll (Natural)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase text-gray-600 border border-gray-300 px-2 py-1.5 rounded hover:bg-gray-100 transition">Natural</button>
+                                <button onclick="addToCart('California Roll (Empanizado)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase text-white btn-valentine px-2 py-1.5 rounded shadow-md">Empanizado</button>
                             </div>
                         </div>
                     </div>
 
-                    <div
-                        class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow menu-item-card">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow menu-item-card">
                         <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
-                            <img src="nortenito.jpg"
-                                onerror="this.src='https://via.placeholder.com/400x300?text=Nortenito+Roll'"
-                                alt="Norteñito Roll"
-                                class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
+                            <img src="nortenito.jpg" onerror="this.src='https://via.placeholder.com/400x300?text=Nortenito+Roll'" alt="Norteñito Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
                         </div>
                         <div class="p-6 md:w-2/3 flex flex-col justify-between">
                             <div>
@@ -522,14 +412,13 @@
                                     <span class="text-red-600 font-bold text-lg">$120</span>
                                 </div>
                                 <p class="text-gray-600 text-sm mb-4">
-                                    Res sazonada y chiles toreados. Sabor fuerte y decidido.
+                                    <strong>Por dentro:</strong> Res sazonada, queso manchego, aguacate y chiles toreados.<br>
+                                    <strong>Por fuera:</strong> Aderezo de chipotle y salsa de anguila.
                                 </p>
                             </div>
                             <div class="flex gap-2">
-                                <button onclick="addToCart('Norteñito Roll (Natural)', 120, 'rollo')"
-                                    class="flex-1 text-xs font-bold uppercase text-gray-600 border border-gray-300 px-2 py-1.5 rounded hover:bg-gray-100 transition">Natural</button>
-                                <button onclick="addToCart('Norteñito Roll (Empanizado)', 120, 'rollo')"
-                                    class="flex-1 text-xs font-bold uppercase text-white btn-valentine px-2 py-1.5 rounded shadow-md">Empanizado</button>
+                                <button onclick="addToCart('Norteñito Roll (Natural)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase text-gray-600 border border-gray-300 px-2 py-1.5 rounded hover:bg-gray-100 transition">Natural</button>
+                                <button onclick="addToCart('Norteñito Roll (Empanizado)', 120, 'rollo')" class="flex-1 text-xs font-bold uppercase text-white btn-valentine px-2 py-1.5 rounded shadow-md">Empanizado</button>
                             </div>
                         </div>
                     </div>
@@ -538,20 +427,12 @@
             </div>
 
             <div id="rollos-especiales" class="scroll-mt-24">
-                <h2
-                    class="text-3xl font-bold text-black category-header mb-8 text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-pink-600">
-                    ESPECIALES <span
-                        class="text-sm font-normal text-gray-400 ml-2 italic script-font text-2xl text-black">Premium</span>
-                </h2>
+                <h2 class="text-3xl font-bold text-black category-header mb-8 text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-pink-600">ESPECIALES <span class="text-sm font-normal text-gray-400 ml-2 italic script-font text-2xl text-black">Premium</span></h2>
                 <div class="grid lg:grid-cols-2 gap-8">
-
-                    <div
-                        class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow menu-item-card">
+                    
+                    <div id="diabla-roll-target" class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow menu-item-card">
                         <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
-                            <img src="diabla.jpg"
-                                onerror="this.src='https://via.placeholder.com/400x300?text=Diabla+Roll'"
-                                alt="A la Diabla Roll"
-                                class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
+                            <img src="diabla.jpg" onerror="this.src='https://via.placeholder.com/400x300?text=Diabla+Roll'" alt="A la Diabla Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
                         </div>
                         <div class="p-6 md:w-2/3 flex flex-col justify-between">
                             <div>
@@ -560,25 +441,20 @@
                                     <span class="text-red-600 font-bold text-lg">$150</span>
                                 </div>
                                 <p class="text-gray-600 text-sm mb-4">
-                                    Camarón en salsa a la diabla por fuera. <strong>Picante y apasionado.</strong>
+                                    <strong>Por dentro:</strong> Queso crema, aguacate y pepino.<br>
+                                    <strong>Por fuera:</strong> Trocitos de camarón en salsa a la diabla.
                                 </p>
                             </div>
                             <div class="flex gap-2">
-                                <button onclick="addToCart('A la Diabla Roll (Natural)', 150, 'rollo')"
-                                    class="flex-1 text-xs font-bold uppercase text-gray-600 border border-gray-300 px-2 py-1.5 rounded hover:bg-gray-100 transition">Natural</button>
-                                <button onclick="addToCart('A la Diabla Roll (Empanizado)', 150, 'rollo')"
-                                    class="flex-1 text-xs font-bold uppercase text-white btn-valentine px-2 py-1.5 rounded shadow-md">Empanizado</button>
+                                <button onclick="addToCart('A la Diabla Roll (Natural)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase text-gray-600 border border-gray-300 px-2 py-1.5 rounded hover:bg-gray-100 transition">Natural</button>
+                                <button onclick="addToCart('A la Diabla Roll (Empanizado)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase text-white btn-valentine px-2 py-1.5 rounded shadow-md">Empanizado</button>
                             </div>
                         </div>
                     </div>
 
-                    <div
-                        class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow menu-item-card">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow menu-item-card">
                         <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
-                            <img src="kamikaze.jpg"
-                                onerror="this.src='https://via.placeholder.com/400x300?text=Kamikaze+Roll'"
-                                alt="Kamikaze Roll"
-                                class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
+                            <img src="kamikaze.jpg" onerror="this.src='https://via.placeholder.com/400x300?text=Kamikaze+Roll'" alt="Kamikaze Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
                         </div>
                         <div class="p-6 md:w-2/3 flex flex-col justify-between">
                             <div>
@@ -587,21 +463,17 @@
                                     <span class="text-red-600 font-bold text-lg">$150</span>
                                 </div>
                                 <p class="text-gray-600 text-sm mb-4">
-                                    Salmón flameado por fuera. Elegante y delicioso.
+                                    <strong>Por dentro:</strong> Queso crema, aguacate y pepino.<br>
+                                    <strong>Por fuera:</strong> Salmón flameado y salsa de anguila.
                                 </p>
                             </div>
-                            <button onclick="addToCart('Kamikaze Roll', 150, 'rollo')"
-                                class="self-start text-xs font-bold uppercase tracking-wider btn-valentine px-6 py-2 rounded-full shadow-md w-full md:w-auto">Ordenar</button>
+                            <button onclick="addToCart('Kamikaze Roll', 150, 'rollo')" class="self-start text-xs font-bold uppercase tracking-wider btn-valentine px-6 py-2 rounded-full shadow-md w-full md:w-auto">Ordenar</button>
                         </div>
                     </div>
 
-                    <div
-                        class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow menu-item-card">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow menu-item-card">
                         <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
-                            <img src="grinch.jpg"
-                                onerror="this.src='https://via.placeholder.com/400x300?text=Grinch+Roll'"
-                                alt="Grinch Roll"
-                                class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
+                            <img src="grinch.jpg" onerror="this.src='https://via.placeholder.com/400x300?text=Grinch+Roll'" alt="Grinch Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
                         </div>
                         <div class="p-6 md:w-2/3 flex flex-col justify-between">
                             <div>
@@ -610,26 +482,20 @@
                                     <span class="text-red-600 font-bold text-lg">$150</span>
                                 </div>
                                 <p class="text-gray-600 text-sm mb-4">
-                                    Queso crema, tampico y camarones empanizados. Cubierto de aguacate.
+                                    <strong>Por dentro:</strong> Queso crema, tampico y camarones empanizados.<br>
+                                    <strong>Por fuera:</strong> Aguacate y mezcla de ajonjolí con tampico.
                                 </p>
                             </div>
-
-                            <button onclick="addToCart('Grinch Roll', 150, 'rollo')"
-                                class="self-start text-xs font-bold uppercase tracking-wider btn-valentine px-6 py-2 rounded-full shadow-md w-full md:w-auto">Ordenar</button>
+                            
+                            <button onclick="addToCart('Grinch Roll', 150, 'rollo')" class="self-start text-xs font-bold uppercase tracking-wider btn-valentine px-6 py-2 rounded-full shadow-md w-full md:w-auto">Ordenar</button>
                         </div>
                     </div>
 
-                    <div id="aguachile-roll-target"
-                        class="bg-white rounded-xl shadow-md overflow-hidden border-2 border-pink-200 flex flex-col md:flex-row h-full hover:shadow-xl transition-shadow menu-item-card relative">
-                        <div
-                            class="absolute top-0 right-0 bg-pink-500 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg z-10">
-                            BEST SELLER</div>
-
+                    <div id="aguachile-roll-target" class="bg-white rounded-xl shadow-md overflow-hidden border-2 border-pink-200 flex flex-col md:flex-row h-full hover:shadow-xl transition-shadow menu-item-card relative">
+                        <div class="absolute top-0 right-0 bg-pink-500 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg z-10">BEST SELLER</div>
+                        
                         <div class="md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
-                            <img src="aguachile.jpg"
-                                onerror="this.src='https://via.placeholder.com/400x300?text=Aguachile+Roll'"
-                                alt="Aguachile Roll"
-                                class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
+                            <img src="aguachile.jpg" onerror="this.src='https://via.placeholder.com/400x300?text=Aguachile+Roll'" alt="Aguachile Roll" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
                         </div>
                         <div class="p-6 md:w-2/3 flex flex-col justify-between bg-gradient-to-br from-white to-pink-50">
                             <div>
@@ -638,14 +504,13 @@
                                     <span class="text-red-600 font-bold text-lg">$150</span>
                                 </div>
                                 <p class="text-gray-600 text-sm mb-4">
-                                    Pepino, queso crema y aguacate. Bañado en aguachile de camarón y mango.
+                                    <strong>Por dentro:</strong> Pepino, queso crema y aguacate.<br>
+                                    <strong>Por fuera:</strong> Aguachile de camarón con mango fresco.
                                 </p>
                             </div>
                             <div class="flex gap-2">
-                                <button onclick="addToCart('Aguachile Roll (Natural)', 150, 'rollo')"
-                                    class="flex-1 text-xs font-bold uppercase text-gray-600 border border-gray-300 px-2 py-1.5 rounded hover:bg-gray-100 transition">Natural</button>
-                                <button onclick="addToCart('Aguachile Roll (Empanizado)', 150, 'rollo')"
-                                    class="flex-1 text-xs font-bold uppercase text-white btn-valentine px-2 py-1.5 rounded shadow-md">Empanizado</button>
+                                <button onclick="addToCart('Aguachile Roll (Natural)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase text-gray-600 border border-gray-300 px-2 py-1.5 rounded hover:bg-gray-100 transition">Natural</button>
+                                <button onclick="addToCart('Aguachile Roll (Empanizado)', 150, 'rollo')" class="flex-1 text-xs font-bold uppercase text-white btn-valentine px-2 py-1.5 rounded shadow-md">Empanizado</button>
                             </div>
                         </div>
                     </div>
@@ -656,164 +521,119 @@
         </section>
 
         <section id="wok" class="mb-16 scroll-mt-24">
-            <h2 class="text-3xl font-bold mb-8 text-black category-header">WOK & BOWLS <span
-                    class="text-sm font-normal text-gray-400 ml-2 italic script-font text-2xl">Hecho con amor</span>
-            </h2>
-
+            <h2 class="text-3xl font-bold mb-8 text-black category-header">WOK & BOWLS <span class="text-sm font-normal text-gray-400 ml-2 italic script-font text-2xl">Hecho con amor</span></h2>
+            
             <div class="grid lg:grid-cols-2 gap-8">
-                <div
-                    class="bg-white border-t-4 border-pink-500 shadow-md rounded-b-lg h-full overflow-hidden hover:shadow-xl transition-shadow menu-item-card">
+                <div class="bg-white border-t-4 border-pink-500 shadow-md rounded-b-lg h-full overflow-hidden hover:shadow-xl transition-shadow menu-item-card">
                     <div class="h-48 w-full bg-gray-200 relative overflow-hidden group">
-                        <img src="yakimeshi.jpg" onerror="this.src='https://via.placeholder.com/600x200?text=Yakimeshi'"
-                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                        <img src="yakimeshi.jpg" onerror="this.src='https://via.placeholder.com/600x200?text=Yakimeshi'" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-8">
                         <div class="flex justify-between items-center mb-4 border-b border-pink-100 pb-2">
                             <h3 class="text-2xl font-bold uppercase tracking-wide brand-font">Yakimeshi</h3>
-                            <span class="text-4xl text-pink-500 font-bold"
-                                style="font-family: 'Noto Sans JP', sans-serif;">飯</span>
+                            <span class="text-4xl text-pink-500 font-bold" style="font-family: 'Noto Sans JP', sans-serif;">飯</span>
                         </div>
-                        <p class="text-gray-600 italic mb-6">Arroz frito al wok. Reconfortante y delicioso.</p>
-
+                        <p class="text-gray-600 italic mb-6">Arroz frito salteado al wok con calabaza y zanahoria.</p>
+                        
                         <ul class="space-y-3">
-                            <li
-                                class="flex justify-between items-center text-sm text-gray-700 hover:bg-pink-50 p-1 rounded transition-colors">
+                            <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-pink-50 p-1 rounded transition-colors">
                                 <span><i class="fas fa-leaf text-green-600 mr-2"></i>Verduras (Base)</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$70</span>
-                                    <button onclick="addToCart('Yakimeshi Verduras', 70, 'wok')"
-                                        class="text-pink-500 hover:text-pink-700"><i
-                                            class="fas fa-plus-circle fa-lg"></i></button>
+                                    <button onclick="addToCart('Yakimeshi Verduras', 70, 'wok')" class="text-pink-500 hover:text-pink-700"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
-                            <li
-                                class="flex justify-between items-center text-sm text-gray-700 hover:bg-pink-50 p-1 rounded transition-colors">
+                            <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-pink-50 p-1 rounded transition-colors">
                                 <span><i class="fas fa-drumstick-bite text-orange-400 mr-2"></i>Con Pollo</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$100</span>
-                                    <button onclick="addToCart('Yakimeshi Pollo', 100, 'wok')"
-                                        class="text-pink-500 hover:text-pink-700"><i
-                                            class="fas fa-plus-circle fa-lg"></i></button>
+                                    <button onclick="addToCart('Yakimeshi Pollo', 100, 'wok')" class="text-pink-500 hover:text-pink-700"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
-                            <li
-                                class="flex justify-between items-center text-sm text-gray-700 hover:bg-pink-50 p-1 rounded transition-colors">
+                             <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-pink-50 p-1 rounded transition-colors">
                                 <span><i class="fas fa-shrimp text-pink-400 mr-2"></i>Con Camarón</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$120</span>
-                                    <button onclick="addToCart('Yakimeshi Camarón', 120, 'wok')"
-                                        class="text-pink-500 hover:text-pink-700"><i
-                                            class="fas fa-plus-circle fa-lg"></i></button>
+                                    <button onclick="addToCart('Yakimeshi Camarón', 120, 'wok')" class="text-pink-500 hover:text-pink-700"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
-                            <li
-                                class="flex justify-between items-center text-sm text-gray-700 hover:bg-pink-50 p-1 rounded transition-colors">
+                            <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-pink-50 p-1 rounded transition-colors">
                                 <span><i class="fas fa-bacon text-red-400 mr-2"></i>Con Res</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$120</span>
-                                    <button onclick="addToCart('Yakimeshi Res', 120, 'wok')"
-                                        class="text-pink-500 hover:text-pink-700"><i
-                                            class="fas fa-plus-circle fa-lg"></i></button>
+                                    <button onclick="addToCart('Yakimeshi Res', 120, 'wok')" class="text-pink-500 hover:text-pink-700"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
-                            <li
-                                class="flex justify-between items-center text-sm text-gray-700 font-medium bg-gray-50 p-2 rounded">
+                             <li class="flex justify-between items-center text-sm text-gray-700 font-medium bg-gray-50 p-2 rounded">
                                 <span><i class="fas fa-utensils text-gray-500 mr-2"></i>Mixto (2 proteínas)</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$130</span>
-                                    <button onclick="addToCart('Yakimeshi Mixto', 130, 'wok')"
-                                        class="text-pink-500 hover:text-pink-700"><i
-                                            class="fas fa-plus-circle fa-lg"></i></button>
+                                    <button onclick="addToCart('Yakimeshi Mixto', 130, 'wok')" class="text-pink-500 hover:text-pink-700"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
-                            <li
-                                class="flex justify-between items-center text-sm text-gray-700 font-bold bg-pink-50 p-2 rounded text-pink-900 border border-pink-100">
-                                <span><i class="fas fa-star text-yellow-500 mr-2"></i>Especial (3 proteínas +
-                                    Kushiagues)</span>
+                            <li class="flex justify-between items-center text-sm text-gray-700 font-bold bg-pink-50 p-2 rounded text-pink-900 border border-pink-100">
+                                <span><i class="fas fa-star text-yellow-500 mr-2"></i>Especial (3 proteínas + Kushiagues)</span>
                                 <div class="flex items-center gap-2">
                                     <span>$150</span>
-                                    <button onclick="addToCart('Yakimeshi Especial', 150, 'wok')"
-                                        class="text-pink-600 hover:text-pink-800"><i
-                                            class="fas fa-plus-circle fa-lg"></i></button>
+                                    <button onclick="addToCart('Yakimeshi Especial', 150, 'wok')" class="text-pink-600 hover:text-pink-800"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
                         </ul>
                     </div>
                 </div>
 
-                <div
-                    class="bg-white border-t-4 border-pink-500 shadow-md rounded-b-lg h-full overflow-hidden hover:shadow-xl transition-shadow menu-item-card">
+                <div class="bg-white border-t-4 border-pink-500 shadow-md rounded-b-lg h-full overflow-hidden hover:shadow-xl transition-shadow menu-item-card">
                     <div class="h-48 w-full bg-gray-200 relative overflow-hidden group">
-                        <img src="lomein.jpg" onerror="this.src='https://via.placeholder.com/600x200?text=Lo+Mein'"
-                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                        <img src="lomein.jpg" onerror="this.src='https://via.placeholder.com/600x200?text=Lo+Mein'" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-8">
                         <div class="flex justify-between items-center mb-4 border-b border-pink-100 pb-2">
                             <h3 class="text-2xl font-bold uppercase tracking-wide brand-font">Lo Mein</h3>
-                            <span class="text-4xl text-black font-bold"
-                                style="font-family: 'Noto Sans JP', sans-serif;">麵</span>
+                            <span class="text-4xl text-black font-bold" style="font-family: 'Noto Sans JP', sans-serif;">麵</span>
                         </div>
-                        <p class="text-gray-600 italic mb-6">Pasta salteada y pesto de cilantro.</p>
-
+                        <p class="text-gray-600 italic mb-6">Pasta salteada con zanahoria, cebolla, brócoli, champiñones y col morada, bañada en salsa a base de soya, acompañada de pesto de cilantro.</p>
+                        
                         <ul class="space-y-3 mt-8">
-                            <li
-                                class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-1 rounded transition-colors">
+                             <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-1 rounded transition-colors">
                                 <span><i class="fas fa-leaf text-green-600 mr-2"></i>Vegetariano</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$65</span>
-                                    <button onclick="addToCart('Lo Mein Vegetariano', 65, 'wok')"
-                                        class="text-pink-500 hover:text-pink-700"><i
-                                            class="fas fa-plus-circle fa-lg"></i></button>
+                                    <button onclick="addToCart('Lo Mein Vegetariano', 65, 'wok')" class="text-pink-500 hover:text-pink-700"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
-                            <li
-                                class="flex justify-between items-center text-sm text-gray-700 hover:bg-pink-50 p-1 rounded transition-colors">
+                            <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-pink-50 p-1 rounded transition-colors">
                                 <span><i class="fas fa-drumstick-bite text-orange-400 mr-2"></i>Con Pollo</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$80</span>
-                                    <button onclick="addToCart('Lo Mein Pollo', 80, 'wok')"
-                                        class="text-pink-500 hover:text-pink-700"><i
-                                            class="fas fa-plus-circle fa-lg"></i></button>
+                                    <button onclick="addToCart('Lo Mein Pollo', 80, 'wok')" class="text-pink-500 hover:text-pink-700"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
-                            <li
-                                class="flex justify-between items-center text-sm text-gray-700 hover:bg-pink-50 p-1 rounded transition-colors">
+                             <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-pink-50 p-1 rounded transition-colors">
                                 <span><i class="fas fa-bacon text-red-400 mr-2"></i>Con Res</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$80</span>
-                                    <button onclick="addToCart('Lo Mein Res', 80, 'wok')"
-                                        class="text-pink-500 hover:text-pink-700"><i
-                                            class="fas fa-plus-circle fa-lg"></i></button>
+                                    <button onclick="addToCart('Lo Mein Res', 80, 'wok')" class="text-pink-500 hover:text-pink-700"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
-                            <li
-                                class="flex justify-between items-center text-sm text-gray-700 hover:bg-pink-50 p-1 rounded transition-colors">
+                            <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-pink-50 p-1 rounded transition-colors">
                                 <span><i class="fas fa-shrimp text-pink-400 mr-2"></i>Con Camarón</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$95</span>
-                                    <button onclick="addToCart('Lo Mein Camarón', 95, 'wok')"
-                                        class="text-pink-500 hover:text-pink-700"><i
-                                            class="fas fa-plus-circle fa-lg"></i></button>
+                                    <button onclick="addToCart('Lo Mein Camarón', 95, 'wok')" class="text-pink-500 hover:text-pink-700"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
-                            <li
-                                class="flex justify-between items-center text-sm text-gray-700 font-medium bg-gray-50 p-2 rounded">
+                             <li class="flex justify-between items-center text-sm text-gray-700 font-medium bg-gray-50 p-2 rounded">
                                 <span><i class="fas fa-utensils text-gray-500 mr-2"></i>Mixto (Pollo y Res)</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$95</span>
-                                    <button onclick="addToCart('Lo Mein Mixto (Pollo y Res)', 95, 'wok')"
-                                        class="text-pink-500 hover:text-pink-700"><i
-                                            class="fas fa-plus-circle fa-lg"></i></button>
+                                    <button onclick="addToCart('Lo Mein Mixto (Pollo y Res)', 95, 'wok')" class="text-pink-500 hover:text-pink-700"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
-                            <li
-                                class="flex justify-between items-center text-sm text-gray-700 font-bold bg-pink-50 p-2 rounded text-pink-900 border border-pink-100">
+                            <li class="flex justify-between items-center text-sm text-gray-700 font-bold bg-pink-50 p-2 rounded text-pink-900 border border-pink-100">
                                 <span><i class="fas fa-star text-yellow-600 mr-2"></i>Especial (3 proteínas)</span>
                                 <div class="flex items-center gap-2">
                                     <span>$120</span>
-                                    <button onclick="addToCart('Lo Mein Especial', 120, 'wok')"
-                                        class="text-pink-600 hover:text-pink-800"><i
-                                            class="fas fa-plus-circle fa-lg"></i></button>
+                                    <button onclick="addToCart('Lo Mein Especial', 120, 'wok')" class="text-pink-600 hover:text-pink-800"><i class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
                         </ul>
@@ -823,72 +643,55 @@
         </section>
 
         <section id="postres" class="mb-16 scroll-mt-24">
-            <h2 class="text-3xl font-bold mb-8 text-black category-header">POSTRES <span
-                    class="text-sm font-normal text-gray-400 ml-2 italic script-font text-2xl">Sweet Ending</span></h2>
+            <h2 class="text-3xl font-bold mb-8 text-black category-header">POSTRES <span class="text-sm font-normal text-gray-400 ml-2 italic script-font text-2xl">Sweet Ending</span></h2>
             <div class="grid md:grid-cols-2 gap-6">
-                <div
-                    class="menu-item-card bg-white rounded-lg shadow-sm overflow-hidden flex min-h-32 group border border-pink-100 opacity-75">
+                <div class="menu-item-card bg-white rounded-lg shadow-sm overflow-hidden flex min-h-32 group border border-pink-100 opacity-75">
                     <div class="w-32 md:w-40 flex-shrink-0 bg-gray-200 relative overflow-hidden">
-                        <img src="galletas.jpg" onerror="this.src='https://via.placeholder.com/300x300?text=Galletas'"
-                            class="w-full h-full object-cover object-center absolute inset-0 grayscale">
+                        <img src="galletas.jpg" onerror="this.src='https://via.placeholder.com/300x300?text=Galletas'" class="w-full h-full object-cover object-center absolute inset-0 grayscale">
                         <div class="absolute inset-0 flex items-center justify-center bg-black/40">
-                            <span
-                                class="text-white font-bold border-2 border-white px-2 py-1 -rotate-12 tracking-widest">AGOTADO</span>
+                            <span class="text-white font-bold border-2 border-white px-2 py-1 -rotate-12 tracking-widest">AGOTADO</span>
                         </div>
                     </div>
                     <div class="p-4 flex-grow flex flex-col justify-between">
                         <div>
                             <h3 class="text-lg md:text-xl font-bold text-gray-500">Galletas New York</h3>
-                            <p class="text-gray-500 text-xs md:text-sm mt-1">Sabor del amor: <strong
-                                    class="text-gray-500">No disponible hoy</strong></p>
+                            <p class="text-gray-500 text-xs md:text-sm mt-1">Estilo New York. Sabor de hoy: <strong class="text-gray-500">No disponible hoy</strong></p>
                         </div>
                         <div class="flex justify-between items-center mt-2">
                             <span class="text-lg font-bold text-gray-400">$45</span>
-                            <button disabled
-                                class="text-xs bg-gray-300 text-white px-3 py-1.5 rounded-full shadow-md cursor-not-allowed">Agotado</button>
+                            <button disabled class="text-xs bg-gray-300 text-white px-3 py-1.5 rounded-full shadow-md cursor-not-allowed">Agotado</button>
                         </div>
                     </div>
                 </div>
-
-                <div
-                    class="menu-item-card bg-white rounded-lg border border-pink-100 shadow-sm overflow-hidden flex min-h-32 group">
+                
+                 <div class="menu-item-card bg-white rounded-lg border border-pink-100 shadow-sm overflow-hidden flex min-h-32 group">
                     <div class="w-32 md:w-40 flex-shrink-0 bg-gray-200 relative overflow-hidden">
-                        <img src="helado.jpg"
-                            onerror="this.src='https://via.placeholder.com/300x300?text=Tempura+Helado'"
-                            class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition-transform duration-500">
+                        <img src="helado.jpg" onerror="this.src='https://via.placeholder.com/300x300?text=Tempura+Helado'" class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="p-4 flex-grow flex flex-col justify-between">
                         <div>
                             <h3 class="text-lg md:text-xl font-bold text-gray-900">Tempura Helado</h3>
-                            <p class="text-gray-600 text-xs md:text-sm mt-1 line-clamp-2">Helado frito en tempura
-                                crujiente con chocolate.</p>
+                            <p class="text-gray-600 text-xs md:text-sm mt-1 line-clamp-2">Helado frito en tempura crujiente con chocolate.</p>
                         </div>
                         <div class="flex justify-between items-center mt-2">
                             <span class="text-lg font-bold text-gray-900">$75</span>
-                            <button onclick="addToCart('Tempura Helado', 75, 'postre')"
-                                class="text-xs btn-valentine px-3 py-1.5 rounded-full shadow-md"><i
-                                    class="fas fa-plus text-sm"></i></button>
+                            <button onclick="addToCart('Tempura Helado', 75, 'postre')" class="text-xs btn-valentine px-3 py-1.5 rounded-full shadow-md"><i class="fas fa-plus text-sm"></i></button>
                         </div>
                     </div>
                 </div>
 
-                <div
-                    class="menu-item-card bg-white rounded-lg shadow-sm overflow-hidden flex min-h-32 group border border-pink-100">
+                 <div class="menu-item-card bg-white rounded-lg shadow-sm overflow-hidden flex min-h-32 group border border-pink-100">
                     <div class="w-32 md:w-40 flex-shrink-0 bg-gray-200 relative overflow-hidden">
-                        <img src="mochis.jpg" onerror="this.src='https://via.placeholder.com/300x300?text=Mochis'"
-                            class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition-transform duration-500">
+                        <img src="mochis.jpg" onerror="this.src='https://via.placeholder.com/300x300?text=Mochis'" class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="p-4 flex-grow flex flex-col justify-between">
                         <div>
                             <h3 class="text-lg md:text-xl font-bold text-gray-900">Mochis</h3>
-                            <p class="text-gray-600 text-xs md:text-sm mt-1">Pastelillo de arroz. Relleno: <strong
-                                    id="mochi-flavor" class="text-pink-600">Fresa</strong>.</p>
+                            <p class="text-gray-600 text-xs md:text-sm mt-1">Pastelillo de arroz. Relleno: <strong id="mochi-flavor" class="text-pink-600">Fresa</strong>.</p>
                         </div>
                         <div class="flex justify-between items-center mt-2">
                             <span class="text-lg font-bold text-gray-900">$55</span>
-                            <button onclick="addToCart('Mochis', 55, 'postre')"
-                                class="text-xs btn-valentine px-3 py-1.5 rounded-full shadow-md"><i
-                                    class="fas fa-plus text-sm"></i></button>
+                            <button onclick="addToCart('Mochis', 55, 'postre')" class="text-xs btn-valentine px-3 py-1.5 rounded-full shadow-md"><i class="fas fa-plus text-sm"></i></button>
                         </div>
                     </div>
                 </div>
@@ -898,41 +701,33 @@
         <section id="bebidas" class="mb-16 scroll-mt-24">
             <h2 class="text-3xl font-bold mb-8 text-black category-header">BEBIDAS</h2>
             <div class="grid md:grid-cols-2 gap-6">
-                <div
-                    class="menu-item-card bg-white rounded-lg border border-pink-100 shadow-sm overflow-hidden flex min-h-32 group">
-                    <div class="w-32 md:w-40 flex-shrink-0 bg-gray-200 relative overflow-hidden">
-                        <img src="aguas.jpg" onerror="this.src='https://via.placeholder.com/300x300?text=Aguas+Frescas'"
-                            class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition-transform duration-500">
+                <div class="menu-item-card bg-white rounded-lg border border-pink-100 shadow-sm overflow-hidden flex min-h-32 group">
+                     <div class="w-32 md:w-40 flex-shrink-0 bg-gray-200 relative overflow-hidden">
+                        <img src="aguas.jpg" onerror="this.src='https://via.placeholder.com/300x300?text=Aguas+Frescas'" class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="p-4 flex-grow flex justify-between items-center">
                         <div>
                             <h3 class="text-lg md:text-xl font-bold text-gray-900">Aguas Frescas</h3>
-                            <p class="text-gray-600 text-sm mt-1">1lt. Sabores naturales.</p>
+                            <p class="text-gray-600 text-sm mt-1">1lt. Deliciosos sabores naturales del día.</p>
                         </div>
                         <div class="flex flex-col items-end">
                             <span class="text-lg font-bold text-gray-900 mb-1">$35</span>
-                            <button onclick="addToCart('Agua Fresca', 35, 'bebida')"
-                                class="text-xs btn-valentine px-3 py-1.5 rounded-full shadow-md"><i
-                                    class="fas fa-plus text-sm"></i></button>
+                            <button onclick="addToCart('Agua Fresca', 35, 'bebida')" class="text-xs btn-valentine px-3 py-1.5 rounded-full shadow-md"><i class="fas fa-plus text-sm"></i></button>
                         </div>
                     </div>
                 </div>
-                <div
-                    class="menu-item-card bg-white rounded-lg border border-pink-100 shadow-sm overflow-hidden flex min-h-32 group">
-                    <div class="w-32 md:w-40 flex-shrink-0 bg-gray-200 relative overflow-hidden">
-                        <img src="refrescos.jpg" onerror="this.src='https://via.placeholder.com/300x300?text=Refrescos'"
-                            class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition-transform duration-500">
+                 <div class="menu-item-card bg-white rounded-lg border border-pink-100 shadow-sm overflow-hidden flex min-h-32 group">
+                     <div class="w-32 md:w-40 flex-shrink-0 bg-gray-200 relative overflow-hidden">
+                        <img src="refrescos.jpg" onerror="this.src='https://via.placeholder.com/300x300?text=Refrescos'" class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="p-4 flex-grow flex justify-between items-center">
                         <div>
                             <h3 class="text-lg md:text-xl font-bold text-gray-900">Refrescos</h3>
-                            <p class="text-gray-600 text-sm mt-1">600ml. Coca-Cola.</p>
+                            <p class="text-gray-600 text-sm mt-1">600ml. Familia Coca-Cola.</p>
                         </div>
                         <div class="flex flex-col items-end">
                             <span class="text-lg font-bold text-gray-900 mb-1">$30</span>
-                            <button onclick="addToCart('Refresco', 30, 'bebida')"
-                                class="text-xs btn-valentine px-3 py-1.5 rounded-full shadow-md"><i
-                                    class="fas fa-plus text-sm"></i></button>
+                            <button onclick="addToCart('Refresco', 30, 'bebida')" class="text-xs btn-valentine px-3 py-1.5 rounded-full shadow-md"><i class="fas fa-plus text-sm"></i></button>
                         </div>
                     </div>
                 </div>
@@ -941,58 +736,47 @@
 
         <footer class="mt-20 border-t border-pink-200 pt-10 text-center relative">
             <div class="flex justify-center items-center gap-2 mb-4">
-                <span class="text-pink-600 text-2xl heart-beat">♥</span>
+                <span class="text-pink-600 text-2xl heart-beat">♥</span> 
                 <span class="text-2xl font-bold brand-font">WOKAMI</span>
             </div>
             <p class="text-gray-500 text-sm mb-2">Abierto de miércoles a domingo de 2:00 PM a 8:00 PM</p>
-
+            
             <div class="flex justify-center gap-6 mt-4 text-gray-700">
-                <a href="https://www.instagram.com/wokami_sushi?igsh=NWYzYW82dG81eWdm" target="_blank"
-                    class="hover:text-pink-600 transition-colors transform hover:scale-110">
+                <a href="https://www.instagram.com/wokami_sushi?igsh=NWYzYW82dG81eWdm" target="_blank" class="hover:text-pink-600 transition-colors transform hover:scale-110">
                     <i class="fab fa-instagram text-3xl"></i>
                 </a>
-
-                <a href="https://www.facebook.com/share/1DLwFajUXz/" target="_blank"
-                    class="hover:text-blue-600 transition-colors transform hover:scale-110">
+                
+                <a href="https://www.facebook.com/share/1DLwFajUXz/" target="_blank" class="hover:text-blue-600 transition-colors transform hover:scale-110">
                     <i class="fab fa-facebook text-3xl"></i>
                 </a>
-                <a href="javascript:sendOrderGeneric()"
-                    class="hover:text-green-600 transition-colors transform hover:scale-110">
+                 <a href="javascript:sendOrderGeneric()" class="hover:text-green-600 transition-colors transform hover:scale-110">
                     <i class="fab fa-whatsapp text-3xl"></i>
                 </a>
             </div>
 
-            <p class="text-gray-400 text-xs mt-8">© 2026 Wokami Sushi. Hecho con <i
-                    class="fas fa-heart text-pink-400"></i> en La Barca.</p>
+            <p class="text-gray-400 text-xs mt-8">© 2026 Wokami Sushi. Hecho con <i class="fas fa-heart text-pink-400"></i> en La Barca.</p>
         </footer>
 
     </main>
 
     <div id="toast">Producto agregado</div>
 
-    <button onclick="sendOrder()"
-        class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition z-50 flex items-center gap-2 hover:scale-105 transform duration-200 border-2 border-white">
+    <button onclick="sendOrder()" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition z-50 flex items-center gap-2 hover:scale-105 transform duration-200 border-2 border-white">
         <i class="fab fa-whatsapp text-2xl"></i>
         <span class="font-bold hidden md:inline" id="cart-text">Pedir Ahora</span>
     </button>
 
-    <div id="preferences-modal"
-        class="fixed inset-0 bg-black bg-opacity-70 z-[100] hidden flex items-center justify-center p-4 backdrop-blur-sm">
-        <div
-            class="bg-white rounded-xl shadow-2xl w-full max-w-md p-6 relative max-h-[90vh] overflow-y-auto flex flex-col border border-pink-200">
-            <button onclick="toggleModal()"
-                class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 z-10 bg-white rounded-full p-1">
+    <div id="preferences-modal" class="fixed inset-0 bg-black bg-opacity-70 z-[100] hidden flex items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-md p-6 relative max-h-[90vh] overflow-y-auto flex flex-col border border-pink-200">
+            <button onclick="toggleModal()" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 z-10 bg-white rounded-full p-1">
                 <i class="fas fa-times text-xl"></i>
             </button>
-
-            <h3
-                class="text-xl font-bold text-center mb-4 brand-font border-b border-pink-100 pb-2 flex-shrink-0 text-pink-600">
-                Tu Pedido</h3>
-
-            <div id="cart-items-container"
-                class="mb-4 bg-pink-50/50 p-3 rounded-lg border border-pink-100 flex-shrink-0">
+            
+            <h3 class="text-xl font-bold text-center mb-4 brand-font border-b border-pink-100 pb-2 flex-shrink-0 text-pink-600">Tu Pedido</h3>
+            
+            <div id="cart-items-container" class="mb-4 bg-pink-50/50 p-3 rounded-lg border border-pink-100 flex-shrink-0">
                 <ul id="cart-list" class="space-y-2 text-sm mb-3 max-h-32 overflow-y-auto"></ul>
-
+                
                 <div class="border-t border-pink-200 pt-2 space-y-1 text-right text-xs md:text-sm">
                     <div class="flex justify-between text-gray-600">
                         <span>Subtotal:</span>
@@ -1002,7 +786,7 @@
                         <span>Descuento Amor:</span>
                         <span id="modal-discount">-$0</span>
                     </div>
-                    <div id="modal-coupon-row" class="flex justify-between text-green-600 font-bold hidden">
+                     <div id="modal-coupon-row" class="flex justify-between text-green-600 font-bold hidden">
                         <span>Descuento Cupón:</span>
                         <span id="modal-coupon-discount">-$0</span>
                     </div>
@@ -1012,132 +796,96 @@
                     </div>
                 </div>
             </div>
-
+            
             <div class="space-y-6">
                 <div>
-                    <p class="font-bold text-gray-800 mb-2"><i
-                            class="fas fa-utensils mr-2 text-pink-500"></i>¿Cubiertos?</p>
+                    <p class="font-bold text-gray-800 mb-2"><i class="fas fa-utensils mr-2 text-pink-500"></i>¿Cubiertos?</p>
                     <div class="flex gap-4 flex-wrap">
-                        <label
-                            class="flex items-center gap-2 cursor-pointer bg-gray-50 px-3 py-2 rounded hover:bg-gray-100">
-                            <input type="checkbox" name="cutlery" value="Palillos"
-                                class="text-pink-600 focus:ring-pink-500 rounded">
+                        <label class="flex items-center gap-2 cursor-pointer bg-gray-50 px-3 py-2 rounded hover:bg-gray-100">
+                            <input type="checkbox" name="cutlery" value="Palillos" class="text-pink-600 focus:ring-pink-500 rounded">
                             <span class="text-sm">Palillos</span>
                         </label>
-                        <label
-                            class="flex items-center gap-2 cursor-pointer bg-gray-50 px-3 py-2 rounded hover:bg-gray-100">
-                            <input type="checkbox" name="cutlery" value="Tenedores"
-                                class="text-pink-600 focus:ring-pink-500 rounded">
+                         <label class="flex items-center gap-2 cursor-pointer bg-gray-50 px-3 py-2 rounded hover:bg-gray-100">
+                            <input type="checkbox" name="cutlery" value="Tenedores" class="text-pink-600 focus:ring-pink-500 rounded">
                             <span class="text-sm">Tenedores</span>
                         </label>
-                        <label
-                            class="flex items-center gap-2 cursor-pointer bg-gray-50 px-3 py-2 rounded hover:bg-gray-100">
-                            <input type="checkbox" name="cutlery" value="Sin cubiertos"
-                                class="text-pink-600 focus:ring-pink-500 rounded">
+                        <label class="flex items-center gap-2 cursor-pointer bg-gray-50 px-3 py-2 rounded hover:bg-gray-100">
+                            <input type="checkbox" name="cutlery" value="Sin cubiertos" class="text-pink-600 focus:ring-pink-500 rounded">
                             <span class="text-sm">Ninguno</span>
                         </label>
                     </div>
                 </div>
 
-                <div>
+                 <div>
                     <p class="font-bold text-gray-800 mb-2"><i class="fas fa-pepper-hot mr-2 text-pink-500"></i>Soya</p>
                     <div class="flex flex-col gap-2">
                         <label class="flex items-center gap-2 cursor-pointer">
-                            <input type="radio" name="soy_sauce" value="Con Chile (Toreada)"
-                                class="text-pink-600 focus:ring-pink-500">
+                            <input type="radio" name="soy_sauce" value="Con Chile (Toreada)" class="text-pink-600 focus:ring-pink-500">
                             <span class="text-sm">Con Chile (Toreada)</span>
                         </label>
                         <label class="flex items-center gap-2 cursor-pointer">
-                            <input type="radio" name="soy_sauce" value="Sin Chile (Preparada)" checked
-                                class="text-pink-600 focus:ring-pink-500">
+                            <input type="radio" name="soy_sauce" value="Sin Chile (Preparada)" checked class="text-pink-600 focus:ring-pink-500">
                             <span class="text-sm">Sin Chile (Preparada)</span>
                         </label>
-                        <label class="flex items-center gap-2 cursor-pointer">
-                            <input type="radio" name="soy_sauce" value="Sin soya"
-                                class="text-pink-600 focus:ring-pink-500">
+                         <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="soy_sauce" value="Sin soya" class="text-pink-600 focus:ring-pink-500">
                             <span class="text-sm">No necesito soya</span>
                         </label>
                     </div>
                 </div>
-
-                <div>
-                    <p class="font-bold text-gray-800 mb-2"><i class="fas fa-plus-circle mr-2 text-pink-500"></i>Extras
-                    </p>
-                    <label
-                        class="flex items-center gap-2 cursor-pointer bg-red-50 p-2 rounded border border-red-100 mb-2">
-                        <input type="checkbox" name="extra_item" value="Soya Extra" data-price="10"
-                            onchange="updateModalTotals()" class="text-red-600 rounded">
+                
+                 <div>
+                    <p class="font-bold text-gray-800 mb-2"><i class="fas fa-plus-circle mr-2 text-pink-500"></i>Extras</p>
+                    <label class="flex items-center gap-2 cursor-pointer bg-red-50 p-2 rounded border border-red-100 mb-2">
+                        <input type="checkbox" name="extra_item" value="Soya Extra" data-price="10" onchange="updateModalTotals()" class="text-red-600 rounded">
                         <span class="text-sm font-bold text-red-800">Soya Extra (+$10)</span>
                     </label>
-                    <div class="grid grid-cols-2 gap-2">
-                        <label
-                            class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100 border border-gray-100">
-                            <input type="checkbox" name="extra_item" value="Salsa de Anguila" data-price="15"
-                                onchange="updateModalTotals()" class="text-red-600 rounded h-3 w-3">
-                            <span class="text-xs md:text-sm">Anguila (+$15)</span>
-                        </label>
-                        <label
-                            class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100 border border-gray-100">
-                            <input type="checkbox" name="extra_item" value="Aderezo Chipotle" data-price="15"
-                                onchange="updateModalTotals()" class="text-red-600 rounded h-3 w-3">
-                            <span class="text-xs md:text-sm">Chipotle (+$15)</span>
-                        </label>
-                        <label
-                            class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100 border border-gray-100">
-                            <input type="checkbox" name="extra_item" value="Sriracha" data-price="15"
-                                onchange="updateModalTotals()" class="text-red-600 rounded h-3 w-3">
-                            <span class="text-xs md:text-sm">Sriracha (+$15)</span>
-                        </label>
-                        <label
-                            class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100 border border-gray-100">
-                            <input type="checkbox" name="extra_item" value="Pesto de Cilantro" data-price="15"
-                                onchange="updateModalTotals()" class="text-red-600 rounded h-3 w-3">
-                            <span class="text-xs md:text-sm">Pesto (+$15)</span>
-                        </label>
-                        <label
-                            class="flex items-center gap-2 cursor-pointer bg-yellow-50 p-2 rounded hover:bg-yellow-100 border border-yellow-100">
-                            <input type="checkbox" name="extra_item" value="Extra Queso Philadelphia" data-price="20"
-                                onchange="updateModalTotals()" class="text-red-600 rounded h-3 w-3">
-                            <span class="text-xs md:text-sm font-medium">Philadelphia (+$20)</span>
-                        </label>
-                        <label
-                            class="flex items-center gap-2 cursor-pointer bg-yellow-50 p-2 rounded hover:bg-yellow-100 border border-yellow-100">
-                            <input type="checkbox" name="extra_item" value="Extra Queso Manchego" data-price="20"
-                                onchange="updateModalTotals()" class="text-red-600 rounded h-3 w-3">
-                            <span class="text-xs md:text-sm font-medium">Manchego (+$20)</span>
-                        </label>
+                     <div class="grid grid-cols-2 gap-2">
+                            <label class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100 border border-gray-100">
+                                <input type="checkbox" name="extra_item" value="Salsa de Anguila" data-price="15" onchange="updateModalTotals()" class="text-red-600 rounded h-3 w-3">
+                                <span class="text-xs md:text-sm">Anguila (+$15)</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100 border border-gray-100">
+                                <input type="checkbox" name="extra_item" value="Aderezo Chipotle" data-price="15" onchange="updateModalTotals()" class="text-red-600 rounded h-3 w-3">
+                                <span class="text-xs md:text-sm">Chipotle (+$15)</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100 border border-gray-100">
+                                <input type="checkbox" name="extra_item" value="Sriracha" data-price="15" onchange="updateModalTotals()" class="text-red-600 rounded h-3 w-3">
+                                <span class="text-xs md:text-sm">Sriracha (+$15)</span>
+                            </label>
+                             <label class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100 border border-gray-100">
+                                <input type="checkbox" name="extra_item" value="Pesto de Cilantro" data-price="15" onchange="updateModalTotals()" class="text-red-600 rounded h-3 w-3">
+                                <span class="text-xs md:text-sm">Pesto (+$15)</span>
+                            </label>
+                             <label class="flex items-center gap-2 cursor-pointer bg-yellow-50 p-2 rounded hover:bg-yellow-100 border border-yellow-100">
+                                <input type="checkbox" name="extra_item" value="Extra Queso Philadelphia" data-price="20" onchange="updateModalTotals()" class="text-red-600 rounded h-3 w-3">
+                                <span class="text-xs md:text-sm font-medium">Philadelphia (+$20)</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer bg-yellow-50 p-2 rounded hover:bg-yellow-100 border border-yellow-100">
+                                <input type="checkbox" name="extra_item" value="Extra Queso Manchego" data-price="20" onchange="updateModalTotals()" class="text-red-600 rounded h-3 w-3">
+                                <span class="text-xs md:text-sm font-medium">Manchego (+$20)</span>
+                            </label>
                     </div>
                 </div>
 
                 <div class="mb-4 pt-4 border-t border-pink-100">
-                    <p class="font-bold text-gray-800 mb-2"><i class="fas fa-ticket-alt mr-2 text-pink-500"></i>Cupón
-                    </p>
+                    <p class="font-bold text-gray-800 mb-2"><i class="fas fa-ticket-alt mr-2 text-pink-500"></i>Cupón</p>
                     <div class="flex gap-2">
-                        <input type="text" id="coupon-code"
-                            class="flex-1 text-sm border border-pink-200 rounded p-2 uppercase focus:ring-pink-500"
-                            placeholder="Código">
-                        <button onclick="applyCoupon()"
-                            class="bg-gray-800 text-white px-4 py-2 rounded text-sm font-bold hover:bg-black transition-colors">Aplicar</button>
+                        <input type="text" id="coupon-code" class="flex-1 text-sm border border-pink-200 rounded p-2 uppercase focus:ring-pink-500" placeholder="Código">
+                        <button onclick="applyCoupon()" class="bg-gray-800 text-white px-4 py-2 rounded text-sm font-bold hover:bg-black transition-colors">Aplicar</button>
                     </div>
                     <p id="coupon-message" class="text-xs mt-1 font-bold"></p>
                 </div>
 
                 <div>
-                    <textarea id="delivery-address" rows="2"
-                        class="w-full text-sm border border-gray-300 rounded p-2 bg-gray-50 focus:border-pink-500 outline-none"
-                        placeholder="📍 Dirección de entrega..."></textarea>
-                    <textarea id="order-notes" rows="2"
-                        class="w-full text-sm border border-gray-300 rounded p-2 bg-gray-50 focus:border-pink-500 outline-none mt-2"
-                        placeholder="📝 Notas especiales..."></textarea>
+                    <textarea id="delivery-address" rows="2" class="w-full text-sm border border-gray-300 rounded p-2 bg-gray-50 focus:border-pink-500 outline-none" placeholder="📍 Dirección de entrega..."></textarea>
+                    <textarea id="order-notes" rows="2" class="w-full text-sm border border-gray-300 rounded p-2 bg-gray-50 focus:border-pink-500 outline-none mt-2" placeholder="📝 Notas especiales..."></textarea>
                 </div>
             </div>
 
             <div class="mt-8 flex gap-3">
-                <button onclick="toggleModal()"
-                    class="flex-1 px-4 py-2 border border-gray-300 rounded text-gray-600 hover:bg-gray-100 text-sm font-bold">Seguir
-                    Pidiendo</button>
-                <button onclick="submitOrderWithPreferences()"
-                    class="flex-1 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 text-sm font-bold flex items-center justify-center gap-2">
+                <button onclick="toggleModal()" class="flex-1 px-4 py-2 border border-gray-300 rounded text-gray-600 hover:bg-gray-100 text-sm font-bold">Seguir Pidiendo</button>
+                <button onclick="submitOrderWithPreferences()" class="flex-1 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 text-sm font-bold flex items-center justify-center gap-2">
                     <i class="fab fa-whatsapp"></i> Enviar
                 </button>
             </div>
@@ -1145,7 +893,7 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             updateDynamicContent();
             initSmoothScroll();
             updateCartButton();
@@ -1153,13 +901,13 @@
 
         function updateDynamicContent() {
             const now = new Date();
-            const dayOfWeek = now.getDay();
+            const dayOfWeek = now.getDay(); 
             const hour = now.getHours();
             const minutes = now.getMinutes();
 
             const statusBadge = document.getElementById('status-badge');
-            const isOpenDay = (dayOfWeek >= 3) || (dayOfWeek === 0);
-
+            const isOpenDay = (dayOfWeek >= 3) || (dayOfWeek === 0); 
+            
             if (isOpenDay) {
                 if (hour >= 14 && hour < 20) {
                     statusBadge.textContent = "ABIERTO";
@@ -1184,7 +932,7 @@
             let cookieFlavor = "No disponible hoy 😢"; // [FEBRERO] ACTUALIZADO POR STATUS AGOTADO
             let mochiFlavor = "Fresa";
 
-            switch (dayOfWeek) {
+            switch(dayOfWeek) {
                 case 3: // Miércoles
                     promoMessage = "💘 CITA WOKERA: ¡3x2 en Yakimeshis! Invita a esa persona especial.";
                     break;
@@ -1214,13 +962,13 @@
 
         let cart = [];
         let appliedCouponCode = null;
-        const phoneNumber = "5214433580280";
+        const phoneNumber = "5214433580280"; 
 
         function addToCart(name, price, category = 'other') {
-            cart.push({ name: name, price: price, category: category });
+            cart.push({name: name, price: price, category: category});
             updateCartButton();
             // [FEBRERO] TOAST CON EMOJI DE CORAZON. REVERTIR: Quitar el "❤️"
-            showToast(`❤️ Agregado: ${name}`);
+            showToast(`❤️ Agregado: ${name}`); 
         }
 
         function removeFromCart(index) {
@@ -1241,16 +989,16 @@
             let subtotal = 0;
             let discount = 0;
 
-            const wokItems = cart.filter(i => i.category === 'wok').sort((a, b) => a.price - b.price);
+            const wokItems = cart.filter(i => i.category === 'wok').sort((a,b) => a.price - b.price);
             const classicRolls = cart.filter(i => i.category === 'rollo' && i.price === 120);
-            const cookieItems = cart.filter(i => i.name === 'Galletas New York').sort((a, b) => a.price - b.price);
-
+            const cookieItems = cart.filter(i => i.name === 'Galletas New York').sort((a,b) => a.price - b.price);
+            
             cart.forEach(item => subtotal += item.price);
 
             // 3x2 Wok (Miercoles)
-            if (day === 3) {
+            if (day === 3) { 
                 const freeCount = Math.floor(wokItems.length / 3);
-                for (let i = 0; i < freeCount; i++) discount += wokItems[i].price;
+                for(let i=0; i<freeCount; i++) discount += wokItems[i].price;
             }
             // 3 Rollos x $300 (Viernes)
             if (day === 5) {
@@ -1260,7 +1008,7 @@
             // 3x2 Galletas (Domingo)
             if (day === 0) {
                 const freeCount = Math.floor(cookieItems.length / 3);
-                for (let i = 0; i < freeCount; i++) discount += cookieItems[i].price;
+                for(let i=0; i<freeCount; i++) discount += cookieItems[i].price;
             }
 
             return { subtotal, discount, total: subtotal - discount };
@@ -1293,14 +1041,14 @@
                     e.preventDefault();
                     const targetId = this.getAttribute('href');
                     const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    if(targetElement){
+                         targetElement.scrollIntoView({ behavior: 'smooth' });
                     }
                     document.getElementById('mobile-menu').classList.add('hidden');
                 });
             });
         }
-
+        
         function toggleModal() {
             const modal = document.getElementById('preferences-modal');
             modal.classList.toggle('hidden');
@@ -1311,15 +1059,15 @@
             const { subtotal, discount: dailyDiscount } = calculateCart();
             let extrasCost = 0;
             document.querySelectorAll('input[name="extra_item"]:checked').forEach(c => extrasCost += parseInt(c.dataset.price || 0));
-
+            
             let couponDiscount = 0;
             if (dailyDiscount === 0) {
-                if (appliedCouponCode === 'WOK5') couponDiscount = Math.round(subtotal * 0.05);
+                if (appliedCouponCode === 'WOK5') couponDiscount = Math.round(subtotal * 0.05); 
                 else if (appliedCouponCode === 'PREPA10' || appliedCouponCode === 'FAMILIA') couponDiscount = Math.round(subtotal * 0.10);
             }
 
             const finalTotal = subtotal + extrasCost - dailyDiscount - couponDiscount;
-
+            
             document.getElementById('modal-subtotal').innerText = `$${subtotal + extrasCost}`;
             const discountRow = document.getElementById('modal-discount-row');
             if (dailyDiscount > 0) {
@@ -1328,7 +1076,7 @@
                 document.getElementById('modal-coupon-row').classList.add('hidden');
             } else {
                 discountRow.classList.add('hidden');
-                if (couponDiscount > 0) {
+                 if (couponDiscount > 0) {
                     document.getElementById('modal-coupon-row').classList.remove('hidden');
                     document.getElementById('modal-coupon-discount').innerText = `-$${couponDiscount}`;
                 } else {
@@ -1352,64 +1100,64 @@
         }
 
         function applyCoupon() {
-            const codeInput = document.getElementById('coupon-code');
-            const messageEl = document.getElementById('coupon-message');
-            const addressField = document.getElementById('delivery-address');
-            const code = codeInput.value.trim().toUpperCase();
-            const { discount } = calculateCart();
-            const now = new Date();
-            const day = now.getDay();
-            const isWeekend = (day === 0 || day === 6);
+             const codeInput = document.getElementById('coupon-code');
+             const messageEl = document.getElementById('coupon-message');
+             const addressField = document.getElementById('delivery-address'); 
+             const code = codeInput.value.trim().toUpperCase();
+             const { discount } = calculateCart();
+             const now = new Date();
+             const day = now.getDay();
+             const isWeekend = (day === 0 || day === 6);
 
-            // Reseteo visual
-            addressField.style.backgroundColor = "";
+             // Reseteo visual
+             addressField.style.backgroundColor = ""; 
 
-            if (discount > 0) {
+             if (discount > 0) {
                 messageEl.className = "text-xs mt-1 font-bold text-red-600";
                 // [FEBRERO] TEXTO ERROR CUPON
                 messageEl.innerText = "Este cupón no es acumulable con las promociones de San Valentín.";
                 appliedCouponCode = null;
                 updateModalTotals();
                 return;
-            }
+             }
 
-            if (code === 'WOK5') {
-                appliedCouponCode = 'WOK5';
-                messageEl.className = "text-xs mt-1 font-bold text-green-600";
-                messageEl.innerText = "¡Cupón aplicado! (5% Descuento)";
-            } else if (code === 'PREPA10') {
-                if (isWeekend) {
-                    messageEl.className = "text-xs mt-1 font-bold text-red-600";
-                    messageEl.innerText = "Válido solo entre semana (Mié-Vie).";
-                    appliedCouponCode = null;
-                } else {
-                    appliedCouponCode = 'PREPA10';
-                    messageEl.className = "text-xs mt-1 font-bold text-green-600";
-                    messageEl.innerText = "¡Cupón PREPA10 aplicado! (10% Descuento)";
-                    addressField.value = "Escuela Preparatoria Regional De La Barca UDEG";
-                }
-            } else if (code === 'FAMILIA') {
-                if (day !== 0) {
-                    messageEl.className = "text-xs mt-1 font-bold text-red-600";
-                    messageEl.innerText = "Válido solo los domingos.";
-                    appliedCouponCode = null;
-                } else {
-                    appliedCouponCode = 'FAMILIA';
-                    messageEl.className = "text-xs mt-1 font-bold text-green-600";
-                    messageEl.innerText = "¡Cupón FAMILIA aplicado! (10% Descuento)";
-                }
-            } else {
-                appliedCouponCode = null;
-                messageEl.className = "text-xs mt-1 font-bold text-red-600";
-                messageEl.innerText = "Código inválido";
-            }
-            updateModalTotals();
+             if (code === 'WOK5') {
+                 appliedCouponCode = 'WOK5';
+                 messageEl.className = "text-xs mt-1 font-bold text-green-600";
+                 messageEl.innerText = "¡Cupón aplicado! (5% Descuento)";
+             } else if (code === 'PREPA10') {
+                 if (isWeekend) {
+                     messageEl.className = "text-xs mt-1 font-bold text-red-600";
+                     messageEl.innerText = "Válido solo entre semana (Mié-Vie).";
+                     appliedCouponCode = null;
+                 } else {
+                     appliedCouponCode = 'PREPA10';
+                     messageEl.className = "text-xs mt-1 font-bold text-green-600";
+                     messageEl.innerText = "¡Cupón PREPA10 aplicado! (10% Descuento)";
+                     addressField.value = "Escuela Preparatoria Regional De La Barca UDEG";
+                 }
+             } else if (code === 'FAMILIA') {
+                 if (day !== 0) {
+                     messageEl.className = "text-xs mt-1 font-bold text-red-600";
+                     messageEl.innerText = "Válido solo los domingos.";
+                     appliedCouponCode = null;
+                 } else {
+                     appliedCouponCode = 'FAMILIA';
+                     messageEl.className = "text-xs mt-1 font-bold text-green-600";
+                     messageEl.innerText = "¡Cupón FAMILIA aplicado! (10% Descuento)";
+                 }
+             } else {
+                 appliedCouponCode = null;
+                 messageEl.className = "text-xs mt-1 font-bold text-red-600";
+                 messageEl.innerText = "Código inválido";
+             }
+             updateModalTotals();
         }
-
+        
         function sendOrder() {
-            if (cart.length === 0) {
-                window.open("https://wa.me/message/P4FK7RF2G2RWH1", "_blank");
-                return;
+            if(cart.length === 0) {
+                 window.open("https://wa.me/message/P4FK7RF2G2RWH1", "_blank");
+                 return;
             }
             renderCartItems();
             document.getElementById('preferences-modal').classList.remove('hidden');
@@ -1430,7 +1178,7 @@
 
             const extraItems = [];
             let totalExtrasCost = 0;
-
+            
             document.querySelectorAll('input[name="extra_item"]:checked').forEach(checkbox => {
                 const price = parseInt(checkbox.dataset.price || 0);
                 extraItems.push(`${checkbox.value} ($${price})`);
@@ -1438,27 +1186,27 @@
             });
 
             const { subtotal, discount: dailyDiscount } = calculateCart();
-
+            
             let couponDiscount = 0;
             if (dailyDiscount === 0) {
-                if (appliedCouponCode === 'WOK5') couponDiscount = Math.round(subtotal * 0.05);
+                if (appliedCouponCode === 'WOK5') couponDiscount = Math.round(subtotal * 0.05); 
                 else if (appliedCouponCode === 'PREPA10' || appliedCouponCode === 'FAMILIA') couponDiscount = Math.round(subtotal * 0.10);
             }
 
             const finalTotal = subtotal + totalExtrasCost - dailyDiscount - couponDiscount;
-
+            
             // [FEBRERO] SALUDO WHATSAPP. REVERTIR: Quitar emoji 💘 y "para San Valentín"
             let message = "Hola Wokami! 💘 Quiero ordenar para San Valentín:%0A";
-
+            
             cart.forEach((item) => {
                 message += `- ${item.name} ($${item.price})%0A`;
             });
-
+            
             if (extraItems.length > 0) {
                 message += `%0A--- Extras ($${totalExtrasCost}) ---%0A`;
                 extraItems.forEach(itemStr => message += `+ ${itemStr}%0A`);
             }
-
+            
             if (dailyDiscount > 0) {
                 message += `%0ASubtotal: $${subtotal + totalExtrasCost}`;
                 // [FEBRERO] LABEL DESCUENTO. REVERTIR A: "Descuento Promo"
@@ -1467,9 +1215,9 @@
                 message += `%0ASubtotal: $${subtotal + totalExtrasCost}`;
                 message += `%0ADescuento Cupón (${appliedCouponCode}): -$${couponDiscount}`;
             }
-
+            
             message += `%0ATotal Final: $${finalTotal}`;
-
+            
             message += `%0A%0A--- Preferencias ---%0A`;
             message += `🥢 Cubiertos: ${cutleryString}%0A`;
             message += `🍶 Soya: ${soySauce}`;
@@ -1481,17 +1229,16 @@
             if (notes) {
                 message += `%0A📝 Notas: ${encodeURIComponent(notes)}`;
             }
-
+            
             message += "%0A%0A(Envía este mensaje para confirmar tu pedido)";
-
+            
             window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
             toggleModal();
         }
 
         function sendOrderGeneric() {
-            window.open("https://wa.me/message/P4FK7RF2G2RWH1", "_blank");
+             window.open("https://wa.me/message/P4FK7RF2G2RWH1", "_blank");
         }
     </script>
 </body>
-
 </html>
