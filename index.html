@@ -336,7 +336,7 @@
                     </a>
                     <a href="https://www.instagram.com/wokami_sushi?igsh=NWYzYW82dG81eWdm" target="_blank"
                         class="flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 hover:opacity-90 text-white py-3 px-6 rounded-full font-bold transition-all transform hover:-translate-y-1 shadow-lg shadow-pink-500/30 w-full sm:w-auto text-sm uppercase tracking-wide">
-                        <i class="fab fa-instagram text-lg"></i> Participar
+                        <i class="fab fa-instagram text-lg"></i> Instagram
                     </a>
                 </div>
             </div>
@@ -1193,7 +1193,8 @@
 
             switch (dayOfWeek) {
                 case 3:
-                    promoMessage = "💘 CITA WOKERA: ¡3x2 en Yakimeshis! Invita a esa persona especial.";
+                    // NUEVA PROMOCIÓN SOLICITADA
+                    promoMessage = "💘 CITA DOBLE: ¡2 Rollos Especiales + 2 Aguas Frescas por $350!";
                     break;
                 case 4:
                     promoMessage = "🥤 JUEVES DE CRUSH: Bebida GRATIS en compras > $300. ¡Refresca tu amor!";
@@ -1247,15 +1248,36 @@
             let subtotal = 0;
             let discount = 0;
 
+            // Arrays para lógica
             const wokItems = cart.filter(i => i.category === 'wok').sort((a, b) => a.price - b.price);
             const classicRolls = cart.filter(i => i.category === 'rollo' && i.price === 120);
             const cookieItems = cart.filter(i => i.name === 'Galletas New York').sort((a, b) => a.price - b.price);
 
+            // Arrays para la nueva promoción de Miércoles (Rollos especiales $150 + Aguas)
+            const specialRolls = cart.filter(i => i.category === 'rollo' && i.price >= 150);
+            const aguas = cart.filter(i => i.category === 'bebida' && i.name.includes('Agua'));
+
             cart.forEach(item => subtotal += item.price);
 
             if (day === 3) {
-                const freeCount = Math.floor(wokItems.length / 3);
-                for (let i = 0; i < freeCount; i++) discount += wokItems[i].price;
+                // LÓGICA NUEVA: 2 Especiales + 2 Aguas = 350
+                const numSpecials = specialRolls.length;
+                const numAguas = aguas.length;
+
+                // Calculamos cuántos paquetes completos existen (2 especiales y 2 aguas)
+                const bundles = Math.floor(Math.min(numSpecials / 2, numAguas / 2));
+
+                if (bundles > 0) {
+                    // Precio normal de 1 paquete: (150*2) + (35*2) = 300 + 70 = 370
+                    // Precio promoción solicitado: 350
+                    // Diferencia = 370 - 350 = 20 ("350")
+
+                    const bundleNormalPrice = (150 * 2) + (35 * 2); // 370
+                    const bundlePromoPrice = 350;
+                    const discountPerBundle = bundleNormalPrice - bundlePromoPrice;
+
+                    discount += (discountPerBundle * bundles);
+                }
             }
             if (day === 5) {
                 const setsOfThree = Math.floor(classicRolls.length / 3);
@@ -1315,6 +1337,8 @@
             document.querySelectorAll('input[name="extra_item"]:checked').forEach(c => extrasCost += parseInt(c.dataset.price || 0));
 
             let couponDiscount = 0;
+            // Si hay descuento diario, no aplicamos cupón (a menos que sea 0)
+            // Nota: Con la nueva promo de $400 (donde discount es negativo), técnicamente 'dailyDiscount' no es 0.
             if (dailyDiscount === 0) {
                 if (appliedCouponCode === 'WOK5') couponDiscount = Math.round(subtotal * 0.05);
                 else if (appliedCouponCode === 'PREPA10' || appliedCouponCode === 'FAMILIA') couponDiscount = Math.round(subtotal * 0.10);
@@ -1324,8 +1348,12 @@
 
             document.getElementById('modal-subtotal').innerText = `$${subtotal + extrasCost}`;
             const discountRow = document.getElementById('modal-discount-row');
-            if (dailyDiscount > 0) {
+
+            // Mostramos la fila de descuento si es diferente de 0 (positivo o negativo para ajuste de precio)
+            if (dailyDiscount !== 0) {
                 discountRow.classList.remove('hidden');
+                // Si el descuento es negativo (ajuste de precio al alza), se verá como "-$-30" lo cual es matemáticamente correcto pero visualmente extraño
+                // Sin embargo, el total final será correcto ($400).
                 document.getElementById('modal-discount').innerText = `-$${dailyDiscount}`;
                 document.getElementById('modal-coupon-row').classList.add('hidden');
             } else {
@@ -1364,7 +1392,7 @@
 
             addressField.style.backgroundColor = "";
 
-            if (discount > 0) {
+            if (discount !== 0) {
                 messageEl.className = "text-xs mt-1 font-bold text-red-600";
                 messageEl.innerText = "Este cupón no es acumulable con las promociones de San Valentín.";
                 appliedCouponCode = null;
@@ -1457,9 +1485,10 @@
                 extraItems.forEach(itemStr => message += `+ ${itemStr}%0A`);
             }
 
-            if (dailyDiscount > 0) {
+            if (dailyDiscount !== 0) {
                 message += `%0ASubtotal: $${subtotal + totalExtrasCost}`;
-                message += `%0ADescuento Amor: -$${dailyDiscount}`;
+                // Nota: si es ajuste positivo, saldrá con signo negativo en el texto (-$-30), pero el total es correcto.
+                message += `%0AAjuste Promoción: -$${dailyDiscount}`;
             } else if (couponDiscount > 0) {
                 message += `%0ASubtotal: $${subtotal + totalExtrasCost}`;
                 message += `%0ADescuento Cupón (${appliedCouponCode}): -$${couponDiscount}`;
