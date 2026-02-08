@@ -761,8 +761,15 @@
                             <span class="text-4xl text-black font-bold"
                                 style="font-family: 'Noto Sans JP', sans-serif;">麵</span>
                         </div>
-                        <p class="text-gray-600 italic mb-6">Pasta salteada con zanahoria, cebolla, brócoli, champiñones
-                            y col morada, bañada en salsa a base de soya, acompañada de pesto de cilantro.</p>
+                        <p class="text-gray-600 italic mb-6">
+                            Pasta salteada con zanahoria, cebolla, brócoli, champiñones
+                            y col morada, bañada en salsa a base de soya, acompañada de pesto de cilantro.
+                            <br>
+                            <span
+                                class="inline-block mt-2 bg-red-100 text-red-600 text-xs px-2 py-1 rounded-full border border-red-200 font-bold not-italic">
+                                <i class="fas fa-exclamation-circle mr-1"></i>Nota: No incluye soya
+                            </span>
+                        </p>
 
                         <ul class="space-y-3 mt-8">
                             <li
@@ -836,29 +843,31 @@
                     class="text-sm font-medium text-pink-700 ml-2 italic script-font text-2xl">Sweet Ending</span></h2>
             <div class="grid md:grid-cols-2 gap-6">
                 <div
-                    class="menu-item-card bg-white rounded-lg shadow-sm overflow-hidden flex flex-col sm:flex-row min-h-32 group border border-pink-100 opacity-75">
+                    class="menu-item-card bg-white rounded-lg shadow-sm overflow-hidden flex flex-col sm:flex-row min-h-32 group border border-pink-100">
                     <div class="w-full sm:w-40 h-40 sm:h-auto flex-shrink-0 bg-gray-200 relative overflow-hidden">
                         <img src="galletas.jpg" onerror="this.src='https://via.placeholder.com/300x300?text=Galletas'"
-                            class="w-full h-full object-cover object-center absolute inset-0 grayscale">
-                        <div class="absolute inset-0 flex items-center justify-center bg-black/40">
-                            <span
-                                class="text-white font-bold border-2 border-white px-2 py-1 -rotate-12 tracking-widest">AGOTADO</span>
-                        </div>
+                            class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="p-4 flex-grow flex flex-col justify-between">
                         <div>
-                            <h3 class="text-lg md:text-xl font-bold text-gray-500">Galletas New York</h3>
-                            <p class="text-gray-500 text-xs md:text-sm mt-1">Estilo New York. Sabor de hoy: <strong
-                                    class="text-gray-500">No disponible hoy</strong></p>
+                            <h3 class="text-lg md:text-xl font-bold text-gray-900">Galletas New York</h3>
+                            <p class="text-gray-600 text-xs md:text-sm mt-1 mb-2">Estilo New York. Elige tu sabor:</p>
+
+                            <select id="cookie-select"
+                                class="w-full text-xs border border-pink-200 rounded p-1.5 mb-2 bg-pink-50/30 focus:border-pink-500 outline-none cursor-pointer hover:bg-pink-50">
+                                <option value="Churro">Churro</option>
+                                <option value="Coco Tostado con Chocolate y Especias">Coco Tostado, Choco y Especias
+                                </option>
+                            </select>
                         </div>
-                        <div class="flex justify-between items-center mt-2">
-                            <span class="text-lg font-bold text-gray-400">$45</span>
-                            <button disabled
-                                class="text-xs bg-gray-300 text-white px-3 py-1.5 rounded-full shadow-md cursor-not-allowed">Agotado</button>
+                        <div class="flex justify-between items-center mt-1">
+                            <span class="text-lg font-bold text-gray-900">$45</span>
+                            <button onclick="addCookieFromSelect()"
+                                class="text-xs btn-valentine px-4 py-1.5 rounded-full transition shadow-md font-bold"><i
+                                    class="fas fa-plus mr-1"></i> Agregar</button>
                         </div>
                     </div>
                 </div>
-
                 <div
                     class="menu-item-card bg-white rounded-lg border border-pink-100 shadow-sm overflow-hidden flex flex-col sm:flex-row min-h-32 group">
                     <div class="w-full sm:w-40 h-40 sm:h-auto flex-shrink-0 bg-gray-200 relative overflow-hidden">
@@ -1101,7 +1110,7 @@
                             class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100 border border-gray-100">
                             <input type="checkbox" name="extra_item" value="Pesto de Cilantro" data-price="15"
                                 onchange="updateModalTotals()" class="text-red-600 rounded h-3 w-3">
-                            <span class="text-xs md:text-sm">Pesto (+$15)</span>
+                            <span class="text-xs md:text-sm">Pesto de cilantro (+$15)</span>
                         </label>
                         <label
                             class="flex items-center gap-2 cursor-pointer bg-yellow-50 p-2 rounded hover:bg-yellow-100 border border-yellow-100">
@@ -1169,17 +1178,33 @@
             const statusBadge = document.getElementById('status-badge');
             const isOpenDay = (dayOfWeek >= 3) || (dayOfWeek === 0);
 
+            // Reiniciamos clases base
+            statusBadge.className = "hidden sm:inline-block text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ml-2 text-white";
+
             if (isOpenDay) {
-                if (hour >= 14 && hour < 20) {
+                if (hour === 13) {
+                    // 1:00 PM - 1:59 PM: Abrimos pronto
+                    statusBadge.textContent = "ABRIMOS PRONTO";
+                    statusBadge.classList.add("bg-yellow-500");
+                }
+                else if (hour >= 14 && hour < 19) {
+                    // 2:00 PM - 6:59 PM: Abierto normal
                     statusBadge.textContent = "ABIERTO";
-                    statusBadge.className = "text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider bg-green-500 text-white animate-pulse";
-                } else {
+                    statusBadge.classList.add("bg-green-500", "animate-pulse");
+                }
+                else if (hour === 19) {
+                    // 7:00 PM - 7:59 PM: Cerramos pronto (última hora)
+                    statusBadge.textContent = "CERRAMOS PRONTO";
+                    statusBadge.classList.add("bg-orange-600", "animate-pulse");
+                }
+                else {
+                    // Fuera de horario
                     statusBadge.textContent = "CERRADO";
-                    statusBadge.className = "text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider bg-gray-500 text-white";
+                    statusBadge.classList.add("bg-gray-500");
                 }
             } else {
                 statusBadge.textContent = "CERRADO";
-                statusBadge.className = "text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider bg-gray-500 text-white";
+                statusBadge.classList.add("bg-gray-500");
             }
 
             const promoBanner = document.getElementById('daily-promo');
@@ -1188,7 +1213,7 @@
             const mochiText = document.getElementById('mochi-flavor');
 
             let promoMessage = "";
-            let cookieFlavor = "No disponible hoy 😢";
+            let cookieFlavor = "Disponible"; // Ya no se usa para el texto, pero mantenemos la variable
             let mochiFlavor = "Fresa";
 
             switch (dayOfWeek) {
@@ -1216,7 +1241,7 @@
                 promoText.innerHTML = `<i class="fas fa-heart text-pink-200 mr-2"></i>${promoMessage}`;
                 promoBanner.classList.remove('hidden');
             }
-            if (flavorText) flavorText.innerText = cookieFlavor;
+            // if (flavorText) flavorText.innerText = cookieFlavor; // Comentado porque ahora es un Select
             if (mochiText) mochiText.innerText = mochiFlavor;
         }
 
@@ -1242,6 +1267,12 @@
             addToCart(`Kushiagues (${select.value})`, 65, 'entrada');
         }
 
+        // Nueva función para agregar Galletas
+        function addCookieFromSelect() {
+            const select = document.getElementById('cookie-select');
+            addToCart(`Galletas New York (${select.value})`, 45, 'postre');
+        }
+
         function calculateCart() {
             const now = new Date();
             const day = now.getDay();
@@ -1251,7 +1282,9 @@
             // Arrays para lógica
             const wokItems = cart.filter(i => i.category === 'wok').sort((a, b) => a.price - b.price);
             const classicRolls = cart.filter(i => i.category === 'rollo' && i.price === 120);
-            const cookieItems = cart.filter(i => i.name === 'Galletas New York').sort((a, b) => a.price - b.price);
+
+            // Actualizado para usar .includes porque el nombre ahora contiene el sabor
+            const cookieItems = cart.filter(i => i.name.includes('Galletas New York')).sort((a, b) => a.price - b.price);
 
             // Arrays para la nueva promoción de Miércoles (Rollos especiales $150 + Aguas)
             const specialRolls = cart.filter(i => i.category === 'rollo' && i.price >= 150);
