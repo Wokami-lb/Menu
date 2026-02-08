@@ -216,7 +216,7 @@
                     </div>
                 </div>
                 <span id="status-badge"
-                    class="hidden sm:inline-block text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ml-2">
+                    class="inline-block text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ml-2">
                     Cargando...
                 </span>
             </div>
@@ -1178,8 +1178,9 @@
             const statusBadge = document.getElementById('status-badge');
             const isOpenDay = (dayOfWeek >= 3) || (dayOfWeek === 0);
 
-            // Reiniciamos clases base
-            statusBadge.className = "hidden sm:inline-block text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ml-2 text-white";
+            // CORRECCIÓN AQUÍ: Quitamos 'hidden sm:inline-block' y dejamos solo 'inline-block'
+            // para que se vea siempre en móviles.
+            statusBadge.className = "inline-block text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ml-2 text-white";
 
             if (isOpenDay) {
                 if (hour === 13) {
@@ -1213,12 +1214,11 @@
             const mochiText = document.getElementById('mochi-flavor');
 
             let promoMessage = "";
-            let cookieFlavor = "Disponible"; // Ya no se usa para el texto, pero mantenemos la variable
+            let cookieFlavor = "Disponible";
             let mochiFlavor = "Fresa";
 
             switch (dayOfWeek) {
                 case 3:
-                    // NUEVA PROMOCIÓN SOLICITADA
                     promoMessage = "💘 CITA DOBLE: ¡2 Rollos Especiales + 2 Aguas Frescas por $350!";
                     break;
                 case 4:
@@ -1241,7 +1241,6 @@
                 promoText.innerHTML = `<i class="fas fa-heart text-pink-200 mr-2"></i>${promoMessage}`;
                 promoBanner.classList.remove('hidden');
             }
-            // if (flavorText) flavorText.innerText = cookieFlavor; // Comentado porque ahora es un Select
             if (mochiText) mochiText.innerText = mochiFlavor;
         }
 
