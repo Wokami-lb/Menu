@@ -1423,8 +1423,6 @@
             const day = now.getDay();
             const isWeekend = (day === 0 || day === 6);
 
-            // Aseguramos que el campo esté habilitado por defecto al intentar aplicar un cupón
-            addressField.disabled = false;
             addressField.style.backgroundColor = "";
 
             if (discount !== 0) {
@@ -1449,8 +1447,6 @@
                     messageEl.className = "text-xs mt-1 font-bold text-green-600";
                     messageEl.innerText = "¡Cupón PREPA10 aplicado! (10% Descuento)";
                     addressField.value = "Escuela Preparatoria Regional De La Barca UDEG";
-                    // Bloqueamos el campo para que no se pueda modificar
-                    addressField.disabled = true;
                 }
             } else if (code === 'FAMILIA') {
                 if (day !== 0) {
