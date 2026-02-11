@@ -216,7 +216,7 @@
                     </div>
                 </div>
                 <span id="status-badge"
-                    class="inline-block text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ml-2">
+                    class="hidden sm:inline-block text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ml-2">
                     Cargando...
                 </span>
             </div>
@@ -1178,9 +1178,8 @@
             const statusBadge = document.getElementById('status-badge');
             const isOpenDay = (dayOfWeek >= 3) || (dayOfWeek === 0);
 
-            // CORRECCIÓN AQUÍ: Quitamos 'hidden sm:inline-block' y dejamos solo 'inline-block'
-            // para que se vea siempre en móviles.
-            statusBadge.className = "inline-block text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ml-2 text-white";
+            // Reiniciamos clases base
+            statusBadge.className = "hidden sm:inline-block text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ml-2 text-white";
 
             if (isOpenDay) {
                 if (hour === 13) {
@@ -1214,11 +1213,12 @@
             const mochiText = document.getElementById('mochi-flavor');
 
             let promoMessage = "";
-            let cookieFlavor = "Disponible";
+            let cookieFlavor = "Disponible"; // Ya no se usa para el texto, pero mantenemos la variable
             let mochiFlavor = "Fresa";
 
             switch (dayOfWeek) {
                 case 3:
+                    // NUEVA PROMOCIÓN SOLICITADA
                     promoMessage = "💘 CITA DOBLE: ¡2 Rollos Especiales + 2 Aguas Frescas por $350!";
                     break;
                 case 4:
@@ -1241,6 +1241,7 @@
                 promoText.innerHTML = `<i class="fas fa-heart text-pink-200 mr-2"></i>${promoMessage}`;
                 promoBanner.classList.remove('hidden');
             }
+            // if (flavorText) flavorText.innerText = cookieFlavor; // Comentado porque ahora es un Select
             if (mochiText) mochiText.innerText = mochiFlavor;
         }
 
@@ -1422,6 +1423,8 @@
             const day = now.getDay();
             const isWeekend = (day === 0 || day === 6);
 
+            // Aseguramos que el campo esté habilitado por defecto al intentar aplicar un cupón
+            addressField.disabled = false;
             addressField.style.backgroundColor = "";
 
             if (discount !== 0) {
@@ -1446,6 +1449,8 @@
                     messageEl.className = "text-xs mt-1 font-bold text-green-600";
                     messageEl.innerText = "¡Cupón PREPA10 aplicado! (10% Descuento)";
                     addressField.value = "Escuela Preparatoria Regional De La Barca UDEG";
+                    // Bloqueamos el campo para que no se pueda modificar
+                    addressField.disabled = true;
                 }
             } else if (code === 'FAMILIA') {
                 if (day !== 0) {
