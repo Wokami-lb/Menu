@@ -44,64 +44,153 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        h1, h2, h3, .brand-font { font-family: 'Cinzel', serif; }
-        .script-font { font-family: 'Great Vibes', cursive; }
+        h1,
+        h2,
+        h3,
+        .brand-font {
+            font-family: 'Cinzel', serif;
+        }
 
-        section { scroll-margin-top: 110px; }
+        .script-font {
+            font-family: 'Great Vibes', cursive;
+        }
 
-        .category-header { position: relative; display: inline-block; padding-bottom: 5px; }
+        section {
+            scroll-margin-top: 110px;
+        }
+
+        .category-header {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
         .category-header::after {
-            content: '♥'; position: absolute; bottom: -5px; right: -20px;
-            color: var(--love-pink); font-size: 1.2rem; animation: beat 1.5s infinite;
-        }
-        .category-header::before {
-            content: ''; position: absolute; bottom: 0; left: 0; width: 60%; height: 3px;
-            background: linear-gradient(to right, var(--wokami-red), var(--love-pink)); border-radius: 2px;
+            content: '♥';
+            position: absolute;
+            bottom: -5px;
+            right: -20px;
+            color: var(--love-pink);
+            font-size: 1.2rem;
+            animation: beat 1.5s infinite;
         }
 
-        .menu-item-card { transition: all 0.3s ease; border: 1px solid rgba(255, 182, 193, 0.4); }
+        .category-header::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(to right, var(--wokami-red), var(--love-pink));
+            border-radius: 2px;
+        }
+
+        .menu-item-card {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 182, 193, 0.4);
+        }
+
         .menu-item-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px -5px rgba(255, 77, 128, 0.15); border-color: var(--love-pink);
+            box-shadow: 0 10px 20px -5px rgba(255, 77, 128, 0.15);
+            border-color: var(--love-pink);
         }
 
         .btn-valentine {
             background: linear-gradient(45deg, #D80000, #FF4D80);
-            border: none; color: white;
+            border: none;
+            color: white;
         }
-        .btn-valentine:active { transform: scale(0.95); }
+
+        .btn-valentine:active {
+            transform: scale(0.95);
+        }
 
         @keyframes beat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
         }
-        .heart-beat { animation: beat 1.5s infinite; }
+
+        .heart-beat {
+            animation: beat 1.5s infinite;
+        }
 
         .hearts-container {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            overflow: hidden; pointer-events: none; z-index: 1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
         }
+
         .heart {
-            position: absolute; font-size: 1rem; color: rgba(255, 255, 255, 0.3);
+            position: absolute;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.3);
             animation: float 6s linear infinite;
         }
+
         @keyframes float {
-            0% { transform: translateY(100%) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.8; }
-            100% { transform: translateY(-100%) rotate(360deg); opacity: 0; }
+            0% {
+                transform: translateY(100%) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-100%) rotate(360deg);
+                opacity: 0;
+            }
         }
 
         #toast {
-            visibility: hidden; min-width: 250px; background: linear-gradient(to right, #333, #555);
-            color: #fff; text-align: center; border-radius: 50px; padding: 16px;
-            position: fixed; z-index: 100; left: 50%; bottom: 80px; transform: translateX(-50%);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); font-size: 14px; opacity: 0; transition: opacity 0.3s, bottom 0.3s;
-            width: 90%; max-width: 300px;
+            visibility: hidden;
+            min-width: 250px;
+            background: linear-gradient(to right, #333, #555);
+            color: #fff;
+            text-align: center;
+            border-radius: 50px;
+            padding: 16px;
+            position: fixed;
+            z-index: 100;
+            left: 50%;
+            bottom: 80px;
+            transform: translateX(-50%);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s, bottom 0.3s;
+            width: 90%;
+            max-width: 300px;
         }
-        #toast.show { visibility: visible; opacity: 1; bottom: 100px; }
-        
+
+        #toast.show {
+            visibility: visible;
+            opacity: 1;
+            bottom: 100px;
+        }
+
         @media screen and (max-width: 768px) {
-            select, input, textarea { font-size: 16px !important; }
+
+            select,
+            input,
+            textarea {
+                font-size: 16px !important;
+            }
         }
     </style>
 </head>
@@ -162,7 +251,8 @@
                     <i class="fas fa-heart mr-2 animate-pulse"></i>Especiales
                 </a>
                 <a href="#wok" onclick="document.getElementById('mobile-menu').classList.add('hidden')"
-                    class="mobile-nav-link text-white hover:text-pink-400 hover:bg-white/10 px-4 py-4 rounded-lg transition-all font-bold text-lg border-b border-white/5">Wok & Bowls</a>
+                    class="mobile-nav-link text-white hover:text-pink-400 hover:bg-white/10 px-4 py-4 rounded-lg transition-all font-bold text-lg border-b border-white/5">Wok
+                    & Bowls</a>
                 <a href="#postres" onclick="document.getElementById('mobile-menu').classList.add('hidden')"
                     class="mobile-nav-link text-white hover:text-pink-400 hover:bg-white/10 px-4 py-4 rounded-lg transition-all font-bold text-lg border-b border-white/5">Postres</a>
                 <a href="#bebidas" onclick="document.getElementById('mobile-menu').classList.add('hidden')"
@@ -664,7 +754,8 @@
 
                 <div
                     class="bg-white border-t-4 border-pink-500 shadow-md rounded-b-lg h-full overflow-hidden hover:shadow-xl transition-shadow menu-item-card relative">
-                    <span class="absolute top-0 right-0 bg-yellow-400 text-black text-[10px] font-bold px-3 py-1 rounded-bl-lg z-10 shadow-sm">
+                    <span
+                        class="absolute top-0 right-0 bg-yellow-400 text-black text-[10px] font-bold px-3 py-1 rounded-bl-lg z-10 shadow-sm">
                         ⭐ La joya oculta de Wokami
                     </span>
 
@@ -817,7 +908,7 @@
                         <div>
                             <h3 class="text-lg md:text-xl font-bold text-gray-900">Mochis</h3>
                             <p class="text-gray-600 text-xs md:text-sm mt-1">Pastelillo de arroz. Relleno: <strong
-                                    id="mochi-flavor" class="text-pink-600">Fresa</strong>.</p>
+                                    id="mochi-flavor" class="text-pink-600">Chongos</strong>.</p>
                         </div>
                         <div class="flex justify-between items-center mt-2">
                             <span class="text-lg font-bold text-gray-900">$55</span>
@@ -934,7 +1025,9 @@
                         <span id="progress-amount" class="text-pink-600">$0 / $350</span>
                     </div>
                     <div class="w-full bg-white rounded-full h-2.5 border border-pink-100 overflow-hidden">
-                        <div id="progress-bar" class="bg-gradient-to-r from-red-500 to-pink-500 h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                        <div id="progress-bar"
+                            class="bg-gradient-to-r from-red-500 to-pink-500 h-2.5 rounded-full transition-all duration-500"
+                            style="width: 0%"></div>
                     </div>
                 </div>
 
@@ -1077,15 +1170,18 @@
                 </div>
             </div>
 
-            <div id="modal-cookie-upsell" class="mt-6 mb-2 bg-gradient-to-r from-yellow-50 to-orange-50 border border-yellow-200 rounded-lg p-3 flex items-center justify-between shadow-sm">
+            <div id="modal-cookie-upsell"
+                class="mt-6 mb-2 bg-gradient-to-r from-yellow-50 to-orange-50 border border-yellow-200 rounded-lg p-3 flex items-center justify-between shadow-sm">
                 <div class="flex items-center gap-3">
                     <div class="bg-white p-2 rounded-full shadow-sm text-lg">🍪</div>
                     <div class="text-xs md:text-sm leading-tight">
                         <p class="font-bold text-gray-800">¡No te quedes con el antojo!</p>
-                        <p class="text-gray-600 text-xs">Postre para compartir <span class="text-pink-600 font-bold">+$45</span></p>
+                        <p class="text-gray-600 text-xs">Postre para compartir <span
+                                class="text-pink-600 font-bold">+$45</span></p>
                     </div>
                 </div>
-                <button onclick="addCookieFromModal()" class="text-xs bg-black text-white px-3 py-2 rounded-full font-bold hover:bg-gray-800 transition shadow-md">Agregar</button>
+                <button onclick="addCookieFromModal()"
+                    class="text-xs bg-black text-white px-3 py-2 rounded-full font-bold hover:bg-gray-800 transition shadow-md">Agregar</button>
             </div>
 
             <div class="mt-2 flex gap-3">
@@ -1111,7 +1207,7 @@
             const now = new Date();
             const dayOfWeek = now.getDay();
             const hour = now.getHours();
-            
+
             const statusBadge = document.getElementById('status-badge');
             // Nota: 0 es Domingo. Wokami abre Miércoles (3) a Domingo (0).
             const isOpenDay = (dayOfWeek >= 3) || (dayOfWeek === 0);
@@ -1228,7 +1324,7 @@
             const wokItems = cart.filter(i => i.category === 'wok').sort((a, b) => a.price - b.price);
             const classicRolls = cart.filter(i => i.category === 'rollo' && i.price === 120);
             const cookieItems = cart.filter(i => i.name.includes('Galletas New York')).sort((a, b) => a.price - b.price);
-            
+
             const specialRolls = cart.filter(i => i.category === 'rollo' && i.price >= 150);
             const aguas = cart.filter(i => i.category === 'bebida' && i.name.includes('Agua'));
 
@@ -1240,7 +1336,7 @@
                 const bundles = Math.floor(Math.min(numSpecials / 2, numAguas / 2));
 
                 if (bundles > 0) {
-                    const bundleNormalPrice = (150 * 2) + (35 * 2); 
+                    const bundleNormalPrice = (150 * 2) + (35 * 2);
                     const bundlePromoPrice = 350;
                     const discountPerBundle = bundleNormalPrice - bundlePromoPrice;
                     discount += (discountPerBundle * bundles);
@@ -1304,7 +1400,7 @@
             document.querySelectorAll('input[name="extra_item"]:checked').forEach(c => extrasCost += parseInt(c.dataset.price || 0));
 
             let couponDiscount = 0;
-            
+
             if (dailyDiscount === 0) {
                 if (appliedCouponCode === 'WOK5') couponDiscount = Math.round(subtotal * 0.05);
                 else if (appliedCouponCode === 'PREPA10' || appliedCouponCode === 'FAMILIA') couponDiscount = Math.round(subtotal * 0.10);
@@ -1341,7 +1437,7 @@
             const progressBar = document.getElementById('progress-bar');
             const progressText = document.getElementById('progress-text');
             const progressAmount = document.getElementById('progress-amount');
-            
+
             progressBar.style.width = `${percentage}%`;
             progressAmount.innerText = `$${currentTotal} / $${goal}`;
 
@@ -1481,7 +1577,7 @@
 
             // Feature: Aviso de Regalo en WhatsApp
             if (currentTotalCalc >= 350) {
-                 message += `%0A🎁 ¡PREMIO DESBLOQUEADO! Kushiague GRATIS 🍡%0A`;
+                message += `%0A🎁 ¡PREMIO DESBLOQUEADO! Kushiague GRATIS 🍡%0A`;
             }
 
             if (dailyDiscount !== 0) {
@@ -1517,4 +1613,5 @@
         }
     </script>
 </body>
+
 </html>
