@@ -100,17 +100,6 @@
         }
         #toast.show { visibility: visible; opacity: 1; bottom: 100px; }
         
-        /* Animación para el Upsell Toast */
-        #upsell-toast {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            transform: translateY(100px) translateX(-50%);
-            opacity: 0;
-        }
-        #upsell-toast.active {
-            transform: translateY(0) translateX(-50%);
-            opacity: 1;
-        }
-
         @media screen and (max-width: 768px) {
             select, input, textarea { font-size: 16px !important; }
         }
@@ -916,17 +905,6 @@
 
     <div id="toast">Producto agregado</div>
 
-    <div id="upsell-toast" class="fixed bottom-24 left-1/2 bg-white border border-pink-500 shadow-2xl rounded-full px-4 py-3 flex items-center gap-3 z-[60] w-[90%] max-w-sm justify-between">
-        <div class="flex items-center gap-2">
-            <span class="text-xl">🥵</span>
-            <span class="text-xs font-bold text-gray-800 leading-tight">¿Sed de la mala?<br><span class="text-pink-600 font-normal">Agua Fresca x $35</span></span>
-        </div>
-        <div class="flex items-center gap-2">
-            <button onclick="addUpsellDrink()" class="bg-pink-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold shadow-md hover:scale-110 transition active:scale-95 text-lg pb-1">+</button>
-            <button onclick="closeUpsell()" class="text-gray-400 hover:text-gray-600 p-1"><i class="fas fa-times"></i></button>
-        </div>
-    </div>
-
     <button onclick="sendOrder()"
         class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition z-50 flex items-center gap-2 hover:scale-105 transform duration-200 border-2 border-white">
         <i class="fab fa-whatsapp text-2xl"></i>
@@ -1202,44 +1180,10 @@
         let appliedCouponCode = null;
         const phoneNumber = "5214433580280";
 
-        // Feature: Lógica modificada de addToCart
         function addToCart(name, price, category = 'other') {
             cart.push({ name: name, price: price, category: category });
             updateCartButton();
             showToast(`❤️ Agregado: ${name}`);
-
-            // Upsell Logic: Si es comida y no hay bebidas
-            if ((category === 'rollo' || category === 'wok') && !cart.some(item => item.category === 'bebida')) {
-                setTimeout(showDrinkUpsell, 800);
-            } else if (category === 'bebida') {
-                closeUpsell();
-            }
-        }
-
-        // Feature: Funciones Upsell Drink
-        function showDrinkUpsell() {
-            const toast = document.getElementById('upsell-toast');
-            toast.classList.remove('hidden');
-            // Small delay to allow display block to apply before opacity transition
-            setTimeout(() => {
-                toast.classList.add('active');
-            }, 10);
-        }
-
-        function closeUpsell() {
-            const toast = document.getElementById('upsell-toast');
-            toast.classList.remove('active');
-            setTimeout(() => {
-                // Solo ocultar si no se activó de nuevo rápidamente
-                if(!toast.classList.contains('active')) {
-                    // Se podría agregar 'hidden' aquí si fuera necesario, pero la opacidad 0 funciona visualmente
-                }
-            }, 400);
-        }
-
-        function addUpsellDrink() {
-            addToCart('Agua Fresca del Día', 35, 'bebida');
-            closeUpsell();
         }
 
         function addCookieFromModal() {
