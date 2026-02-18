@@ -1241,7 +1241,6 @@
 
             const promoBanner = document.getElementById('daily-promo');
             const promoText = document.getElementById('daily-promo-text');
-            // const mochiText = document.getElementById('mochi-flavor'); // Eliminado ya que ahora es select
 
             let promoMessage = "";
             let promoIcon = "fa-bullhorn"; // Icono por defecto
@@ -1397,24 +1396,50 @@
             addToCart(`Mochis (${select.value})`, 55, 'postre');
         }
 
+        // CÁLCULO DE PROMOCIONES AUTOMÁTICAS
         function calculateCart() {
             const now = new Date();
             const day = now.getDay();
             let subtotal = 0;
             let discount = 0;
 
-            const classicRolls = cart.filter(i => i.category === 'rollo' && i.price === 120);
-            const cookieItems = cart.filter(i => i.name.includes('Galletas New York')).sort((a, b) => a.price - b.price);
-
             cart.forEach(item => subtotal += item.price);
 
-            // Ejemplo: Promocion viernes
-            if (day === 5) {
-                // Logica de descuento generica si existiera
+            // Filtros útiles para identificar los productos que aplican en las promociones
+            const classicRolls = cart.filter(i => i.category === 'rollo' && i.price === 120);
+            const kushiagues = cart.filter(i => i.category === 'entrada' && i.name.includes('Kushiagues'));
+            const shrimpClassicRolls = classicRolls.filter(r => r.name.includes('America') || r.name.includes('California') || r.name.includes('Banana'));
+            const yakimeshiCamaron = cart.filter(i => i.category === 'wok' && i.name.includes('Yakimeshi Camarón'));
+            const bebidas = cart.filter(i => i.category === 'bebida').sort((a, b) => b.price - a.price);
+
+            // Promoción Miércoles (3) y Jueves (4): Rollo Clásico + Kushiagues = $170 (Ahorro $15)
+            if (day === 3 || day === 4) {
+                const combosCount = Math.min(classicRolls.length, kushiagues.length);
+                discount += combosCount * 15;
             }
+
+            // Promoción Viernes (5): 2 Rollos de Camarón Clásicos x $220 (Ahorro $20 por par)
+            if (day === 5) {
+                const pairs = Math.floor(shrimpClassicRolls.length / 2);
+                discount += pairs * 20;
+            }
+
+            // Promoción Sábado (6) y Domingo (0): Finde del Pescador (Yakimeshi Camarón + Bebida = $140)
+            if (day === 6 || day === 0) {
+                const combosCount = Math.min(yakimeshiCamaron.length, bebidas.length);
+                for(let i = 0; i < combosCount; i++) {
+                    const normalPrice = 120 + bebidas[i].price; // 120 de base Yakimeshi + precio de bebida
+                    discount += (normalPrice - 140); 
+                }
+            }
+
+            // Ejemplo: Promo de Galleta en Domingo (Conservado del código original por si lo ocupas)
             if (day === 0) {
+                const cookieItems = cart.filter(i => i.name.includes('Galletas New York')).sort((a, b) => a.price - b.price);
                 const freeCount = Math.floor(cookieItems.length / 3);
-                for (let i = 0; i < freeCount; i++) discount += cookieItems[i].price;
+                for (let i = 0; i < freeCount; i++) {
+                    discount += cookieItems[i].price;
+                }
             }
 
             return { subtotal, discount, total: subtotal - discount };
