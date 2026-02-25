@@ -1,1138 +1,1671 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
+
 <head>
-  <!-- Meta tags esenciales -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <meta name="description" content="Wokami - El fuego del wok. El alma del sushi. Menú digital de sushi y comida japonesa en La Barca, Jalisco.">
-  <meta name="keywords" content="sushi, wok, comida japonesa, La Barca, Jalisco, Wokami, rolls, yakimeshi">
-  <meta name="author" content="Wokami Sushi">
-  <meta name="theme-color" content="#D80000">
-  
-  <!-- Open Graph para redes sociales -->
-  <meta property="og:title" content="Wokami - Sushi & Wok">
-  <meta property="og:description" content="El fuego del wok. El alma del sushi. Ordena ahora en La Barca, Jalisco.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="./assets/img/logo.png">
-  
-  <title>Wokami - Sushi & Wok | Menú Digital</title>
-  
-  <!-- Tailwind CSS (CDN) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Configuración de Tailwind -->
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'wokami-red': '#D80000',
-            'wokami-dark': '#111111',
-            'wokami-gray': '#f3f4f6',
-          },
-          fontFamily: {
-            'brand': ['Cinzel', 'serif'],
-            'body': ['Noto Sans JP', 'sans-serif'],
-          }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Menú Wokami - Sushi & Wok</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'wokami-red': '#D80000',
+                        'wokami-dark': '#111111',
+                        'wokami-gray': '#f3f4f6',
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.3s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
         }
-      }
-    }
-  </script>
-  
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
-  
-  <!-- Estilos personalizados -->
-  <link rel="stylesheet" href="./css/styles.css">
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="./assets/img/logo.png">
+    </script>
+    <style>
+        :root {
+            --wokami-red: #D80000;
+            --wokami-black: #1a1a1a;
+            --wokami-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--wokami-bg);
+            color: var(--wokami-black);
+            background-image: radial-gradient(#e5e7eb 1.5px, transparent 1.5px);
+            background-size: 25px 25px;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        h1,
+        h2,
+        h3,
+        .brand-font {
+            font-family: 'Cinzel', serif;
+        }
+
+        section {
+            scroll-margin-top: 110px;
+        }
+
+        .category-header {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .category-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40%;
+            height: 4px;
+            background: var(--wokami-red);
+            border-radius: 2px;
+        }
+
+        .menu-item-card {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .menu-item-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
+            border-color: var(--wokami-red);
+        }
+
+        .btn-primary {
+            background: var(--wokami-red);
+            border: none;
+            color: white;
+            transition: background 0.3s, transform 0.1s;
+        }
+
+        .btn-primary:hover {
+            background: #b91c1c;
+        }
+
+        .btn-primary:active {
+            transform: scale(0.95);
+        }
+
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background: linear-gradient(to right, #111, #333);
+            color: #fff;
+            text-align: center;
+            border-radius: 4px;
+            padding: 16px;
+            position: fixed;
+            z-index: 100;
+            left: 50%;
+            bottom: 80px;
+            transform: translateX(-50%);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s, bottom 0.3s;
+            width: 90%;
+            max-width: 300px;
+            font-weight: bold;
+            border-left: 4px solid var(--wokami-red);
+        }
+
+        #toast.show {
+            visibility: visible;
+            opacity: 1;
+            bottom: 100px;
+        }
+
+        /* Checkbox personalizado para selección de proteínas */
+        .protein-checkbox:checked + div {
+            background-color: #FEF2F2; /* Red-50 */
+            border-color: #DC2626; /* Red-600 */
+            color: #991B1B; /* Red-800 */
+        }
+        .protein-checkbox:checked + div .check-icon {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        @media screen and (max-width: 768px) {
+            select,
+            input,
+            textarea {
+                font-size: 16px !important;
+            }
+        }
+    </style>
 </head>
 
-<body class="antialiased min-h-screen pb-24 selection:bg-red-100 font-body">
-  
-  <!-- ============================================
-       BANNER DE PROMOCIÓN DIARIA
-       ============================================ -->
-  <div id="daily-promo" class="hidden daily-promo" role="alert" aria-live="polite">
-    <span id="daily-promo-text"><i class="fas fa-bullhorn mr-2 text-red-500"></i></span>
-  </div>
-  
-  <!-- ============================================
-       HEADER / NAVEGACIÓN
-       ============================================ -->
-  <header id="main-header" class="main-header" role="banner">
-    <div class="container-wokami">
-      <div class="flex justify-between items-center py-3">
-        
-        <!-- Logo y Estado -->
-        <div class="flex items-center gap-2 md:gap-3 flex-shrink-0">
-          <a href="#" class="flex items-center gap-2 hover:opacity-90 transition-opacity" aria-label="Wokami - Inicio">
-            <img src="./assets/img/logo.png" 
-                 onerror="this.src='https://via.placeholder.com/150?text=Wokami'"
-                 alt="Wokami Logo"
-                 class="h-10 w-10 md:h-12 md:w-12 object-cover rounded-full border-2 border-red-600"
-                 loading="eager">
-            <div class="flex flex-col">
-              <span class="text-lg md:text-2xl font-bold tracking-widest brand-font text-white hover:text-red-500 transition-colors">
-                WOKAMI
-              </span>
-              <span class="text-[8px] tracking-[0.2em] text-gray-400 uppercase hidden md:block">
-                Japanese Fusion
-              </span>
-            </div>
-          </a>
-          <span id="status-badge" class="status-badge" aria-live="polite">
-            Cargando...
-          </span>
-        </div>
-        
-        <!-- Navegación Desktop -->
-        <nav class="hidden lg:flex gap-8 text-sm font-bold uppercase tracking-wide text-gray-300" role="navigation" aria-label="Navegación principal">
-          <a href="#entradas" class="hover:text-red-500 transition-colors py-2">Entradas</a>
-          <a href="#rollos" class="hover:text-red-500 transition-colors py-2">Rollos</a>
-          <a href="#charolas" class="hover:text-yellow-400 transition-colors py-2 text-yellow-500">Charolas</a>
-          <a href="#wok" class="hover:text-red-500 transition-colors py-2">Wok</a>
-          <a href="#postres" class="hover:text-red-500 transition-colors py-2">Postres</a>
-          <a href="#bebidas" class="hover:text-red-500 transition-colors py-2">Bebidas</a>
-        </nav>
-        
-        <!-- Botón Menú Móvil -->
-        <button type="button" 
-                class="menu-toggle lg:hidden" 
-                onclick="toggleMobileMenu()"
-                aria-label="Abrir menú de navegación"
-                aria-expanded="false"
-                aria-controls="mobile-menu">
-          <i class="fas fa-bars text-2xl"></i>
-        </button>
-      </div>
+<body class="antialiased min-h-screen pb-24 selection:bg-red-100">
+
+    <div id="daily-promo"
+        class="hidden bg-neutral-900 text-white text-center py-2 px-4 text-xs md:text-sm font-bold promo-banner shadow-md border-b-2 border-red-600">
+        <span id="daily-promo-text"><i class="fas fa-bullhorn mr-2 text-red-500"></i></span>
     </div>
-    
-    <!-- Menú Móvil -->
-    <nav id="mobile-menu" class="mobile-menu hidden lg:hidden" role="navigation" aria-label="Navegación móvil">
-      <div class="flex flex-col p-4 space-y-1">
-        <a href="#entradas" onclick="toggleMobileMenu()" class="mobile-menu-link">Entradas</a>
-        <a href="#rollos" onclick="toggleMobileMenu()" class="mobile-menu-link">Rollos</a>
-        <a href="#charolas" onclick="toggleMobileMenu()" class="mobile-menu-link mobile-menu-link--highlight">Charolas</a>
-        <a href="#wok" onclick="toggleMobileMenu()" class="mobile-menu-link">Wok & Bowls</a>
-        <a href="#postres" onclick="toggleMobileMenu()" class="mobile-menu-link">Postres</a>
-        <a href="#bebidas" onclick="toggleMobileMenu()" class="mobile-menu-link">Bebidas</a>
-      </div>
-    </nav>
-  </header>
-  
-  <!-- ============================================
-       HERO SECTION
-       ============================================ -->
-  <section class="hero-section" aria-label="Bienvenida">
-    <div class="hero-pattern" aria-hidden="true"></div>
-    
-    <div class="relative z-10 max-w-2xl mx-auto flex flex-col items-center px-4">
-      <!-- Logo con efecto glow -->
-      <div class="mb-4 md:mb-6 logo-glow">
-        <img src="./assets/img/logo.png" 
-             onerror="this.src='https://via.placeholder.com/300?text=Wokami'" 
-             alt="Wokami Logo"
-             class="relative h-32 w-32 md:h-40 md:w-40 object-cover rounded-full border-4 border-neutral-800 shadow-2xl bg-white"
-             loading="eager">
-      </div>
-      
-      <h1 class="text-4xl md:text-7xl font-bold mb-2 brand-font tracking-tight text-white drop-shadow-lg">
-        WOKAMI
-      </h1>
-      
-      <p class="text-xl md:text-3xl text-gray-400 font-light mb-6 md:mb-8 tracking-wide">
-        El fuego del wok. El alma del sushi.
-      </p>
+
+    <header id="main-header"
+        class="bg-black/95 backdrop-blur-sm text-white sticky top-0 z-50 shadow-lg border-b border-gray-800">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-2 md:gap-3 flex-shrink-0">
+                <div class="flex items-center gap-2 hover:opacity-90 transition-opacity">
+                    <img src="logo.png" onerror="this.src='https://via.placeholder.com/150?text=Wokami'"
+                        alt="Wokami Logo"
+                        class="h-9 w-9 md:h-12 md:w-12 object-cover rounded-full border-2 border-red-600">
+                    <div class="flex flex-col">
+                        <a href="#"
+                            class="text-lg md:text-2xl font-bold tracking-widest brand-font text-white hover:text-red-500 transition-colors">WOKAMI</a>
+                        <span class="text-[8px] tracking-[0.2em] text-gray-400 uppercase hidden md:block">Japanese
+                            Fusion</span>
+                    </div>
+                </div>
+                <span id="status-badge"
+                    class="inline-block text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ml-1 md:ml-2 whitespace-nowrap">
+                    Cargando...
+                </span>
+            </div>
+
+            <nav class="hidden lg:flex gap-8 text-sm font-bold uppercase tracking-wide text-gray-300">
+                <a href="#entradas" class="hover:text-red-500 transition-colors py-1 nav-link">Entradas</a>
+                <a href="#rollos" class="hover:text-red-500 transition-colors py-1 nav-link">Rollos</a>
+                <a href="#charolas"
+                    class="hover:text-yellow-400 transition-colors py-1 nav-link text-yellow-500">Charolas</a>
+                <a href="#wok" class="hover:text-red-500 transition-colors py-1 nav-link">Wok</a>
+                <a href="#postres" class="hover:text-red-500 transition-colors py-1 nav-link">Postres</a>
+                <a href="#bebidas" class="hover:text-red-500 transition-colors py-1 nav-link">Bebidas</a>
+            </nav>
+
+            <button class="lg:hidden text-white p-2 focus:outline-none active:text-red-500 transition-colors"
+                onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu"
+            class="hidden bg-neutral-900/95 backdrop-blur-md lg:hidden border-t border-gray-800 absolute w-full left-0 top-full shadow-2xl h-screen">
+            <div class="flex flex-col p-4 space-y-1 text-center">
+                <a href="#entradas" onclick="document.getElementById('mobile-menu').classList.add('hidden')"
+                    class="mobile-nav-link text-white hover:text-red-500 hover:bg-white/5 px-4 py-4 rounded-lg transition-all font-bold text-lg border-b border-white/5">Entradas</a>
+                <a href="#rollos" onclick="document.getElementById('mobile-menu').classList.add('hidden')"
+                    class="mobile-nav-link text-white hover:text-red-500 hover:bg-white/5 px-4 py-4 rounded-lg transition-all font-bold text-lg border-b border-white/5">Rollos</a>
+                <a href="#charolas" onclick="document.getElementById('mobile-menu').classList.add('hidden')"
+                    class="mobile-nav-link text-yellow-400 hover:text-white hover:bg-white/5 px-4 py-4 rounded-lg transition-all font-bold text-lg border-b border-white/5">Charolas</a>
+                <a href="#wok" onclick="document.getElementById('mobile-menu').classList.add('hidden')"
+                    class="mobile-nav-link text-white hover:text-red-500 hover:bg-white/5 px-4 py-4 rounded-lg transition-all font-bold text-lg border-b border-white/5">Wok
+                    & Bowls</a>
+                <a href="#postres" onclick="document.getElementById('mobile-menu').classList.add('hidden')"
+                    class="mobile-nav-link text-white hover:text-red-500 hover:bg-white/5 px-4 py-4 rounded-lg transition-all font-bold text-lg border-b border-white/5">Postres</a>
+                <a href="#bebidas" onclick="document.getElementById('mobile-menu').classList.add('hidden')"
+                    class="mobile-nav-link text-white hover:text-red-500 hover:bg-white/5 px-4 py-4 rounded-lg transition-all font-bold text-lg">Bebidas</a>
+            </div>
+        </div>
+    </header>
+
+    <div
+        class="relative bg-gradient-to-b from-black to-neutral-900 text-white py-12 md:py-16 px-4 text-center overflow-hidden">
+        <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/sushi.png')]">
+        </div>
+
+        <div class="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
+
+            <div class="mb-4 md:mb-6 transform hover:scale-105 transition-transform duration-500 relative">
+                <div class="absolute -inset-1 bg-gradient-to-r from-red-600 to-orange-600 rounded-full blur opacity-25">
+                </div>
+                <img src="logo.png" onerror="this.src='https://via.placeholder.com/300?text=Wokami'" alt="Wokami Logo"
+                    class="relative h-32 w-32 md:h-40 md:w-40 object-cover rounded-full border-4 border-neutral-800 shadow-2xl bg-white">
+            </div>
+
+            <h1 class="text-4xl md:text-7xl font-bold mb-2 brand-font tracking-tight text-white drop-shadow-lg">WOKAMI
+            </h1>
+
+            <p class="text-xl md:text-3xl text-gray-400 font-light mb-6 md:mb-8 tracking-wide">El fuego del wok. El alma
+                del sushi.</p>
+        </div>
     </div>
-  </section>
-  
-  <!-- ============================================
-       CONTENIDO PRINCIPAL
-       ============================================ -->
-  <main class="container-wokami py-8 md:py-12 max-w-5xl" role="main">
-    
-    <!-- Sección Redes Sociales -->
-    <section class="mb-12" aria-label="Síguenos en redes sociales">
-      <div class="social-section relative overflow-hidden group hover:shadow-2xl transition-all">
-        <div class="absolute top-0 right-0 w-32 h-32 bg-gray-100 rounded-bl-full opacity-50 z-0" aria-hidden="true"></div>
-        <div class="absolute bottom-0 left-0 w-24 h-24 bg-red-50 rounded-tr-full opacity-50 z-0" aria-hidden="true"></div>
-        
-        <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div class="text-center md:text-left flex-1">
-            <h2 class="font-bold text-xl md:text-2xl brand-font flex items-center justify-center md:justify-start gap-2 mb-2 text-gray-800">
-              <i class="fas fa-mobile-alt text-red-600"></i>
-              <span class="text-gray-900">SÍGUENOS EN REDES</span>
-            </h2>
-            <p class="text-gray-600 text-sm md:text-base leading-relaxed">
-              Entérate de nuestras promociones exclusivas, nuevos platillos y dinámicas especiales.
-              <span class="text-red-600 font-bold">¡Únete a la comunidad Wokami!</span>
-            </p>
-          </div>
-          
-          <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto relative z-10">
-            <a href="https://www.facebook.com/share/1DLwFajUXz/" 
-               target="_blank" 
-               rel="noopener noreferrer"
-               class="flex items-center justify-center gap-2 bg-[#1877F2] hover:bg-[#156bd4] text-white py-3 px-6 rounded-lg font-bold transition-all transform hover:-translate-y-1 shadow-lg shadow-blue-500/20 w-full sm:w-auto text-sm uppercase tracking-wide"
-               aria-label="Síguenos en Facebook">
-              <i class="fab fa-facebook-f text-lg"></i> Facebook
-            </a>
-            <a href="https://www.instagram.com/wokami_sushi?igsh=NWYzYW82dG81eWdm" 
-               target="_blank" 
-               rel="noopener noreferrer"
-               class="flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-orange-500 hover:opacity-90 text-white py-3 px-6 rounded-lg font-bold transition-all transform hover:-translate-y-1 shadow-lg shadow-pink-500/20 w-full sm:w-auto text-sm uppercase tracking-wide"
-               aria-label="Síguenos en Instagram">
-              <i class="fab fa-instagram text-lg"></i> Instagram
-            </a>
-          </div>
+
+    <main class="container mx-auto px-4 py-8 md:py-12 max-w-5xl">
+
+        <section class="mb-12">
+            <div
+                class="bg-white rounded-xl p-6 shadow-xl border border-gray-100 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6 group hover:shadow-2xl transition-all">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-gray-100 rounded-bl-full opacity-50 z-0"></div>
+                <div class="absolute bottom-0 left-0 w-24 h-24 bg-red-50 rounded-tr-full opacity-50 z-0"></div>
+
+                <div class="relative z-10 text-center md:text-left flex-1">
+                    <h3
+                        class="font-bold text-xl md:text-2xl brand-font flex items-center justify-center md:justify-start gap-2 mb-2 text-gray-800">
+                        <i class="fas fa-mobile-alt text-red-600"></i> <span class="text-gray-900">SÍGUENOS EN
+                            REDES</span>
+                    </h3>
+                    <p class="text-gray-600 text-sm md:text-base leading-relaxed">
+                        Entérate de nuestras promociones exclusivas, nuevos platillos y dinámicas especiales.
+                        <span class="text-red-600 font-bold">¡Únete a la comunidad Wokami!</span>
+                    </p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto relative z-10">
+                    <a href="https://www.facebook.com/share/1DLwFajUXz/" target="_blank"
+                        class="flex items-center justify-center gap-2 bg-[#1877F2] hover:bg-[#156bd4] text-white py-3 px-6 rounded-lg font-bold transition-all transform hover:-translate-y-1 shadow-lg shadow-blue-500/20 w-full sm:w-auto text-sm uppercase tracking-wide">
+                        <i class="fab fa-facebook-f text-lg"></i> Facebook
+                    </a>
+                    <a href="https://www.instagram.com/wokami_sushi?igsh=NWYzYW82dG81eWdm" target="_blank"
+                        class="flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-orange-500 hover:opacity-90 text-white py-3 px-6 rounded-lg font-bold transition-all transform hover:-translate-y-1 shadow-lg shadow-pink-500/20 w-full sm:w-auto text-sm uppercase tracking-wide">
+                        <i class="fab fa-instagram text-lg"></i> Instagram
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="entradas" class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-black category-header">ENTRADAS</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div
+                    class="menu-item-card bg-white rounded-lg shadow-sm overflow-hidden flex flex-col sm:flex-row min-h-32 group">
+                    <div class="w-full sm:w-40 h-40 sm:h-auto flex-shrink-0 bg-gray-200 relative overflow-hidden">
+                        <img src="kushiagues.jpg" onerror="this.src='https://via.placeholder.com/300?text=Kushiagues'"
+                            class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-4 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-baseline gap-2">
+                                <h3 class="text-lg md:text-xl font-bold text-gray-900 leading-tight">Kushiagues</h3>
+                                <span
+                                    class="text-[10px] font-bold text-white bg-red-600 px-2 py-0.5 rounded shadow-sm">Hot</span>
+                            </div>
+                            <p class="text-gray-600 text-xs md:text-sm mt-1 mb-2">3 pzs. Ideales para compartir. Elige
+                                tu relleno:</p>
+
+                            <select id="kushiage-select"
+                                class="w-full text-base md:text-xs border border-gray-300 rounded p-1.5 mb-2 bg-gray-50 focus:border-red-600 outline-none cursor-pointer hover:bg-white">
+                                <option value="Queso Philadelphia">Queso Philadelphia</option>
+                                <option value="Queso Manchego">Queso Manchego</option>
+                                <option value="Camarón con Philadelphia">Camarón c/ Philadelphia</option>
+                                <option value="Camarón con Manchego">Camarón c/ Manchego</option>
+                                <option value="Plátano Macho con Philadelphia">Plátano c/ Philadelphia</option>
+                            </select>
+                        </div>
+                        <div class="flex justify-between items-center mt-1">
+                            <span class="text-lg font-bold text-gray-800">$65</span>
+                            <button onclick="addKushiageFromSelect()"
+                                class="text-xs btn-primary px-4 py-2 rounded transition shadow-md font-bold uppercase tracking-wider"><i
+                                    class="fas fa-plus mr-1"></i> Agregar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="rollos" class="mb-16">
+
+            <div
+                class="bg-gray-50 text-gray-700 px-4 py-3 rounded-lg border border-gray-200 text-sm font-medium shadow-sm mb-8 flex flex-col md:flex-row items-center justify-center text-center gap-2">
+                <span><i class="fas fa-info-circle text-gray-500 mr-2"></i>Elige: <strong>Empanizado</strong> o
+                    <strong>Natural</strong> <span
+                        class="text-xs text-red-500 font-bold block md:inline mt-1 md:mt-0 md:ml-1">(Excepto America y Grinch Roll)</span></span>
+                <span class="hidden md:inline text-gray-300">|</span>
+                <span><i class="fas fa-leaf mr-2 text-green-600"></i>Todos incluyen <strong>Chips de
+                        Camote</strong></span>
+            </div>
+
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold text-black category-header mb-8">ROLLOS CLÁSICOS</h2>
+                <div class="grid lg:grid-cols-2 gap-8">
+                     <div
+                        class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow menu-item-card">
+                        <div class="w-full md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
+                            <img src="america.jpg"
+                                onerror="this.src='https://via.placeholder.com/400x300?text=America+Roll'"
+                                alt="America Roll"
+                                class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <div class="p-6 md:w-2/3 flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-xl font-bold text-black brand-font">America Roll</h3>
+                                    <span class="text-red-600 font-bold text-lg">$120</span>
+                                </div>
+                                <p class="text-gray-600 text-sm mb-4">
+                                    <strong>Por dentro:</strong> Camarones empanizados, aguacate y queso crema.<br>
+                                    <strong>Por fuera:</strong> Mango con chile tajín, ajonjolí y salsa de anguila.
+                                </p>
+                            </div>
+                            <button onclick="addToCart('America Roll', 120, 'rollo')"
+                                class="self-start text-xs font-bold uppercase tracking-wider btn-primary px-6 py-2.5 rounded shadow-md w-full md:w-auto">Ordenar</button>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow menu-item-card">
+                        <div class="w-full md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
+                            <img src="banana.jpg"
+                                onerror="this.src='https://via.placeholder.com/400x300?text=Banana+Roll'"
+                                alt="Banana Roll"
+                                class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <div class="p-6 md:w-2/3 flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-xl font-bold text-black brand-font">Banana Roll</h3>
+                                    <span class="text-red-600 font-bold text-lg">$120</span>
+                                </div>
+                                <p class="text-gray-600 text-sm mb-4">
+                                    <strong>Por dentro:</strong> Queso crema, aguacate y camarón.<br>
+                                    <strong>Por fuera:</strong> Plátano macho frito, ajonjolí y salsa de anguila.
+                                </p>
+                            </div>
+                            <div class="flex gap-2">
+                                <button onclick="addToCart('Banana Roll (Natural)', 120, 'rollo')"
+                                    class="flex-1 text-xs font-bold uppercase text-gray-600 border border-gray-300 px-2 py-2.5 rounded hover:bg-gray-100 transition">Natural</button>
+                                <button onclick="addToCart('Banana Roll (Empanizado)', 120, 'rollo')"
+                                    class="flex-1 text-xs font-bold uppercase text-white btn-primary px-2 py-2.5 rounded shadow-md">Empanizado</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white rounded-xl shadow-md overflow-hidden border-2 border-yellow-400 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow menu-item-card relative">
+                        <div
+                            class="absolute top-0 right-0 bg-yellow-400 text-black text-[10px] font-bold px-3 py-1 rounded-bl-lg z-10 shadow-sm uppercase tracking-wide">
+                            Best Seller
+                        </div>
+                        <div class="w-full md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
+                            <img src="cheese.jpg"
+                                onerror="this.src='https://via.placeholder.com/400x300?text=Cheese+Roll'"
+                                alt="Cheese Roll"
+                                class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <div class="p-6 md:w-2/3 flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-xl font-bold text-black brand-font">Cheese Roll</h3>
+                                    <span class="text-red-600 font-bold text-lg">$120</span>
+                                </div>
+                                <p class="text-gray-600 text-sm mb-4">
+                                    <strong>Por dentro:</strong> Tiras de pollo empanizado, queso crema y aguacate.<br>
+                                    <strong>Por fuera:</strong> Cubierto de queso gratinado spicy, salsa de anguila y
+                                    ajonjolí.
+                                </p>
+                            </div>
+                            <div class="flex gap-2">
+                                <button onclick="addToCart('Cheese Roll (Natural)', 120, 'rollo')"
+                                    class="flex-1 text-xs font-bold uppercase text-gray-600 border border-gray-300 px-2 py-2.5 rounded hover:bg-gray-100 transition">Natural</button>
+                                <button onclick="addToCart('Cheese Roll (Empanizado)', 120, 'rollo')"
+                                    class="flex-1 text-xs font-bold uppercase text-white btn-primary px-2 py-2.5 rounded shadow-md">Empanizado</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow menu-item-card">
+                        <div class="w-full md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
+                            <img src="california.jpg"
+                                onerror="this.src='https://via.placeholder.com/400x300?text=California+Roll'"
+                                alt="California Roll"
+                                class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <div class="p-6 md:w-2/3 flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-xl font-bold text-black brand-font">California Roll</h3>
+                                    <span class="text-red-600 font-bold text-lg">$120</span>
+                                </div>
+                                <p class="text-gray-600 text-sm mb-4">
+                                    <strong>Por dentro:</strong> Camarón, queso crema, aguacate y pepino.<br>
+                                    <strong>Por fuera:</strong> Tampico.
+                                </p>
+                            </div>
+                            <div class="flex gap-2">
+                                <button onclick="addToCart('California Roll (Natural)', 120, 'rollo')"
+                                    class="flex-1 text-xs font-bold uppercase text-gray-600 border border-gray-300 px-2 py-2.5 rounded hover:bg-gray-100 transition">Natural</button>
+                                <button onclick="addToCart('California Roll (Empanizado)', 120, 'rollo')"
+                                    class="flex-1 text-xs font-bold uppercase text-white btn-primary px-2 py-2.5 rounded shadow-md">Empanizado</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow menu-item-card">
+                        <div class="w-full md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
+                            <img src="nortenito.jpg"
+                                onerror="this.src='https://via.placeholder.com/400x300?text=Nortenito+Roll'"
+                                alt="Norteñito Roll"
+                                class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <div class="p-6 md:w-2/3 flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-xl font-bold text-black brand-font">Norteñito Roll</h3>
+                                    <span class="text-red-600 font-bold text-lg">$120</span>
+                                </div>
+                                <p class="text-gray-600 text-sm mb-4">
+                                    <strong>Por dentro:</strong> Res sazonada, queso manchego, aguacate y chiles
+                                    toreados.<br>
+                                    <strong>Por fuera:</strong> Aderezo de chipotle y salsa de anguila.
+                                </p>
+                            </div>
+                            <div class="flex gap-2">
+                                <button onclick="addToCart('Norteñito Roll (Natural)', 120, 'rollo')"
+                                    class="flex-1 text-xs font-bold uppercase text-gray-600 border border-gray-300 px-2 py-2.5 rounded hover:bg-gray-100 transition">Natural</button>
+                                <button onclick="addToCart('Norteñito Roll (Empanizado)', 120, 'rollo')"
+                                    class="flex-1 text-xs font-bold uppercase text-white btn-primary px-2 py-2.5 rounded shadow-md">Empanizado</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="rollos-especiales" class="mb-16">
+                <h2 class="text-3xl font-bold text-black category-header mb-8">
+                    ESPECIALES <span
+                        class="text-sm font-medium text-red-700 ml-2 uppercase tracking-wide bg-red-50 px-2 py-1 rounded">Premium</span>
+                </h2>
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <div id="diabla-roll-target"
+                        class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow menu-item-card">
+                        <div class="w-full md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
+                            <img src="diabla.jpg"
+                                onerror="this.src='https://via.placeholder.com/400x300?text=Diabla+Roll'"
+                                alt="A la Diabla Roll"
+                                class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <div class="p-6 md:w-2/3 flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-xl font-bold text-black brand-font">A la Diabla Roll</h3>
+                                    <span class="text-red-600 font-bold text-lg">$150</span>
+                                </div>
+                                <p class="text-gray-600 text-sm mb-4">
+                                    <strong>Por dentro:</strong> Queso crema, aguacate y pepino.<br>
+                                    <strong>Por fuera:</strong> Trocitos de camarón en salsa a la diabla.
+                                </p>
+                            </div>
+                            <div class="flex gap-2">
+                                <button onclick="addToCart('A la Diabla Roll (Natural)', 150, 'rollo')"
+                                    class="flex-1 text-xs font-bold uppercase text-gray-600 border border-gray-300 px-2 py-2.5 rounded hover:bg-gray-100 transition">Natural</button>
+                                <button onclick="addToCart('A la Diabla Roll (Empanizado)', 150, 'rollo')"
+                                    class="flex-1 text-xs font-bold uppercase text-white btn-primary px-2 py-2.5 rounded shadow-md">Empanizado</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div
+                        class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow menu-item-card">
+                        <div class="w-full md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
+                            <img src="grinch.jpg"
+                                onerror="this.src='https://via.placeholder.com/400x300?text=Grinch+Roll'"
+                                alt="Grinch Roll"
+                                class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <div class="p-6 md:w-2/3 flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-xl font-bold text-black brand-font">Grinch Roll</h3>
+                                    <span class="text-red-600 font-bold text-lg">$150</span>
+                                </div>
+                                <p class="text-gray-600 text-sm mb-4">
+                                    <strong>Por dentro:</strong> Queso crema, tampico y camarones empanizados.<br>
+                                    <strong>Por fuera:</strong> Aguacate y mezcla de ajonjolí con tampico.
+                                </p>
+                            </div>
+                            <button onclick="addToCart('Grinch Roll', 150, 'rollo')"
+                                class="self-start text-xs font-bold uppercase tracking-wider btn-primary px-6 py-2.5 rounded shadow-md w-full md:w-auto">Ordenar</button>
+                        </div>
+                    </div>
+                    <div id="aguachile-roll-target"
+                        class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow menu-item-card relative">
+
+                        <div class="w-full md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
+                            <img src="aguachile.jpg"
+                                onerror="this.src='https://via.placeholder.com/400x300?text=Aguachile+Roll'"
+                                alt="Aguachile Roll"
+                                class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <div class="p-6 md:w-2/3 flex flex-col justify-between bg-gradient-to-br from-white to-gray-50">
+                            <div>
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-xl font-bold text-black brand-font">Aguachile Roll</h3>
+                                    <span class="text-red-600 font-bold text-lg">$150</span>
+                                </div>
+                                <p class="text-gray-600 text-sm mb-4">
+                                    <strong>Por dentro:</strong> Pepino, queso crema y aguacate.<br>
+                                    <strong>Por fuera:</strong> Aguachile de camarón con mango fresco.
+                                </p>
+                            </div>
+                            <div class="flex gap-2">
+                                <button onclick="addToCart('Aguachile Roll (Natural)', 150, 'rollo')"
+                                    class="flex-1 text-xs font-bold uppercase text-gray-600 border border-gray-300 px-2 py-2.5 rounded hover:bg-gray-100 transition">Natural</button>
+                                <button onclick="addToCart('Aguachile Roll (Empanizado)', 150, 'rollo')"
+                                    class="flex-1 text-xs font-bold uppercase text-white btn-primary px-2 py-2.5 rounded shadow-md">Empanizado</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+        <section id="charolas" class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-black category-header">CHAROLAS PARA COMPARTIR</h2>
+
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 group">
+                <div class="relative h-64 md:h-80 overflow-hidden">
+                    <img src="charola.jpg"
+                        onerror="this.src='https://via.placeholder.com/1000x400?text=Charolas+de+Sushi'"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                        <div class="p-6 md:p-8 text-white">
+                            <h3 class="text-2xl md:text-4xl font-bold brand-font mb-2">La mejor opción para tus
+                                reuniones</h3>
+                            <p class="text-gray-200 text-sm md:text-base hidden md:block">Personaliza tu charola con tus
+                                rollos favoritos. Ideales para fiestas, cumpleaños y eventos especiales.</p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="p-6 bg-gradient-to-r from-gray-50 to-white flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div class="text-center md:text-left">
+                        <p class="text-gray-800 font-medium">¿Tienes un evento? Cotiza tu charola personalizada hoy
+                            mismo.</p>
+                    </div>
+                    <a href="https://wa.me/5214433580280?text=Hola%20Wokami,%20me%20interesa%20informaci%C3%B3n%20sobre%20las%20charolas%20de%20sushi%20%F0%9F%8D%A3"
+                        target="_blank"
+                        class="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-full font-bold shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 flex items-center gap-2">
+                        <i class="fab fa-whatsapp text-xl"></i> Pide información
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="wok" class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-black category-header">WOK & BOWLS</h2>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div
+                    class="bg-white border-t-4 border-red-600 shadow-md rounded-b-lg h-full overflow-hidden hover:shadow-xl transition-shadow menu-item-card">
+                    <div class="h-48 w-full bg-gray-200 relative overflow-hidden group">
+                        <img src="yakimeshi.jpg" onerror="this.src='https://via.placeholder.com/600x200?text=Yakimeshi'"
+                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-center mb-4 border-b border-gray-100 pb-2">
+                            <h3 class="text-2xl font-bold uppercase tracking-wide brand-font">Yakimeshi</h3>
+                            <span class="text-4xl text-gray-300 font-bold"
+                                style="font-family: 'Noto Sans JP', sans-serif;">飯</span>
+                        </div>
+                        <p class="text-gray-600 italic mb-6">Arroz frito salteado al wok con calabaza y zanahoria.</p>
+
+                        <ul class="space-y-3">
+                            <li
+                                class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-1.5 rounded transition-colors">
+                                <span><i class="fas fa-leaf text-green-600 mr-2"></i>Verduras (Base)</span>
+                                <div class="flex items-center gap-2">
+                                    <span class="font-bold">$70</span>
+                                    <button onclick="addToCart('Yakimeshi Verduras', 70, 'wok')"
+                                        class="text-gray-400 hover:text-red-600 p-2"><i
+                                            class="fas fa-plus-circle fa-lg"></i></button>
+                                </div>
+                            </li>
+                            <li
+                                class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-1.5 rounded transition-colors">
+                                <span><i class="fas fa-drumstick-bite text-orange-400 mr-2"></i>Con Pollo</span>
+                                <div class="flex items-center gap-2">
+                                    <span class="font-bold">$100</span>
+                                    <button onclick="addToCart('Yakimeshi Pollo', 100, 'wok')"
+                                        class="text-gray-400 hover:text-red-600 p-2"><i
+                                            class="fas fa-plus-circle fa-lg"></i></button>
+                                </div>
+                            </li>
+                            <li
+                                class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-1.5 rounded transition-colors">
+                                <span><i class="fas fa-shrimp text-red-400 mr-2"></i>Con Camarón</span>
+                                <div class="flex items-center gap-2">
+                                    <span class="font-bold">$120</span>
+                                    <button onclick="addToCart('Yakimeshi Camarón', 120, 'wok')"
+                                        class="text-gray-400 hover:text-red-600 p-2"><i
+                                            class="fas fa-plus-circle fa-lg"></i></button>
+                                </div>
+                            </li>
+                            <li
+                                class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-1.5 rounded transition-colors">
+                                <span><i class="fas fa-bacon text-red-800 mr-2"></i>Con Res</span>
+                                <div class="flex items-center gap-2">
+                                    <span class="font-bold">$120</span>
+                                    <button onclick="addToCart('Yakimeshi Res', 120, 'wok')"
+                                        class="text-gray-400 hover:text-red-600 p-2"><i
+                                            class="fas fa-plus-circle fa-lg"></i></button>
+                                </div>
+                            </li>
+                            <li
+                                class="flex justify-between items-center text-sm text-gray-700 font-medium bg-gray-50 p-2 rounded">
+                                <span><i class="fas fa-utensils text-gray-500 mr-2"></i>Mixto (2 proteínas)</span>
+                                <div class="flex items-center gap-2">
+                                    <span class="font-bold">$130</span>
+                                    <button onclick="openProteinSelection('Yakimeshi Mixto', 130, 2, 'wok')"
+                                        class="text-gray-400 hover:text-red-600 p-2"><i
+                                            class="fas fa-plus-circle fa-lg"></i></button>
+                                </div>
+                            </li>
+                            <li
+                                class="flex justify-between items-center text-sm text-gray-700 font-bold bg-red-50 p-2 rounded text-red-900 border border-red-100">
+                                <span><i class="fas fa-star text-yellow-600 mr-2"></i>Especial (3 proteínas +
+                                    Kushiagues)</span>
+                                <div class="flex items-center gap-2">
+                                    <span>$150</span>
+                                    <button onclick="addToCart('Yakimeshi Especial (Pollo, Res y Camarón)', 150, 'wok')"
+                                        class="text-red-600 hover:text-red-800 p-2"><i
+                                            class="fas fa-plus-circle fa-lg"></i></button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white border-t-4 border-red-600 shadow-md rounded-b-lg h-full overflow-hidden hover:shadow-xl transition-shadow menu-item-card relative">
+                    <span
+                        class="absolute top-0 right-0 bg-yellow-400 text-black text-[10px] font-bold px-3 py-1 rounded-bl-lg z-10 shadow-sm">
+                        ⭐ La joya oculta de Wokami
+                    </span>
+
+                    <div class="h-48 w-full bg-gray-200 relative overflow-hidden group">
+                        <img src="lomein.jpg" onerror="this.src='https://via.placeholder.com/600x200?text=Lo+Mein'"
+                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-center mb-4 border-b border-gray-100 pb-2">
+                            <h3 class="text-2xl font-bold uppercase tracking-wide brand-font">Lo Mein</h3>
+                            <span class="text-4xl text-gray-300 font-bold"
+                                style="font-family: 'Noto Sans JP', sans-serif;">麵</span>
+                        </div>
+                        <p class="text-gray-600 italic mb-6">
+                            Pasta salteada con zanahoria, cebolla, brócoli, champiñones
+                            y col morada, bañada en salsa a base de soya, acompañada de pesto de cilantro.
+                            <br>
+                            <span
+                                class="inline-block mt-2 bg-red-100 text-red-600 text-xs px-2 py-1 rounded-full border border-red-200 font-bold not-italic">
+                                <i class="fas fa-exclamation-circle mr-1"></i>Nota: No incluye soya
+                            </span>
+                        </p>
+
+                        <ul class="space-y-3 mt-8">
+                            <li
+                                class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-1.5 rounded transition-colors">
+                                <span><i class="fas fa-leaf text-green-600 mr-2"></i>Vegetariano</span>
+                                <div class="flex items-center gap-2">
+                                    <span class="font-bold">$65</span>
+                                    <button onclick="addToCart('Lo Mein Vegetariano', 65, 'wok')"
+                                        class="text-gray-400 hover:text-red-600 p-2"><i
+                                            class="fas fa-plus-circle fa-lg"></i></button>
+                                </div>
+                            </li>
+                            <li
+                                class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-1.5 rounded transition-colors">
+                                <span><i class="fas fa-drumstick-bite text-orange-400 mr-2"></i>Con Pollo</span>
+                                <div class="flex items-center gap-2">
+                                    <span class="font-bold">$80</span>
+                                    <button onclick="addToCart('Lo Mein Pollo', 80, 'wok')"
+                                        class="text-gray-400 hover:text-red-600 p-2"><i
+                                            class="fas fa-plus-circle fa-lg"></i></button>
+                                </div>
+                            </li>
+                            <li
+                                class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-1.5 rounded transition-colors">
+                                <span><i class="fas fa-bacon text-red-800 mr-2"></i>Con Res</span>
+                                <div class="flex items-center gap-2">
+                                    <span class="font-bold">$80</span>
+                                    <button onclick="addToCart('Lo Mein Res', 80, 'wok')"
+                                        class="text-gray-400 hover:text-red-600 p-2"><i
+                                            class="fas fa-plus-circle fa-lg"></i></button>
+                                </div>
+                            </li>
+                            <li
+                                class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-1.5 rounded transition-colors">
+                                <span><i class="fas fa-shrimp text-red-400 mr-2"></i>Con Camarón</span>
+                                <div class="flex items-center gap-2">
+                                    <span class="font-bold">$95</span>
+                                    <button onclick="addToCart('Lo Mein Camarón', 95, 'wok')"
+                                        class="text-gray-400 hover:text-red-600 p-2"><i
+                                            class="fas fa-plus-circle fa-lg"></i></button>
+                                </div>
+                            </li>
+                             <li
+                                class="flex justify-between items-center text-sm text-gray-700 font-medium bg-gray-50 p-2 rounded">
+                                <span><i class="fas fa-utensils text-gray-500 mr-2"></i>Mixto (2 proteínas)</span>
+                                <div class="flex items-center gap-2">
+                                    <span class="font-bold">$95</span>
+                                    <button onclick="openProteinSelection('Lo Mein Mixto', 95, 2, 'wok')"
+                                        class="text-gray-400 hover:text-red-600 p-2"><i
+                                            class="fas fa-plus-circle fa-lg"></i></button>
+                                </div>
+                            </li>
+                             <li
+                                class="flex justify-between items-center text-sm text-gray-700 font-bold bg-red-50 p-2 rounded text-red-900 border border-red-100">
+                                <span><i class="fas fa-star text-yellow-600 mr-2"></i>Especial (3 proteínas)</span>
+                                <div class="flex items-center gap-2">
+                                    <span>$120</span>
+                                    <button onclick="addToCart('Lo Mein Especial (Pollo, Res y Camarón)', 120, 'wok')"
+                                        class="text-red-600 hover:text-red-800 p-2"><i
+                                            class="fas fa-plus-circle fa-lg"></i></button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="postres" class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-black category-header">POSTRES</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div
+                    class="menu-item-card bg-white rounded-lg shadow-sm overflow-hidden flex flex-col sm:flex-row min-h-32 group border border-gray-100">
+                    <div class="w-full sm:w-40 h-40 sm:h-auto flex-shrink-0 bg-gray-200 relative overflow-hidden">
+                        <img src="galletas.jpg" onerror="this.src='https://via.placeholder.com/300x300?text=Galletas'"
+                            class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-4 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-lg md:text-xl font-bold text-gray-900">Galletas New York</h3>
+                            <p class="text-gray-600 text-xs md:text-sm mt-1 mb-2">Estilo New York. Elige tu sabor:</p>
+
+                            <select id="cookie-select"
+                                class="w-full text-base md:text-xs border border-gray-300 rounded p-1.5 mb-2 bg-gray-50 focus:border-red-600 outline-none cursor-pointer hover:bg-white">
+                                <option value="Red Velvet rellena de queso">Red Velvet rellena de queso</option>
+                                <option value="Pay de Limón Eureka rellena de queso">Pay de Limón Eureka rellena de queso</option>
+                            </select>
+                        </div>
+                        <div class="flex justify-between items-center mt-1">
+                            <span class="text-lg font-bold text-gray-900">$45</span>
+                            <button onclick="addCookieFromSelect()"
+                                class="text-xs btn-primary px-4 py-2 rounded-full transition shadow-md font-bold"><i
+                                    class="fas fa-plus mr-1"></i> Agregar</button>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex flex-col sm:flex-row min-h-32 group">
+                    <div class="w-full sm:w-40 h-40 sm:h-auto flex-shrink-0 bg-gray-200 relative overflow-hidden">
+                        <img src="helado.jpg"
+                            onerror="this.src='https://via.placeholder.com/300x300?text=Tempura+Helado'"
+                            class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-4 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-lg md:text-xl font-bold text-gray-900">Tempura Helado</h3>
+                            <p class="text-gray-600 text-xs md:text-sm mt-1 line-clamp-2">Helado frito en tempura
+                                crujiente con chocolate.</p>
+                            <p class="text-xs text-red-600 font-bold mt-1"><i class="fas fa-star mr-1"></i>Sabor de la semana: Nieve de Cajeta</p>
+                        </div>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-lg font-bold text-gray-900">$75</span>
+                            <button onclick="addToCart('Tempura Helado (Nieve de Cajeta)', 75, 'postre')"
+                                class="text-xs btn-primary px-3 py-2 rounded-full shadow-md"><i
+                                    class="fas fa-plus text-sm"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="menu-item-card bg-white rounded-lg shadow-sm overflow-hidden flex flex-col sm:flex-row min-h-32 group border border-gray-100">
+                    <div class="w-full sm:w-40 h-40 sm:h-auto flex-shrink-0 bg-gray-200 relative overflow-hidden">
+                        <img src="mochis.jpg" onerror="this.src='https://via.placeholder.com/300x300?text=Mochis'"
+                            class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-4 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-lg md:text-xl font-bold text-gray-900">Mochis</h3>
+                            <p class="text-gray-600 text-xs md:text-sm mt-1 mb-2">Pastelillo de arroz. Elige tu relleno:</p>
+
+                             <select id="mochi-select"
+                                class="w-full text-base md:text-xs border border-gray-300 rounded p-1.5 mb-2 bg-gray-50 focus:border-red-600 outline-none cursor-pointer hover:bg-white">
+                                <option value="Nieve de Chongos">Nieve de Chongos</option>
+                                <option value="Nieve de Zarzamora">Nieve de Zarzamora</option>
+                            </select>
+                        </div>
+                        <div class="flex justify-between items-center mt-1">
+                            <span class="text-lg font-bold text-gray-900">$55</span>
+                            <button onclick="addMochiFromSelect()"
+                                class="text-xs btn-primary px-3 py-2 rounded-full shadow-md"><i
+                                    class="fas fa-plus text-sm"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="bebidas" class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-black category-header">BEBIDAS</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div
+                    class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex flex-col sm:flex-row min-h-32 group">
+                    <div class="w-full sm:w-40 h-40 sm:h-auto flex-shrink-0 bg-gray-200 relative overflow-hidden">
+                        <img src="aguas.jpg" onerror="this.src='https://via.placeholder.com/300x300?text=Aguas+Frescas'"
+                            class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-4 flex-grow flex justify-between items-center">
+                        <div>
+                            <h3 class="text-lg md:text-xl font-bold text-gray-900">Aguas Frescas</h3>
+                            <p class="text-gray-600 text-sm mt-1">1lt. Deliciosos sabores naturales del día.</p>
+                        </div>
+                        <div class="flex flex-col items-end">
+                            <span class="text-lg font-bold text-gray-900 mb-1">$35</span>
+                            <button onclick="addToCart('Agua Fresca', 35, 'bebida')"
+                                class="text-xs btn-primary px-3 py-2 rounded-full shadow-md"><i
+                                    class="fas fa-plus text-sm"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex flex-col sm:flex-row min-h-32 group">
+                    <div class="w-full sm:w-40 h-40 sm:h-auto flex-shrink-0 bg-gray-200 relative overflow-hidden">
+                        <img src="refrescos.jpg" onerror="this.src='https://via.placeholder.com/300x300?text=Refrescos'"
+                            class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-4 flex-grow flex justify-between items-center">
+                        <div>
+                            <h3 class="text-lg md:text-xl font-bold text-gray-900">Refrescos</h3>
+                            <p class="text-gray-600 text-sm mt-1">600ml. Familia Coca-Cola.</p>
+                        </div>
+                        <div class="flex flex-col items-end">
+                            <span class="text-lg font-bold text-gray-900 mb-1">$30</span>
+                            <button onclick="addToCart('Refresco', 30, 'bebida')"
+                                class="text-xs btn-primary px-3 py-2 rounded-full shadow-md"><i
+                                    class="fas fa-plus text-sm"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="mt-20 border-t border-gray-200 pt-10 text-center relative">
+            <div class="flex justify-center items-center gap-2 mb-4">
+                <span class="text-2xl font-bold brand-font tracking-widest">WOKAMI</span>
+            </div>
+            <p class="text-gray-500 text-sm mb-2">Abierto de miércoles a domingo de 2:00 PM a 8:00 PM</p>
+
+            <div class="flex justify-center gap-6 mt-4 text-gray-700">
+                <a href="https://www.instagram.com/wokami_sushi?igsh=NWYzYW82dG81eWdm" target="_blank"
+                    class="hover:text-red-600 transition-colors transform hover:scale-110 p-2">
+                    <i class="fab fa-instagram text-3xl"></i>
+                </a>
+
+                <a href="https://www.facebook.com/share/1DLwFajUXz/" target="_blank"
+                    class="hover:text-blue-600 transition-colors transform hover:scale-110 p-2">
+                    <i class="fab fa-facebook text-3xl"></i>
+                </a>
+                <a href="javascript:sendOrderGeneric()"
+                    class="hover:text-green-600 transition-colors transform hover:scale-110 p-2">
+                    <i class="fab fa-whatsapp text-3xl"></i>
+                </a>
+            </div>
+
+            <p class="text-gray-400 text-xs mt-8">© 2026 Wokami Sushi. Hecho con pasión en La Barca.</p>
+        </footer>
+
+    </main>
+
+    <div id="toast">Producto agregado</div>
+
+    <button onclick="sendOrder()"
+        class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition z-50 flex items-center gap-2 hover:scale-105 transform duration-200 border-2 border-white">
+        <i class="fab fa-whatsapp text-2xl"></i>
+        <span class="font-bold hidden md:inline" id="cart-text">Pedir Ahora</span>
+    </button>
+
+    <div id="preferences-modal"
+        class="fixed inset-0 bg-black bg-opacity-80 z-[100] hidden flex items-center justify-center p-4 backdrop-blur-sm">
+        <div
+            class="bg-white rounded-xl shadow-2xl w-full max-w-md p-6 relative max-h-[90vh] overflow-y-auto flex flex-col border border-gray-200">
+            <button onclick="toggleModal()"
+                class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 z-10 bg-white rounded-full p-2">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+
+            <h3
+                class="text-xl font-bold text-center mb-4 brand-font border-b border-gray-100 pb-2 flex-shrink-0 text-black">
+                Tu Pedido</h3>
+
+            <div id="cart-items-container" class="mb-4 bg-gray-50 p-3 rounded-lg border border-gray-100 flex-shrink-0">
+                <ul id="cart-list" class="space-y-2 text-sm mb-3 max-h-32 overflow-y-auto"></ul>
+
+                <div class="mb-3 pt-2 border-t border-gray-200">
+                    <div class="flex justify-between text-[10px] md:text-xs font-bold mb-1">
+                        <span id="progress-text" class="text-gray-700">¡Te faltan $50 para Kushiague GRATIS!</span>
+                        <span id="progress-amount" class="text-black">$0 / $350</span>
+                    </div>
+                    <div class="w-full bg-white rounded-full h-2.5 border border-gray-200 overflow-hidden">
+                        <div id="progress-bar" class="bg-red-600 h-2.5 rounded-full transition-all duration-500"
+                            style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div class="border-t border-gray-200 pt-2 space-y-1 text-right text-xs md:text-sm">
+                    <div class="flex justify-between text-gray-600">
+                        <span>Subtotal:</span>
+                        <span id="modal-subtotal">$0</span>
+                    </div>
+                    <div id="modal-discount-row" class="flex justify-between text-red-600 font-bold hidden">
+                        <span>Descuento Promo:</span>
+                        <span id="modal-discount">-$0</span>
+                    </div>
+                    <div id="modal-coupon-row" class="flex justify-between text-green-600 font-bold hidden">
+                        <span>Descuento Cupón:</span>
+                        <span id="modal-coupon-discount">-$0</span>
+                    </div>
+                    <div class="flex justify-between text-base font-bold text-gray-900 mt-1">
+                        <span>Total:</span>
+                        <span id="modal-total">$0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <div>
+                    <p class="font-bold text-gray-800 mb-2"><i class="fas fa-utensils mr-2 text-red-600"></i>¿Cubiertos?
+                    </p>
+                    <div class="flex gap-4 flex-wrap">
+                        <label
+                            class="flex items-center gap-2 cursor-pointer bg-gray-50 px-3 py-2 rounded hover:bg-gray-100 active:bg-gray-200">
+                            <input type="checkbox" name="cutlery" value="Palillos"
+                                class="text-red-600 focus:ring-red-500 rounded h-5 w-5">
+                            <span class="text-sm">Palillos</span>
+                        </label>
+                        <label
+                            class="flex items-center gap-2 cursor-pointer bg-gray-50 px-3 py-2 rounded hover:bg-gray-100 active:bg-gray-200">
+                            <input type="checkbox" name="cutlery" value="Tenedores"
+                                class="text-red-600 focus:ring-red-500 rounded h-5 w-5">
+                            <span class="text-sm">Tenedores</span>
+                        </label>
+                        <label
+                            class="flex items-center gap-2 cursor-pointer bg-gray-50 px-3 py-2 rounded hover:bg-gray-100 active:bg-gray-200">
+                            <input type="checkbox" name="cutlery" value="Sin cubiertos"
+                                class="text-red-600 focus:ring-red-500 rounded h-5 w-5">
+                            <span class="text-sm">Ninguno</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <p class="font-bold text-gray-800 mb-2"><i class="fas fa-pepper-hot mr-2 text-red-600"></i>Soya</p>
+                    <div class="flex flex-col gap-2">
+                        <label class="flex items-center gap-2 cursor-pointer p-1">
+                            <input type="radio" name="soy_sauce" value="Con Chile (Toreada)"
+                                class="text-red-600 focus:ring-red-500 h-5 w-5">
+                            <span class="text-sm ml-1">Con Chile (Toreada)</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer p-1">
+                            <input type="radio" name="soy_sauce" value="Sin Chile (Preparada)" checked
+                                class="text-red-600 focus:ring-red-500 h-5 w-5">
+                            <span class="text-sm ml-1">Sin Chile (Preparada)</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer p-1">
+                            <input type="radio" name="soy_sauce" value="Sin soya"
+                                class="text-red-600 focus:ring-red-500 h-5 w-5">
+                            <span class="text-sm ml-1">No necesito soya</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <p class="font-bold text-gray-800 mb-2"><i class="fas fa-plus-circle mr-2 text-red-600"></i>Extras
+                    </p>
+                    <label
+                        class="flex items-center gap-2 cursor-pointer bg-red-50 p-3 rounded border border-red-100 mb-2">
+                        <input type="checkbox" name="extra_item" value="Soya Extra" data-price="10"
+                            onchange="updateModalTotals()" class="text-red-600 rounded h-5 w-5">
+                        <span class="text-sm font-bold text-red-800 ml-1">Soya Extra (+$10)</span>
+                    </label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <label
+                            class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100 border border-gray-100">
+                            <input type="checkbox" name="extra_item" value="Salsa de Anguila" data-price="15"
+                                onchange="updateModalTotals()" class="text-red-600 rounded h-4 w-4">
+                            <span class="text-xs md:text-sm">Anguila (+$15)</span>
+                        </label>
+                        <label
+                            class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100 border border-gray-100">
+                            <input type="checkbox" name="extra_item" value="Aderezo Chipotle" data-price="15"
+                                onchange="updateModalTotals()" class="text-red-600 rounded h-4 w-4">
+                            <span class="text-xs md:text-sm">Chipotle (+$15)</span>
+                        </label>
+                        <label
+                            class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100 border border-gray-100">
+                            <input type="checkbox" name="extra_item" value="Sriracha" data-price="15"
+                                onchange="updateModalTotals()" class="text-red-600 rounded h-4 w-4">
+                            <span class="text-xs md:text-sm">Sriracha (+$15)</span>
+                        </label>
+                        <label
+                            class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100 border border-gray-100">
+                            <input type="checkbox" name="extra_item" value="Pesto de Cilantro" data-price="15"
+                                onchange="updateModalTotals()" class="text-red-600 rounded h-4 w-4">
+                            <span class="text-xs md:text-sm">Pesto de cilantro (+$15)</span>
+                        </label>
+                        <label
+                            class="flex items-center gap-2 cursor-pointer bg-yellow-50 p-2 rounded hover:bg-yellow-100 border border-yellow-100">
+                            <input type="checkbox" name="extra_item" value="Extra Queso Philadelphia" data-price="20"
+                                onchange="updateModalTotals()" class="text-red-600 rounded h-4 w-4">
+                            <span class="text-xs md:text-sm font-medium">Philadelphia (+$20)</span>
+                        </label>
+                        <label
+                            class="flex items-center gap-2 cursor-pointer bg-yellow-50 p-2 rounded hover:bg-yellow-100 border border-yellow-100">
+                            <input type="checkbox" name="extra_item" value="Extra Queso Manchego" data-price="20"
+                                onchange="updateModalTotals()" class="text-red-600 rounded h-4 w-4">
+                            <span class="text-xs md:text-sm font-medium">Manchego (+$20)</span>
+                        </label>
+                        <label
+                            class="flex items-center gap-2 cursor-pointer bg-orange-50 p-2 rounded hover:bg-orange-100 border border-orange-100">
+                            <input type="checkbox" name="extra_item" value="Tampico" data-price="25"
+                                onchange="updateModalTotals()" class="text-red-600 rounded h-4 w-4">
+                            <span class="text-xs md:text-sm font-medium">Tampico (+$25)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="mb-4 pt-4 border-t border-gray-100">
+                    <p class="font-bold text-gray-800 mb-2"><i class="fas fa-ticket-alt mr-2 text-red-600"></i>Cupón
+                    </p>
+                    <div class="flex gap-2">
+                        <input type="text" id="coupon-code"
+                            class="flex-1 text-base md:text-sm border border-gray-300 rounded p-3 md:p-2 uppercase focus:ring-red-500 outline-none"
+                            placeholder="Código">
+                        <button onclick="applyCoupon()"
+                            class="bg-red-600 text-white px-4 py-2 rounded text-sm font-bold hover:bg-red-700 transition-colors">Aplicar</button>
+                    </div>
+                    <p id="coupon-message" class="text-xs mt-1 font-bold"></p>
+                </div>
+
+                <div>
+                    <textarea id="delivery-address" rows="2"
+                        class="w-full text-base md:text-sm border border-gray-300 rounded p-2 bg-gray-50 focus:border-red-500 outline-none"
+                        placeholder="📍 Dirección de entrega..."></textarea>
+                    <textarea id="order-notes" rows="2"
+                        class="w-full text-base md:text-sm border border-gray-300 rounded p-2 bg-gray-50 focus:border-red-500 outline-none mt-2"
+                        placeholder="📝 Notas especiales..."></textarea>
+                </div>
+            </div>
+
+            <div id="modal-cookie-upsell"
+                class="mt-6 mb-2 bg-gradient-to-r from-gray-50 to-gray-100 border border-gray-200 rounded-lg p-3 flex items-center justify-between shadow-sm">
+                <div class="flex items-center gap-3">
+                    <div class="bg-white p-2 rounded-full shadow-sm text-lg">🍪</div>
+                    <div class="text-xs md:text-sm leading-tight">
+                        <p class="font-bold text-gray-800">¿Un toque dulce?</p>
+                        <p class="text-gray-600 text-xs">Galletas New York <span
+                                class="text-red-600 font-bold">+$45</span></p>
+                    </div>
+                </div>
+                <button onclick="addCookieFromModal()"
+                    class="text-xs bg-red-600 text-white px-3 py-2 rounded-full font-bold hover:bg-red-700 transition shadow-md">Agregar</button>
+            </div>
+
+            <div class="mt-2 flex gap-3">
+                <button onclick="toggleModal()"
+                    class="flex-1 px-4 py-3 border border-gray-300 rounded text-gray-600 hover:bg-gray-100 text-sm font-bold">Seguir
+                    Pidiendo</button>
+                <button onclick="submitOrderWithPreferences()"
+                    class="flex-1 px-4 py-3 bg-green-500 text-white rounded hover:bg-green-600 text-sm font-bold flex items-center justify-center gap-2 shadow-lg">
+                    <i class="fab fa-whatsapp"></i> Enviar
+                </button>
+            </div>
         </div>
-      </div>
-    </section>
-    
-    <!-- ============================================
-         SECCIÓN: ENTRADAS
-         ============================================ -->
-    <section id="entradas" class="mb-16" aria-labelledby="entradas-heading">
-      <h2 id="entradas-heading" class="category-header">ENTRADAS</h2>
-      <div class="grid md:grid-cols-2 gap-6" id="entradas-container">
-        <!-- Kushiagues -->
-        <article class="menu-item-card bg-white rounded-lg shadow-sm overflow-hidden flex flex-col sm:flex-row min-h-32 group">
-          <div class="w-full sm:w-40 h-40 sm:h-auto flex-shrink-0 bg-gray-200 relative overflow-hidden card-image-container">
-            <img src="./assets/img/kushiagues.jpg" 
-                 onerror="this.src='https://via.placeholder.com/300?text=Kushiagues'"
-                 alt="Kushiagues"
-                 class="w-full h-full object-cover object-center absolute inset-0"
-                 loading="lazy">
-          </div>
-          <div class="p-4 flex-grow flex flex-col justify-between">
-            <div>
-              <div class="flex items-baseline gap-2">
-                <h3 class="text-lg md:text-xl font-bold text-gray-900 leading-tight">Kushiagues</h3>
-                <span class="text-[10px] font-bold text-white bg-red-600 px-2 py-0.5 rounded shadow-sm">Hot</span>
-              </div>
-              <p class="text-gray-600 text-xs md:text-sm mt-1 mb-2">3 pzs. Ideales para compartir. Elige tu relleno:</p>
-              <select id="kushiage-select" class="form-select text-sm">
-                <option value="Queso Philadelphia">Queso Philadelphia</option>
-                <option value="Queso Manchego">Queso Manchego</option>
-                <option value="Camarón con Philadelphia">Camarón c/ Philadelphia</option>
-                <option value="Camarón con Manchego">Camarón c/ Manchego</option>
-                <option value="Plátano Macho con Philadelphia">Plátano c/ Philadelphia</option>
-              </select>
-            </div>
-            <div class="flex justify-between items-center mt-3">
-              <span class="text-lg font-bold text-gray-800">$65</span>
-              <button onclick="addKushiageFromSelect()" class="btn-primary text-xs py-2 px-4">
-                <i class="fas fa-plus mr-1"></i> Agregar
-              </button>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-    
-    <!-- ============================================
-         SECCIÓN: ROLLOS
-         ============================================ -->
-    <section id="rollos" class="mb-16" aria-labelledby="rollos-heading">
-      
-      <!-- Info de opciones -->
-      <div class="bg-gray-50 text-gray-700 px-4 py-3 rounded-lg border border-gray-200 text-sm font-medium shadow-sm mb-8 flex flex-col md:flex-row items-center justify-center text-center gap-2">
-        <span><i class="fas fa-info-circle text-gray-500 mr-2"></i>Elige: <strong>Empanizado</strong> o <strong>Natural</strong> 
-          <span class="text-xs text-red-500 font-bold block md:inline mt-1 md:mt-0 md:ml-1">(Excepto America y Grinch Roll)</span>
-        </span>
-        <span class="hidden md:inline text-gray-300">|</span>
-        <span><i class="fas fa-leaf mr-2 text-green-600"></i>Todos incluyen <strong>Chips de Camote</strong></span>
-      </div>
-      
-      <!-- Rollos Clásicos -->
-      <div class="mb-12">
-        <h2 id="rollos-heading" class="category-header">ROLLOS CLÁSICOS</h2>
-        <div class="grid lg:grid-cols-2 gap-8" id="rollos-clasicos-container">
-          
-          <!-- America Roll -->
-          <article class="menu-item-card bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full relative">
-            <div class="w-full md:w-1/3 h-48 md:h-auto bg-gray-200 relative card-image-container">
-              <img src="./assets/img/america.jpg" 
-                   onerror="this.src='https://via.placeholder.com/400x300?text=America+Roll'"
-                   alt="America Roll"
-                   class="w-full h-full object-cover object-center"
-                   loading="lazy">
-            </div>
-            <div class="p-6 md:w-2/3 flex flex-col justify-between">
-              <div>
-                <div class="flex justify-between items-start mb-2">
-                  <h3 class="text-xl font-bold text-black brand-font">America Roll</h3>
-                  <span class="text-red-600 font-bold text-lg">$120</span>
-                </div>
-                <p class="text-gray-600 text-sm mb-4">
-                  <strong>Por dentro:</strong> Camarones empanizados, aguacate y queso crema.<br>
-                  <strong>Por fuera:</strong> Mango con chile tajín, ajonjolí y salsa de anguila.
-                </p>
-              </div>
-              <button onclick="addToCart('America Roll', 120, 'rollo')" class="btn-primary mt-4 w-full md:w-auto">
-                Ordenar
-              </button>
-            </div>
-          </article>
-          
-          <!-- Banana Roll -->
-          <article class="menu-item-card bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full">
-            <div class="w-full md:w-1/3 h-48 md:h-auto bg-gray-200 relative card-image-container">
-              <img src="./assets/img/banana.jpg" 
-                   onerror="this.src='https://via.placeholder.com/400x300?text=Banana+Roll'"
-                   alt="Banana Roll"
-                   class="w-full h-full object-cover object-center"
-                   loading="lazy">
-            </div>
-            <div class="p-6 md:w-2/3 flex flex-col justify-between">
-              <div>
-                <div class="flex justify-between items-start mb-2">
-                  <h3 class="text-xl font-bold text-black brand-font">Banana Roll</h3>
-                  <span class="text-red-600 font-bold text-lg">$120</span>
-                </div>
-                <p class="text-gray-600 text-sm mb-4">
-                  <strong>Por dentro:</strong> Queso crema, aguacate y camarón.<br>
-                  <strong>Por fuera:</strong> Plátano macho frito, ajonjolí y salsa de anguila.
-                </p>
-              </div>
-              <div class="flex gap-2 mt-4">
-                <button onclick="addToCart('Banana Roll (Natural)', 120, 'rollo')" class="btn-option btn-option-natural flex-1">Natural</button>
-                <button onclick="addToCart('Banana Roll (Empanizado)', 120, 'rollo')" class="btn-option btn-option-empanizado flex-1">Empanizado</button>
-              </div>
-            </div>
-          </article>
-          
-          <!-- Cheese Roll -->
-          <article class="menu-item-card bg-white rounded-xl shadow-md overflow-hidden border-2 border-yellow-400 flex flex-col md:flex-row h-full relative">
-            <div class="card-badge card-badge--best-seller">Best Seller</div>
-            <div class="w-full md:w-1/3 h-48 md:h-auto bg-gray-200 relative card-image-container">
-              <img src="./assets/img/cheese.jpg" 
-                   onerror="this.src='https://via.placeholder.com/400x300?text=Cheese+Roll'"
-                   alt="Cheese Roll"
-                   class="w-full h-full object-cover object-center"
-                   loading="lazy">
-            </div>
-            <div class="p-6 md:w-2/3 flex flex-col justify-between">
-              <div>
-                <div class="flex justify-between items-start mb-2">
-                  <h3 class="text-xl font-bold text-black brand-font">Cheese Roll</h3>
-                  <span class="text-red-600 font-bold text-lg">$120</span>
-                </div>
-                <p class="text-gray-600 text-sm mb-4">
-                  <strong>Por dentro:</strong> Tiras de pollo empanizado, queso crema y aguacate.<br>
-                  <strong>Por fuera:</strong> Cubierto de queso gratinado spicy, salsa de anguila y ajonjolí.
-                </p>
-              </div>
-              <div class="flex gap-2 mt-4">
-                <button onclick="addToCart('Cheese Roll (Natural)', 120, 'rollo')" class="btn-option btn-option-natural flex-1">Natural</button>
-                <button onclick="addToCart('Cheese Roll (Empanizado)', 120, 'rollo')" class="btn-option btn-option-empanizado flex-1">Empanizado</button>
-              </div>
-            </div>
-          </article>
-          
-          <!-- California Roll -->
-          <article class="menu-item-card bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full">
-            <div class="w-full md:w-1/3 h-48 md:h-auto bg-gray-200 relative card-image-container">
-              <img src="./assets/img/california.jpg" 
-                   onerror="this.src='https://via.placeholder.com/400x300?text=California+Roll'"
-                   alt="California Roll"
-                   class="w-full h-full object-cover object-center"
-                   loading="lazy">
-            </div>
-            <div class="p-6 md:w-2/3 flex flex-col justify-between">
-              <div>
-                <div class="flex justify-between items-start mb-2">
-                  <h3 class="text-xl font-bold text-black brand-font">California Roll</h3>
-                  <span class="text-red-600 font-bold text-lg">$120</span>
-                </div>
-                <p class="text-gray-600 text-sm mb-4">
-                  <strong>Por dentro:</strong> Camarón, queso crema, aguacate y pepino.<br>
-                  <strong>Por fuera:</strong> Tampico.
-                </p>
-              </div>
-              <div class="flex gap-2 mt-4">
-                <button onclick="addToCart('California Roll (Natural)', 120, 'rollo')" class="btn-option btn-option-natural flex-1">Natural</button>
-                <button onclick="addToCart('California Roll (Empanizado)', 120, 'rollo')" class="btn-option btn-option-empanizado flex-1">Empanizado</button>
-              </div>
-            </div>
-          </article>
-          
-          <!-- Norteñito Roll -->
-          <article class="menu-item-card bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full">
-            <div class="w-full md:w-1/3 h-48 md:h-auto bg-gray-200 relative card-image-container">
-              <img src="./assets/img/nortenito.jpg" 
-                   onerror="this.src='https://via.placeholder.com/400x300?text=Nortenito+Roll'"
-                   alt="Norteñito Roll"
-                   class="w-full h-full object-cover object-center"
-                   loading="lazy">
-            </div>
-            <div class="p-6 md:w-2/3 flex flex-col justify-between">
-              <div>
-                <div class="flex justify-between items-start mb-2">
-                  <h3 class="text-xl font-bold text-black brand-font">Norteñito Roll</h3>
-                  <span class="text-red-600 font-bold text-lg">$120</span>
-                </div>
-                <p class="text-gray-600 text-sm mb-4">
-                  <strong>Por dentro:</strong> Res sazonada, queso manchego, aguacate y chiles toreados.<br>
-                  <strong>Por fuera:</strong> Aderezo de chipotle y salsa de anguila.
-                </p>
-              </div>
-              <div class="flex gap-2 mt-4">
-                <button onclick="addToCart('Norteñito Roll (Natural)', 120, 'rollo')" class="btn-option btn-option-natural flex-1">Natural</button>
-                <button onclick="addToCart('Norteñito Roll (Empanizado)', 120, 'rollo')" class="btn-option btn-option-empanizado flex-1">Empanizado</button>
-              </div>
-            </div>
-          </article>
-          
-        </div>
-      </div>
-      
-      <!-- Rollos Especiales -->
-      <div id="rollos-especiales" class="mb-16">
-        <h2 class="category-header">
-          ESPECIALES
-          <span class="text-sm font-medium text-red-700 ml-2 uppercase tracking-wide bg-red-50 px-2 py-1 rounded">Premium</span>
-        </h2>
-        <div class="grid lg:grid-cols-2 gap-8" id="rollos-especiales-container">
-          
-          <!-- A la Diabla Roll -->
-          <article class="menu-item-card bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full">
-            <div class="w-full md:w-1/3 h-48 md:h-auto bg-gray-200 relative card-image-container">
-              <img src="./assets/img/diabla.jpg" 
-                   onerror="this.src='https://via.placeholder.com/400x300?text=Diabla+Roll'"
-                   alt="A la Diabla Roll"
-                   class="w-full h-full object-cover object-center"
-                   loading="lazy">
-            </div>
-            <div class="p-6 md:w-2/3 flex flex-col justify-between">
-              <div>
-                <div class="flex justify-between items-start mb-2">
-                  <h3 class="text-xl font-bold text-black brand-font">A la Diabla Roll</h3>
-                  <span class="text-red-600 font-bold text-lg">$150</span>
-                </div>
-                <p class="text-gray-600 text-sm mb-4">
-                  <strong>Por dentro:</strong> Queso crema, aguacate y pepino.<br>
-                  <strong>Por fuera:</strong> Trocitos de camarón en salsa a la diabla.
-                </p>
-              </div>
-              <div class="flex gap-2 mt-4">
-                <button onclick="addToCart('A la Diabla Roll (Natural)', 150, 'rollo')" class="btn-option btn-option-natural flex-1">Natural</button>
-                <button onclick="addToCart('A la Diabla Roll (Empanizado)', 150, 'rollo')" class="btn-option btn-option-empanizado flex-1">Empanizado</button>
-              </div>
-            </div>
-          </article>
-          
-          <!-- Grinch Roll -->
-          <article class="menu-item-card bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full">
-            <div class="w-full md:w-1/3 h-48 md:h-auto bg-gray-200 relative card-image-container">
-              <img src="./assets/img/grinch.jpg" 
-                   onerror="this.src='https://via.placeholder.com/400x300?text=Grinch+Roll'"
-                   alt="Grinch Roll"
-                   class="w-full h-full object-cover object-center"
-                   loading="lazy">
-            </div>
-            <div class="p-6 md:w-2/3 flex flex-col justify-between">
-              <div>
-                <div class="flex justify-between items-start mb-2">
-                  <h3 class="text-xl font-bold text-black brand-font">Grinch Roll</h3>
-                  <span class="text-red-600 font-bold text-lg">$150</span>
-                </div>
-                <p class="text-gray-600 text-sm mb-4">
-                  <strong>Por dentro:</strong> Queso crema, tampico y camarones empanizados.<br>
-                  <strong>Por fuera:</strong> Aguacate y mezcla de ajonjolí con tampico.
-                </p>
-              </div>
-              <button onclick="addToCart('Grinch Roll', 150, 'rollo')" class="btn-primary mt-4 w-full md:w-auto">
-                Ordenar
-              </button>
-            </div>
-          </article>
-          
-          <!-- Aguachile Roll -->
-          <article class="menu-item-card bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full">
-            <div class="w-full md:w-1/3 h-48 md:h-auto bg-gray-200 relative card-image-container">
-              <img src="./assets/img/aguachile.jpg" 
-                   onerror="this.src='https://via.placeholder.com/400x300?text=Aguachile+Roll'"
-                   alt="Aguachile Roll"
-                   class="w-full h-full object-cover object-center"
-                   loading="lazy">
-            </div>
-            <div class="p-6 md:w-2/3 flex flex-col justify-between bg-gradient-to-br from-white to-gray-50">
-              <div>
-                <div class="flex justify-between items-start mb-2">
-                  <h3 class="text-xl font-bold text-black brand-font">Aguachile Roll</h3>
-                  <span class="text-red-600 font-bold text-lg">$150</span>
-                </div>
-                <p class="text-gray-600 text-sm mb-4">
-                  <strong>Por dentro:</strong> Pepino, queso crema y aguacate.<br>
-                  <strong>Por fuera:</strong> Aguachile de camarón con mango fresco.
-                </p>
-              </div>
-              <div class="flex gap-2 mt-4">
-                <button onclick="addToCart('Aguachile Roll (Natural)', 150, 'rollo')" class="btn-option btn-option-natural flex-1">Natural</button>
-                <button onclick="addToCart('Aguachile Roll (Empanizado)', 150, 'rollo')" class="btn-option btn-option-empanizado flex-1">Empanizado</button>
-              </div>
-            </div>
-          </article>
-          
-        </div>
-      </div>
-    </section>
-    
-    <!-- ============================================
-         SECCIÓN: CHAROLAS
-         ============================================ -->
-    <section id="charolas" class="mb-16" aria-labelledby="charolas-heading">
-      <h2 id="charolas-heading" class="category-header">CHAROLAS PARA COMPARTIR</h2>
-      
-      <article class="menu-item-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 group">
-        <div class="relative h-64 md:h-80 overflow-hidden card-image-container">
-          <img src="./assets/img/charola.jpg" 
-               onerror="this.src='https://via.placeholder.com/1000x400?text=Charolas+de+Sushi'"
-               alt="Charolas de Sushi"
-               class="w-full h-full object-cover"
-               loading="lazy">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-            <div class="p-6 md:p-8 text-white">
-              <h3 class="text-2xl md:text-4xl font-bold brand-font mb-2">La mejor opción para tus reuniones</h3>
-              <p class="text-gray-200 text-sm md:text-base hidden md:block">Personaliza tu charola con tus rollos favoritos. Ideales para fiestas, cumpleaños y eventos especiales.</p>
-            </div>
-          </div>
-        </div>
-        <div class="p-6 bg-gradient-to-r from-gray-50 to-white flex flex-col md:flex-row items-center justify-between gap-4">
-          <div class="text-center md:text-left">
-            <p class="text-gray-800 font-medium">¿Tienes un evento? Cotiza tu charola personalizada hoy mismo.</p>
-          </div>
-          <a href="https://wa.me/5214433580280?text=Hola%20Wokami,%20me%20interesa%20informaci%C3%B3n%20sobre%20las%20charolas%20de%20sushi%20%F0%9F%8D%A3"
-             target="_blank"
-             rel="noopener noreferrer"
-             class="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-full font-bold shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 flex items-center gap-2">
-            <i class="fab fa-whatsapp text-xl"></i> Pide información
-          </a>
-        </div>
-      </article>
-    </section>
-    
-    <!-- ============================================
-         SECCIÓN: WOK & BOWLS
-         ============================================ -->
-    <section id="wok" class="mb-16" aria-labelledby="wok-heading">
-      <h2 id="wok-heading" class="category-header">WOK & BOWLS</h2>
-      
-      <div class="grid lg:grid-cols-2 gap-8">
-        
-        <!-- Yakimeshi -->
-        <article id="yakimeshi-container" class="menu-item-card bg-white border-t-4 border-red-600 shadow-md rounded-b-lg h-full overflow-hidden hover:shadow-xl transition-shadow">
-          <div class="h-48 w-full bg-gray-200 relative overflow-hidden card-image-container">
-            <img src="./assets/img/yakimeshi.jpg" 
-                 onerror="this.src='https://via.placeholder.com/600x200?text=Yakimeshi'"
-                 alt="Yakimeshi"
-                 class="w-full h-full object-cover object-center"
-                 loading="lazy">
-          </div>
-          <div class="p-6 md:p-8">
-            <div class="flex justify-between items-center mb-4 border-b border-gray-100 pb-2">
-              <h3 class="text-2xl font-bold uppercase tracking-wide brand-font">Yakimeshi</h3>
-              <span class="text-4xl text-gray-300 font-bold" style="font-family: 'Noto Sans JP', sans-serif;">飯</span>
-            </div>
-            <p class="text-gray-600 italic mb-6">Arroz frito salteado al wok con calabaza y zanahoria.</p>
+    </div>
+
+    <div id="protein-modal" class="fixed inset-0 bg-black bg-opacity-80 z-[110] hidden flex items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-sm p-6 relative animate-fade-in-up">
+            <h3 id="protein-modal-title" class="text-xl font-bold text-center mb-1 brand-font text-black">Elige tus proteínas</h3>
+            <p id="protein-modal-subtitle" class="text-center text-sm text-gray-500 mb-6">Selecciona exactamente 2 opciones</p>
             
-            <ul class="space-y-2">
-              <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-2 rounded transition-colors">
-                <span><i class="fas fa-leaf text-green-600 mr-2"></i>Verduras (Base)</span>
-                <div class="flex items-center gap-2">
-                  <span class="font-bold">$70</span>
-                  <button onclick="addToCart('Yakimeshi Verduras', 70, 'wok')" class="text-gray-400 hover:text-red-600 p-2" aria-label="Agregar Yakimeshi Verduras">
-                    <i class="fas fa-plus-circle fa-lg"></i>
-                  </button>
-                </div>
-              </li>
-              <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-2 rounded transition-colors">
-                <span><i class="fas fa-drumstick-bite text-orange-400 mr-2"></i>Con Pollo</span>
-                <div class="flex items-center gap-2">
-                  <span class="font-bold">$100</span>
-                  <button onclick="addToCart('Yakimeshi Pollo', 100, 'wok')" class="text-gray-400 hover:text-red-600 p-2" aria-label="Agregar Yakimeshi Pollo">
-                    <i class="fas fa-plus-circle fa-lg"></i>
-                  </button>
-                </div>
-              </li>
-              <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-2 rounded transition-colors">
-                <span><i class="fas fa-shrimp text-red-400 mr-2"></i>Con Camarón</span>
-                <div class="flex items-center gap-2">
-                  <span class="font-bold">$120</span>
-                  <button onclick="addToCart('Yakimeshi Camarón', 120, 'wok')" class="text-gray-400 hover:text-red-600 p-2" aria-label="Agregar Yakimeshi Camarón">
-                    <i class="fas fa-plus-circle fa-lg"></i>
-                  </button>
-                </div>
-              </li>
-              <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-2 rounded transition-colors">
-                <span><i class="fas fa-bacon text-red-800 mr-2"></i>Con Res</span>
-                <div class="flex items-center gap-2">
-                  <span class="font-bold">$120</span>
-                  <button onclick="addToCart('Yakimeshi Res', 120, 'wok')" class="text-gray-400 hover:text-red-600 p-2" aria-label="Agregar Yakimeshi Res">
-                    <i class="fas fa-plus-circle fa-lg"></i>
-                  </button>
-                </div>
-              </li>
-              <li class="flex justify-between items-center text-sm text-gray-700 font-medium bg-gray-50 p-2 rounded">
-                <span><i class="fas fa-utensils text-gray-500 mr-2"></i>Mixto (2 proteínas)</span>
-                <div class="flex items-center gap-2">
-                  <span class="font-bold">$130</span>
-                  <button onclick="openProteinSelection('Yakimeshi Mixto', 130, 2, 'wok')" class="text-gray-400 hover:text-red-600 p-2" aria-label="Agregar Yakimeshi Mixto">
-                    <i class="fas fa-plus-circle fa-lg"></i>
-                  </button>
-                </div>
-              </li>
-              <li class="flex justify-between items-center text-sm text-gray-700 font-bold bg-red-50 p-2 rounded text-red-900 border border-red-100">
-                <span><i class="fas fa-star text-yellow-600 mr-2"></i>Especial (3 proteínas + Kushiagues)</span>
-                <div class="flex items-center gap-2">
-                  <span>$150</span>
-                  <button onclick="addToCart('Yakimeshi Especial (Pollo, Res y Camarón)', 150, 'wok')" class="text-red-600 hover:text-red-800 p-2" aria-label="Agregar Yakimeshi Especial">
-                    <i class="fas fa-plus-circle fa-lg"></i>
-                  </button>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </article>
-        
-        <!-- Lo Mein -->
-        <article id="lomein-container" class="menu-item-card bg-white border-t-4 border-red-600 shadow-md rounded-b-lg h-full overflow-hidden hover:shadow-xl transition-shadow relative">
-          <span class="absolute top-0 right-0 bg-yellow-400 text-black text-[10px] font-bold px-3 py-1 rounded-bl-lg z-10 shadow-sm">
-            ⭐ La joya oculta de Wokami
-          </span>
-          
-          <div class="h-48 w-full bg-gray-200 relative overflow-hidden card-image-container">
-            <img src="./assets/img/lomein.jpg" 
-                 onerror="this.src='https://via.placeholder.com/600x200?text=Lo+Mein'"
-                 alt="Lo Mein"
-                 class="w-full h-full object-cover object-center"
-                 loading="lazy">
-          </div>
-          <div class="p-6 md:p-8">
-            <div class="flex justify-between items-center mb-4 border-b border-gray-100 pb-2">
-              <h3 class="text-2xl font-bold uppercase tracking-wide brand-font">Lo Mein</h3>
-              <span class="text-4xl text-gray-300 font-bold" style="font-family: 'Noto Sans JP', sans-serif;">麵</span>
+            <div id="protein-options" class="space-y-3 mb-6">
+                <label class="cursor-pointer relative">
+                    <input type="checkbox" name="protein_choice" value="Pollo" class="protein-checkbox sr-only" onchange="validateProteinSelection()">
+                    <div class="p-4 rounded-lg border-2 border-gray-200 hover:border-red-300 transition-all flex justify-between items-center bg-gray-50">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-drumstick-bite text-orange-400 text-xl"></i>
+                            <span class="font-bold text-gray-700">Pollo</span>
+                        </div>
+                        <i class="fas fa-check-circle text-red-600 text-xl opacity-0 transform scale-50 transition-all check-icon"></i>
+                    </div>
+                </label>
+
+                <label class="cursor-pointer relative block">
+                    <input type="checkbox" name="protein_choice" value="Res" class="protein-checkbox sr-only" onchange="validateProteinSelection()">
+                    <div class="p-4 rounded-lg border-2 border-gray-200 hover:border-red-300 transition-all flex justify-between items-center bg-gray-50">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-bacon text-red-800 text-xl"></i>
+                            <span class="font-bold text-gray-700">Res</span>
+                        </div>
+                        <i class="fas fa-check-circle text-red-600 text-xl opacity-0 transform scale-50 transition-all check-icon"></i>
+                    </div>
+                </label>
+
+                <label class="cursor-pointer relative block">
+                    <input type="checkbox" name="protein_choice" value="Camarón" class="protein-checkbox sr-only" onchange="validateProteinSelection()">
+                    <div class="p-4 rounded-lg border-2 border-gray-200 hover:border-red-300 transition-all flex justify-between items-center bg-gray-50">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-shrimp text-red-400 text-xl"></i>
+                            <span class="font-bold text-gray-700">Camarón</span>
+                        </div>
+                        <i class="fas fa-check-circle text-red-600 text-xl opacity-0 transform scale-50 transition-all check-icon"></i>
+                    </div>
+                </label>
             </div>
-            <p class="text-gray-600 italic mb-4">
-              Pasta salteada con zanahoria, cebolla, brócoli, champiñones y col morada, bañada en salsa a base de soya, acompañada de pesto de cilantro.
-            </p>
-            <span class="inline-block mb-4 bg-red-100 text-red-600 text-xs px-2 py-1 rounded-full border border-red-200 font-bold not-italic">
-              <i class="fas fa-exclamation-circle mr-1"></i>Nota: No incluye soya
-            </span>
+
+            <div class="flex gap-3">
+                <button onclick="closeProteinModal()" class="flex-1 px-4 py-3 border border-gray-300 rounded text-gray-600 hover:bg-gray-100 text-sm font-bold">Cancelar</button>
+                <button id="confirm-proteins-btn" onclick="confirmProteinSelection()" disabled class="flex-1 px-4 py-3 bg-gray-300 text-white rounded text-sm font-bold flex items-center justify-center gap-2 shadow-lg transition-colors cursor-not-allowed">
+                    Agregar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            updateDynamicContent();
+            initSmoothScroll();
+            updateCartButton();
+        });
+
+        function updateDynamicContent() {
+            const now = new Date();
+            const dayOfWeek = now.getDay();
+            const hour = now.getHours();
+
+            const statusBadge = document.getElementById('status-badge');
+            // Nota: 0 es Domingo. Wokami abre Miércoles (3) a Domingo (0).
+            const isOpenDay = (dayOfWeek >= 3) || (dayOfWeek === 0);
+
+            const baseClass = "inline-block text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ml-1 md:ml-2 whitespace-nowrap text-white ";
+
+            if (isOpenDay) {
+                if (hour === 13) {
+                    statusBadge.textContent = "ABRIMOS PRONTO";
+                    statusBadge.className = baseClass + "bg-yellow-500";
+                }
+                else if (hour >= 14 && hour < 19) {
+                    statusBadge.textContent = "ABIERTO";
+                    statusBadge.className = baseClass + "bg-green-500 animate-pulse";
+                }
+                else if (hour === 19) {
+                    statusBadge.textContent = "CERRAMOS PRONTO";
+                    statusBadge.className = baseClass + "bg-orange-600 animate-pulse";
+                }
+                else {
+                    statusBadge.textContent = "CERRADO";
+                    statusBadge.className = baseClass + "bg-gray-500";
+                }
+            } else {
+                statusBadge.textContent = "CERRADO";
+                statusBadge.className = baseClass + "bg-gray-500";
+            }
+
+            const promoBanner = document.getElementById('daily-promo');
+            const promoText = document.getElementById('daily-promo-text');
+
+            let promoMessage = "";
+            let promoIcon = "fa-bullhorn"; // Icono por defecto
+
+            // NUEVA Lógica de Promociones (Finales de Febrero 2026)
+            switch (dayOfWeek) {
+                case 3: // Miércoles
+                case 4: // Jueves
+                    promoMessage = "🥢 Promo Wok & Drink: Compra cualquier Wok + Agua Fresca y ahorra $15.";
+                    promoIcon = "fa-utensils";
+                    break;
+                case 5: // Viernes
+                    promoMessage = "🔥 Viernes Premium: ¡Todos los Rollos Especiales a solo $125!";
+                    promoIcon = "fa-fire";
+                    break;
+                case 6: // Sábado
+                case 0: // Domingo
+                    promoMessage = "👨‍👩‍👧‍👦 Finde Familiar: ¡$50 de descuento en compras mayores a $450!";
+                    promoIcon = "fa-gift";
+                    break;
+                default:
+                    // Lunes y Martes (Cerrado)
+                    promoMessage = "¡Nos vemos el miércoles! Horario: 2:00 PM a 8:00 PM.";
+            }
+
+            if (promoMessage) {
+                promoText.innerHTML = `<i class="fas ${promoIcon} text-red-500 mr-2"></i>${promoMessage}`;
+                promoBanner.classList.remove('hidden');
+            }
+        }
+
+        let cart = [];
+        let appliedCouponCode = null;
+        const phoneNumber = "5214433580280";
+        
+        // Variables para el modal de proteínas
+        let currentProteinRequest = null; 
+
+        function addToCart(name, price, category = 'other') {
+            cart.push({ name: name, price: price, category: category });
+            updateCartButton();
+            showToast(`✅ Agregado: ${name}`);
+        }
+
+        // --- NUEVA LÓGICA PARA MODAL DE PROTEÍNAS ---
+
+        function openProteinSelection(baseName, price, limit, category) {
+            currentProteinRequest = { baseName, price, limit, category };
             
-            <ul class="space-y-2 mt-4">
-              <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-2 rounded transition-colors">
-                <span><i class="fas fa-leaf text-green-600 mr-2"></i>Vegetariano</span>
-                <div class="flex items-center gap-2">
-                  <span class="font-bold">$65</span>
-                  <button onclick="addToCart('Lo Mein Vegetariano', 65, 'wok')" class="text-gray-400 hover:text-red-600 p-2" aria-label="Agregar Lo Mein Vegetariano">
-                    <i class="fas fa-plus-circle fa-lg"></i>
-                  </button>
-                </div>
-              </li>
-              <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-2 rounded transition-colors">
-                <span><i class="fas fa-drumstick-bite text-orange-400 mr-2"></i>Con Pollo</span>
-                <div class="flex items-center gap-2">
-                  <span class="font-bold">$80</span>
-                  <button onclick="addToCart('Lo Mein Pollo', 80, 'wok')" class="text-gray-400 hover:text-red-600 p-2" aria-label="Agregar Lo Mein Pollo">
-                    <i class="fas fa-plus-circle fa-lg"></i>
-                  </button>
-                </div>
-              </li>
-              <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-2 rounded transition-colors">
-                <span><i class="fas fa-bacon text-red-800 mr-2"></i>Con Res</span>
-                <div class="flex items-center gap-2">
-                  <span class="font-bold">$80</span>
-                  <button onclick="addToCart('Lo Mein Res', 80, 'wok')" class="text-gray-400 hover:text-red-600 p-2" aria-label="Agregar Lo Mein Res">
-                    <i class="fas fa-plus-circle fa-lg"></i>
-                  </button>
-                </div>
-              </li>
-              <li class="flex justify-between items-center text-sm text-gray-700 hover:bg-gray-50 p-2 rounded transition-colors">
-                <span><i class="fas fa-shrimp text-red-400 mr-2"></i>Con Camarón</span>
-                <div class="flex items-center gap-2">
-                  <span class="font-bold">$95</span>
-                  <button onclick="addToCart('Lo Mein Camarón', 95, 'wok')" class="text-gray-400 hover:text-red-600 p-2" aria-label="Agregar Lo Mein Camarón">
-                    <i class="fas fa-plus-circle fa-lg"></i>
-                  </button>
-                </div>
-              </li>
-              <li class="flex justify-between items-center text-sm text-gray-700 font-medium bg-gray-50 p-2 rounded">
-                <span><i class="fas fa-utensils text-gray-500 mr-2"></i>Mixto (2 proteínas)</span>
-                <div class="flex items-center gap-2">
-                  <span class="font-bold">$95</span>
-                  <button onclick="openProteinSelection('Lo Mein Mixto', 95, 2, 'wok')" class="text-gray-400 hover:text-red-600 p-2" aria-label="Agregar Lo Mein Mixto">
-                    <i class="fas fa-plus-circle fa-lg"></i>
-                  </button>
-                </div>
-              </li>
-              <li class="flex justify-between items-center text-sm text-gray-700 font-bold bg-red-50 p-2 rounded text-red-900 border border-red-100">
-                <span><i class="fas fa-star text-yellow-600 mr-2"></i>Especial (3 proteínas)</span>
-                <div class="flex items-center gap-2">
-                  <span>$120</span>
-                  <button onclick="addToCart('Lo Mein Especial (Pollo, Res y Camarón)', 120, 'wok')" class="text-red-600 hover:text-red-800 p-2" aria-label="Agregar Lo Mein Especial">
-                    <i class="fas fa-plus-circle fa-lg"></i>
-                  </button>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </article>
+            // Actualizar textos del modal
+            document.getElementById('protein-modal-title').innerText = baseName;
+            document.getElementById('protein-modal-subtitle').innerHTML = `Selecciona exactamente <strong class="text-red-600">${limit}</strong> proteínas`;
+            
+            // Resetear checkboxes
+            document.querySelectorAll('.protein-checkbox').forEach(cb => {
+                cb.checked = false;
+                cb.disabled = false;
+                cb.parentElement.classList.remove('opacity-50');
+            });
+
+            validateProteinSelection(); // Actualiza estado del botón
+            document.getElementById('protein-modal').classList.remove('hidden');
+        }
+
+        function closeProteinModal() {
+            document.getElementById('protein-modal').classList.add('hidden');
+            currentProteinRequest = null;
+        }
+
+        function validateProteinSelection() {
+            if (!currentProteinRequest) return;
+            
+            const limit = currentProteinRequest.limit;
+            const checkedBoxes = document.querySelectorAll('.protein-checkbox:checked');
+            const confirmBtn = document.getElementById('confirm-proteins-btn');
+            
+            // Lógica para deshabilitar opciones si ya se alcanzó el límite
+            const allBoxes = document.querySelectorAll('.protein-checkbox');
+            
+            if (checkedBoxes.length >= limit) {
+                allBoxes.forEach(cb => {
+                    if (!cb.checked) {
+                        cb.disabled = true;
+                        cb.parentElement.classList.add('opacity-50');
+                    }
+                });
+            } else {
+                allBoxes.forEach(cb => {
+                    cb.disabled = false;
+                    cb.parentElement.classList.remove('opacity-50');
+                });
+            }
+
+            // Habilitar botón confirmar solo si se cumple el número exacto
+            if (checkedBoxes.length === limit) {
+                confirmBtn.disabled = false;
+                confirmBtn.classList.remove('bg-gray-300', 'cursor-not-allowed');
+                confirmBtn.classList.add('bg-red-600', 'hover:bg-red-700');
+            } else {
+                confirmBtn.disabled = true;
+                confirmBtn.classList.add('bg-gray-300', 'cursor-not-allowed');
+                confirmBtn.classList.remove('bg-red-600', 'hover:bg-red-700');
+            }
+        }
+
+        function confirmProteinSelection() {
+            if (!currentProteinRequest) return;
+            
+            const checkedBoxes = document.querySelectorAll('.protein-checkbox:checked');
+            const selectedProteins = Array.from(checkedBoxes).map(cb => cb.value);
+            
+            const fullName = `${currentProteinRequest.baseName} (${selectedProteins.join(', ')})`;
+            
+            addToCart(fullName, currentProteinRequest.price, currentProteinRequest.category);
+            closeProteinModal();
+        }
+
+        // ----------------------------------------------
+
+        function addCookieFromModal() {
+            addToCart('Galletas New York (Red Velvet rellena de queso)', 45, 'postre');
+            renderCartItems();
+            updateModalTotals();
+            const btn = document.querySelector('#modal-cookie-upsell button');
+            const originalText = btn.innerText;
+            btn.innerText = "¡Listo!";
+            btn.classList.add('bg-green-500');
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.classList.remove('bg-green-500');
+            }, 1000);
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartButton();
+            renderCartItems();
+            if (cart.length === 0) toggleModal();
+        }
+
+        function addKushiageFromSelect() {
+            const select = document.getElementById('kushiage-select');
+            addToCart(`Kushiagues (${select.value})`, 65, 'entrada');
+        }
+
+        function addCookieFromSelect() {
+            const select = document.getElementById('cookie-select');
+            addToCart(`Galletas New York (${select.value})`, 45, 'postre');
+        }
         
-      </div>
-    </section>
-    
-    <!-- ============================================
-         SECCIÓN: POSTRES
-         ============================================ -->
-    <section id="postres" class="mb-16" aria-labelledby="postres-heading">
-      <h2 id="postres-heading" class="category-header">POSTRES</h2>
-      
-      <div class="grid md:grid-cols-2 gap-6" id="postres-container">
-        
-        <!-- Galletas New York -->
-        <article class="menu-item-card bg-white rounded-lg shadow-sm overflow-hidden flex flex-col sm:flex-row min-h-32 group border border-gray-100">
-          <div class="w-full sm:w-40 h-40 sm:h-auto flex-shrink-0 bg-gray-200 relative overflow-hidden card-image-container">
-            <img src="./assets/img/galletas.jpg" 
-                 onerror="this.src='https://via.placeholder.com/300x300?text=Galletas'"
-                 alt="Galletas New York"
-                 class="w-full h-full object-cover object-center absolute inset-0"
-                 loading="lazy">
-          </div>
-          <div class="p-4 flex-grow flex flex-col justify-between">
-            <div>
-              <h3 class="text-lg md:text-xl font-bold text-gray-900">Galletas New York</h3>
-              <p class="text-gray-600 text-xs md:text-sm mt-1">Estilo New York. Elige tu sabor:</p>
-              <select id="cookie-select" class="form-select text-sm mt-2">
-                <option value="Red Velvet rellena de queso">Red Velvet rellena de queso</option>
-                <option value="Pay de Limón Eureka rellena de queso">Pay de Limón Eureka rellena de queso</option>
-              </select>
-            </div>
-            <div class="flex justify-between items-center mt-3">
-              <span class="text-lg font-bold text-gray-900">$45</span>
-              <button onclick="addCookieFromSelect()" class="btn-primary text-xs py-2 px-3 rounded-full">
-                <i class="fas fa-plus text-sm"></i>
-              </button>
-            </div>
-          </div>
-        </article>
-        
-        <!-- Tempura Helado -->
-        <article class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex flex-col sm:flex-row min-h-32 group">
-          <div class="w-full sm:w-40 h-40 sm:h-auto flex-shrink-0 bg-gray-200 relative overflow-hidden card-image-container">
-            <img src="./assets/img/helado.jpg" 
-                 onerror="this.src='https://via.placeholder.com/300x300?text=Tempura+Helado'"
-                 alt="Tempura Helado"
-                 class="w-full h-full object-cover object-center absolute inset-0"
-                 loading="lazy">
-          </div>
-          <div class="p-4 flex-grow flex flex-col justify-between">
-            <div>
-              <h3 class="text-lg md:text-xl font-bold text-gray-900">Tempura Helado</h3>
-              <p class="text-gray-600 text-xs md:text-sm mt-1 line-clamp-2">Helado frito en tempura crujiente con chocolate.</p>
-              <p class="text-xs text-red-600 font-bold mt-1"><i class="fas fa-star mr-1"></i>Sabor de la semana: Nieve de Cajeta</p>
-            </div>
-            <div class="flex justify-between items-center mt-3">
-              <span class="text-lg font-bold text-gray-900">$75</span>
-              <button onclick="addToCart('Tempura Helado (Nieve de Cajeta)', 75, 'postre')" class="btn-primary text-xs py-2 px-3 rounded-full">
-                <i class="fas fa-plus text-sm"></i>
-              </button>
-            </div>
-          </div>
-        </article>
-        
-        <!-- Mochis -->
-        <article class="menu-item-card bg-white rounded-lg shadow-sm overflow-hidden flex flex-col sm:flex-row min-h-32 group border border-gray-100">
-          <div class="w-full sm:w-40 h-40 sm:h-auto flex-shrink-0 bg-gray-200 relative overflow-hidden card-image-container">
-            <img src="./assets/img/mochis.jpg" 
-                 onerror="this.src='https://via.placeholder.com/300x300?text=Mochis'"
-                 alt="Mochis"
-                 class="w-full h-full object-cover object-center absolute inset-0"
-                 loading="lazy">
-          </div>
-          <div class="p-4 flex-grow flex flex-col justify-between">
-            <div>
-              <h3 class="text-lg md:text-xl font-bold text-gray-900">Mochis</h3>
-              <p class="text-gray-600 text-xs md:text-sm mt-1 mb-2">Pastelillo de arroz. Elige tu relleno:</p>
-              <select id="mochi-select" class="form-select text-sm">
-                <option value="Nieve de Chongos">Nieve de Chongos</option>
-                <option value="Nieve de Zarzamora">Nieve de Zarzamora</option>
-              </select>
-            </div>
-            <div class="flex justify-between items-center mt-3">
-              <span class="text-lg font-bold text-gray-900">$55</span>
-              <button onclick="addMochiFromSelect()" class="btn-primary text-xs py-2 px-3 rounded-full">
-                <i class="fas fa-plus text-sm"></i>
-              </button>
-            </div>
-          </div>
-        </article>
-        
-      </div>
-    </section>
-    
-    <!-- ============================================
-         SECCIÓN: BEBIDAS
-         ============================================ -->
-    <section id="bebidas" class="mb-16" aria-labelledby="bebidas-heading">
-      <h2 id="bebidas-heading" class="category-header">BEBIDAS</h2>
-      
-      <div class="grid md:grid-cols-2 gap-6" id="bebidas-container">
-        
-        <!-- Aguas Frescas -->
-        <article class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex flex-col sm:flex-row min-h-32 group">
-          <div class="w-full sm:w-40 h-40 sm:h-auto flex-shrink-0 bg-gray-200 relative overflow-hidden card-image-container">
-            <img src="./assets/img/aguas.jpg" 
-                 onerror="this.src='https://via.placeholder.com/300x300?text=Aguas+Frescas'"
-                 alt="Aguas Frescas"
-                 class="w-full h-full object-cover object-center absolute inset-0"
-                 loading="lazy">
-          </div>
-          <div class="p-4 flex-grow flex justify-between items-center">
-            <div>
-              <h3 class="text-lg md:text-xl font-bold text-gray-900">Aguas Frescas</h3>
-              <p class="text-gray-600 text-sm mt-1">1lt. Deliciosos sabores naturales del día.</p>
-            </div>
-            <div class="flex flex-col items-end">
-              <span class="text-lg font-bold text-gray-900 mb-1">$35</span>
-              <button onclick="addToCart('Agua Fresca', 35, 'bebida')" class="btn-primary text-xs py-2 px-3 rounded-full">
-                <i class="fas fa-plus text-sm"></i>
-              </button>
-            </div>
-          </div>
-        </article>
-        
-        <!-- Refrescos -->
-        <article class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex flex-col sm:flex-row min-h-32 group">
-          <div class="w-full sm:w-40 h-40 sm:h-auto flex-shrink-0 bg-gray-200 relative overflow-hidden card-image-container">
-            <img src="./assets/img/refrescos.jpg" 
-                 onerror="this.src='https://via.placeholder.com/300x300?text=Refrescos'"
-                 alt="Refrescos"
-                 class="w-full h-full object-cover object-center absolute inset-0"
-                 loading="lazy">
-          </div>
-          <div class="p-4 flex-grow flex justify-between items-center">
-            <div>
-              <h3 class="text-lg md:text-xl font-bold text-gray-900">Refrescos</h3>
-              <p class="text-gray-600 text-sm mt-1">600ml. Familia Coca-Cola.</p>
-            </div>
-            <div class="flex flex-col items-end">
-              <span class="text-lg font-bold text-gray-900 mb-1">$30</span>
-              <button onclick="addToCart('Refresco', 30, 'bebida')" class="btn-primary text-xs py-2 px-3 rounded-full">
-                <i class="fas fa-plus text-sm"></i>
-              </button>
-            </div>
-          </div>
-        </article>
-        
-      </div>
-    </section>
-    
-    <!-- ============================================
-         FOOTER
-         ============================================ -->
-    <footer class="site-footer" role="contentinfo">
-      <div class="flex justify-center items-center gap-2 mb-4">
-        <span class="text-2xl font-bold brand-font tracking-widest">WOKAMI</span>
-      </div>
-      <p class="text-gray-500 text-sm mb-2">Abierto de miércoles a domingo de 2:00 PM a 8:00 PM</p>
-      
-      <div class="footer-social">
-        <a href="https://www.instagram.com/wokami_sushi?igsh=NWYzYW82dG81eWdm" 
-           target="_blank" 
-           rel="noopener noreferrer"
-           class="footer-social-link footer-social-link--instagram"
-           aria-label="Instagram de Wokami">
-          <i class="fab fa-instagram text-3xl"></i>
-        </a>
-        <a href="https://www.facebook.com/share/1DLwFajUXz/" 
-           target="_blank" 
-           rel="noopener noreferrer"
-           class="footer-social-link footer-social-link--facebook"
-           aria-label="Facebook de Wokami">
-          <i class="fab fa-facebook text-3xl"></i>
-        </a>
-        <a href="javascript:sendOrderGeneric()" 
-           class="footer-social-link footer-social-link--whatsapp"
-           aria-label="Contactar por WhatsApp">
-          <i class="fab fa-whatsapp text-3xl"></i>
-        </a>
-      </div>
-      
-      <p class="text-gray-400 text-xs mt-8">© 2026 Wokami Sushi. Hecho con pasión en La Barca.</p>
-    </footer>
-    
-  </main>
-  
-  <!-- ============================================
-       TOAST NOTIFICATION
-       ============================================ -->
-  <div id="toast" class="toast" role="status" aria-live="polite">Producto agregado</div>
-  
-  <!-- ============================================
-       BOTÓN FLOTANTE WHATSAPP
-       ============================================ -->
-  <button type="button"
-          onclick="sendOrder()"
-          class="whatsapp-float"
-          aria-label="Ver pedido o contactar por WhatsApp">
-    <i class="fab fa-whatsapp text-2xl"></i>
-    <span class="font-bold hidden md:inline" id="cart-text">Pedir Ahora</span>
-  </button>
-  
-  <!-- ============================================
-       MODAL DE PREFERENCIAS DEL PEDIDO
-       ============================================ -->
-  <div id="preferences-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-    <div class="modal-container">
-      <button type="button" onclick="toggleModal()" class="modal-close" aria-label="Cerrar modal">
-        <i class="fas fa-times text-xl"></i>
-      </button>
-      
-      <h3 id="modal-title" class="text-xl font-bold text-center mb-4 brand-font border-b border-gray-100 pb-2 text-black">
-        Tu Pedido
-      </h3>
-      
-      <!-- Lista de items -->
-      <div class="mb-4 bg-gray-50 p-3 rounded-lg border border-gray-100">
-        <ul id="cart-list" class="space-y-2 text-sm mb-3 max-h-32 overflow-y-auto" role="list">
-          <!-- Items se renderizan dinámicamente -->
-        </ul>
-        
-        <!-- Barra de progreso -->
-        <div class="progress-container pt-2 border-t border-gray-200">
-          <div class="progress-header">
-            <span id="progress-text" class="progress-text">¡Te faltan $350 para Kushiague GRATIS!</span>
-            <span id="progress-amount" class="progress-amount">$0 / $350</span>
-          </div>
-          <div class="progress-bar-bg">
-            <div id="progress-bar" class="progress-bar-fill" style="width: 0%"></div>
-          </div>
-        </div>
-        
-        <!-- Totales -->
-        <div class="modal-totals">
-          <div class="modal-total-row">
-            <span>Subtotal:</span>
-            <span id="modal-subtotal">$0</span>
-          </div>
-          <div id="modal-discount-row" class="modal-total-row modal-total-row--discount hidden">
-            <span>Descuento Promo:</span>
-            <span id="modal-discount">-$0</span>
-          </div>
-          <div id="modal-coupon-row" class="modal-total-row modal-total-row--coupon hidden">
-            <span>Descuento Cupón:</span>
-            <span id="modal-coupon-discount">-$0</span>
-          </div>
-          <div class="modal-total-row--final">
-            <span>Total:</span>
-            <span id="modal-total">$0</span>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Preferencias -->
-      <div class="space-y-6">
-        
-        <!-- Cubiertos -->
-        <fieldset>
-          <legend class="font-bold text-gray-800 mb-2 flex items-center">
-            <i class="fas fa-utensils mr-2 text-red-600"></i>¿Cubiertos?
-          </legend>
-          <div class="flex gap-4 flex-wrap">
-            <label class="form-label">
-              <input type="checkbox" name="cutlery" value="Palillos" class="form-checkbox">
-              <span class="text-sm">Palillos</span>
-            </label>
-            <label class="form-label">
-              <input type="checkbox" name="cutlery" value="Tenedores" class="form-checkbox">
-              <span class="text-sm">Tenedores</span>
-            </label>
-            <label class="form-label">
-              <input type="checkbox" name="cutlery" value="Sin cubiertos" class="form-checkbox">
-              <span class="text-sm">Ninguno</span>
-            </label>
-          </div>
-        </fieldset>
-        
-        <!-- Soya -->
-        <fieldset>
-          <legend class="font-bold text-gray-800 mb-2 flex items-center">
-            <i class="fas fa-pepper-hot mr-2 text-red-600"></i>Soya
-          </legend>
-          <div class="flex flex-col gap-2">
-            <label class="flex items-center gap-2 cursor-pointer p-1">
-              <input type="radio" name="soy_sauce" value="Con Chile (Toreada)" class="form-radio">
-              <span class="text-sm ml-1">Con Chile (Toreada)</span>
-            </label>
-            <label class="flex items-center gap-2 cursor-pointer p-1">
-              <input type="radio" name="soy_sauce" value="Sin Chile (Preparada)" checked class="form-radio">
-              <span class="text-sm ml-1">Sin Chile (Preparada)</span>
-            </label>
-            <label class="flex items-center gap-2 cursor-pointer p-1">
-              <input type="radio" name="soy_sauce" value="Sin soya" class="form-radio">
-              <span class="text-sm ml-1">No necesito soya</span>
-            </label>
-          </div>
-        </fieldset>
-        
-        <!-- Extras -->
-        <fieldset>
-          <legend class="font-bold text-gray-800 mb-2 flex items-center">
-            <i class="fas fa-plus-circle mr-2 text-red-600"></i>Extras
-          </legend>
-          <div class="grid grid-cols-2 gap-2">
-            <label class="form-label form-label--highlight">
-              <input type="checkbox" name="extra_item" value="Soya Extra" data-price="10" onchange="updateModalTotals()" class="form-checkbox">
-              <span class="text-sm font-bold text-red-800 ml-1">Soya Extra (+$10)</span>
-            </label>
-            <label class="form-label">
-              <input type="checkbox" name="extra_item" value="Salsa de Anguila" data-price="15" onchange="updateModalTotals()" class="form-checkbox">
-              <span class="text-xs md:text-sm">Anguila (+$15)</span>
-            </label>
-            <label class="form-label">
-              <input type="checkbox" name="extra_item" value="Aderezo Chipotle" data-price="15" onchange="updateModalTotals()" class="form-checkbox">
-              <span class="text-xs md:text-sm">Chipotle (+$15)</span>
-            </label>
-            <label class="form-label">
-              <input type="checkbox" name="extra_item" value="Sriracha" data-price="15" onchange="updateModalTotals()" class="form-checkbox">
-              <span class="text-xs md:text-sm">Sriracha (+$15)</span>
-            </label>
-            <label class="form-label">
-              <input type="checkbox" name="extra_item" value="Pesto de Cilantro" data-price="15" onchange="updateModalTotals()" class="form-checkbox">
-              <span class="text-xs md:text-sm">Pesto (+$15)</span>
-            </label>
-            <label class="form-label">
-              <input type="checkbox" name="extra_item" value="Extra Queso Philadelphia" data-price="20" onchange="updateModalTotals()" class="form-checkbox">
-              <span class="text-xs md:text-sm font-medium">Philadelphia (+$20)</span>
-            </label>
-            <label class="form-label">
-              <input type="checkbox" name="extra_item" value="Extra Queso Manchego" data-price="20" onchange="updateModalTotals()" class="form-checkbox">
-              <span class="text-xs md:text-sm font-medium">Manchego (+$20)</span>
-            </label>
-            <label class="form-label">
-              <input type="checkbox" name="extra_item" value="Tampico" data-price="25" onchange="updateModalTotals()" class="form-checkbox">
-              <span class="text-xs md:text-sm font-medium">Tampico (+$25)</span>
-            </label>
-          </div>
-        </fieldset>
-        
-        <!-- Cupón -->
-        <div class="mb-4 pt-4 border-t border-gray-100">
-          <label for="coupon-code" class="font-bold text-gray-800 mb-2 flex items-center">
-            <i class="fas fa-ticket-alt mr-2 text-red-600"></i>Cupón
-          </label>
-          <div class="flex gap-2">
-            <input type="text" id="coupon-code" class="form-input flex-1 uppercase" placeholder="Código">
-            <button type="button" onclick="applyCoupon()" class="btn-primary px-4 py-2 text-sm">Aplicar</button>
-          </div>
-          <p id="coupon-message" class="text-xs mt-1 font-bold"></p>
-        </div>
-        
-        <!-- Dirección y notas -->
-        <div>
-          <label for="delivery-address" class="sr-only">Dirección de entrega</label>
-          <textarea id="delivery-address" rows="2" class="form-textarea" placeholder="📍 Dirección de entrega..."></textarea>
-          <label for="order-notes" class="sr-only">Notas especiales</label>
-          <textarea id="order-notes" rows="2" class="form-textarea mt-2" placeholder="📝 Notas especiales..."></textarea>
-        </div>
-      </div>
-      
-      <!-- Upsell de galletas -->
-      <div id="modal-cookie-upsell" class="cookie-upsell">
-        <div class="flex items-center gap-3">
-          <div class="cookie-upsell-icon">🍪</div>
-          <div class="text-xs md:text-sm leading-tight">
-            <p class="font-bold text-gray-800">¿Un toque dulce?</p>
-            <p class="text-gray-600 text-xs">Galletas New York <span class="text-red-600 font-bold">+$45</span></p>
-          </div>
-        </div>
-        <button type="button" onclick="addCookieFromModal()" class="btn-primary text-xs px-3 py-2 rounded-full">Agregar</button>
-      </div>
-      
-      <!-- Botones de acción -->
-      <div class="mt-6 flex gap-3">
-        <button type="button" onclick="toggleModal()" class="btn-secondary flex-1">Seguir Pidiendo</button>
-        <button type="button" onclick="submitOrderWithPreferences()" class="btn-primary flex-1 bg-green-500 hover:bg-green-600 border-green-500">
-          <i class="fab fa-whatsapp"></i> Enviar
-        </button>
-      </div>
-    </div>
-  </div>
-  
-  <!-- ============================================
-       MODAL DE SELECCIÓN DE PROTEÍNAS
-       ============================================ -->
-  <div id="protein-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="protein-modal-title">
-    <div class="bg-white rounded-xl shadow-2xl w-full max-w-sm p-6 relative animate-fade-in-up">
-      <h3 id="protein-modal-title" class="text-xl font-bold text-center mb-1 brand-font text-black">Elige tus proteínas</h3>
-      <p id="protein-modal-subtitle" class="text-center text-sm text-gray-500 mb-6">Selecciona exactamente 2 opciones</p>
-      
-      <div id="protein-options" class="space-y-3 mb-6">
-        
-        <!-- Pollo -->
-        <label class="protein-option">
-          <input type="checkbox" name="protein_choice" value="Pollo" class="protein-checkbox sr-only" onchange="validateProteinSelection()">
-          <div class="protein-option-content">
-            <div class="flex items-center gap-3">
-              <i class="fas fa-drumstick-bite text-orange-400 text-xl"></i>
-              <span class="font-bold text-gray-700">Pollo</span>
-            </div>
-            <i class="fas fa-check-circle protein-check-icon"></i>
-          </div>
-        </label>
-        
-        <!-- Res -->
-        <label class="protein-option">
-          <input type="checkbox" name="protein_choice" value="Res" class="protein-checkbox sr-only" onchange="validateProteinSelection()">
-          <div class="protein-option-content">
-            <div class="flex items-center gap-3">
-              <i class="fas fa-bacon text-red-800 text-xl"></i>
-              <span class="font-bold text-gray-700">Res</span>
-            </div>
-            <i class="fas fa-check-circle protein-check-icon"></i>
-          </div>
-        </label>
-        
-        <!-- Camarón -->
-        <label class="protein-option">
-          <input type="checkbox" name="protein_choice" value="Camarón" class="protein-checkbox sr-only" onchange="validateProteinSelection()">
-          <div class="protein-option-content">
-            <div class="flex items-center gap-3">
-              <i class="fas fa-shrimp text-red-400 text-xl"></i>
-              <span class="font-bold text-gray-700">Camarón</span>
-            </div>
-            <i class="fas fa-check-circle protein-check-icon"></i>
-          </div>
-        </label>
-        
-      </div>
-      
-      <div class="flex gap-3">
-        <button type="button" onclick="closeProteinModal()" class="btn-secondary flex-1">Cancelar</button>
-        <button type="button" id="confirm-proteins-btn" onclick="confirmProteinSelection()" disabled class="btn-primary flex-1 bg-gray-300 cursor-not-allowed">
-          Agregar
-        </button>
-      </div>
-    </div>
-  </div>
-  
-  <!-- ============================================
-       SCRIPTS
-       ============================================ -->
-  <!-- Datos del menú -->
-  <script src="./js/menu-data.js"></script>
-  
-  <!-- Lógica principal -->
-  <script src="./js/app.js"></script>
-  
+        function addMochiFromSelect() {
+            const select = document.getElementById('mochi-select');
+            addToCart(`Mochis (${select.value})`, 55, 'postre');
+        }
+
+        // CÁLCULO DE PROMOCIONES AUTOMÁTICAS (LÓGICA ACTUALIZADA)
+        function calculateCart() {
+            const now = new Date();
+            const day = now.getDay();
+            let subtotal = 0;
+            let discount = 0;
+
+            cart.forEach(item => subtotal += item.price);
+
+            // Filtros útiles
+            const wokItems = cart.filter(i => i.category === 'wok');
+            const bebidas = cart.filter(i => i.name.includes('Agua Fresca')); // Solo Aguas Frescas
+            const specialRolls = cart.filter(i => i.category === 'rollo' && i.price === 150); // Diabla, Grinch, Aguachile
+
+            // Promoción Miércoles (3) y Jueves (4): Wok & Drink ($15 off por combo)
+            if (day === 3 || day === 4) {
+                // Por cada par de (Wok + Agua Fresca), descontamos $15
+                const combosCount = Math.min(wokItems.length, bebidas.length);
+                discount += combosCount * 15;
+            }
+
+            // Promoción Viernes (5): Special Friday (Rollos Especiales a $125)
+            if (day === 5) {
+                // Precio normal $150, Precio Promo $125. Descuento $25 por rollo.
+                discount += specialRolls.length * 25;
+            }
+
+            // Promoción Sábado (6) y Domingo (0): Family Pack ($50 off si > $450)
+            if (day === 6 || day === 0) {
+                if (subtotal > 450) {
+                    discount += 50;
+                }
+            }
+
+            return { subtotal, discount, total: subtotal - discount };
+        }
+
+        function updateCartButton() {
+            const btnText = document.getElementById('cart-text');
+            if (!btnText) return;
+            const { total } = calculateCart();
+            const count = cart.length;
+            if (count > 0) {
+                btnText.innerText = `Ver Pedido (${count}) - $${total}`;
+                btnText.classList.remove('hidden');
+            } else {
+                btnText.innerText = "Pedir Ahora";
+            }
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById("toast");
+            toast.innerText = message;
+            toast.className = "show";
+            setTimeout(() => toast.className = toast.className.replace("show", ""), 3000);
+        }
+
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                });
+            });
+        }
+
+        function toggleModal() {
+            const modal = document.getElementById('preferences-modal');
+            modal.classList.toggle('hidden');
+            if (!modal.classList.contains('hidden')) renderCartItems();
+        }
+
+        function updateModalTotals() {
+            const { subtotal, discount: dailyDiscount } = calculateCart();
+            let extrasCost = 0;
+            document.querySelectorAll('input[name="extra_item"]:checked').forEach(c => extrasCost += parseInt(c.dataset.price || 0));
+
+            let couponDiscount = 0;
+
+            if (dailyDiscount === 0) {
+                if (appliedCouponCode === 'WOK5') couponDiscount = Math.round(subtotal * 0.05);
+                else if (appliedCouponCode === 'PREPA10' || appliedCouponCode === 'FAMILIA') couponDiscount = Math.round(subtotal * 0.10);
+            }
+
+            const finalTotal = subtotal + extrasCost - dailyDiscount - couponDiscount;
+
+            document.getElementById('modal-subtotal').innerText = `$${subtotal + extrasCost}`;
+            const discountRow = document.getElementById('modal-discount-row');
+
+            if (dailyDiscount !== 0) {
+                discountRow.classList.remove('hidden');
+                document.getElementById('modal-discount').innerText = `-$${dailyDiscount}`;
+                document.getElementById('modal-coupon-row').classList.add('hidden');
+            } else {
+                discountRow.classList.add('hidden');
+                if (couponDiscount > 0) {
+                    document.getElementById('modal-coupon-row').classList.remove('hidden');
+                    document.getElementById('modal-coupon-discount').innerText = `-$${couponDiscount}`;
+                } else {
+                    document.getElementById('modal-coupon-row').classList.add('hidden');
+                }
+            }
+            document.getElementById('modal-total').innerText = `$${finalTotal}`;
+
+            updateProgressBar(subtotal + extrasCost);
+        }
+
+        function updateProgressBar(currentTotal) {
+            const goal = 350;
+            const percentage = Math.min((currentTotal / goal) * 100, 100);
+            const progressBar = document.getElementById('progress-bar');
+            const progressText = document.getElementById('progress-text');
+            const progressAmount = document.getElementById('progress-amount');
+
+            progressBar.style.width = `${percentage}%`;
+            progressAmount.innerText = `$${currentTotal} / $${goal}`;
+
+            if (currentTotal >= goal) {
+                progressBar.classList.remove('bg-red-600');
+                progressBar.classList.add('bg-green-500');
+                progressText.innerHTML = `🎉 ¡Felicidades! Ganaste una <span class="font-bold text-green-600">Kushiague GRATIS</span>`;
+                progressText.classList.add('text-green-700');
+            } else {
+                const remaining = goal - currentTotal;
+                progressBar.classList.add('bg-red-600');
+                progressBar.classList.remove('bg-green-500');
+                progressText.innerHTML = `¡Te faltan <strong>$${remaining}</strong> para una Kushiague GRATIS!`;
+                progressText.classList.remove('text-green-700');
+            }
+        }
+
+        function renderCartItems() {
+            const list = document.getElementById('cart-list');
+            list.innerHTML = '';
+            cart.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.className = 'flex justify-between items-center border-b border-gray-100 pb-1';
+                li.innerHTML = `<span class="truncate">${item.name}</span><div class="flex gap-2"><span class="font-bold">$${item.price}</span><button onclick="removeFromCart(${index})" class="text-red-400 p-2"><i class="fas fa-trash"></i></button></div>`;
+                list.appendChild(li);
+            });
+            updateModalTotals();
+        }
+
+        function applyCoupon() {
+            const codeInput = document.getElementById('coupon-code');
+            const messageEl = document.getElementById('coupon-message');
+            const addressField = document.getElementById('delivery-address');
+            const code = codeInput.value.trim().toUpperCase();
+            const { discount } = calculateCart();
+            const now = new Date();
+            const day = now.getDay();
+            const isWeekend = (day === 0 || day === 6);
+
+            addressField.disabled = false;
+            addressField.style.backgroundColor = "";
+
+            if (discount !== 0) {
+                messageEl.className = "text-xs mt-1 font-bold text-red-600";
+                messageEl.innerText = "Este cupón no es acumulable con otras promociones.";
+                appliedCouponCode = null;
+                updateModalTotals();
+                return;
+            }
+
+            if (code === 'WOK5') {
+                appliedCouponCode = 'WOK5';
+                messageEl.className = "text-xs mt-1 font-bold text-green-600";
+                messageEl.innerText = "¡Cupón aplicado! (5% Descuento)";
+            } else if (code === 'PREPA10') {
+                if (isWeekend) {
+                    messageEl.className = "text-xs mt-1 font-bold text-red-600";
+                    messageEl.innerText = "Válido solo entre semana (Mié-Vie).";
+                    appliedCouponCode = null;
+                } else {
+                    appliedCouponCode = 'PREPA10';
+                    messageEl.className = "text-xs mt-1 font-bold text-green-600";
+                    messageEl.innerText = "¡Cupón PREPA10 aplicado! (10% Descuento)";
+                    addressField.value = "Escuela Preparatoria Regional De La Barca UDEG";
+                    addressField.disabled = true;
+                }
+            } else if (code === 'FAMILIA') {
+                if (day !== 0) {
+                    messageEl.className = "text-xs mt-1 font-bold text-red-600";
+                    messageEl.innerText = "Válido solo los domingos.";
+                    appliedCouponCode = null;
+                } else {
+                    appliedCouponCode = 'FAMILIA';
+                    messageEl.className = "text-xs mt-1 font-bold text-green-600";
+                    messageEl.innerText = "¡Cupón FAMILIA aplicado! (10% Descuento)";
+                }
+            } else {
+                appliedCouponCode = null;
+                messageEl.className = "text-xs mt-1 font-bold text-red-600";
+                messageEl.innerText = "Código inválido";
+            }
+            updateModalTotals();
+        }
+
+        function sendOrder() {
+            if (cart.length === 0) {
+                window.open("https://wa.me/message/P4FK7RF2G2RWH1", "_blank");
+                return;
+            }
+            renderCartItems();
+            document.getElementById('preferences-modal').classList.remove('hidden');
+        }
+
+        function submitOrderWithPreferences() {
+            const cutlerySelected = [];
+            document.querySelectorAll('input[name="cutlery"]:checked').forEach(checkbox => {
+                cutlerySelected.push(checkbox.value);
+            });
+            const cutleryString = cutlerySelected.length > 0 ? cutlerySelected.join(', ') : 'Ninguno';
+
+            const soySauceElement = document.querySelector('input[name="soy_sauce"]:checked');
+            const soySauce = soySauceElement ? soySauceElement.value : 'Sin Chile (Preparada)';
+
+            const address = document.getElementById('delivery-address').value.trim();
+            const notes = document.getElementById('order-notes').value.trim();
+
+            const extraItems = [];
+            let totalExtrasCost = 0;
+
+            document.querySelectorAll('input[name="extra_item"]:checked').forEach(checkbox => {
+                const price = parseInt(checkbox.dataset.price || 0);
+                extraItems.push(`${checkbox.value} ($${price})`);
+                totalExtrasCost += price;
+            });
+
+            const { subtotal, discount: dailyDiscount } = calculateCart();
+
+            let couponDiscount = 0;
+            if (dailyDiscount === 0) {
+                if (appliedCouponCode === 'WOK5') couponDiscount = Math.round(subtotal * 0.05);
+                else if (appliedCouponCode === 'PREPA10' || appliedCouponCode === 'FAMILIA') couponDiscount = Math.round(subtotal * 0.10);
+            }
+
+            const currentTotalCalc = subtotal + totalExtrasCost;
+            const finalTotal = currentTotalCalc - dailyDiscount - couponDiscount;
+
+            let message = "Hola Wokami! 🍱 Quiero ordenar:%0A";
+
+            cart.forEach((item) => {
+                message += `- ${item.name} ($${item.price})%0A`;
+            });
+
+            if (extraItems.length > 0) {
+                message += `%0A--- Extras ($${totalExtrasCost}) ---%0A`;
+                extraItems.forEach(itemStr => message += `+ ${itemStr}%0A`);
+            }
+
+            if (currentTotalCalc >= 350) {
+                message += `%0A🎁 ¡PREMIO DESBLOQUEADO! Kushiague GRATIS 🍡%0A`;
+            }
+
+            if (dailyDiscount !== 0) {
+                message += `%0ASubtotal: $${currentTotalCalc}`;
+                message += `%0AAjuste Promoción: -$${dailyDiscount}`;
+            } else if (couponDiscount > 0) {
+                message += `%0ASubtotal: $${currentTotalCalc}`;
+                message += `%0ADescuento Cupón (${appliedCouponCode}): -$${couponDiscount}`;
+            }
+
+            message += `%0ATotal Final: $${finalTotal}`;
+
+            message += `%0A%0A--- Preferencias ---%0A`;
+            message += `🥢 Cubiertos: ${cutleryString}%0A`;
+            message += `🍶 Soya: ${soySauce}`;
+
+            if (address) {
+                message += `%0A📍 Dirección: ${encodeURIComponent(address)}`;
+            }
+
+            if (notes) {
+                message += `%0A📝 Notas: ${encodeURIComponent(notes)}`;
+            }
+
+            message += "%0A%0A(Envía este mensaje para confirmar tu pedido)";
+
+            window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
+            toggleModal();
+        }
+
+        function sendOrderGeneric() {
+            window.open("https://wa.me/message/P4FK7RF2G2RWH1", "_blank");
+        }
+    </script>
 </body>
+
 </html>
+
