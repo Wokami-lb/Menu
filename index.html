@@ -1222,25 +1222,25 @@
             let promoMessage = "";
             let promoIcon = "fa-bullhorn"; // Icono por defecto
 
-            // Lógica de Promociones de Cuaresma (Rotativa)
+            // NUEVA Lógica de Promociones (Finales de Febrero 2026)
             switch (dayOfWeek) {
                 case 3: // Miércoles
                 case 4: // Jueves
-                    promoMessage = "🍤 ¡Cuaresma Crujiente! Rollo Clásico + Kushiagues por solo $170.";
+                    promoMessage = "🥢 Promo Wok & Drink: Compra cualquier Wok + Agua Fresca y ahorra $15.";
                     promoIcon = "fa-utensils";
                     break;
                 case 5: // Viernes
-                    promoMessage = "🐟 Viernes de Vigilia: 2 Rollos de Camarón (Clásicos) x $220.";
-                    promoIcon = "fa-fish";
+                    promoMessage = "🔥 Viernes Premium: ¡Todos los Rollos Especiales a solo $125!";
+                    promoIcon = "fa-fire";
                     break;
                 case 6: // Sábado
                 case 0: // Domingo
-                    promoMessage = "🌊 Finde del Pescador: Yakimeshi de Camarón + Bebida x $140.";
-                    promoIcon = "fa-water";
+                    promoMessage = "👨‍👩‍👧‍👦 Finde Familiar: ¡$50 de descuento en compras mayores a $450!";
+                    promoIcon = "fa-gift";
                     break;
                 default:
-                    // Lunes y Martes (Cerrado, pero por si acaso entran)
-                    promoMessage = "¡Nos vemos el miércoles! Horario de Cuaresma: 2:00 PM a 8:00 PM.";
+                    // Lunes y Martes (Cerrado)
+                    promoMessage = "¡Nos vemos el miércoles! Horario: 2:00 PM a 8:00 PM.";
             }
 
             if (promoMessage) {
@@ -1373,7 +1373,7 @@
             addToCart(`Mochis (${select.value})`, 55, 'postre');
         }
 
-        // CÁLCULO DE PROMOCIONES AUTOMÁTICAS
+        // CÁLCULO DE PROMOCIONES AUTOMÁTICAS (LÓGICA ACTUALIZADA)
         function calculateCart() {
             const now = new Date();
             const day = now.getDay();
@@ -1382,40 +1382,28 @@
 
             cart.forEach(item => subtotal += item.price);
 
-            // Filtros útiles para identificar los productos que aplican en las promociones
-            const classicRolls = cart.filter(i => i.category === 'rollo' && i.price === 120);
-            const kushiagues = cart.filter(i => i.category === 'entrada' && i.name.includes('Kushiagues'));
-            const shrimpClassicRolls = classicRolls.filter(r => r.name.includes('America') || r.name.includes('California') || r.name.includes('Banana'));
-            const yakimeshiCamaron = cart.filter(i => i.category === 'wok' && i.name.includes('Yakimeshi Camarón'));
-            const bebidas = cart.filter(i => i.category === 'bebida').sort((a, b) => b.price - a.price);
+            // Filtros útiles
+            const wokItems = cart.filter(i => i.category === 'wok');
+            const bebidas = cart.filter(i => i.name.includes('Agua Fresca')); // Solo Aguas Frescas
+            const specialRolls = cart.filter(i => i.category === 'rollo' && i.price === 150); // Diabla, Grinch, Aguachile
 
-            // Promoción Miércoles (3) y Jueves (4): Rollo Clásico + Kushiagues = $170 (Ahorro $15)
+            // Promoción Miércoles (3) y Jueves (4): Wok & Drink ($15 off por combo)
             if (day === 3 || day === 4) {
-                const combosCount = Math.min(classicRolls.length, kushiagues.length);
+                // Por cada par de (Wok + Agua Fresca), descontamos $15
+                const combosCount = Math.min(wokItems.length, bebidas.length);
                 discount += combosCount * 15;
             }
 
-            // Promoción Viernes (5): 2 Rollos de Camarón Clásicos x $220 (Ahorro $20 por par)
+            // Promoción Viernes (5): Special Friday (Rollos Especiales a $125)
             if (day === 5) {
-                const pairs = Math.floor(shrimpClassicRolls.length / 2);
-                discount += pairs * 20;
+                // Precio normal $150, Precio Promo $125. Descuento $25 por rollo.
+                discount += specialRolls.length * 25;
             }
 
-            // Promoción Sábado (6) y Domingo (0): Finde del Pescador (Yakimeshi Camarón + Bebida = $140)
+            // Promoción Sábado (6) y Domingo (0): Family Pack ($50 off si > $450)
             if (day === 6 || day === 0) {
-                const combosCount = Math.min(yakimeshiCamaron.length, bebidas.length);
-                for(let i = 0; i < combosCount; i++) {
-                    const normalPrice = 120 + bebidas[i].price; // 120 de base Yakimeshi + precio de bebida
-                    discount += (normalPrice - 140); 
-                }
-            }
-
-            // Ejemplo: Promo de Galleta en Domingo (Conservado del código original por si lo ocupas)
-            if (day === 0) {
-                const cookieItems = cart.filter(i => i.name.includes('Galletas New York')).sort((a, b) => a.price - b.price);
-                const freeCount = Math.floor(cookieItems.length / 3);
-                for (let i = 0; i < freeCount; i++) {
-                    discount += cookieItems[i].price;
+                if (subtotal > 450) {
+                    discount += 50;
                 }
             }
 
@@ -1680,3 +1668,4 @@
 </body>
 
 </html>
+
