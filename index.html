@@ -961,21 +961,14 @@
             <div id="cart-items-container" class="mb-4 bg-gray-50 p-3 rounded-lg border border-gray-100 flex-shrink-0">
                 <ul id="cart-list" class="space-y-2 text-sm mb-3 max-h-32 overflow-y-auto"></ul>
 
-                <div class="mb-3 pt-2 border-t border-gray-200">
-                    <div class="flex justify-between text-[10px] md:text-xs font-bold mb-1">
-                        <span id="progress-text" class="text-gray-700">¡Te faltan $50 para Kushiague GRATIS!</span>
-                        <span id="progress-amount" class="text-black">$0 / $350</span>
-                    </div>
-                    <div class="w-full bg-white rounded-full h-2.5 border border-gray-200 overflow-hidden">
-                        <div id="progress-bar" class="bg-red-600 h-2.5 rounded-full transition-all duration-500"
-                            style="width: 0%"></div>
-                    </div>
-                </div>
-
                 <div class="border-t border-gray-200 pt-2 space-y-1 text-right text-xs md:text-sm">
                     <div class="flex justify-between text-gray-600">
                         <span>Subtotal:</span>
                         <span id="modal-subtotal">$0</span>
+                    </div>
+                    <div class="flex justify-between text-gray-600">
+                        <span>Envío:</span>
+                        <span id="modal-shipping">$15</span>
                     </div>
                     <div id="modal-discount-row" class="flex justify-between text-red-600 font-bold hidden">
                         <span>Descuento Promo:</span>
@@ -1446,6 +1439,8 @@
             const { total } = calculateCart();
             const count = cart.length;
             if (count > 0) {
+                // Modificado para no incluir el costo de envío en el botón flotante si se prefiere,
+                // pero lo mantenemos igual para que muestre el costo de los productos
                 btnText.innerText = `Ver Pedido (${count}) - $${total}`;
                 btnText.classList.remove('hidden');
             } else {
@@ -1486,13 +1481,14 @@
             document.querySelectorAll('input[name="extra_item"]:checked').forEach(c => extrasCost += parseInt(c.dataset.price || 0));
 
             let couponDiscount = 0;
+            const shippingCost = 15;
 
             if (dailyDiscount === 0) {
                 if (appliedCouponCode === 'WOK5') couponDiscount = Math.round(subtotal * 0.05);
                 else if (appliedCouponCode === 'PREPA10' || appliedCouponCode === 'FAMILIA') couponDiscount = Math.round(subtotal * 0.10);
             }
 
-            const finalTotal = subtotal + extrasCost - dailyDiscount - couponDiscount;
+            const finalTotal = subtotal + extrasCost + shippingCost - dailyDiscount - couponDiscount;
 
             document.getElementById('modal-subtotal').innerText = `$${subtotal + extrasCost}`;
             const discountRow = document.getElementById('modal-discount-row');
@@ -1511,32 +1507,6 @@
                 }
             }
             document.getElementById('modal-total').innerText = `$${finalTotal}`;
-
-            updateProgressBar(subtotal + extrasCost);
-        }
-
-        function updateProgressBar(currentTotal) {
-            const goal = 350;
-            const percentage = Math.min((currentTotal / goal) * 100, 100);
-            const progressBar = document.getElementById('progress-bar');
-            const progressText = document.getElementById('progress-text');
-            const progressAmount = document.getElementById('progress-amount');
-
-            progressBar.style.width = `${percentage}%`;
-            progressAmount.innerText = `$${currentTotal} / $${goal}`;
-
-            if (currentTotal >= goal) {
-                progressBar.classList.remove('bg-red-600');
-                progressBar.classList.add('bg-green-500');
-                progressText.innerHTML = `🎉 ¡Felicidades! Ganaste una <span class="font-bold text-green-600">Kushiague GRATIS</span>`;
-                progressText.classList.add('text-green-700');
-            } else {
-                const remaining = goal - currentTotal;
-                progressBar.classList.add('bg-red-600');
-                progressBar.classList.remove('bg-green-500');
-                progressText.innerHTML = `¡Te faltan <strong>$${remaining}</strong> para una Kushiague GRATIS!`;
-                progressText.classList.remove('text-green-700');
-            }
         }
 
         function renderCartItems() {
@@ -1640,13 +1610,15 @@
             const { subtotal, discount: dailyDiscount } = calculateCart();
 
             let couponDiscount = 0;
+            const shippingCost = 15;
+
             if (dailyDiscount === 0) {
                 if (appliedCouponCode === 'WOK5') couponDiscount = Math.round(subtotal * 0.05);
                 else if (appliedCouponCode === 'PREPA10' || appliedCouponCode === 'FAMILIA') couponDiscount = Math.round(subtotal * 0.10);
             }
 
             const currentTotalCalc = subtotal + totalExtrasCost;
-            const finalTotal = currentTotalCalc - dailyDiscount - couponDiscount;
+            const finalTotal = currentTotalCalc + shippingCost - dailyDiscount - couponDiscount;
 
             let message = "Hola Wokami! 🍱 Quiero ordenar:%0A";
 
@@ -1659,19 +1631,18 @@
                 extraItems.forEach(itemStr => message += `+ ${itemStr}%0A`);
             }
 
-            if (currentTotalCalc >= 350) {
-                message += `%0A🎁 ¡PREMIO DESBLOQUEADO! Kushiague GRATIS 🍡%0A`;
-            }
-
             if (dailyDiscount !== 0) {
                 message += `%0ASubtotal: $${currentTotalCalc}`;
                 message += `%0AAjuste Promoción: -$${dailyDiscount}`;
             } else if (couponDiscount > 0) {
                 message += `%0ASubtotal: $${currentTotalCalc}`;
                 message += `%0ADescuento Cupón (${appliedCouponCode}): -$${couponDiscount}`;
+            } else {
+                message += `%0ASubtotal: $${currentTotalCalc}`;
             }
 
-            message += `%0ATotal Final: $${finalTotal}`;
+            message += `%0A🚚 Envío: $${shippingCost}`;
+            message += `%0A💰 Total Final: $${finalTotal}`;
 
             message += `%0A%0A--- Preferencias ---%0A`;
             message += `🥢 Cubiertos: ${cutleryString}%0A`;
