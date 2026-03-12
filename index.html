@@ -19,8 +19,8 @@
                 extend: {
                     colors: {
                         'wokami-red': '#D80000',
-                        'wokami-dark': '#111111',
-                        'wokami-gray': '#f3f4f6',
+                        'wokami-dark': '#1a1a1a', /* Un negro ligeramente más suave para mejor contraste */
+                        'wokami-gold': '#D4AF37', /* Dorado para detalles premium */
                     },
                     animation: {
                         'fade-in-up': 'fadeInUp 0.3s ease-out forwards',
@@ -39,14 +39,15 @@
         :root {
             --wokami-red: #D80000;
             --wokami-black: #1a1a1a;
-            --wokami-bg: #ffffff;
+            --wokami-bg: #F8F6F0
         }
 
         body {
             font-family: 'Noto Sans JP', sans-serif;
             background-color: var(--wokami-bg);
             color: var(--wokami-black);
-            background-image: radial-gradient(#e5e7eb 1.5px, transparent 1.5px);
+            /* Puntos del patrón en un tono stone cálido */
+            background-image: radial-gradient(#d6d3d1 1.5px, transparent 1.5px);
             background-size: 25px 25px;
             overflow-x: hidden;
             -webkit-tap-highlight-color: transparent;
