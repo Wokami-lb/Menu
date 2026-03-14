@@ -685,16 +685,13 @@
                 </div>
 
                 <div
-                    class="bg-gray-50 border-t-4 border-gray-400 shadow-md rounded-b-lg h-full overflow-hidden transition-shadow menu-item-card relative opacity-75">
-                    <div class="absolute inset-0 z-20 bg-white/60 flex items-center justify-center pointer-events-none">
-                        <span class="bg-red-600 text-white font-bold px-6 py-3 text-xl rounded transform -rotate-12 border-2 border-white shadow-lg">AGOTADO HOY</span>
-                    </div>
+                    class="bg-white border-t-4 border-red-600 shadow-md rounded-b-lg h-full overflow-hidden hover:shadow-xl transition-shadow menu-item-card relative">
                     <span
                         class="absolute top-0 right-0 bg-yellow-400 text-black text-[10px] font-bold px-3 py-1 rounded-bl-lg z-10 shadow-sm">
                         ⭐ La joya oculta de Wokami
                     </span>
 
-                    <div class="h-48 w-full bg-gray-200 relative overflow-hidden group grayscale">
+                    <div class="h-48 w-full bg-gray-200 relative overflow-hidden group">
                         <img src="lomein.jpg" onerror="this.src='https://via.placeholder.com/600x200?text=Lo+Mein'"
                             class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
                     </div>
@@ -720,7 +717,9 @@
                                 <span><i class="fas fa-leaf text-green-600 mr-2"></i>Vegetariano</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$65</span>
-                                    <button disabled class="text-gray-400 p-2 cursor-not-allowed"><i class="fas fa-ban fa-lg"></i></button>
+                                    <button onclick="addToCart('Lo Mein Vegetariano', 65, 'wok')"
+                                        class="text-gray-400 hover:text-red-600 p-2"><i
+                                            class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
                             <li
@@ -728,7 +727,9 @@
                                 <span><i class="fas fa-drumstick-bite text-orange-400 mr-2"></i>Con Pollo</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$80</span>
-                                    <button disabled class="text-gray-400 p-2 cursor-not-allowed"><i class="fas fa-ban fa-lg"></i></button>
+                                    <button onclick="addToCart('Lo Mein Pollo', 80, 'wok')"
+                                        class="text-gray-400 hover:text-red-600 p-2"><i
+                                            class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
                             <li
@@ -736,7 +737,9 @@
                                 <span><i class="fas fa-bacon text-red-800 mr-2"></i>Con Res</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$80</span>
-                                    <button disabled class="text-gray-400 p-2 cursor-not-allowed"><i class="fas fa-ban fa-lg"></i></button>
+                                    <button onclick="addToCart('Lo Mein Res', 80, 'wok')"
+                                        class="text-gray-400 hover:text-red-600 p-2"><i
+                                            class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
                             <li
@@ -744,7 +747,9 @@
                                 <span><i class="fas fa-shrimp text-red-400 mr-2"></i>Con Camarón</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$95</span>
-                                    <button disabled class="text-gray-400 p-2 cursor-not-allowed"><i class="fas fa-ban fa-lg"></i></button>
+                                    <button onclick="addToCart('Lo Mein Camarón', 95, 'wok')"
+                                        class="text-gray-400 hover:text-red-600 p-2"><i
+                                            class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
                             <li
@@ -752,7 +757,9 @@
                                 <span><i class="fas fa-utensils text-gray-500 mr-2"></i>Mixto (2 proteínas)</span>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$95</span>
-                                    <button disabled class="text-gray-400 p-2 cursor-not-allowed"><i class="fas fa-ban fa-lg"></i></button>
+                                    <button onclick="openProteinSelection('Lo Mein Mixto', 95, 2, 'wok')"
+                                        class="text-gray-400 hover:text-red-600 p-2"><i
+                                            class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
                             <li
@@ -760,7 +767,9 @@
                                 <span><i class="fas fa-star text-yellow-600 mr-2"></i>Especial (3 proteínas)</span>
                                 <div class="flex items-center gap-2">
                                     <span>$120</span>
-                                    <button disabled class="text-gray-400 p-2 cursor-not-allowed"><i class="fas fa-ban fa-lg"></i></button>
+                                    <button onclick="addToCart('Lo Mein Especial (Pollo, Res y Camarón)', 120, 'wok')"
+                                        class="text-red-600 hover:text-red-800 p-2"><i
+                                            class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
                         </ul>
