@@ -164,6 +164,10 @@
 
 <body class="antialiased min-h-screen pb-24 selection:bg-red-100">
 
+    <div class="bg-red-700 text-white text-center py-3 px-4 text-sm md:text-base font-bold shadow-md w-full relative z-[60] flex items-center justify-center gap-2">
+        <i class="fas fa-calendar-times text-yellow-300 text-xl animate-pulse"></i>
+        <span>AVISO IMPORTANTE: Estaremos cerrados por festividades. Regresamos a servicio el <strong>15 de abril</strong>. ¡Agradecemos su comprensión!</span>
+    </div>
     <div id="daily-promo"
         class="hidden bg-neutral-900 text-white text-center py-2 px-4 text-xs md:text-sm font-bold promo-banner shadow-md border-b-2 border-red-600">
         <span id="daily-promo-text"><i class="fas fa-bullhorn mr-2 text-red-500"></i></span>
@@ -1208,69 +1212,14 @@
         });
 
         function updateDynamicContent() {
-            const now = new Date();
-            const dayOfWeek = now.getDay();
-            const hour = now.getHours();
-
+            // MODO FESTIVIDADES ACTIVADO
             const statusBadge = document.getElementById('status-badge');
-            // Nota: 0 es Domingo. Wokami abre Miércoles (3) a Domingo (0).
-            const isOpenDay = (dayOfWeek >= 3) || (dayOfWeek === 0);
+            statusBadge.textContent = "CERRADO POR FESTIVIDADES";
+            statusBadge.className = "inline-block text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ml-1 md:ml-2 whitespace-nowrap text-white bg-red-600";
 
-            const baseClass = "inline-block text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ml-1 md:ml-2 whitespace-nowrap text-white ";
-
-            if (isOpenDay) {
-                if (hour === 13) {
-                    statusBadge.textContent = "ABRIMOS PRONTO";
-                    statusBadge.className = baseClass + "bg-yellow-500";
-                }
-                else if (hour >= 14 && hour < 19) {
-                    statusBadge.textContent = "ABIERTO";
-                    statusBadge.className = baseClass + "bg-green-500 animate-pulse";
-                }
-                else if (hour === 19) {
-                    statusBadge.textContent = "CERRAMOS PRONTO";
-                    statusBadge.className = baseClass + "bg-orange-600 animate-pulse";
-                }
-                else {
-                    statusBadge.textContent = "CERRADO";
-                    statusBadge.className = baseClass + "bg-gray-500";
-                }
-            } else {
-                statusBadge.textContent = "CERRADO";
-                statusBadge.className = baseClass + "bg-gray-500";
-            }
-
+            // Ocultar el banner de promociones diarias mientras esté cerrado
             const promoBanner = document.getElementById('daily-promo');
-            const promoText = document.getElementById('daily-promo-text');
-
-            let promoMessage = "";
-            let promoIcon = "fa-bullhorn"; // Icono por defecto
-
-            // NUEVA Lógica de Promociones (Finales de Febrero 2026)
-            switch (dayOfWeek) {
-                case 3: // Miércoles
-                case 4: // Jueves
-                    promoMessage = "🥢 Promo Wok & Drink: Compra cualquier Wok + Agua Fresca y ahorra $15.";
-                    promoIcon = "fa-utensils";
-                    break;
-                case 5: // Viernes
-                    promoMessage = "🔥 Viernes Premium: ¡Todos los Rollos Especiales a solo $125!";
-                    promoIcon = "fa-fire";
-                    break;
-                case 6: // Sábado
-                case 0: // Domingo
-                    promoMessage = "👨‍👩‍👧‍👦 Finde Familiar: ¡$50 de descuento en compras mayores a $450!";
-                    promoIcon = "fa-gift";
-                    break;
-                default:
-                    // Lunes y Martes (Cerrado)
-                    promoMessage = "¡Nos vemos el miércoles! Horario: 2:00 PM a 8:00 PM.";
-            }
-
-            if (promoMessage) {
-                promoText.innerHTML = `<i class="fas ${promoIcon} text-red-500 mr-2"></i>${promoMessage}`;
-                promoBanner.classList.remove('hidden');
-            }
+            promoBanner.classList.add('hidden');
         }
 
         let cart = [];
