@@ -187,8 +187,8 @@
             <nav class="hidden lg:flex gap-8 text-sm font-bold uppercase tracking-wide text-gray-300">
                 <a href="#entradas" class="hover:text-red-500 transition-colors py-1 nav-link">Entradas</a>
                 <a href="#rollos" class="hover:text-red-500 transition-colors py-1 nav-link">Rollos</a>
-                <a href="#charolas"
-                    class="hover:text-yellow-400 transition-colors py-1 nav-link text-yellow-500">Charolas</a>
+                <a href="#Eventos"
+                    class="hover:text-yellow-400 transition-colors py-1 nav-link text-yellow-500">Eventos</a>
                 <a href="#wok" class="hover:text-red-500 transition-colors py-1 nav-link">Wok</a>
                 <a href="#postres" class="hover:text-red-500 transition-colors py-1 nav-link">Postres</a>
                 <a href="#bebidas" class="hover:text-red-500 transition-colors py-1 nav-link">Bebidas</a>
@@ -207,8 +207,8 @@
                     class="mobile-nav-link text-white hover:text-red-500 hover:bg-white/5 px-4 py-4 rounded-lg transition-all font-bold text-lg border-b border-white/5">Entradas</a>
                 <a href="#rollos" onclick="document.getElementById('mobile-menu').classList.add('hidden')"
                     class="mobile-nav-link text-white hover:text-red-500 hover:bg-white/5 px-4 py-4 rounded-lg transition-all font-bold text-lg border-b border-white/5">Rollos</a>
-                <a href="#charolas" onclick="document.getElementById('mobile-menu').classList.add('hidden')"
-                    class="mobile-nav-link text-yellow-400 hover:text-white hover:bg-white/5 px-4 py-4 rounded-lg transition-all font-bold text-lg border-b border-white/5">Charolas</a>
+                <a href="#Eventos" onclick="document.getElementById('mobile-menu').classList.add('hidden')"
+                    class="mobile-nav-link text-yellow-400 hover:text-white hover:bg-white/5 px-4 py-4 rounded-lg transition-all font-bold text-lg border-b border-white/5">Eventos</a>
                 <a href="#wok" onclick="document.getElementById('mobile-menu').classList.add('hidden')"
                     class="mobile-nav-link text-white hover:text-red-500 hover:bg-white/5 px-4 py-4 rounded-lg transition-all font-bold text-lg border-b border-white/5">Wok
                     & Bowls</a>
@@ -562,7 +562,7 @@
 
         </section>
 
-        <section id="charolas" class="mb-16">
+        <section id="Eventos" class="mb-16">
             <h2 class="text-3xl font-bold mb-8 text-black category-header">CHAROLAS Y PASTEL DE SUSHI</h2>
 
             <div class="grid md:grid-cols-2 gap-8">
@@ -1221,20 +1221,48 @@
         });
 
         function updateDynamicContent() {
-            // Restauramos el estado a ABIERTO
             const statusBadge = document.getElementById('status-badge');
-            statusBadge.textContent = "ABIERTO";
-            statusBadge.className = "inline-block text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ml-1 md:ml-2 whitespace-nowrap text-white bg-green-500";
+            
+            // Obtenemos la hora actual del usuario
+            const now = new Date();
+            const day = now.getDay(); 
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const currentTimeInMinutes = hours * 60 + minutes;
 
-            // Mostramos nuevamente el banner superior
+            // Horario: Miércoles (3) a Domingo (0), cerrado Lunes (1) y Martes (2)
+            const isWorkingDay = [0, 3, 4, 5, 6].includes(day);
+            const openTime = 14 * 60; // 14:00 (2:00 PM)
+            const closeTime = 20 * 60; // 20:00 (8:00 PM)
+            const openingSoonTime = 13 * 60 + 30; // 13:30 (1:30 PM)
+            const closingSoonTime = 19 * 60 + 30; // 19:30 (7:30 PM)
+
+            let statusText = "CERRADO";
+            let statusColorClass = "bg-red-600 text-white";
+
+            if (isWorkingDay) {
+                if (currentTimeInMinutes >= openTime && currentTimeInMinutes < closingSoonTime) {
+                    statusText = "ABIERTO";
+                    statusColorClass = "bg-green-500 text-white";
+                } else if (currentTimeInMinutes >= closingSoonTime && currentTimeInMinutes < closeTime) {
+                    statusText = "CERRAMOS PRONTO";
+                    statusColorClass = "bg-orange-500 text-white";
+                } else if (currentTimeInMinutes >= openingSoonTime && currentTimeInMinutes < openTime) {
+                    statusText = "ABRIMOS PRONTO";
+                    statusColorClass = "bg-yellow-400 text-black"; // Texto negro para mejor contraste
+                }
+            }
+
+            // Aplicamos clases y texto calculados
+            statusBadge.textContent = statusText;
+            statusBadge.className = `inline-block text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ml-1 md:ml-2 whitespace-nowrap ${statusColorClass}`;
+
+            // Lógica del Banner Promocional
             const promoBanner = document.getElementById('daily-promo');
             promoBanner.classList.remove('hidden');
 
-            // Detectamos qué día es hoy
-            const day = new Date().getDay(); // 0 es Domingo, 1 Lunes... 4 Jueves, 5 Viernes
             let promoText = '<i class="fas fa-bullhorn mr-2 text-red-500"></i> ¡Bienvenidos a Wokami!';
 
-            // Asignamos el mensaje dependiendo del día
             if (day === 4) { // Jueves
                 promoText = '<i class="fas fa-briefcase mr-2 text-yellow-400"></i> <strong>¡JUEVES GODÍN!</strong> 1 Rollo Clásico + 1 Refresco por solo $135. (Descuento automático al carrito)';
             } else if (day === 5) { // Viernes
@@ -1245,7 +1273,6 @@
                 promoText = '<i class="fas fa-ticket-alt mr-2 text-red-500"></i> <strong>¡MITAD DE SEMANA!</strong> Usa el cupón <strong>WOK5</strong> al pagar y obtén 5% de descuento en todo tu pedido.';
             }
 
-            // Inyectamos el texto en el banner
             document.getElementById('daily-promo-text').innerHTML = promoText;
         }
 
@@ -1374,13 +1401,11 @@
             const classicRolls = cart.filter(i => i.category === 'rollo' && i.price === 120);
             const refrescos = cart.filter(i => i.name.includes('Refresco'));
 
-            // Promoción JUEVES (4): Combo Godín (1 Rollo Clásico + 1 Refresco = $135)
             if (day === 4) {
                 const combosGodin = Math.min(classicRolls.length, refrescos.length);
                 discount += combosGodin * 15;
             }
 
-            // Promoción SÁBADO (6) y DOMINGO (0): Family Pack ($50 off si > $450)
             if (day === 6 || day === 0) {
                 if (subtotal > 450) {
                     discount += 50;
