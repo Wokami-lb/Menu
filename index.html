@@ -19,8 +19,8 @@
                 extend: {
                     colors: {
                         'wokami-red': '#D80000',
-                        'wokami-dark': '#1a1a1a', /* Un negro ligeramente más suave para mejor contraste */
-                        'wokami-gold': '#D4AF37', /* Dorado para detalles premium */
+                        'wokami-dark': '#1a1a1a', 
+                        'wokami-gold': '#D4AF37', 
                     },
                     animation: {
                         'fade-in-up': 'fadeInUp 0.3s ease-out forwards',
@@ -46,7 +46,6 @@
             font-family: 'Noto Sans JP', sans-serif;
             background-color: var(--wokami-bg);
             color: var(--wokami-black);
-            /* Puntos del patrón en un tono stone cálido */
             background-image: radial-gradient(#d6d3d1 1.5px, transparent 1.5px);
             background-size: 25px 25px;
             overflow-x: hidden;
@@ -136,14 +135,10 @@
             bottom: 100px;
         }
 
-        /* Checkbox personalizado para selección de proteínas */
         .protein-checkbox:checked+div {
             background-color: #FEF2F2;
-            /* Red-50 */
             border-color: #DC2626;
-            /* Red-600 */
             color: #991B1B;
-            /* Red-800 */
         }
 
         .protein-checkbox:checked+div .check-icon {
@@ -152,7 +147,6 @@
         }
 
         @media screen and (max-width: 768px) {
-
             select,
             input,
             textarea {
@@ -164,10 +158,6 @@
 
 <body class="antialiased min-h-screen pb-24 selection:bg-red-100">
 
-    <div class="bg-red-700 text-white text-center py-3 px-4 text-sm md:text-base font-bold shadow-md w-full relative z-[60] flex items-center justify-center gap-2">
-        <i class="fas fa-calendar-times text-yellow-300 text-xl animate-pulse"></i>
-        <span>AVISO IMPORTANTE: Estaremos cerrados por festividades. Regresamos a servicio el <strong>15 de abril</strong>. ¡Agradecemos su comprensión!</span>
-    </div>
     <div id="daily-promo"
         class="hidden bg-neutral-900 text-white text-center py-2 px-4 text-xs md:text-sm font-bold promo-banner shadow-md border-b-2 border-red-600">
         <span id="daily-promo-text"><i class="fas fa-bullhorn mr-2 text-red-500"></i></span>
@@ -573,33 +563,52 @@
         </section>
 
         <section id="charolas" class="mb-16">
-            <h2 class="text-3xl font-bold mb-8 text-black category-header">CHAROLAS PARA COMPARTIR</h2>
+            <h2 class="text-3xl font-bold mb-8 text-black category-header">CHAROLAS Y PASTEL DE SUSHI</h2>
 
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 group">
-                <div class="relative h-64 md:h-80 overflow-hidden">
-                    <img src="charola.jpg"
-                        onerror="this.src='https://via.placeholder.com/1000x400?text=Charolas+de+Sushi'"
-                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-                        <div class="p-6 md:p-8 text-white">
-                            <h3 class="text-2xl md:text-4xl font-bold brand-font mb-2">La mejor opción para tus
-                                reuniones</h3>
-                            <p class="text-gray-200 text-sm md:text-base hidden md:block">Personaliza tu charola con tus
-                                rollos favoritos. Ideales para fiestas, cumpleaños y eventos especiales.</p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 group flex flex-col h-full">
+                    <div class="relative h-56 md:h-64 overflow-hidden">
+                        <img src="charola.jpg"
+                            onerror="this.src='https://via.placeholder.com/600x400?text=Charolas+de+Sushi'"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="text-2xl font-bold brand-font mb-2">Charolas para compartir</h3>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div
-                    class="p-6 bg-gradient-to-r from-gray-50 to-white flex flex-col md:flex-row items-center justify-between gap-4">
-                    <div class="text-center md:text-left">
-                        <p class="text-gray-800 font-medium">¿Tienes un evento? Cotiza tu charola personalizada hoy
-                            mismo.</p>
+                    <div class="p-6 bg-gradient-to-r from-gray-50 to-white flex-grow flex flex-col justify-between gap-4">
+                        <p class="text-gray-600 text-sm md:text-base">Personaliza tu charola con tus rollos favoritos. Ideales para fiestas, cumpleaños y reuniones.</p>
+                        <a href="https://wa.me/5214433580280?text=Hola%20Wokami,%20me%20interesa%20informaci%C3%B3n%20sobre%20las%20charolas%20de%20sushi%20%F0%9F%8D%A3"
+                            target="_blank"
+                            class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full font-bold shadow-lg transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 w-full md:w-auto text-sm self-start">
+                            <i class="fab fa-whatsapp text-lg"></i> Cotizar Charola
+                        </a>
                     </div>
-                    <a href="https://wa.me/5214433580280?text=Hola%20Wokami,%20me%20interesa%20informaci%C3%B3n%20sobre%20las%20charolas%20de%20sushi%20%F0%9F%8D%A3"
-                        target="_blank"
-                        class="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-full font-bold shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 flex items-center gap-2">
-                        <i class="fab fa-whatsapp text-xl"></i> Pide información
-                    </a>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-yellow-400 group flex flex-col h-full relative">
+                    <div class="absolute top-0 right-0 bg-yellow-400 text-black text-xs font-bold px-4 py-1.5 rounded-bl-lg z-10 shadow-sm uppercase tracking-wide">
+                        ¡NUEVO!
+                    </div>
+                    <div class="relative h-56 md:h-64 overflow-hidden">
+                        <img src="pastel.jpg"
+                            onerror="this.src='https://via.placeholder.com/600x400?text=Pastel+de+Sushi'"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="text-2xl font-bold brand-font mb-2 text-yellow-300">Pastel de Sushi</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-gradient-to-r from-gray-50 to-white flex-grow flex flex-col justify-between gap-4">
+                        <p class="text-gray-600 text-sm md:text-base">La forma más original de celebrar. Capas de arroz, tu proteína favorita, aguacate, queso crema y deliciosos toppings.</p>
+                        <a href="https://wa.me/5214433580280?text=Hola%20Wokami,%20me%20interesa%20encargar%20un%20Pastel%20de%20Sushi%20%F0%9F%8E%82%F0%9F%8D%A3"
+                            target="_blank"
+                            class="bg-yellow-500 hover:bg-yellow-600 text-black px-6 py-3 rounded-full font-bold shadow-lg transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 w-full md:w-auto text-sm self-start">
+                            <i class="fab fa-whatsapp text-lg"></i> Pedir Pastel
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1212,21 +1221,38 @@
         });
 
         function updateDynamicContent() {
-            // MODO FESTIVIDADES ACTIVADO
+            // Restauramos el estado a ABIERTO
             const statusBadge = document.getElementById('status-badge');
-            statusBadge.textContent = "CERRADO POR FESTIVIDADES";
-            statusBadge.className = "inline-block text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ml-1 md:ml-2 whitespace-nowrap text-white bg-red-600";
+            statusBadge.textContent = "ABIERTO";
+            statusBadge.className = "inline-block text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ml-1 md:ml-2 whitespace-nowrap text-white bg-green-500";
 
-            // Ocultar el banner de promociones diarias mientras esté cerrado
+            // Mostramos nuevamente el banner superior
             const promoBanner = document.getElementById('daily-promo');
-            promoBanner.classList.add('hidden');
+            promoBanner.classList.remove('hidden');
+
+            // Detectamos qué día es hoy
+            const day = new Date().getDay(); // 0 es Domingo, 1 Lunes... 4 Jueves, 5 Viernes
+            let promoText = '<i class="fas fa-bullhorn mr-2 text-red-500"></i> ¡Bienvenidos a Wokami!';
+
+            // Asignamos el mensaje dependiendo del día
+            if (day === 4) { // Jueves
+                promoText = '<i class="fas fa-briefcase mr-2 text-yellow-400"></i> <strong>¡JUEVES GODÍN!</strong> 1 Rollo Clásico + 1 Refresco por solo $135. (Descuento automático al carrito)';
+            } else if (day === 5) { // Viernes
+                promoText = '<i class="fas fa-glass-cheers mr-2 text-red-500"></i> <strong>¡FELIZ VIERNES!</strong> Arranca el fin de semana con el mejor sabor de Wokami.';
+            } else if (day === 6 || day === 0) { // Sábado y Domingo
+                promoText = '<i class="fas fa-users mr-2 text-green-400"></i> <strong>¡FIN DE SEMANA FAMILIAR!</strong> En compras mayores a $450, descontamos $50 automáticamente.';
+            } else if (day === 3) { // Miércoles
+                promoText = '<i class="fas fa-ticket-alt mr-2 text-red-500"></i> <strong>¡MITAD DE SEMANA!</strong> Usa el cupón <strong>WOK5</strong> al pagar y obtén 5% de descuento en todo tu pedido.';
+            }
+
+            // Inyectamos el texto en el banner
+            document.getElementById('daily-promo-text').innerHTML = promoText;
         }
 
         let cart = [];
         let appliedCouponCode = null;
         const phoneNumber = "5214433580280";
 
-        // Variables para el modal de proteínas
         let currentProteinRequest = null;
 
         function addToCart(name, price, category = 'other') {
@@ -1235,23 +1261,19 @@
             showToast(`✅ Agregado: ${name}`);
         }
 
-        // --- NUEVA LÓGICA PARA MODAL DE PROTEÍNAS ---
-
         function openProteinSelection(baseName, price, limit, category) {
             currentProteinRequest = { baseName, price, limit, category };
 
-            // Actualizar textos del modal
             document.getElementById('protein-modal-title').innerText = baseName;
             document.getElementById('protein-modal-subtitle').innerHTML = `Selecciona exactamente <strong class="text-red-600">${limit}</strong> proteínas`;
 
-            // Resetear checkboxes
             document.querySelectorAll('.protein-checkbox').forEach(cb => {
                 cb.checked = false;
                 cb.disabled = false;
                 cb.parentElement.classList.remove('opacity-50');
             });
 
-            validateProteinSelection(); // Actualiza estado del botón
+            validateProteinSelection(); 
             document.getElementById('protein-modal').classList.remove('hidden');
         }
 
@@ -1266,8 +1288,6 @@
             const limit = currentProteinRequest.limit;
             const checkedBoxes = document.querySelectorAll('.protein-checkbox:checked');
             const confirmBtn = document.getElementById('confirm-proteins-btn');
-
-            // Lógica para deshabilitar opciones si ya se alcanzó el límite
             const allBoxes = document.querySelectorAll('.protein-checkbox');
 
             if (checkedBoxes.length >= limit) {
@@ -1284,7 +1304,6 @@
                 });
             }
 
-            // Habilitar botón confirmar solo si se cumple el número exacto
             if (checkedBoxes.length === limit) {
                 confirmBtn.disabled = false;
                 confirmBtn.classList.remove('bg-gray-300', 'cursor-not-allowed');
@@ -1307,8 +1326,6 @@
             addToCart(fullName, currentProteinRequest.price, currentProteinRequest.category);
             closeProteinModal();
         }
-
-        // ----------------------------------------------
 
         function addCookieFromModal() {
             addToCart('Galletas New York (Red Velvet rellena de queso)', 45, 'postre');
@@ -1346,34 +1363,24 @@
             addToCart(`Mochis (${select.value})`, 55, 'postre');
         }
 
-        // CÁLCULO DE PROMOCIONES AUTOMÁTICAS (LÓGICA ACTUALIZADA)
         function calculateCart() {
             const now = new Date();
-            const day = now.getDay();
+            const day = now.getDay(); 
             let subtotal = 0;
             let discount = 0;
 
             cart.forEach(item => subtotal += item.price);
 
-            // Filtros útiles
-            const wokItems = cart.filter(i => i.category === 'wok');
-            const bebidas = cart.filter(i => i.name.includes('Agua Fresca')); // Solo Aguas Frescas
-            const specialRolls = cart.filter(i => i.category === 'rollo' && i.price === 150); // Diabla, Grinch, Aguachile
+            const classicRolls = cart.filter(i => i.category === 'rollo' && i.price === 120);
+            const refrescos = cart.filter(i => i.name.includes('Refresco'));
 
-            // Promoción Miércoles (3) y Jueves (4): Wok & Drink ($15 off por combo)
-            if (day === 3 || day === 4) {
-                // Por cada par de (Wok + Agua Fresca), descontamos $15
-                const combosCount = Math.min(wokItems.length, bebidas.length);
-                discount += combosCount * 15;
+            // Promoción JUEVES (4): Combo Godín (1 Rollo Clásico + 1 Refresco = $135)
+            if (day === 4) {
+                const combosGodin = Math.min(classicRolls.length, refrescos.length);
+                discount += combosGodin * 15;
             }
 
-            // Promoción Viernes (5): Special Friday (Rollos Especiales a $125)
-            if (day === 5) {
-                // Precio normal $150, Precio Promo $125. Descuento $25 por rollo.
-                discount += specialRolls.length * 25;
-            }
-
-            // Promoción Sábado (6) y Domingo (0): Family Pack ($50 off si > $450)
+            // Promoción SÁBADO (6) y DOMINGO (0): Family Pack ($50 off si > $450)
             if (day === 6 || day === 0) {
                 if (subtotal > 450) {
                     discount += 50;
@@ -1389,8 +1396,6 @@
             const { total } = calculateCart();
             const count = cart.length;
             if (count > 0) {
-                // Modificado para no incluir el costo de envío en el botón flotante si se prefiere,
-                // pero lo mantenemos igual para que muestre el costo de los productos
                 btnText.innerText = `Ver Pedido (${count}) - $${total}`;
                 btnText.classList.remove('hidden');
             } else {
