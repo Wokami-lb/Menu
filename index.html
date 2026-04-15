@@ -176,6 +176,16 @@
             opacity: 1;
         }
 
+        .poke-aderezo-radio:checked+div {
+            background-color: #FAF5FF;
+            border-color: #9333EA;
+            color: #6B21A8;
+        }
+
+        .poke-aderezo-radio:checked+div .poke-aderezo-check {
+            opacity: 1;
+        }
+
         @media screen and (max-width: 768px) {
             select,
             input,
@@ -1312,7 +1322,6 @@
                     <label class="cursor-pointer block"><input type="radio" name="poke_protein" value="Camarones Sazonados" class="sr-only poke-protein-radio" onchange="validatePokeProtein()"><div class="p-3 rounded-lg border-2 border-gray-200 hover:border-red-300 transition-all flex justify-between items-center bg-gray-50 text-sm"><span>🦐 Camarones Sazonados</span><i class="fas fa-check-circle text-red-600 opacity-0 poke-prot-check"></i></div></label>
                     <label class="cursor-pointer block"><input type="radio" name="poke_protein" value="Camarones Empanizados" class="sr-only poke-protein-radio" onchange="validatePokeProtein()"><div class="p-3 rounded-lg border-2 border-gray-200 hover:border-red-300 transition-all flex justify-between items-center bg-gray-50 text-sm"><span>🍤 Camarones Empanizados</span><i class="fas fa-check-circle text-red-600 opacity-0 poke-prot-check"></i></div></label>
                     <label class="cursor-pointer block"><input type="radio" name="poke_protein" value="Res" class="sr-only poke-protein-radio" onchange="validatePokeProtein()"><div class="p-3 rounded-lg border-2 border-gray-200 hover:border-red-300 transition-all flex justify-between items-center bg-gray-50 text-sm"><span>🥩 Res</span><i class="fas fa-check-circle text-red-600 opacity-0 poke-prot-check"></i></div></label>
-                    <label class="cursor-pointer block"><input type="radio" name="poke_protein" value="Pollo Empanizado" class="sr-only poke-protein-radio" onchange="validatePokeProtein()"><div class="p-3 rounded-lg border-2 border-gray-200 hover:border-red-300 transition-all flex justify-between items-center bg-gray-50 text-sm"><span>🍗 Pollo Empanizado</span><i class="fas fa-check-circle text-red-600 opacity-0 poke-prot-check"></i></div></label>
                     <label class="cursor-pointer block"><input type="radio" name="poke_protein" value="Pollo Sazonado" class="sr-only poke-protein-radio" onchange="validatePokeProtein()"><div class="p-3 rounded-lg border-2 border-gray-200 hover:border-red-300 transition-all flex justify-between items-center bg-gray-50 text-sm"><span>🐔 Pollo Sazonado</span><i class="fas fa-check-circle text-red-600 opacity-0 poke-prot-check"></i></div></label>
                     <label class="cursor-pointer block"><input type="radio" name="poke_protein" value="Bolitas de Pollo Empanizada" class="sr-only poke-protein-radio" onchange="validatePokeProtein()"><div class="p-3 rounded-lg border-2 border-gray-200 hover:border-red-300 transition-all flex justify-between items-center bg-gray-50 text-sm"><span>🧆 Bolitas de Pollo Empanizada</span><i class="fas fa-check-circle text-red-600 opacity-0 poke-prot-check"></i></div></label>
                     <label class="cursor-pointer block"><input type="radio" name="poke_protein" value="Pollo Teriyaki" class="sr-only poke-protein-radio" onchange="validatePokeProtein()"><div class="p-3 rounded-lg border-2 border-gray-200 hover:border-red-300 transition-all flex justify-between items-center bg-gray-50 text-sm"><span>🍯 Pollo Teriyaki</span><i class="fas fa-check-circle text-red-600 opacity-0 poke-prot-check"></i></div></label>
@@ -1326,6 +1335,18 @@
                 <div class="flex gap-3">
                     <label class="cursor-pointer flex-1"><input type="checkbox" name="poke_topping" value="Ajonjolí" class="sr-only poke-topping-cb" onchange="validatePokeTopping(this)"><div class="p-3 rounded-lg border-2 border-gray-200 hover:border-yellow-300 transition-all text-center text-sm font-medium bg-gray-50">Ajonjolí<i class="fas fa-check-circle text-yellow-600 ml-1 opacity-0 poke-top-check"></i></div></label>
                     <label class="cursor-pointer flex-1"><input type="checkbox" name="poke_topping" value="Cacahuate Tostado" class="sr-only poke-topping-cb" onchange="validatePokeTopping(this)"><div class="p-3 rounded-lg border-2 border-gray-200 hover:border-yellow-300 transition-all text-center text-sm font-medium bg-gray-50">Cacahuate Tostado<i class="fas fa-check-circle text-yellow-600 ml-1 opacity-0 poke-top-check"></i></div></label>
+                </div>
+            </div>
+
+            <!-- ADEREZO -->
+            <div class="mb-5">
+                <p class="font-bold text-gray-800 mb-2 text-sm"><i class="fas fa-tint mr-2 text-purple-500"></i>Elige tu aderezo</p>
+                <div class="space-y-2" id="poke-aderezo-options">
+                    <label class="cursor-pointer block"><input type="radio" name="poke_aderezo" value="Alioli" class="sr-only poke-aderezo-radio" onchange="validatePokeConfirmBtn()"><div class="p-3 rounded-lg border-2 border-gray-200 hover:border-purple-300 transition-all flex justify-between items-center bg-gray-50 text-sm"><span>🧄 Alioli</span><i class="fas fa-check-circle text-purple-600 opacity-0 poke-aderezo-check"></i></div></label>
+                    <label class="cursor-pointer block"><input type="radio" name="poke_aderezo" value="Sriracha" class="sr-only poke-aderezo-radio" onchange="validatePokeConfirmBtn()"><div class="p-3 rounded-lg border-2 border-gray-200 hover:border-purple-300 transition-all flex justify-between items-center bg-gray-50 text-sm"><span>🌶️ Sriracha</span><i class="fas fa-check-circle text-purple-600 opacity-0 poke-aderezo-check"></i></div></label>
+                    <label class="cursor-pointer block"><input type="radio" name="poke_aderezo" value="Salsa de Anguila" class="sr-only poke-aderezo-radio" onchange="validatePokeConfirmBtn()"><div class="p-3 rounded-lg border-2 border-gray-200 hover:border-purple-300 transition-all flex justify-between items-center bg-gray-50 text-sm"><span>🍯 Salsa de Anguila</span><i class="fas fa-check-circle text-purple-600 opacity-0 poke-aderezo-check"></i></div></label>
+                    <label class="cursor-pointer block"><input type="radio" name="poke_aderezo" value="Soya" class="sr-only poke-aderezo-radio" onchange="validatePokeConfirmBtn()"><div class="p-3 rounded-lg border-2 border-gray-200 hover:border-purple-300 transition-all flex justify-between items-center bg-gray-50 text-sm"><span>🍶 Soya</span><i class="fas fa-check-circle text-purple-600 opacity-0 poke-aderezo-check"></i></div></label>
+                    <label class="cursor-pointer block"><input type="radio" name="poke_aderezo" value="Aderezo de Chipotle" class="sr-only poke-aderezo-radio" onchange="validatePokeConfirmBtn()"><div class="p-3 rounded-lg border-2 border-gray-200 hover:border-purple-300 transition-all flex justify-between items-center bg-gray-50 text-sm"><span>🫙 Aderezo de Chipotle</span><i class="fas fa-check-circle text-purple-600 opacity-0 poke-aderezo-check"></i></div></label>
                 </div>
             </div>
 
@@ -1507,6 +1528,7 @@
             });
             document.querySelectorAll('.poke-protein-radio').forEach(r => r.checked = false);
             document.querySelectorAll('.poke-topping-cb').forEach(cb => cb.checked = false);
+            document.querySelectorAll('.poke-aderezo-radio').forEach(r => r.checked = false);
 
             updatePokeTotal();
             validatePokeConfirmBtn();
@@ -1566,9 +1588,10 @@
         function validatePokeConfirmBtn() {
             const vegCount = document.querySelectorAll('.poke-veg-cb:checked').length;
             const proteinSelected = document.querySelector('.poke-protein-radio:checked');
+            const aderezoSelected = document.querySelector('.poke-aderezo-radio:checked');
             const btn = document.getElementById('confirm-poke-btn');
 
-            if (vegCount >= 4 && proteinSelected) {
+            if (vegCount >= 4 && proteinSelected && aderezoSelected) {
                 btn.disabled = false;
                 btn.classList.remove('bg-gray-300', 'cursor-not-allowed');
                 btn.classList.add('bg-red-600', 'hover:bg-red-700');
@@ -1583,6 +1606,7 @@
             const vegs = Array.from(document.querySelectorAll('.poke-veg-cb:checked')).map(cb => cb.value);
             const protein = document.querySelector('.poke-protein-radio:checked').value;
             const toppings = Array.from(document.querySelectorAll('.poke-topping-cb:checked')).map(cb => cb.value);
+            const aderezo = document.querySelector('.poke-aderezo-radio:checked').value;
 
             const extraVeg = Math.max(0, vegs.length - 4);
             const extraCost = extraVeg * 10;
@@ -1590,6 +1614,7 @@
 
             let nameParts = `Wokami Poke - ${protein}`;
             nameParts += ` | Verduras: ${vegs.join(', ')}`;
+            nameParts += ` | Aderezo: ${aderezo}`;
             if (toppings.length > 0) {
                 nameParts += ` | Topping: ${toppings.join(', ')}`;
             }
