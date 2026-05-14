@@ -1282,7 +1282,6 @@
         </div>
     </div>
 
-    <!-- POKE MODAL -->
     <div id="poke-modal"
         class="fixed inset-0 bg-black bg-opacity-80 z-[110] hidden flex items-center justify-center p-4 backdrop-blur-sm">
         <div class="bg-white rounded-xl shadow-2xl w-full max-w-md p-6 relative max-h-[90vh] overflow-y-auto animate-fade-in-up">
@@ -1295,7 +1294,6 @@
             <p class="text-center text-sm text-gray-500 mb-1">Base de arroz gohan (150g)</p>
             <p class="text-center text-xs text-red-600 font-bold mb-5">$160</p>
 
-            <!-- VERDURAS -->
             <div class="mb-5">
                 <p class="font-bold text-gray-800 mb-1 text-sm"><i class="fas fa-seedling mr-2 text-green-600"></i>Elige 4 verduras <span class="text-gray-400 font-normal">(incluidas)</span></p>
                 <p id="poke-veg-counter" class="text-xs text-gray-500 mb-2">Seleccionadas: <strong class="text-red-600">0</strong> / 4</p>
@@ -1315,7 +1313,6 @@
                 <p id="poke-veg-extra-info" class="text-xs text-gray-400 mt-2 hidden"><i class="fas fa-info-circle mr-1"></i>Cada verdura extra: <strong class="text-red-600">+$10</strong></p>
             </div>
 
-            <!-- PROTEÍNA -->
             <div class="mb-5">
                 <p class="font-bold text-gray-800 mb-2 text-sm"><i class="fas fa-drumstick-bite mr-2 text-orange-500"></i>Elige tu proteína</p>
                 <div class="space-y-2" id="poke-protein-options">
@@ -1329,7 +1326,6 @@
                 </div>
             </div>
 
-            <!-- TOPPING -->
             <div class="mb-5">
                 <p class="font-bold text-gray-800 mb-2 text-sm"><i class="fas fa-star mr-2 text-yellow-500"></i>Extra arriba <span class="text-gray-400 font-normal">(sin costo)</span></p>
                 <div class="flex gap-3">
@@ -1338,7 +1334,6 @@
                 </div>
             </div>
 
-            <!-- ADEREZO -->
             <div class="mb-5">
                 <p class="font-bold text-gray-800 mb-2 text-sm"><i class="fas fa-tint mr-2 text-purple-500"></i>Elige tu aderezo</p>
                 <div class="space-y-2" id="poke-aderezo-options">
@@ -1350,7 +1345,6 @@
                 </div>
             </div>
 
-            <!-- TOTAL -->
             <div class="bg-gray-50 rounded-lg p-3 mb-4 border border-gray-200">
                 <div class="flex justify-between items-center text-sm">
                     <span class="text-gray-600">Base Poke:</span>
@@ -1831,7 +1825,7 @@
 
         function sendOrder() {
             if (cart.length === 0) {
-                window.open("https://wa.me/message/P4FK7RF2G2RWH1", "_blank");
+                window.open("https://wa.me/qr/Q3AIVYKLJJMDH1", "_blank");
                 return;
             }
             renderCartItems();
@@ -1916,7 +1910,7 @@
         }
 
         function sendOrderGeneric() {
-            window.open("https://wa.me/message/P4FK7RF2G2RWH1", "_blank");
+            window.open("https://wa.me/qr/Q3AIVYKLJJMDH1", "_blank");
         }
     </script>
 </body>
