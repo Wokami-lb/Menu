@@ -1421,14 +1421,16 @@
 
             let promoText = '<i class="fas fa-bullhorn mr-2 text-red-500"></i> ¡Bienvenidos a Wokami!';
 
-            if (day === 4) { // Jueves
-                promoText = '<i class="fas fa-briefcase mr-2 text-yellow-400"></i> <strong>¡JUEVES GODÍN!</strong> 1 Rollo Clásico + 1 Refresco por solo $135. (Descuento automático al carrito)';
+            if (day === 3) { // Miércoles
+                promoText = '<i class="fas fa-fire-alt mr-2 text-orange-400"></i> <strong>¡MIÉRCOLES DEL WOK!</strong> Lo Mein Especial + Agua Fresca = <strong>$140</strong>. ¡Descuento automático al carrito!';
+            } else if (day === 4) { // Jueves
+                promoText = '<i class="fas fa-briefcase mr-2 text-yellow-400"></i> <strong>¡JUEVES GODÍN!</strong> 1 Rollo Clásico + 1 Refresco = <strong>$135</strong> | ¡Trae al colega! 2 combos = <strong>$265</strong>. Descuento automático.';
             } else if (day === 5) { // Viernes
-                promoText = '<i class="fas fa-glass-cheers mr-2 text-red-500"></i> <strong>¡FELIZ VIERNES!</strong> Arranca el fin de semana con el mejor sabor de Wokami.';
-            } else if (day === 6 || day === 0) { // Sábado y Domingo
-                promoText = '<i class="fas fa-users mr-2 text-green-400"></i> <strong>¡FIN DE SEMANA FAMILIAR!</strong> En compras mayores a $450, descontamos $50 automáticamente.';
-            } else if (day === 3) { // Miércoles
-                promoText = '<i class="fas fa-ticket-alt mr-2 text-red-500"></i> <strong>¡MITAD DE SEMANA!</strong> Usa el cupón <strong>WOK5</strong> al pagar y obtén 5% de descuento en todo tu pedido.';
+                promoText = '<i class="fas fa-pepper-hot mr-2 text-red-400"></i> <strong>¡VIERNES SALSERO!</strong> Kushiagues + Rollo Clásico + Agua Fresca = <strong>$200</strong>. ¡Descuento automático al carrito!';
+            } else if (day === 6) { // Sábado
+                promoText = '<i class="fas fa-seedling mr-2 text-green-400"></i> <strong>¡SÁBADO POKE DAY!</strong> Wokami Poke + Agua Fresca = <strong>$185</strong>. ¡Estrena nuestro bowl más saludable! Descuento automático.';
+            } else if (day === 0) { // Domingo
+                promoText = '<i class="fas fa-users mr-2 text-green-400"></i> <strong>¡DOMINGO EN FAMILIA!</strong> En compras de $300 o más, ¡te descontamos $30 automáticamente!';
             }
 
             document.getElementById('daily-promo-text').innerHTML = promoText;
@@ -1659,7 +1661,7 @@
 
         function calculateCart() {
             const now = new Date();
-            const day = now.getDay(); 
+            const day = now.getDay();
             let subtotal = 0;
             let discount = 0;
 
@@ -1667,15 +1669,41 @@
 
             const classicRolls = cart.filter(i => i.category === 'rollo' && i.price === 120);
             const refrescos = cart.filter(i => i.name.includes('Refresco'));
+            const aguasFrescas = cart.filter(i => i.name.includes('Agua Fresca'));
+            const kushiagues = cart.filter(i => i.category === 'entrada');
+            const loMeinEspecial = cart.filter(i => i.name.includes('Lo Mein Especial'));
+            const wokamiPoke = cart.filter(i => i.name.includes('Wokami Poke'));
 
-            if (day === 4) {
-                const combosGodin = Math.min(classicRolls.length, refrescos.length);
-                discount += combosGodin * 15;
+            if (day === 3) { // Miércoles del Wok
+                if (loMeinEspecial.length >= 1 && aguasFrescas.length >= 1) {
+                    discount += 15;
+                }
             }
 
-            if (day === 6 || day === 0) {
-                if (subtotal > 450) {
-                    discount += 50;
+            if (day === 4) { // Jueves Godín
+                const comboPairs = Math.min(classicRolls.length, refrescos.length);
+                if (comboPairs >= 2) {
+                    discount += 35; // Godín en equipo: 2 combos = $265 (ahorro $35)
+                } else {
+                    discount += comboPairs * 15; // 1 combo = $135 (ahorro $15)
+                }
+            }
+
+            if (day === 5) { // Viernes Salsero
+                if (kushiagues.length >= 1 && classicRolls.length >= 1 && aguasFrescas.length >= 1) {
+                    discount += 20;
+                }
+            }
+
+            if (day === 6) { // Sábado Poke Day
+                if (wokamiPoke.length >= 1 && aguasFrescas.length >= 1) {
+                    discount += 10;
+                }
+            }
+
+            if (day === 0) { // Domingo en Familia
+                if (subtotal >= 300) {
+                    discount += 30;
                 }
             }
 
