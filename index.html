@@ -1933,6 +1933,30 @@
 
             message += "%0A%0A(Envía este mensaje para confirmar tu pedido)";
 
+            // --- NUEVO: manda el pedido a n8n (no bloquea el WhatsApp) ---
+            const pedidoData = {
+                pedido: cart.map(i => ({ nombre: i.name, precio: i.price, categoria: i.category })),
+                extras: extraItems,
+                subtotal: currentTotalCalc,
+                cupon: appliedCouponCode || "ninguno",
+                descuento_promo: dailyDiscount,
+                descuento_cupon: couponDiscount,
+                envio: shippingCost,
+                total: finalTotal,
+                cubiertos: cutleryString,
+                soya: soySauce,
+                direccion: address || "Recoge en tienda",
+                notas: notes || "",
+                fecha: new Date().toLocaleString("es-MX", { timeZone: "America/Mexico_City" })
+            };
+
+            fetch("https://macnosfeli.app.n8n.cloud/webhook/wokami-pedido", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(pedidoData)
+            }).catch(() => {}); // si n8n falla, el pedido por WhatsApp igual se manda
+            // --- FIN nuevo ---
+
             window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
             toggleModal();
         }
