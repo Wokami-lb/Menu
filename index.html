@@ -756,7 +756,7 @@
                         </div>
                         <p class="text-gray-600 italic mb-6">
                             Pasta salteada con zanahoria, cebolla, brócoli, champiñones
-                            y col morada, bañada en salsa a base de soya, acompañada de pesto de cilantro.
+                            y col morada, bañada en salsa a base de soya, acompañada de chile de aceite.
                             <br>
                             <span
                                 class="inline-block mt-2 bg-red-100 text-red-600 text-xs px-2 py-1 rounded-full border border-red-200 font-bold not-italic">
@@ -922,26 +922,31 @@
                 </div>
 
                 <div
-                    class="menu-item-card bg-white rounded-lg shadow-sm overflow-hidden flex flex-col sm:flex-row min-h-32 group border border-gray-100">
-                    <div class="w-full sm:w-40 h-40 sm:h-auto flex-shrink-0 bg-gray-200 relative overflow-hidden">
+                    class="menu-item-card bg-gray-50 rounded-lg border border-gray-100 shadow-sm overflow-hidden flex flex-col sm:flex-row min-h-32 group opacity-75 relative">
+                    <div class="absolute inset-0 z-10 bg-white/60 flex items-center justify-center">
+                        <span
+                            class="bg-red-600 text-white font-bold px-4 py-2 rounded transform -rotate-12 border-2 border-white shadow-lg">AGOTADO
+                            HOY</span>
+                    </div>
+
+                    <div class="w-full sm:w-40 h-40 sm:h-auto flex-shrink-0 bg-gray-200 relative overflow-hidden grayscale">
                         <img src="mochis.jpg" onerror="this.src='https://via.placeholder.com/300x300?text=Mochis'"
-                            class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition-transform duration-500">
+                            class="w-full h-full object-cover object-center absolute inset-0">
                     </div>
                     <div class="p-4 flex-grow flex flex-col justify-between">
                         <div>
-                            <h3 class="text-lg md:text-xl font-bold text-gray-900">Mochis</h3>
-                            <p class="text-gray-600 text-xs md:text-sm mt-1 mb-2">Pastelillo de arroz. Elige tu relleno:
+                            <h3 class="text-lg md:text-xl font-bold text-gray-600">Mochis</h3>
+                            <p class="text-gray-500 text-xs md:text-sm mt-1 mb-2">Pastelillo de arroz. Elige tu relleno:
                             </p>
 
                             <select id="mochi-select"
-                                class="w-full text-base md:text-xs border border-gray-300 rounded p-1.5 mb-2 bg-gray-50 focus:border-red-600 outline-none cursor-pointer hover:bg-white">
+                                class="w-full text-base md:text-xs border border-gray-300 rounded p-1.5 mb-2 bg-gray-50 outline-none" disabled>
                                 <option value="Pistache">Pistache</option>
                             </select>
                         </div>
                         <div class="flex justify-between items-center mt-1">
-                            <span class="text-lg font-bold text-gray-900">$55</span>
-                            <button onclick="addMochiFromSelect()"
-                                class="text-xs btn-primary px-3 py-2 rounded-full shadow-md"><i
+                            <span class="text-lg font-bold text-gray-600">$55</span>
+                            <button class="text-xs bg-gray-300 text-gray-500 px-3 py-2 rounded-full shadow-md cursor-not-allowed" disabled><i
                                     class="fas fa-plus text-sm"></i></button>
                         </div>
                     </div>
@@ -1145,9 +1150,9 @@
                         </label>
                         <label
                             class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100 border border-gray-100">
-                            <input type="checkbox" name="extra_item" value="Pesto de Cilantro" data-price="15"
+                            <input type="checkbox" name="extra_item" value="Chile de Aceite" data-price="15"
                                 onchange="updateModalTotals()" class="text-red-600 rounded h-4 w-4">
-                            <span class="text-xs md:text-sm">Pesto de cilantro (+$15)</span>
+                            <span class="text-xs md:text-sm">Chile de aceite (+$15)</span>
                         </label>
                         <label
                             class="flex items-center gap-2 cursor-pointer bg-yellow-50 p-2 rounded hover:bg-yellow-100 border border-yellow-100">
