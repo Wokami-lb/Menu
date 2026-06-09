@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Menú Wokami - Sushi & Wok</title>
+    <title>Menú Wokami - Edición Mundialista</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,8 +18,8 @@
             theme: {
                 extend: {
                     colors: {
-                        'wokami-red': '#D80000',
-                        'wokami-dark': '#1a1a1a', 
+                        'wokami-green': '#15803D',
+                        'wokami-dark': '#0F172A', 
                         'wokami-gold': '#D4AF37', 
                     },
                     animation: {
@@ -37,17 +37,17 @@
     </script>
     <style>
         :root {
-            --wokami-red: #D80000;
-            --wokami-black: #1a1a1a;
-            --wokami-bg: #F8F6F0
+            --wokami-primary: #15803D; 
+            --wokami-black: #0F172A;
+            --wokami-bg: #F0FDF4; 
         }
 
         body {
             font-family: 'Noto Sans JP', sans-serif;
             background-color: var(--wokami-bg);
             color: var(--wokami-black);
-            background-image: radial-gradient(#d6d3d1 1.5px, transparent 1.5px);
-            background-size: 25px 25px;
+            background-image: linear-gradient(#e2e8f0 1px, transparent 1px), linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
+            background-size: 30px 30px;
             overflow-x: hidden;
             -webkit-tap-highlight-color: transparent;
         }
@@ -76,7 +76,7 @@
             left: 0;
             width: 40%;
             height: 4px;
-            background: var(--wokami-red);
+            background: var(--wokami-primary);
             border-radius: 2px;
         }
 
@@ -87,19 +87,19 @@
 
         .menu-item-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
-            border-color: var(--wokami-red);
+            box-shadow: 0 10px 20px -5px rgba(21, 128, 61, 0.2);
+            border-color: var(--wokami-primary);
         }
 
         .btn-primary {
-            background: var(--wokami-red);
+            background: var(--wokami-primary);
             border: none;
             color: white;
             transition: background 0.3s, transform 0.1s;
         }
 
         .btn-primary:hover {
-            background: #b91c1c;
+            background: #166534;
         }
 
         .btn-primary:active {
@@ -109,7 +109,7 @@
         #toast {
             visibility: hidden;
             min-width: 250px;
-            background: linear-gradient(to right, #111, #333);
+            background: linear-gradient(to right, #15803D, #166534);
             color: #fff;
             text-align: center;
             border-radius: 4px;
@@ -126,7 +126,7 @@
             width: 90%;
             max-width: 300px;
             font-weight: bold;
-            border-left: 4px solid var(--wokami-red);
+            border-left: 4px solid var(--wokami-gold);
         }
 
         #toast.show {
@@ -136,9 +136,9 @@
         }
 
         .protein-checkbox:checked+div {
-            background-color: #FEF2F2;
-            border-color: #DC2626;
-            color: #991B1B;
+            background-color: #F0FDF4;
+            border-color: #16A34A;
+            color: #15803D;
         }
 
         .protein-checkbox:checked+div .check-icon {
@@ -196,26 +196,25 @@
     </style>
 </head>
 
-<body class="antialiased min-h-screen pb-24 selection:bg-red-100">
+<body class="antialiased min-h-screen pb-24 selection:bg-green-100">
 
     <div id="daily-promo"
-        class="hidden bg-neutral-900 text-white text-center py-2 px-4 text-xs md:text-sm font-bold promo-banner shadow-md border-b-2 border-red-600">
-        <span id="daily-promo-text"><i class="fas fa-bullhorn mr-2 text-red-500"></i></span>
+        class="hidden bg-green-800 text-white text-center py-2 px-4 text-xs md:text-sm font-bold promo-banner shadow-md border-b-2 border-yellow-400">
+        <span id="daily-promo-text"><i class="fas fa-futbol mr-2 text-white"></i></span>
     </div>
 
     <header id="main-header"
-        class="bg-black/95 backdrop-blur-sm text-white sticky top-0 z-50 shadow-lg border-b border-gray-800">
+        class="bg-wokami-dark/95 backdrop-blur-sm text-white sticky top-0 z-50 shadow-lg border-b border-gray-800">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center gap-2 md:gap-3 flex-shrink-0">
                 <div class="flex items-center gap-2 hover:opacity-90 transition-opacity">
                     <img src="logo.png" onerror="this.src='https://via.placeholder.com/150?text=Wokami'"
                         alt="Wokami Logo"
-                        class="h-9 w-9 md:h-12 md:w-12 object-cover rounded-full border-2 border-red-600">
+                        class="h-9 w-9 md:h-12 md:w-12 object-cover rounded-full border-2 border-yellow-400">
                     <div class="flex flex-col">
                         <a href="#"
-                            class="text-lg md:text-2xl font-bold tracking-widest brand-font text-white hover:text-red-500 transition-colors">WOKAMI</a>
-                        <span class="text-[8px] tracking-[0.2em] text-gray-400 uppercase hidden md:block">Japanese
-                            Fusion</span>
+                            class="text-lg md:text-2xl font-bold tracking-widest brand-font text-white hover:text-yellow-400 transition-colors">WOKAMI</a>
+                        <span class="text-[8px] tracking-[0.2em] text-gray-400 uppercase hidden md:block">Edición Mundialista</span>
                     </div>
                 </div>
                 <span id="status-badge"
@@ -225,60 +224,56 @@
             </div>
 
             <nav class="hidden lg:flex gap-8 text-sm font-bold uppercase tracking-wide text-gray-300">
-                <a href="#entradas" class="hover:text-red-500 transition-colors py-1 nav-link">Entradas</a>
-                <a href="#rollos" class="hover:text-red-500 transition-colors py-1 nav-link">Rollos</a>
+                <a href="#entradas" class="hover:text-green-500 transition-colors py-1 nav-link">Entradas</a>
+                <a href="#rollos" class="hover:text-green-500 transition-colors py-1 nav-link">Rollos</a>
                 <a href="#Eventos"
                     class="hover:text-yellow-400 transition-colors py-1 nav-link text-yellow-500">Eventos</a>
-                <a href="#wok" class="hover:text-red-500 transition-colors py-1 nav-link">Wok</a>
-                <a href="#postres" class="hover:text-red-500 transition-colors py-1 nav-link">Postres</a>
-                <a href="#bebidas" class="hover:text-red-500 transition-colors py-1 nav-link">Bebidas</a>
+                <a href="#wok" class="hover:text-green-500 transition-colors py-1 nav-link">Wok</a>
+                <a href="#postres" class="hover:text-green-500 transition-colors py-1 nav-link">Postres</a>
+                <a href="#bebidas" class="hover:text-green-500 transition-colors py-1 nav-link">Bebidas</a>
             </nav>
 
-            <button class="lg:hidden text-white p-2 focus:outline-none active:text-red-500 transition-colors"
+            <button class="lg:hidden text-white p-2 focus:outline-none active:text-green-500 transition-colors"
                 onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
                 <i class="fas fa-bars text-2xl"></i>
             </button>
         </div>
 
         <div id="mobile-menu"
-            class="hidden bg-neutral-900/95 backdrop-blur-md lg:hidden border-t border-gray-800 absolute w-full left-0 top-full shadow-2xl h-screen">
+            class="hidden bg-wokami-dark/95 backdrop-blur-md lg:hidden border-t border-gray-800 absolute w-full left-0 top-full shadow-2xl h-screen">
             <div class="flex flex-col p-4 space-y-1 text-center">
                 <a href="#entradas" onclick="document.getElementById('mobile-menu').classList.add('hidden')"
-                    class="mobile-nav-link text-white hover:text-red-500 hover:bg-white/5 px-4 py-4 rounded-lg transition-all font-bold text-lg border-b border-white/5">Entradas</a>
+                    class="mobile-nav-link text-white hover:text-green-500 hover:bg-white/5 px-4 py-4 rounded-lg transition-all font-bold text-lg border-b border-white/5">Entradas</a>
                 <a href="#rollos" onclick="document.getElementById('mobile-menu').classList.add('hidden')"
-                    class="mobile-nav-link text-white hover:text-red-500 hover:bg-white/5 px-4 py-4 rounded-lg transition-all font-bold text-lg border-b border-white/5">Rollos</a>
+                    class="mobile-nav-link text-white hover:text-green-500 hover:bg-white/5 px-4 py-4 rounded-lg transition-all font-bold text-lg border-b border-white/5">Rollos</a>
                 <a href="#Eventos" onclick="document.getElementById('mobile-menu').classList.add('hidden')"
                     class="mobile-nav-link text-yellow-400 hover:text-white hover:bg-white/5 px-4 py-4 rounded-lg transition-all font-bold text-lg border-b border-white/5">Eventos</a>
                 <a href="#wok" onclick="document.getElementById('mobile-menu').classList.add('hidden')"
-                    class="mobile-nav-link text-white hover:text-red-500 hover:bg-white/5 px-4 py-4 rounded-lg transition-all font-bold text-lg border-b border-white/5">Wok
+                    class="mobile-nav-link text-white hover:text-green-500 hover:bg-white/5 px-4 py-4 rounded-lg transition-all font-bold text-lg border-b border-white/5">Wok
                     & Bowls</a>
                 <a href="#postres" onclick="document.getElementById('mobile-menu').classList.add('hidden')"
-                    class="mobile-nav-link text-white hover:text-red-500 hover:bg-white/5 px-4 py-4 rounded-lg transition-all font-bold text-lg border-b border-white/5">Postres</a>
+                    class="mobile-nav-link text-white hover:text-green-500 hover:bg-white/5 px-4 py-4 rounded-lg transition-all font-bold text-lg border-b border-white/5">Postres</a>
                 <a href="#bebidas" onclick="document.getElementById('mobile-menu').classList.add('hidden')"
-                    class="mobile-nav-link text-white hover:text-red-500 hover:bg-white/5 px-4 py-4 rounded-lg transition-all font-bold text-lg">Bebidas</a>
+                    class="mobile-nav-link text-white hover:text-green-500 hover:bg-white/5 px-4 py-4 rounded-lg transition-all font-bold text-lg">Bebidas</a>
             </div>
         </div>
     </header>
 
-    <div
-        class="relative bg-gradient-to-b from-black to-neutral-900 text-white py-12 md:py-16 px-4 text-center overflow-hidden">
-        <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/sushi.png')]">
-        </div>
+    <div class="relative bg-gradient-to-b from-green-900 to-wokami-dark text-white py-12 md:py-16 px-4 text-center overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
 
         <div class="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
 
             <div class="mb-4 md:mb-6 transform hover:scale-105 transition-transform duration-500 relative">
-                <div class="absolute -inset-1 bg-gradient-to-r from-red-600 to-orange-600 rounded-full blur opacity-25">
-                </div>
+                <div class="absolute -inset-1 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full blur opacity-40"></div>
                 <img src="logo.png" onerror="this.src='https://via.placeholder.com/300?text=Wokami'" alt="Wokami Logo"
-                    class="relative h-32 w-32 md:h-40 md:w-40 object-cover rounded-full border-4 border-neutral-800 shadow-2xl bg-white">
+                    class="relative h-32 w-32 md:h-40 md:w-40 object-cover rounded-full border-4 border-yellow-500 shadow-2xl bg-white">
             </div>
 
-            <h1 class="text-4xl md:text-7xl font-bold mb-2 brand-font tracking-tight text-white drop-shadow-lg">WOKAMI
-            </h1>
+            <h1 class="text-4xl md:text-7xl font-bold mb-2 brand-font tracking-tight text-white drop-shadow-lg">WOKAMI</h1>
 
-            <p class="text-xl md:text-3xl text-gray-400 font-light mb-6 md:mb-8 tracking-wide">El fuego del wok. El alma
-                del sushi.</p>
+            <p class="text-xl md:text-3xl text-yellow-400 font-bold mb-2 tracking-wide"><i class="fas fa-futbol mr-2 text-white"></i> LA SEDE DEL SABOR</p>
+            <p class="text-lg md:text-xl text-gray-300 font-light mb-6 md:mb-8 tracking-wide">La pasión de la afición. El alma del sushi.</p>
         </div>
     </div>
 
@@ -287,18 +282,17 @@
         <section class="mb-12">
             <div
                 class="bg-white rounded-xl p-6 shadow-xl border border-gray-100 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6 group hover:shadow-2xl transition-all">
-                <div class="absolute top-0 right-0 w-32 h-32 bg-gray-100 rounded-bl-full opacity-50 z-0"></div>
-                <div class="absolute bottom-0 left-0 w-24 h-24 bg-red-50 rounded-tr-full opacity-50 z-0"></div>
+                <div class="absolute top-0 right-0 w-32 h-32 bg-green-50 rounded-bl-full opacity-50 z-0"></div>
+                <div class="absolute bottom-0 left-0 w-24 h-24 bg-yellow-50 rounded-tr-full opacity-50 z-0"></div>
 
                 <div class="relative z-10 text-center md:text-left flex-1">
                     <h3
                         class="font-bold text-xl md:text-2xl brand-font flex items-center justify-center md:justify-start gap-2 mb-2 text-gray-800">
-                        <i class="fas fa-mobile-alt text-red-600"></i> <span class="text-gray-900">SÍGUENOS EN
-                            REDES</span>
+                        <i class="fas fa-mobile-alt text-green-600"></i> <span class="text-gray-900">SÍGUENOS EN LA CANCHA</span>
                     </h3>
                     <p class="text-gray-600 text-sm md:text-base leading-relaxed">
-                        Entérate de nuestras promociones exclusivas, nuevos platillos y dinámicas especiales.
-                        <span class="text-red-600 font-bold">¡Únete a la comunidad Wokami!</span>
+                        Entérate de nuestras promociones mundialistas, nuevos platillos y dinámicas especiales.
+                        <span class="text-green-600 font-bold">¡Únete a la afición Wokami!</span>
                     </p>
                 </div>
 
@@ -316,7 +310,7 @@
         </section>
 
         <section id="entradas" class="mb-16">
-            <h2 class="text-3xl font-bold mb-8 text-black category-header">ENTRADAS</h2>
+            <h2 class="text-3xl font-bold mb-8 text-black category-header">ENTRADAS PARA CALENTAR</h2>
             <div class="grid md:grid-cols-2 gap-6">
                 <div
                     class="menu-item-card bg-white rounded-lg shadow-sm overflow-hidden flex flex-col sm:flex-row min-h-32 group">
@@ -329,13 +323,13 @@
                             <div class="flex items-baseline gap-2">
                                 <h3 class="text-lg md:text-xl font-bold text-gray-900 leading-tight">Kushiagues</h3>
                                 <span
-                                    class="text-[10px] font-bold text-white bg-red-600 px-2 py-0.5 rounded shadow-sm">Hot</span>
+                                    class="text-[10px] font-bold text-white bg-green-600 px-2 py-0.5 rounded shadow-sm">Hot</span>
                             </div>
                             <p class="text-gray-600 text-xs md:text-sm mt-1 mb-2">3 pzs. Ideales para compartir. Elige
                                 tu relleno:</p>
 
                             <select id="kushiage-select"
-                                class="w-full text-base md:text-xs border border-gray-300 rounded p-1.5 mb-2 bg-gray-50 focus:border-red-600 outline-none cursor-pointer hover:bg-white">
+                                class="w-full text-base md:text-xs border border-gray-300 rounded p-1.5 mb-2 bg-gray-50 focus:border-green-600 outline-none cursor-pointer hover:bg-white">
                                 <option value="Queso Philadelphia">Queso Philadelphia</option>
                                 <option value="Queso Manchego">Queso Manchego</option>
                                 <option value="Camarón con Philadelphia">Camarón c/ Philadelphia</option>
@@ -347,7 +341,7 @@
                             <span class="text-lg font-bold text-gray-800">$65</span>
                             <button onclick="addKushiageFromSelect()"
                                 class="text-xs btn-primary px-4 py-2 rounded transition shadow-md font-bold uppercase tracking-wider"><i
-                                    class="fas fa-plus mr-1"></i> Agregar</button>
+                                    class="fas fa-plus mr-1"></i> Fichar</button>
                         </div>
                     </div>
                 </div>
@@ -360,7 +354,7 @@
                 class="bg-gray-50 text-gray-700 px-4 py-3 rounded-lg border border-gray-200 text-sm font-medium shadow-sm mb-8 flex flex-col md:flex-row items-center justify-center text-center gap-2">
                 <span><i class="fas fa-info-circle text-gray-500 mr-2"></i>Elige: <strong>Empanizado</strong> o
                     <strong>Natural</strong> <span
-                        class="text-xs text-red-500 font-bold block md:inline mt-1 md:mt-0 md:ml-1">(Excepto America y
+                        class="text-xs text-green-600 font-bold block md:inline mt-1 md:mt-0 md:ml-1">(Excepto America y
                         Grinch Roll)</span></span>
                 <span class="hidden md:inline text-gray-300">|</span>
                 <span><i class="fas fa-leaf mr-2 text-green-600"></i>Todos incluyen <strong>Chips de
@@ -368,7 +362,7 @@
             </div>
 
             <div class="mb-12">
-                <h2 class="text-3xl font-bold text-black category-header mb-8">ROLLOS CLÁSICOS</h2>
+                <h2 class="text-3xl font-bold text-black category-header mb-8">TITULARES CLÁSICOS</h2>
                 <div class="grid lg:grid-cols-2 gap-8">
                     <div
                         class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow menu-item-card">
@@ -382,7 +376,7 @@
                             <div>
                                 <div class="flex justify-between items-start mb-2">
                                     <h3 class="text-xl font-bold text-black brand-font">America Roll</h3>
-                                    <span class="text-red-600 font-bold text-lg">$120</span>
+                                    <span class="text-green-600 font-bold text-lg">$120</span>
                                 </div>
                                 <p class="text-gray-600 text-sm mb-4">
                                     <strong>Por dentro:</strong> Camarones empanizados, aguacate y queso crema.<br>
@@ -390,7 +384,7 @@
                                 </p>
                             </div>
                             <button onclick="addToCart('America Roll', 120, 'rollo')"
-                                class="self-start text-xs font-bold uppercase tracking-wider btn-primary px-6 py-2.5 rounded shadow-md w-full md:w-auto">Ordenar</button>
+                                class="self-start text-xs font-bold uppercase tracking-wider btn-primary px-6 py-2.5 rounded shadow-md w-full md:w-auto">Fichar</button>
                         </div>
                     </div>
                     <div
@@ -405,7 +399,7 @@
                             <div>
                                 <div class="flex justify-between items-start mb-2">
                                     <h3 class="text-xl font-bold text-black brand-font">Banana Roll</h3>
-                                    <span class="text-red-600 font-bold text-lg">$120</span>
+                                    <span class="text-green-600 font-bold text-lg">$120</span>
                                 </div>
                                 <p class="text-gray-600 text-sm mb-4">
                                     <strong>Por dentro:</strong> Queso crema, aguacate y camarón.<br>
@@ -424,7 +418,7 @@
                         class="bg-white rounded-xl shadow-md overflow-hidden border-2 border-yellow-400 flex flex-col md:flex-row h-full hover:shadow-lg transition-shadow menu-item-card relative">
                         <div
                             class="absolute top-0 right-0 bg-yellow-400 text-black text-[10px] font-bold px-3 py-1 rounded-bl-lg z-10 shadow-sm uppercase tracking-wide">
-                            Best Seller
+                            Goleador
                         </div>
                         <div class="w-full md:w-1/3 h-48 md:h-auto bg-gray-200 relative group overflow-hidden">
                             <img src="cheese.jpg"
@@ -436,7 +430,7 @@
                             <div>
                                 <div class="flex justify-between items-start mb-2">
                                     <h3 class="text-xl font-bold text-black brand-font">Cheese Roll</h3>
-                                    <span class="text-red-600 font-bold text-lg">$120</span>
+                                    <span class="text-green-600 font-bold text-lg">$120</span>
                                 </div>
                                 <p class="text-gray-600 text-sm mb-4">
                                     <strong>Por dentro:</strong> Tiras de pollo empanizado, queso crema y aguacate.<br>
@@ -464,7 +458,7 @@
                             <div>
                                 <div class="flex justify-between items-start mb-2">
                                     <h3 class="text-xl font-bold text-black brand-font">California Roll</h3>
-                                    <span class="text-red-600 font-bold text-lg">$120</span>
+                                    <span class="text-green-600 font-bold text-lg">$120</span>
                                 </div>
                                 <p class="text-gray-600 text-sm mb-4">
                                     <strong>Por dentro:</strong> Camarón, queso crema, aguacate y pepino.<br>
@@ -491,7 +485,7 @@
                             <div>
                                 <div class="flex justify-between items-start mb-2">
                                     <h3 class="text-xl font-bold text-black brand-font">Norteñito Roll</h3>
-                                    <span class="text-red-600 font-bold text-lg">$120</span>
+                                    <span class="text-green-600 font-bold text-lg">$120</span>
                                 </div>
                                 <p class="text-gray-600 text-sm mb-4">
                                     <strong>Por dentro:</strong> Res sazonada, queso manchego, aguacate y chiles
@@ -513,8 +507,8 @@
 
             <div id="rollos-especiales" class="mb-16">
                 <h2 class="text-3xl font-bold text-black category-header mb-8">
-                    ESPECIALES <span
-                        class="text-sm font-medium text-red-700 ml-2 uppercase tracking-wide bg-red-50 px-2 py-1 rounded">Premium</span>
+                    SELECCIÓN ESPECIAL <span
+                        class="text-sm font-medium text-green-700 ml-2 uppercase tracking-wide bg-green-50 px-2 py-1 rounded">Premium</span>
                 </h2>
                 <div class="grid lg:grid-cols-2 gap-8">
                     <div id="diabla-roll-target"
@@ -529,7 +523,7 @@
                             <div>
                                 <div class="flex justify-between items-start mb-2">
                                     <h3 class="text-xl font-bold text-black brand-font">A la Diabla Roll</h3>
-                                    <span class="text-red-600 font-bold text-lg">$150</span>
+                                    <span class="text-green-600 font-bold text-lg">$150</span>
                                 </div>
                                 <p class="text-gray-600 text-sm mb-4">
                                     <strong>Por dentro:</strong> Queso crema, aguacate y pepino.<br>
@@ -557,7 +551,7 @@
                             <div>
                                 <div class="flex justify-between items-start mb-2">
                                     <h3 class="text-xl font-bold text-black brand-font">Grinch Roll</h3>
-                                    <span class="text-red-600 font-bold text-lg">$150</span>
+                                    <span class="text-green-600 font-bold text-lg">$150</span>
                                 </div>
                                 <p class="text-gray-600 text-sm mb-4">
                                     <strong>Por dentro:</strong> Queso crema, tampico y camarones empanizados.<br>
@@ -565,7 +559,7 @@
                                 </p>
                             </div>
                             <button onclick="addToCart('Grinch Roll', 150, 'rollo')"
-                                class="self-start text-xs font-bold uppercase tracking-wider btn-primary px-6 py-2.5 rounded shadow-md w-full md:w-auto">Ordenar</button>
+                                class="self-start text-xs font-bold uppercase tracking-wider btn-primary px-6 py-2.5 rounded shadow-md w-full md:w-auto">Fichar</button>
                         </div>
                     </div>
                     <div id="aguachile-roll-target"
@@ -581,7 +575,7 @@
                             <div>
                                 <div class="flex justify-between items-start mb-2">
                                     <h3 class="text-xl font-bold text-black brand-font">Aguachile Roll</h3>
-                                    <span class="text-red-600 font-bold text-lg">$150</span>
+                                    <span class="text-green-600 font-bold text-lg">$150</span>
                                 </div>
                                 <p class="text-gray-600 text-sm mb-4">
                                     <strong>Por dentro:</strong> Pepino, queso crema y aguacate.<br>
@@ -603,7 +597,7 @@
         </section>
 
         <section id="Eventos" class="mb-16">
-            <h2 class="text-3xl font-bold mb-8 text-black category-header">CHAROLAS Y PASTEL DE SUSHI</h2>
+            <h2 class="text-3xl font-bold mb-8 text-black category-header">CHAROLAS Y PASTEL PARA EL FESTEJO</h2>
 
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 group flex flex-col h-full">
@@ -618,36 +612,31 @@
                         </div>
                     </div>
                     <div class="p-6 bg-gradient-to-r from-gray-50 to-white flex-grow flex flex-col justify-between gap-4">
-                        <p class="text-gray-600 text-sm md:text-base">Personaliza tu charola con tus rollos favoritos. Ideales para fiestas, cumpleaños y reuniones.</p>
-                        <a href="https://wa.me/5214433580280?text=Hola%20Wokami,%20me%20interesa%20informaci%C3%B3n%20sobre%20las%20charolas%20de%20sushi%20%F0%9F%8D%A3"
-                            target="_blank"
+                        <p class="text-gray-600 text-sm md:text-base">Personaliza tu charola con tus rollos favoritos. Ideales para ver los partidos, fiestas y reuniones.</p>
+                        <button onclick="openEventosModal('https://wa.me/5214433580280?text=Hola%20Wokami,%20me%20interesa%20informaci%C3%B3n%20sobre%20las%20charolas%20de%20sushi%20%F0%9F%8D%A3')"
                             class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full font-bold shadow-lg transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 w-full md:w-auto text-sm self-start">
                             <i class="fab fa-whatsapp text-lg"></i> Cotizar Charola
-                        </a>
+                        </button>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-yellow-400 group flex flex-col h-full relative">
-                    <div class="absolute top-0 right-0 bg-yellow-400 text-black text-xs font-bold px-4 py-1.5 rounded-bl-lg z-10 shadow-sm uppercase tracking-wide">
-                        ¡NUEVO!
-                    </div>
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 group flex flex-col h-full relative">
                     <div class="relative h-56 md:h-64 overflow-hidden">
                         <img src="pastel.jpg"
                             onerror="this.src='https://via.placeholder.com/600x400?text=Pastel+de+Sushi'"
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                             <div class="p-6 text-white">
-                                <h3 class="text-2xl font-bold brand-font mb-2 text-yellow-300">Pastel de Sushi</h3>
+                                <h3 class="text-2xl font-bold brand-font mb-2">Pastel de Sushi</h3>
                             </div>
                         </div>
                     </div>
                     <div class="p-6 bg-gradient-to-r from-gray-50 to-white flex-grow flex flex-col justify-between gap-4">
                         <p class="text-gray-600 text-sm md:text-base">La forma más original de celebrar. Capas de arroz, tu proteína favorita, aguacate, queso crema y deliciosos toppings.</p>
-                        <a href="https://wa.me/5214433580280?text=Hola%20Wokami,%20me%20interesa%20encargar%20un%20Pastel%20de%20Sushi%20%F0%9F%8E%82%F0%9F%8D%A3"
-                            target="_blank"
-                            class="bg-yellow-500 hover:bg-yellow-600 text-black px-6 py-3 rounded-full font-bold shadow-lg transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 w-full md:w-auto text-sm self-start">
-                            <i class="fab fa-whatsapp text-lg"></i> Pedir Pastel
-                        </a>
+                        <button onclick="openEventosModal('https://wa.me/5214433580280?text=Hola%20Wokami,%20me%20interesa%20encargar%20un%20Pastel%20de%20Sushi%20%F0%9F%8E%82%F0%9F%8D%A3')"
+                            class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full font-bold shadow-lg transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 w-full md:w-auto text-sm self-start">
+                            <i class="fab fa-whatsapp text-lg"></i> Cotizar Pastel
+                        </button>
                     </div>
                 </div>
             </div>
@@ -658,7 +647,7 @@
 
             <div class="grid lg:grid-cols-2 gap-8">
                 <div
-                    class="bg-white border-t-4 border-red-600 shadow-md rounded-b-lg h-full overflow-hidden hover:shadow-xl transition-shadow menu-item-card">
+                    class="bg-white border-t-4 border-green-600 shadow-md rounded-b-lg h-full overflow-hidden hover:shadow-xl transition-shadow menu-item-card">
                     <div class="h-48 w-full bg-gray-200 relative overflow-hidden group">
                         <img src="yakimeshi.jpg" onerror="this.src='https://via.placeholder.com/600x200?text=Yakimeshi'"
                             class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
@@ -678,7 +667,7 @@
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$70</span>
                                     <button onclick="addToCart('Yakimeshi Verduras', 70, 'wok')"
-                                        class="text-gray-400 hover:text-red-600 p-2"><i
+                                        class="text-gray-400 hover:text-green-600 p-2"><i
                                             class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
@@ -688,7 +677,7 @@
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$100</span>
                                     <button onclick="addToCart('Yakimeshi Pollo', 100, 'wok')"
-                                        class="text-gray-400 hover:text-red-600 p-2"><i
+                                        class="text-gray-400 hover:text-green-600 p-2"><i
                                             class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
@@ -698,7 +687,7 @@
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$120</span>
                                     <button onclick="addToCart('Yakimeshi Camarón', 120, 'wok')"
-                                        class="text-gray-400 hover:text-red-600 p-2"><i
+                                        class="text-gray-400 hover:text-green-600 p-2"><i
                                             class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
@@ -708,7 +697,7 @@
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$120</span>
                                     <button onclick="addToCart('Yakimeshi Res', 120, 'wok')"
-                                        class="text-gray-400 hover:text-red-600 p-2"><i
+                                        class="text-gray-400 hover:text-green-600 p-2"><i
                                             class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
@@ -718,18 +707,18 @@
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$130</span>
                                     <button onclick="openProteinSelection('Yakimeshi Mixto', 130, 2, 'wok')"
-                                        class="text-gray-400 hover:text-red-600 p-2"><i
+                                        class="text-gray-400 hover:text-green-600 p-2"><i
                                             class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
                             <li
-                                class="flex justify-between items-center text-sm text-gray-700 font-bold bg-red-50 p-2 rounded text-red-900 border border-red-100">
+                                class="flex justify-between items-center text-sm text-gray-700 font-bold bg-green-50 p-2 rounded text-green-900 border border-green-100">
                                 <span><i class="fas fa-star text-yellow-600 mr-2"></i>Especial (3 proteínas +
                                     Kushiagues)</span>
                                 <div class="flex items-center gap-2">
                                     <span>$150</span>
                                     <button onclick="addToCart('Yakimeshi Especial (Pollo, Res y Camarón)', 150, 'wok')"
-                                        class="text-red-600 hover:text-red-800 p-2"><i
+                                        class="text-green-600 hover:text-green-800 p-2"><i
                                             class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
@@ -738,10 +727,10 @@
                 </div>
 
                 <div
-                    class="bg-white border-t-4 border-red-600 shadow-md rounded-b-lg h-full overflow-hidden hover:shadow-xl transition-shadow menu-item-card relative">
+                    class="bg-white border-t-4 border-green-600 shadow-md rounded-b-lg h-full overflow-hidden hover:shadow-xl transition-shadow menu-item-card relative">
                     <span
                         class="absolute top-0 right-0 bg-yellow-400 text-black text-[10px] font-bold px-3 py-1 rounded-bl-lg z-10 shadow-sm">
-                        ⭐ La joya oculta de Wokami
+                        ⭐ La joya de la corona
                     </span>
 
                     <div class="h-48 w-full bg-gray-200 relative overflow-hidden group">
@@ -759,7 +748,7 @@
                             y col morada, bañada en salsa a base de soya, acompañada de chile de aceite.
                             <br>
                             <span
-                                class="inline-block mt-2 bg-red-100 text-red-600 text-xs px-2 py-1 rounded-full border border-red-200 font-bold not-italic">
+                                class="inline-block mt-2 bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full border border-green-200 font-bold not-italic">
                                 <i class="fas fa-exclamation-circle mr-1"></i>Nota: No incluye soya
                             </span>
                         </p>
@@ -771,7 +760,7 @@
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$65</span>
                                     <button onclick="addToCart('Lo Mein Vegetariano', 65, 'wok')"
-                                        class="text-gray-400 hover:text-red-600 p-2"><i
+                                        class="text-gray-400 hover:text-green-600 p-2"><i
                                             class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
@@ -781,7 +770,7 @@
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$80</span>
                                     <button onclick="addToCart('Lo Mein Pollo', 80, 'wok')"
-                                        class="text-gray-400 hover:text-red-600 p-2"><i
+                                        class="text-gray-400 hover:text-green-600 p-2"><i
                                             class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
@@ -791,7 +780,7 @@
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$80</span>
                                     <button onclick="addToCart('Lo Mein Res', 80, 'wok')"
-                                        class="text-gray-400 hover:text-red-600 p-2"><i
+                                        class="text-gray-400 hover:text-green-600 p-2"><i
                                             class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
@@ -801,7 +790,7 @@
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$95</span>
                                     <button onclick="addToCart('Lo Mein Camarón', 95, 'wok')"
-                                        class="text-gray-400 hover:text-red-600 p-2"><i
+                                        class="text-gray-400 hover:text-green-600 p-2"><i
                                             class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
@@ -811,17 +800,17 @@
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">$95</span>
                                     <button onclick="openProteinSelection('Lo Mein Mixto', 95, 2, 'wok')"
-                                        class="text-gray-400 hover:text-red-600 p-2"><i
+                                        class="text-gray-400 hover:text-green-600 p-2"><i
                                             class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
                             <li
-                                class="flex justify-between items-center text-sm text-gray-700 font-bold bg-red-50 p-2 rounded text-red-900 border border-red-100">
+                                class="flex justify-between items-center text-sm text-gray-700 font-bold bg-green-50 p-2 rounded text-green-900 border border-green-100">
                                 <span><i class="fas fa-star text-yellow-600 mr-2"></i>Especial (3 proteínas)</span>
                                 <div class="flex items-center gap-2">
                                     <span>$120</span>
                                     <button onclick="addToCart('Lo Mein Especial (Pollo, Res y Camarón)', 120, 'wok')"
-                                        class="text-red-600 hover:text-red-800 p-2"><i
+                                        class="text-green-600 hover:text-green-800 p-2"><i
                                             class="fas fa-plus-circle fa-lg"></i></button>
                                 </div>
                             </li>
@@ -830,11 +819,7 @@
                 </div>
 
                 <div
-                    class="bg-white border-t-4 border-red-600 shadow-md rounded-b-lg h-full overflow-hidden hover:shadow-xl transition-shadow menu-item-card lg:col-span-2 relative">
-                    <span
-                        class="absolute top-0 right-0 bg-yellow-400 text-black text-[10px] font-bold px-3 py-1 rounded-bl-lg z-10 shadow-sm uppercase tracking-wide">
-                        ¡NUEVO!
-                    </span>
+                    class="bg-white border-t-4 border-green-600 shadow-md rounded-b-lg h-full overflow-hidden hover:shadow-xl transition-shadow menu-item-card lg:col-span-2 relative">
 
                     <div class="h-48 w-full bg-gray-200 relative overflow-hidden group">
                         <img src="poke.jpg" onerror="this.src='https://via.placeholder.com/600x200?text=Wokami+Poke'"
@@ -848,14 +833,10 @@
                         </div>
                         <p class="text-gray-600 italic mb-4">
                             Base de arroz gohan (150g), elige 4 verduras y tu proteína favorita.
-                            <br>
-                            <span class="inline-block mt-2 bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full border border-green-200 font-bold not-italic">
-                                <i class="fas fa-leaf mr-1"></i>Personaliza tu bowl
-                            </span>
                         </p>
 
                         <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-red-600">$160</span>
+                            <span class="text-2xl font-bold text-green-600">$160</span>
                             <button onclick="openPokeModal()"
                                 class="text-sm font-bold uppercase tracking-wider btn-primary px-6 py-3 rounded shadow-md flex items-center gap-2">
                                 <i class="fas fa-plus-circle"></i> Armar mi Poke
@@ -880,43 +861,40 @@
                             <h3 class="text-lg md:text-xl font-bold text-gray-900">Galletas New York</h3>
                             <p class="text-gray-600 text-xs md:text-sm mt-1 mb-2">Estilo New York. Sabor único:</p>
 
-                            <p class="text-xs text-red-600 font-bold mt-1 mb-2"><i class="fas fa-fire mr-1"></i>Sabor: Churro de Cajeta</p>
+                            <p class="text-xs text-green-600 font-bold mt-1 mb-2"><i class="fas fa-fire mr-1"></i>Sabor: Tiramisú</p>
                         </div>
                         <div class="flex justify-between items-center mt-1">
                             <span class="text-lg font-bold text-gray-900">$45</span>
-                            <button onclick="addToCart('Galletas New York (Churro de Cajeta)', 45, 'postre')"
+                            <button onclick="addToCart('Galletas New York (Tiramisú)', 45, 'postre')"
                                 class="text-xs btn-primary px-4 py-2 rounded-full transition shadow-md font-bold"><i
-                                    class="fas fa-plus mr-1"></i> Agregar</button>
+                                    class="fas fa-plus mr-1"></i> Fichar</button>
                         </div>
                     </div>
                 </div>
                 <div
-                    class="menu-item-card bg-gray-50 rounded-lg border border-gray-100 shadow-sm overflow-hidden flex flex-col sm:flex-row min-h-32 group opacity-75 relative">
-                    <div class="absolute inset-0 z-10 bg-white/60 flex items-center justify-center">
-                        <span
-                            class="bg-red-600 text-white font-bold px-4 py-2 rounded transform -rotate-12 border-2 border-white shadow-lg">AGOTADO
-                            HOY</span>
-                    </div>
+                    class="menu-item-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden flex flex-col sm:flex-row min-h-32 group relative">
 
                     <div
-                        class="w-full sm:w-40 h-40 sm:h-auto flex-shrink-0 bg-gray-200 relative overflow-hidden grayscale">
+                        class="w-full sm:w-40 h-40 sm:h-auto flex-shrink-0 bg-gray-200 relative overflow-hidden">
                         <img src="helado.jpg"
                             onerror="this.src='https://via.placeholder.com/300x300?text=Tempura+Helado'"
-                            class="w-full h-full object-cover object-center absolute inset-0">
+                            class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="p-4 flex-grow flex flex-col justify-between">
                         <div>
-                            <h3 class="text-lg md:text-xl font-bold text-gray-600">Tempura Helado</h3>
-                            <p class="text-gray-500 text-xs md:text-sm mt-1 line-clamp-2">Helado frito en tempura
-                                crujiente con chocolate.</p>
-                            <p class="text-xs text-red-400 font-bold mt-1"><i class="fas fa-star mr-1"></i>Sabor de la
-                                semana: Nieve de Cajeta</p>
+                            <h3 class="text-lg md:text-xl font-bold text-gray-900">Tempura Helado</h3>
+                            <p class="text-gray-600 text-xs md:text-sm mt-1 mb-2">Helado frito en tempura crujiente. Elige tu sabor:</p>
+                            <select id="tempura-select"
+                                class="w-full text-base md:text-xs border border-gray-300 rounded p-1.5 mb-2 bg-gray-50 focus:border-green-600 outline-none cursor-pointer hover:bg-white">
+                                <option value="Chocolate">Chocolate</option>
+                                <option value="Fresa">Fresa</option>
+                            </select>
                         </div>
-                        <div class="flex justify-between items-center mt-2">
-                            <span class="text-lg font-bold text-gray-500">$75</span>
-                            <button disabled
-                                class="text-xs bg-gray-400 text-white px-3 py-2 rounded-full cursor-not-allowed shadow-none"><i
-                                    class="fas fa-ban text-sm"></i></button>
+                        <div class="flex justify-between items-center mt-1">
+                            <span class="text-lg font-bold text-gray-900">$75</span>
+                            <button onclick="addTempuraFromSelect()"
+                                class="text-xs btn-primary px-4 py-2 rounded-full transition shadow-md font-bold uppercase tracking-wider"><i
+                                    class="fas fa-plus mr-1"></i> Fichar</button>
                         </div>
                     </div>
                 </div>
@@ -925,7 +903,7 @@
                     class="menu-item-card bg-gray-50 rounded-lg border border-gray-100 shadow-sm overflow-hidden flex flex-col sm:flex-row min-h-32 group opacity-75 relative">
                     <div class="absolute inset-0 z-10 bg-white/60 flex items-center justify-center">
                         <span
-                            class="bg-red-600 text-white font-bold px-4 py-2 rounded transform -rotate-12 border-2 border-white shadow-lg">AGOTADO
+                            class="bg-green-600 text-white font-bold px-4 py-2 rounded transform -rotate-12 border-2 border-white shadow-lg">AGOTADO
                             HOY</span>
                     </div>
 
@@ -1006,7 +984,7 @@
 
             <div class="flex justify-center gap-6 mt-4 text-gray-700">
                 <a href="https://www.instagram.com/wokami_sushi?igsh=NWYzYW82dG81eWdm" target="_blank"
-                    class="hover:text-red-600 transition-colors transform hover:scale-110 p-2">
+                    class="hover:text-green-600 transition-colors transform hover:scale-110 p-2">
                     <i class="fab fa-instagram text-3xl"></i>
                 </a>
 
@@ -1030,8 +1008,32 @@
     <button onclick="sendOrder()"
         class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition z-50 flex items-center gap-2 hover:scale-105 transform duration-200 border-2 border-white">
         <i class="fab fa-whatsapp text-2xl"></i>
-        <span class="font-bold hidden md:inline" id="cart-text">Pedir Ahora</span>
+        <span class="font-bold hidden md:inline" id="cart-text">Armar Jugada</span>
     </button>
+
+    <div id="eventos-modal" class="fixed inset-0 bg-black bg-opacity-80 z-[110] hidden flex items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-sm p-6 relative animate-fade-in-up text-center border border-gray-200">
+            <button onclick="closeEventosModal()" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 z-10 bg-white rounded-full p-2">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            <h3 class="text-xl font-bold mb-4 brand-font text-black">Aviso Importante</h3>
+            
+            <div class="bg-blue-50 border border-blue-100 rounded-lg p-4 mb-6">
+                <p class="text-gray-700 text-sm mb-3"><i class="fas fa-info-circle text-blue-500 mr-2"></i>Recuerda nuestra política de pedidos para eventos:</p>
+                <ul class="text-sm font-bold text-gray-800 text-left list-disc pl-5 space-y-1">
+                    <li>Charolas: <span class="text-green-600">1 día de anticipación</span></li>
+                    <li>Pasteles: <span class="text-green-600">2 días de anticipación</span></li>
+                </ul>
+            </div>
+
+            <div class="flex gap-3">
+                <button onclick="closeEventosModal()" class="flex-1 px-4 py-3 border border-gray-300 rounded text-gray-600 hover:bg-gray-100 text-sm font-bold transition-colors">Cancelar</button>
+                <button id="btn-continue-wa" class="flex-1 px-4 py-3 bg-green-500 hover:bg-green-600 text-white rounded text-sm font-bold flex items-center justify-center gap-2 shadow-lg transition-colors">
+                    <i class="fab fa-whatsapp"></i> Continuar
+                </button>
+            </div>
+        </div>
+    </div>
 
     <div id="preferences-modal"
         class="fixed inset-0 bg-black bg-opacity-80 z-[100] hidden flex items-center justify-center p-4 backdrop-blur-sm">
@@ -1044,7 +1046,7 @@
 
             <h3
                 class="text-xl font-bold text-center mb-4 brand-font border-b border-gray-100 pb-2 flex-shrink-0 text-black">
-                Tu Pedido</h3>
+                Tu Alineación</h3>
 
             <div id="cart-items-container" class="mb-4 bg-gray-50 p-3 rounded-lg border border-gray-100 flex-shrink-0">
                 <ul id="cart-list" class="space-y-2 text-sm mb-3 max-h-32 overflow-y-auto"></ul>
@@ -1058,7 +1060,7 @@
                         <span>Envío:</span>
                         <span id="modal-shipping">$15</span>
                     </div>
-                    <div id="modal-discount-row" class="flex justify-between text-red-600 font-bold hidden">
+                    <div id="modal-discount-row" class="flex justify-between text-green-600 font-bold hidden">
                         <span>Descuento Promo:</span>
                         <span id="modal-discount">-$0</span>
                     </div>
@@ -1075,126 +1077,111 @@
 
             <div class="space-y-6">
                 <div>
-                    <p class="font-bold text-gray-800 mb-2"><i class="fas fa-utensils mr-2 text-red-600"></i>¿Cubiertos?
+                    <p class="font-bold text-gray-800 mb-2"><i class="fas fa-utensils mr-2 text-green-600"></i>¿Cubiertos?
                     </p>
                     <div class="flex gap-4 flex-wrap">
                         <label
                             class="flex items-center gap-2 cursor-pointer bg-gray-50 px-3 py-2 rounded hover:bg-gray-100 active:bg-gray-200">
                             <input type="checkbox" name="cutlery" value="Palillos"
-                                class="text-red-600 focus:ring-red-500 rounded h-5 w-5">
+                                class="text-green-600 focus:ring-green-500 rounded h-5 w-5">
                             <span class="text-sm">Palillos</span>
                         </label>
                         <label
                             class="flex items-center gap-2 cursor-pointer bg-gray-50 px-3 py-2 rounded hover:bg-gray-100 active:bg-gray-200">
                             <input type="checkbox" name="cutlery" value="Tenedores"
-                                class="text-red-600 focus:ring-red-500 rounded h-5 w-5">
+                                class="text-green-600 focus:ring-green-500 rounded h-5 w-5">
                             <span class="text-sm">Tenedores</span>
                         </label>
                         <label
                             class="flex items-center gap-2 cursor-pointer bg-gray-50 px-3 py-2 rounded hover:bg-gray-100 active:bg-gray-200">
                             <input type="checkbox" name="cutlery" value="Sin cubiertos"
-                                class="text-red-600 focus:ring-red-500 rounded h-5 w-5">
+                                class="text-green-600 focus:ring-green-500 rounded h-5 w-5">
                             <span class="text-sm">Ninguno</span>
                         </label>
                     </div>
                 </div>
 
                 <div>
-                    <p class="font-bold text-gray-800 mb-2"><i class="fas fa-pepper-hot mr-2 text-red-600"></i>Soya</p>
-                    <div class="flex flex-col gap-2">
-                        <label class="flex items-center gap-2 cursor-pointer p-1">
-                            <input type="radio" name="soy_sauce" value="Con Chile (Toreada)"
-                                class="text-red-600 focus:ring-red-500 h-5 w-5">
-                            <span class="text-sm ml-1">Con Chile (Toreada)</span>
-                        </label>
-                        <label class="flex items-center gap-2 cursor-pointer p-1">
-                            <input type="radio" name="soy_sauce" value="Sin Chile (Preparada)" checked
-                                class="text-red-600 focus:ring-red-500 h-5 w-5">
-                            <span class="text-sm ml-1">Sin Chile (Preparada)</span>
-                        </label>
-                        <label class="flex items-center gap-2 cursor-pointer p-1">
-                            <input type="radio" name="soy_sauce" value="Sin soya"
-                                class="text-red-600 focus:ring-red-500 h-5 w-5">
-                            <span class="text-sm ml-1">No necesito soya</span>
-                        </label>
-                    </div>
+                    <p class="font-bold text-gray-800 mb-2"><i class="fas fa-pepper-hot mr-2 text-green-600"></i>Soya</p>
+                    <div id="soy-options-container" class="flex flex-col gap-2">
+                        </div>
                 </div>
 
                 <div>
-                    <p class="font-bold text-gray-800 mb-2"><i class="fas fa-plus-circle mr-2 text-red-600"></i>Extras
+                    <p class="font-bold text-gray-800 mb-2"><i class="fas fa-plus-circle mr-2 text-green-600"></i>Extras
                     </p>
                     <label
-                        class="flex items-center gap-2 cursor-pointer bg-red-50 p-3 rounded border border-red-100 mb-2">
+                        class="flex items-center gap-2 cursor-pointer bg-green-50 p-3 rounded border border-green-100 mb-2">
                         <input type="checkbox" name="extra_item" value="Soya Extra" data-price="10"
-                            onchange="updateModalTotals()" class="text-red-600 rounded h-5 w-5">
-                        <span class="text-sm font-bold text-red-800 ml-1">Soya Extra (+$10)</span>
+                            onchange="updateModalTotals()" class="text-green-600 rounded h-5 w-5">
+                        <span class="text-sm font-bold text-green-800 ml-1">Soya Extra (+$10)</span>
                     </label>
                     <div class="grid grid-cols-2 gap-2">
                         <label
                             class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100 border border-gray-100">
                             <input type="checkbox" name="extra_item" value="Salsa de Anguila" data-price="15"
-                                onchange="updateModalTotals()" class="text-red-600 rounded h-4 w-4">
+                                onchange="updateModalTotals()" class="text-green-600 rounded h-4 w-4">
                             <span class="text-xs md:text-sm">Anguila (+$15)</span>
                         </label>
                         <label
                             class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100 border border-gray-100">
                             <input type="checkbox" name="extra_item" value="Aderezo Chipotle" data-price="15"
-                                onchange="updateModalTotals()" class="text-red-600 rounded h-4 w-4">
+                                onchange="updateModalTotals()" class="text-green-600 rounded h-4 w-4">
                             <span class="text-xs md:text-sm">Chipotle (+$15)</span>
                         </label>
                         <label
                             class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100 border border-gray-100">
                             <input type="checkbox" name="extra_item" value="Sriracha" data-price="15"
-                                onchange="updateModalTotals()" class="text-red-600 rounded h-4 w-4">
+                                onchange="updateModalTotals()" class="text-green-600 rounded h-4 w-4">
                             <span class="text-xs md:text-sm">Sriracha (+$15)</span>
                         </label>
                         <label
                             class="flex items-center gap-2 cursor-pointer bg-gray-50 p-2 rounded hover:bg-gray-100 border border-gray-100">
                             <input type="checkbox" name="extra_item" value="Chile de Aceite" data-price="15"
-                                onchange="updateModalTotals()" class="text-red-600 rounded h-4 w-4">
+                                onchange="updateModalTotals()" class="text-green-600 rounded h-4 w-4">
                             <span class="text-xs md:text-sm">Chile de aceite (+$15)</span>
                         </label>
                         <label
                             class="flex items-center gap-2 cursor-pointer bg-yellow-50 p-2 rounded hover:bg-yellow-100 border border-yellow-100">
                             <input type="checkbox" name="extra_item" value="Extra Queso Philadelphia" data-price="20"
-                                onchange="updateModalTotals()" class="text-red-600 rounded h-4 w-4">
+                                onchange="updateModalTotals()" class="text-green-600 rounded h-4 w-4">
                             <span class="text-xs md:text-sm font-medium">Philadelphia (+$20)</span>
                         </label>
                         <label
                             class="flex items-center gap-2 cursor-pointer bg-yellow-50 p-2 rounded hover:bg-yellow-100 border border-yellow-100">
                             <input type="checkbox" name="extra_item" value="Extra Queso Manchego" data-price="20"
-                                onchange="updateModalTotals()" class="text-red-600 rounded h-4 w-4">
+                                onchange="updateModalTotals()" class="text-green-600 rounded h-4 w-4">
                             <span class="text-xs md:text-sm font-medium">Manchego (+$20)</span>
                         </label>
                         <label
                             class="flex items-center gap-2 cursor-pointer bg-orange-50 p-2 rounded hover:bg-orange-100 border border-orange-100">
                             <input type="checkbox" name="extra_item" value="Tampico" data-price="25"
-                                onchange="updateModalTotals()" class="text-red-600 rounded h-4 w-4">
+                                onchange="updateModalTotals()" class="text-green-600 rounded h-4 w-4">
                             <span class="text-xs md:text-sm font-medium">Tampico (+$25)</span>
                         </label>
                     </div>
                 </div>
 
                 <div class="mb-4 pt-4 border-t border-gray-100">
-                    <p class="font-bold text-gray-800 mb-2"><i class="fas fa-ticket-alt mr-2 text-red-600"></i>Cupón
+                    <p class="font-bold text-gray-800 mb-2"><i class="fas fa-ticket-alt mr-2 text-green-600"></i>Cupón
                     </p>
                     <div class="flex gap-2">
                         <input type="text" id="coupon-code"
-                            class="flex-1 text-base md:text-sm border border-gray-300 rounded p-3 md:p-2 uppercase focus:ring-red-500 outline-none"
-                            placeholder="Código">
+                            class="flex-1 text-base md:text-sm border border-gray-300 rounded p-3 md:p-2 uppercase focus:ring-green-500 outline-none"
+                            placeholder="Código (ej. VAR5)">
                         <button onclick="applyCoupon()"
-                            class="bg-red-600 text-white px-4 py-2 rounded text-sm font-bold hover:bg-red-700 transition-colors">Aplicar</button>
+                            class="bg-green-600 text-white px-4 py-2 rounded text-sm font-bold hover:bg-green-700 transition-colors">Aplicar</button>
                     </div>
                     <p id="coupon-message" class="text-xs mt-1 font-bold"></p>
                 </div>
 
                 <div>
                     <textarea id="delivery-address" rows="2"
-                        class="w-full text-base md:text-sm border border-gray-300 rounded p-2 bg-gray-50 focus:border-red-500 outline-none"
+                        class="w-full text-base md:text-sm border border-gray-300 rounded p-2 bg-gray-50 focus:border-green-500 outline-none"
                         placeholder="📍 Dirección de entrega..."></textarea>
                     <textarea id="order-notes" rows="2"
-                        class="w-full text-base md:text-sm border border-gray-300 rounded p-2 bg-gray-50 focus:border-red-500 outline-none mt-2"
-                        placeholder="📝 Notas especiales..."></textarea>
+                        class="w-full text-base md:text-sm border border-gray-300 rounded p-2 bg-gray-50 focus:border-green-500 outline-none mt-2"
+                        placeholder="📝 Notas especiales o jugadas preparadas..."></textarea>
                 </div>
             </div>
 
@@ -1203,22 +1190,22 @@
                 <div class="flex items-center gap-3">
                     <div class="bg-white p-2 rounded-full shadow-sm text-lg">🍪</div>
                     <div class="text-xs md:text-sm leading-tight">
-                        <p class="font-bold text-gray-800">¿Un toque dulce?</p>
+                        <p class="font-bold text-gray-800">¿El gol de la victoria?</p>
                         <p class="text-gray-600 text-xs">Galletas New York <span
-                                class="text-red-600 font-bold">+$45</span></p>
+                                class="text-green-600 font-bold">+$45</span></p>
                     </div>
                 </div>
                 <button onclick="addCookieFromModal()"
-                    class="text-xs bg-red-600 text-white px-3 py-2 rounded-full font-bold hover:bg-red-700 transition shadow-md">Agregar</button>
+                    class="text-xs bg-green-600 text-white px-3 py-2 rounded-full font-bold hover:bg-green-700 transition shadow-md">Agregar</button>
             </div>
 
             <div class="mt-2 flex gap-3">
                 <button onclick="toggleModal()"
                     class="flex-1 px-4 py-3 border border-gray-300 rounded text-gray-600 hover:bg-gray-100 text-sm font-bold">Seguir
-                    Pidiendo</button>
+                    Fichando</button>
                 <button onclick="submitOrderWithPreferences()"
                     class="flex-1 px-4 py-3 bg-green-500 text-white rounded hover:bg-green-600 text-sm font-bold flex items-center justify-center gap-2 shadow-lg">
-                    <i class="fab fa-whatsapp"></i> Enviar
+                    <i class="fab fa-whatsapp"></i> Enviar Jugada
                 </button>
             </div>
         </div>
@@ -1237,13 +1224,13 @@
                     <input type="checkbox" name="protein_choice" value="Pollo" class="protein-checkbox sr-only"
                         onchange="validateProteinSelection()">
                     <div
-                        class="p-4 rounded-lg border-2 border-gray-200 hover:border-red-300 transition-all flex justify-between items-center bg-gray-50">
+                        class="p-4 rounded-lg border-2 border-gray-200 hover:border-green-300 transition-all flex justify-between items-center bg-gray-50">
                         <div class="flex items-center gap-3">
                             <i class="fas fa-drumstick-bite text-orange-400 text-xl"></i>
                             <span class="font-bold text-gray-700">Pollo</span>
                         </div>
                         <i
-                            class="fas fa-check-circle text-red-600 text-xl opacity-0 transform scale-50 transition-all check-icon"></i>
+                            class="fas fa-check-circle text-green-600 text-xl opacity-0 transform scale-50 transition-all check-icon"></i>
                     </div>
                 </label>
 
@@ -1251,13 +1238,13 @@
                     <input type="checkbox" name="protein_choice" value="Res" class="protein-checkbox sr-only"
                         onchange="validateProteinSelection()">
                     <div
-                        class="p-4 rounded-lg border-2 border-gray-200 hover:border-red-300 transition-all flex justify-between items-center bg-gray-50">
+                        class="p-4 rounded-lg border-2 border-gray-200 hover:border-green-300 transition-all flex justify-between items-center bg-gray-50">
                         <div class="flex items-center gap-3">
                             <i class="fas fa-bacon text-red-800 text-xl"></i>
                             <span class="font-bold text-gray-700">Res</span>
                         </div>
                         <i
-                            class="fas fa-check-circle text-red-600 text-xl opacity-0 transform scale-50 transition-all check-icon"></i>
+                            class="fas fa-check-circle text-green-600 text-xl opacity-0 transform scale-50 transition-all check-icon"></i>
                     </div>
                 </label>
 
@@ -1265,13 +1252,13 @@
                     <input type="checkbox" name="protein_choice" value="Camarón" class="protein-checkbox sr-only"
                         onchange="validateProteinSelection()">
                     <div
-                        class="p-4 rounded-lg border-2 border-gray-200 hover:border-red-300 transition-all flex justify-between items-center bg-gray-50">
+                        class="p-4 rounded-lg border-2 border-gray-200 hover:border-green-300 transition-all flex justify-between items-center bg-gray-50">
                         <div class="flex items-center gap-3">
                             <i class="fas fa-shrimp text-red-400 text-xl"></i>
                             <span class="font-bold text-gray-700">Camarón</span>
                         </div>
                         <i
-                            class="fas fa-check-circle text-red-600 text-xl opacity-0 transform scale-50 transition-all check-icon"></i>
+                            class="fas fa-check-circle text-green-600 text-xl opacity-0 transform scale-50 transition-all check-icon"></i>
                     </div>
                 </label>
             </div>
@@ -1297,11 +1284,11 @@
 
             <h3 class="text-xl font-bold text-center mb-1 brand-font text-black">Wokami Poke</h3>
             <p class="text-center text-sm text-gray-500 mb-1">Base de arroz gohan (150g)</p>
-            <p class="text-center text-xs text-red-600 font-bold mb-5">$160</p>
+            <p class="text-center text-xs text-green-600 font-bold mb-5">$160</p>
 
             <div class="mb-5">
                 <p class="font-bold text-gray-800 mb-1 text-sm"><i class="fas fa-seedling mr-2 text-green-600"></i>Elige 4 verduras <span class="text-gray-400 font-normal">(incluidas)</span></p>
-                <p id="poke-veg-counter" class="text-xs text-gray-500 mb-2">Seleccionadas: <strong class="text-red-600">0</strong> / 4</p>
+                <p id="poke-veg-counter" class="text-xs text-gray-500 mb-2">Seleccionadas: <strong class="text-green-600">0</strong> / 4</p>
                 <div class="grid grid-cols-2 gap-2" id="poke-veg-options">
                     <label class="cursor-pointer"><input type="checkbox" name="poke_veg" value="Pepino" class="poke-veg-cb sr-only" onchange="validatePokeVeg()"><div class="p-2.5 rounded-lg border-2 border-gray-200 hover:border-green-300 transition-all text-center text-xs font-medium bg-gray-50"><span>🥒 Pepino</span><i class="fas fa-check-circle text-green-600 ml-1 opacity-0 poke-veg-check"></i></div></label>
                     <label class="cursor-pointer"><input type="checkbox" name="poke_veg" value="Col Morada" class="poke-veg-cb sr-only" onchange="validatePokeVeg()"><div class="p-2.5 rounded-lg border-2 border-gray-200 hover:border-green-300 transition-all text-center text-xs font-medium bg-gray-50"><span>🥬 Col Morada</span><i class="fas fa-check-circle text-green-600 ml-1 opacity-0 poke-veg-check"></i></div></label>
@@ -1315,19 +1302,19 @@
                     <label class="cursor-pointer"><input type="checkbox" name="poke_veg" value="Betabel" class="poke-veg-cb sr-only" onchange="validatePokeVeg()"><div class="p-2.5 rounded-lg border-2 border-gray-200 hover:border-green-300 transition-all text-center text-xs font-medium bg-gray-50"><span>🟣 Betabel</span><i class="fas fa-check-circle text-green-600 ml-1 opacity-0 poke-veg-check"></i></div></label>
                     <label class="cursor-pointer col-span-2"><input type="checkbox" name="poke_veg" value="Tomate Cherry" class="poke-veg-cb sr-only" onchange="validatePokeVeg()"><div class="p-2.5 rounded-lg border-2 border-gray-200 hover:border-green-300 transition-all text-center text-xs font-medium bg-gray-50"><span>🍅 Tomate Cherry</span><i class="fas fa-check-circle text-green-600 ml-1 opacity-0 poke-veg-check"></i></div></label>
                 </div>
-                <p id="poke-veg-extra-info" class="text-xs text-gray-400 mt-2 hidden"><i class="fas fa-info-circle mr-1"></i>Cada verdura extra: <strong class="text-red-600">+$10</strong></p>
+                <p id="poke-veg-extra-info" class="text-xs text-gray-400 mt-2 hidden"><i class="fas fa-info-circle mr-1"></i>Cada verdura extra: <strong class="text-green-600">+$10</strong></p>
             </div>
 
             <div class="mb-5">
                 <p class="font-bold text-gray-800 mb-2 text-sm"><i class="fas fa-drumstick-bite mr-2 text-orange-500"></i>Elige tu proteína</p>
                 <div class="space-y-2" id="poke-protein-options">
-                    <label class="cursor-pointer block"><input type="radio" name="poke_protein" value="Camarones Sazonados" class="sr-only poke-protein-radio" onchange="validatePokeProtein()"><div class="p-3 rounded-lg border-2 border-gray-200 hover:border-red-300 transition-all flex justify-between items-center bg-gray-50 text-sm"><span>🦐 Camarones Sazonados</span><i class="fas fa-check-circle text-red-600 opacity-0 poke-prot-check"></i></div></label>
-                    <label class="cursor-pointer block"><input type="radio" name="poke_protein" value="Camarones Empanizados" class="sr-only poke-protein-radio" onchange="validatePokeProtein()"><div class="p-3 rounded-lg border-2 border-gray-200 hover:border-red-300 transition-all flex justify-between items-center bg-gray-50 text-sm"><span>🍤 Camarones Empanizados</span><i class="fas fa-check-circle text-red-600 opacity-0 poke-prot-check"></i></div></label>
-                    <label class="cursor-pointer block"><input type="radio" name="poke_protein" value="Res" class="sr-only poke-protein-radio" onchange="validatePokeProtein()"><div class="p-3 rounded-lg border-2 border-gray-200 hover:border-red-300 transition-all flex justify-between items-center bg-gray-50 text-sm"><span>🥩 Res</span><i class="fas fa-check-circle text-red-600 opacity-0 poke-prot-check"></i></div></label>
-                    <label class="cursor-pointer block"><input type="radio" name="poke_protein" value="Pollo Sazonado" class="sr-only poke-protein-radio" onchange="validatePokeProtein()"><div class="p-3 rounded-lg border-2 border-gray-200 hover:border-red-300 transition-all flex justify-between items-center bg-gray-50 text-sm"><span>🐔 Pollo Sazonado</span><i class="fas fa-check-circle text-red-600 opacity-0 poke-prot-check"></i></div></label>
-                    <label class="cursor-pointer block"><input type="radio" name="poke_protein" value="Bolitas de Pollo Empanizada" class="sr-only poke-protein-radio" onchange="validatePokeProtein()"><div class="p-3 rounded-lg border-2 border-gray-200 hover:border-red-300 transition-all flex justify-between items-center bg-gray-50 text-sm"><span>🧆 Bolitas de Pollo Empanizada</span><i class="fas fa-check-circle text-red-600 opacity-0 poke-prot-check"></i></div></label>
-                    <label class="cursor-pointer block"><input type="radio" name="poke_protein" value="Pollo Teriyaki" class="sr-only poke-protein-radio" onchange="validatePokeProtein()"><div class="p-3 rounded-lg border-2 border-gray-200 hover:border-red-300 transition-all flex justify-between items-center bg-gray-50 text-sm"><span>🍯 Pollo Teriyaki</span><i class="fas fa-check-circle text-red-600 opacity-0 poke-prot-check"></i></div></label>
-                    <label class="cursor-pointer block"><input type="radio" name="poke_protein" value="Atún Spicy Wokami" class="sr-only poke-protein-radio" onchange="validatePokeProtein()"><div class="p-3 rounded-lg border-2 border-gray-200 hover:border-red-300 transition-all flex justify-between items-center bg-gray-50 text-sm"><span>🐟 Atún Spicy Wokami</span><i class="fas fa-check-circle text-red-600 opacity-0 poke-prot-check"></i></div></label>
+                    <label class="cursor-pointer block"><input type="radio" name="poke_protein" value="Camarones Sazonados" class="sr-only poke-protein-radio" onchange="validatePokeProtein()"><div class="p-3 rounded-lg border-2 border-gray-200 hover:border-green-300 transition-all flex justify-between items-center bg-gray-50 text-sm"><span>🦐 Camarones Sazonados</span><i class="fas fa-check-circle text-green-600 opacity-0 poke-prot-check"></i></div></label>
+                    <label class="cursor-pointer block"><input type="radio" name="poke_protein" value="Camarones Empanizados" class="sr-only poke-protein-radio" onchange="validatePokeProtein()"><div class="p-3 rounded-lg border-2 border-gray-200 hover:border-green-300 transition-all flex justify-between items-center bg-gray-50 text-sm"><span>🍤 Camarones Empanizados</span><i class="fas fa-check-circle text-green-600 opacity-0 poke-prot-check"></i></div></label>
+                    <label class="cursor-pointer block"><input type="radio" name="poke_protein" value="Res" class="sr-only poke-protein-radio" onchange="validatePokeProtein()"><div class="p-3 rounded-lg border-2 border-gray-200 hover:border-green-300 transition-all flex justify-between items-center bg-gray-50 text-sm"><span>🥩 Res</span><i class="fas fa-check-circle text-green-600 opacity-0 poke-prot-check"></i></div></label>
+                    <label class="cursor-pointer block"><input type="radio" name="poke_protein" value="Pollo Sazonado" class="sr-only poke-protein-radio" onchange="validatePokeProtein()"><div class="p-3 rounded-lg border-2 border-gray-200 hover:border-green-300 transition-all flex justify-between items-center bg-gray-50 text-sm"><span>🐔 Pollo Sazonado</span><i class="fas fa-check-circle text-green-600 opacity-0 poke-prot-check"></i></div></label>
+                    <label class="cursor-pointer block"><input type="radio" name="poke_protein" value="Bolitas de Pollo Empanizada" class="sr-only poke-protein-radio" onchange="validatePokeProtein()"><div class="p-3 rounded-lg border-2 border-gray-200 hover:border-green-300 transition-all flex justify-between items-center bg-gray-50 text-sm"><span>🧆 Bolitas de Pollo Empanizada</span><i class="fas fa-check-circle text-green-600 opacity-0 poke-prot-check"></i></div></label>
+                    <label class="cursor-pointer block"><input type="radio" name="poke_protein" value="Pollo Teriyaki" class="sr-only poke-protein-radio" onchange="validatePokeProtein()"><div class="p-3 rounded-lg border-2 border-gray-200 hover:border-green-300 transition-all flex justify-between items-center bg-gray-50 text-sm"><span>🍯 Pollo Teriyaki</span><i class="fas fa-check-circle text-green-600 opacity-0 poke-prot-check"></i></div></label>
+                    <label class="cursor-pointer block"><input type="radio" name="poke_protein" value="Atún Spicy Wokami" class="sr-only poke-protein-radio" onchange="validatePokeProtein()"><div class="p-3 rounded-lg border-2 border-gray-200 hover:border-green-300 transition-all flex justify-between items-center bg-gray-50 text-sm"><span>🐟 Atún Spicy Wokami</span><i class="fas fa-check-circle text-green-600 opacity-0 poke-prot-check"></i></div></label>
                 </div>
             </div>
 
@@ -1370,7 +1357,7 @@
                     class="flex-1 px-4 py-3 border border-gray-300 rounded text-gray-600 hover:bg-gray-100 text-sm font-bold">Cancelar</button>
                 <button id="confirm-poke-btn" onclick="confirmPokeSelection()" disabled
                     class="flex-1 px-4 py-3 bg-gray-300 text-white rounded text-sm font-bold flex items-center justify-center gap-2 shadow-lg transition-colors cursor-not-allowed">
-                    <i class="fas fa-check mr-1"></i> Agregar al Pedido
+                    <i class="fas fa-check mr-1"></i> Agregar a la Alineación
                 </button>
             </div>
         </div>
@@ -1383,17 +1370,33 @@
             updateCartButton();
         });
 
+        // Lógica del Modal de Eventos
+        let currentEventWaLink = "";
+
+        function openEventosModal(linkUrl) {
+            currentEventWaLink = linkUrl;
+            document.getElementById('eventos-modal').classList.remove('hidden');
+            
+            document.getElementById('btn-continue-wa').onclick = function() {
+                window.open(currentEventWaLink, "_blank");
+                closeEventosModal();
+            };
+        }
+
+        function closeEventosModal() {
+            document.getElementById('eventos-modal').classList.add('hidden');
+            currentEventWaLink = "";
+        }
+
         function updateDynamicContent() {
             const statusBadge = document.getElementById('status-badge');
             
-            // Obtenemos la hora actual del usuario
             const now = new Date();
             const day = now.getDay(); 
             const hours = now.getHours();
             const minutes = now.getMinutes();
             const currentTimeInMinutes = hours * 60 + minutes;
 
-            // Horario: Miércoles (3) a Domingo (0), cerrado Lunes (1) y Martes (2)
             const isWorkingDay = [0, 3, 4, 5, 6].includes(day);
             const openTime = 14 * 60; // 14:00 (2:00 PM)
             const closeTime = 20 * 60; // 20:00 (8:00 PM)
@@ -1412,30 +1415,29 @@
                     statusColorClass = "bg-orange-500 text-white";
                 } else if (currentTimeInMinutes >= openingSoonTime && currentTimeInMinutes < openTime) {
                     statusText = "ABRIMOS PRONTO";
-                    statusColorClass = "bg-yellow-400 text-black"; // Texto negro para mejor contraste
+                    statusColorClass = "bg-yellow-400 text-black"; 
                 }
             }
 
-            // Aplicamos clases y texto calculados
             statusBadge.textContent = statusText;
             statusBadge.className = `inline-block text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ml-1 md:ml-2 whitespace-nowrap ${statusColorClass}`;
 
-            // Lógica del Banner Promocional
             const promoBanner = document.getElementById('daily-promo');
             promoBanner.classList.remove('hidden');
+            promoBanner.className = "hidden bg-green-800 text-white text-center py-2 px-4 text-xs md:text-sm font-bold promo-banner shadow-md border-b-2 border-yellow-400";
 
-            let promoText = '<i class="fas fa-bullhorn mr-2 text-red-500"></i> ¡Bienvenidos a Wokami!';
+            let promoText = '<i class="fas fa-futbol mr-2 text-white"></i> ¡Rueda el balón en Wokami!';
 
             if (day === 3) { // Miércoles
-                promoText = '<i class="fas fa-fire-alt mr-2 text-orange-400"></i> <strong>¡MIÉRCOLES DEL WOK!</strong> Lo Mein Especial + Agua Fresca = <strong>$140</strong>. ¡Descuento automático al carrito!';
+                promoText = '<i class="fas fa-stopwatch mr-2 text-yellow-400"></i> <strong>¡MEDIO TIEMPO WOK!</strong> Lo Mein Especial + Agua Fresca = <strong>$140</strong>. ¡Recupera energía al medio tiempo!';
             } else if (day === 4) { // Jueves
-                promoText = '<i class="fas fa-briefcase mr-2 text-yellow-400"></i> <strong>¡JUEVES GODÍN!</strong> 1 Rollo Clásico + 1 Refresco = <strong>$135</strong> | ¡Trae al colega! 2 combos = <strong>$265</strong>. Descuento automático.';
+                promoText = '<i class="fas fa-users mr-2 text-yellow-400"></i> <strong>¡CONVOCATORIA GODÍN!</strong> 1 Rollo Clásico + 1 Refresco = <strong>$135</strong> | ¡Arma tu equipo! 2 combos = <strong>$265</strong>.';
             } else if (day === 5) { // Viernes
-                promoText = '<i class="fas fa-pepper-hot mr-2 text-red-400"></i> <strong>¡VIERNES SALSERO!</strong> Kushiagues + Rollo Clásico + Agua Fresca = <strong>$200</strong>. ¡Descuento automático al carrito!';
+                promoText = '<i class="fas fa-futbol mr-2 text-white"></i> <strong>¡VIERNES DE GOLEADA!</strong> Kushiagues + Rollo Clásico + Agua = <strong>$200</strong>. ¡Un hat-trick de sabor al carrito!';
             } else if (day === 6) { // Sábado
-                promoText = '<i class="fas fa-seedling mr-2 text-green-400"></i> <strong>¡SÁBADO POKE DAY!</strong> Wokami Poke + Agua Fresca = <strong>$185</strong>. ¡Estrena nuestro bowl más saludable! Descuento automático.';
+                promoText = '<i class="fas fa-trophy mr-2 text-yellow-400"></i> <strong>¡SÁBADO DE CAMPEONES!</strong> Wokami Poke + Agua Fresca = <strong>$185</strong>. ¡La jugada más saludable del partido!';
             } else if (day === 0) { // Domingo
-                promoText = '<i class="fas fa-users mr-2 text-green-400"></i> <strong>¡DOMINGO EN FAMILIA!</strong> En compras de $300 o más, ¡te descontamos $30 automáticamente!';
+                promoText = '<i class="fas fa-flag mr-2 text-red-400"></i> <strong>¡LA GRAN FINAL EN FAMILIA!</strong> En compras de $300 o más, ¡te descontamos $30 como premio a la afición!';
             }
 
             document.getElementById('daily-promo-text').innerHTML = promoText;
@@ -1450,14 +1452,14 @@
         function addToCart(name, price, category = 'other') {
             cart.push({ name: name, price: price, category: category });
             updateCartButton();
-            showToast(`✅ Agregado: ${name}`);
+            showToast(`✅ Fichado: ${name}`);
         }
 
         function openProteinSelection(baseName, price, limit, category) {
             currentProteinRequest = { baseName, price, limit, category };
 
             document.getElementById('protein-modal-title').innerText = baseName;
-            document.getElementById('protein-modal-subtitle').innerHTML = `Selecciona exactamente <strong class="text-red-600">${limit}</strong> proteínas`;
+            document.getElementById('protein-modal-subtitle').innerHTML = `Selecciona exactamente <strong class="text-green-600">${limit}</strong> proteínas`;
 
             document.querySelectorAll('.protein-checkbox').forEach(cb => {
                 cb.checked = false;
@@ -1499,11 +1501,11 @@
             if (checkedBoxes.length === limit) {
                 confirmBtn.disabled = false;
                 confirmBtn.classList.remove('bg-gray-300', 'cursor-not-allowed');
-                confirmBtn.classList.add('bg-red-600', 'hover:bg-red-700');
+                confirmBtn.classList.add('bg-green-600', 'hover:bg-green-700');
             } else {
                 confirmBtn.disabled = true;
                 confirmBtn.classList.add('bg-gray-300', 'cursor-not-allowed');
-                confirmBtn.classList.remove('bg-red-600', 'hover:bg-red-700');
+                confirmBtn.classList.remove('bg-green-600', 'hover:bg-green-700');
             }
         }
 
@@ -1519,9 +1521,7 @@
             closeProteinModal();
         }
 
-        // ===== POKE MODAL FUNCTIONS =====
         function openPokeModal() {
-            // Reset all selections
             document.querySelectorAll('.poke-veg-cb').forEach(cb => {
                 cb.checked = false;
                 cb.disabled = false;
@@ -1545,12 +1545,10 @@
             const all = document.querySelectorAll('.poke-veg-cb');
             const count = checked.length;
 
-            // Update counter
             const counterEl = document.getElementById('poke-veg-counter');
             const color = count < 4 ? 'text-red-600' : (count === 4 ? 'text-green-600' : 'text-orange-600');
             counterEl.innerHTML = `Seleccionadas: <strong class="${color}">${count}</strong> / 4`;
 
-            // Show extra info if more than 4
             const extraInfo = document.getElementById('poke-veg-extra-info');
             if (count > 4) {
                 extraInfo.classList.remove('hidden');
@@ -1567,7 +1565,6 @@
         }
 
         function validatePokeTopping(el) {
-            // Allow multiple toppings (both can be selected)
         }
 
         function updatePokeTotal() {
@@ -1595,11 +1592,11 @@
             if (vegCount >= 4 && proteinSelected && aderezoSelected) {
                 btn.disabled = false;
                 btn.classList.remove('bg-gray-300', 'cursor-not-allowed');
-                btn.classList.add('bg-red-600', 'hover:bg-red-700');
+                btn.classList.add('bg-green-600', 'hover:bg-green-700');
             } else {
                 btn.disabled = true;
                 btn.classList.add('bg-gray-300', 'cursor-not-allowed');
-                btn.classList.remove('bg-red-600', 'hover:bg-red-700');
+                btn.classList.remove('bg-green-600', 'hover:bg-green-700');
             }
         }
 
@@ -1626,15 +1623,14 @@
             addToCart(nameParts, totalPrice, 'wok');
             closePokeModal();
         }
-        // ===== END POKE MODAL =====
 
         function addCookieFromModal() {
-            addToCart('Galletas New York (Churro de Cajeta)', 45, 'postre');
+            addToCart('Galletas New York (Tiramisú)', 45, 'postre');
             renderCartItems();
             updateModalTotals();
             const btn = document.querySelector('#modal-cookie-upsell button');
             const originalText = btn.innerText;
-            btn.innerText = "¡Listo!";
+            btn.innerText = "¡Golazo!";
             btn.classList.add('bg-green-500');
             setTimeout(() => {
                 btn.innerText = originalText;
@@ -1658,6 +1654,11 @@
             const select = document.getElementById('cookie-select');
             addToCart(`Galletas New York (${select.value})`, 45, 'postre');
         }
+        
+        function addTempuraFromSelect() {
+            const select = document.getElementById('tempura-select');
+            addToCart(`Tempura Helado (${select.value})`, 75, 'postre');
+        }
 
         function addMochiFromSelect() {
             const select = document.getElementById('mochi-select');
@@ -1679,34 +1680,34 @@
             const loMeinEspecial = cart.filter(i => i.name.includes('Lo Mein Especial'));
             const wokamiPoke = cart.filter(i => i.name.includes('Wokami Poke'));
 
-            if (day === 3) { // Miércoles del Wok
+            if (day === 3) { // Miércoles
                 if (loMeinEspecial.length >= 1 && aguasFrescas.length >= 1) {
                     discount += 15;
                 }
             }
 
-            if (day === 4) { // Jueves Godín
+            if (day === 4) { // Jueves
                 const comboPairs = Math.min(classicRolls.length, refrescos.length);
                 if (comboPairs >= 2) {
-                    discount += 35; // Godín en equipo: 2 combos = $265 (ahorro $35)
+                    discount += 35;
                 } else {
-                    discount += comboPairs * 15; // 1 combo = $135 (ahorro $15)
+                    discount += comboPairs * 15;
                 }
             }
 
-            if (day === 5) { // Viernes Salsero
+            if (day === 5) { // Viernes
                 if (kushiagues.length >= 1 && classicRolls.length >= 1 && aguasFrescas.length >= 1) {
                     discount += 20;
                 }
             }
 
-            if (day === 6) { // Sábado Poke Day
+            if (day === 6) { // Sábado
                 if (wokamiPoke.length >= 1 && aguasFrescas.length >= 1) {
                     discount += 10;
                 }
             }
 
-            if (day === 0) { // Domingo en Familia
+            if (day === 0) { // Domingo
                 if (subtotal >= 300) {
                     discount += 30;
                 }
@@ -1721,10 +1722,10 @@
             const { total } = calculateCart();
             const count = cart.length;
             if (count > 0) {
-                btnText.innerText = `Ver Pedido (${count}) - $${total}`;
+                btnText.innerText = `Alineación (${count}) - $${total}`;
                 btnText.classList.remove('hidden');
             } else {
-                btnText.innerText = "Pedir Ahora";
+                btnText.innerText = "Armar Jugada";
             }
         }
 
@@ -1755,6 +1756,33 @@
             if (!modal.classList.contains('hidden')) renderCartItems();
         }
 
+        function renderSoyOptions() {
+            const container = document.getElementById('soy-options-container');
+            const currentSelection = document.querySelector('input[name="soy_sauce"]:checked')?.value;
+            
+            const soyEligibleCount = cart.filter(item => !item.name.toLowerCase().includes('lo mein') && ['rollo', 'wok', 'entrada'].includes(item.category)).length;
+            
+            let options = [];
+            if (soyEligibleCount > 1) {
+                options = ["Todas con Chile (Toreadas)", "Todas sin Chile (Preparadas)", "Mixtas (Mitad y Mitad)", "Sin soya"];
+            } else {
+                options = ["Con Chile (Toreada)", "Sin Chile (Preparada)", "Sin soya"];
+            }
+
+            let html = '';
+            options.forEach((opt, index) => {
+                const isChecked = currentSelection === opt || (!currentSelection && index === 1); 
+                html += `
+                    <label class="flex items-center gap-2 cursor-pointer p-1">
+                        <input type="radio" name="soy_sauce" value="${opt}" ${isChecked ? 'checked' : ''} class="text-green-600 focus:ring-green-500 h-5 w-5">
+                        <span class="text-sm ml-1">${opt === 'Sin soya' ? 'No necesito soya' : opt}</span>
+                    </label>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
         function updateModalTotals() {
             const { subtotal, discount: dailyDiscount } = calculateCart();
             let extrasCost = 0;
@@ -1764,8 +1792,8 @@
             const shippingCost = 15;
 
             if (dailyDiscount === 0) {
-                if (appliedCouponCode === 'WOK5') couponDiscount = Math.round(subtotal * 0.05);
-                else if (appliedCouponCode === 'PREPA10' || appliedCouponCode === 'FAMILIA') couponDiscount = Math.round(subtotal * 0.10);
+                if (appliedCouponCode === 'VAR5') couponDiscount = Math.round(subtotal * 0.05);
+                else if (appliedCouponCode === 'GOLEADA10' || appliedCouponCode === 'MUNDIAL26') couponDiscount = Math.round(subtotal * 0.10);
             }
 
             const finalTotal = subtotal + extrasCost + shippingCost - dailyDiscount - couponDiscount;
@@ -1799,6 +1827,7 @@
                 list.appendChild(li);
             });
             updateModalTotals();
+            renderSoyOptions();
         }
 
         function applyCoupon() {
@@ -1816,42 +1845,42 @@
 
             if (discount !== 0) {
                 messageEl.className = "text-xs mt-1 font-bold text-red-600";
-                messageEl.innerText = "Este cupón no es acumulable con otras promociones.";
+                messageEl.innerText = "Este cupón no puede jugar con otras promociones.";
                 appliedCouponCode = null;
                 updateModalTotals();
                 return;
             }
 
-            if (code === 'WOK5') {
-                appliedCouponCode = 'WOK5';
+            if (code === 'VAR5') {
+                appliedCouponCode = 'VAR5';
                 messageEl.className = "text-xs mt-1 font-bold text-green-600";
-                messageEl.innerText = "¡Cupón aplicado! (5% Descuento)";
-            } else if (code === 'PREPA10') {
+                messageEl.innerText = "¡El VAR lo da por bueno! (5% Descuento)";
+            } else if (code === 'GOLEADA10') {
                 if (isWeekend) {
                     messageEl.className = "text-xs mt-1 font-bold text-red-600";
-                    messageEl.innerText = "Válido solo entre semana (Mié-Vie).";
+                    messageEl.innerText = "Válido solo en los entrenamientos (Mié-Vie).";
                     appliedCouponCode = null;
                 } else {
-                    appliedCouponCode = 'PREPA10';
+                    appliedCouponCode = 'GOLEADA10';
                     messageEl.className = "text-xs mt-1 font-bold text-green-600";
-                    messageEl.innerText = "¡Cupón PREPA10 aplicado! (10% Descuento)";
+                    messageEl.innerText = "¡Cupón GOLEADA10 en juego! (10% Descuento)";
                     addressField.value = "Escuela Preparatoria Regional De La Barca UDEG";
                     addressField.disabled = true;
                 }
-            } else if (code === 'FAMILIA') {
+            } else if (code === 'MUNDIAL26') {
                 if (day !== 0) {
                     messageEl.className = "text-xs mt-1 font-bold text-red-600";
-                    messageEl.innerText = "Válido solo los domingos.";
+                    messageEl.innerText = "Válido solo para la gran final (Domingo).";
                     appliedCouponCode = null;
                 } else {
-                    appliedCouponCode = 'FAMILIA';
+                    appliedCouponCode = 'MUNDIAL26';
                     messageEl.className = "text-xs mt-1 font-bold text-green-600";
-                    messageEl.innerText = "¡Cupón FAMILIA aplicado! (10% Descuento)";
+                    messageEl.innerText = "¡Cupón MUNDIAL26 en la cancha! (10% Descuento)";
                 }
             } else {
                 appliedCouponCode = null;
                 messageEl.className = "text-xs mt-1 font-bold text-red-600";
-                messageEl.innerText = "Código inválido";
+                messageEl.innerText = "Jugador en fuera de lugar (Código inválido)";
             }
             updateModalTotals();
         }
@@ -1893,27 +1922,27 @@
             const shippingCost = 15;
 
             if (dailyDiscount === 0) {
-                if (appliedCouponCode === 'WOK5') couponDiscount = Math.round(subtotal * 0.05);
-                else if (appliedCouponCode === 'PREPA10' || appliedCouponCode === 'FAMILIA') couponDiscount = Math.round(subtotal * 0.10);
+                if (appliedCouponCode === 'VAR5') couponDiscount = Math.round(subtotal * 0.05);
+                else if (appliedCouponCode === 'GOLEADA10' || appliedCouponCode === 'MUNDIAL26') couponDiscount = Math.round(subtotal * 0.10);
             }
 
             const currentTotalCalc = subtotal + totalExtrasCost;
             const finalTotal = currentTotalCalc + shippingCost - dailyDiscount - couponDiscount;
 
-            let message = "Hola Wokami! 🍱 Quiero ordenar:%0A";
+            let message = "Hola Wokami! ⚽ ¡Aquí va mi alineación para el partido!:%0A";
 
             cart.forEach((item) => {
                 message += `- ${item.name} ($${item.price})%0A`;
             });
 
             if (extraItems.length > 0) {
-                message += `%0A--- Extras ($${totalExtrasCost}) ---%0A`;
+                message += `%0A--- Refuerzos (Extras) ($${totalExtrasCost}) ---%0A`;
                 extraItems.forEach(itemStr => message += `+ ${itemStr}%0A`);
             }
 
             if (dailyDiscount !== 0) {
                 message += `%0ASubtotal: $${currentTotalCalc}`;
-                message += `%0AAjuste Promoción: -$${dailyDiscount}`;
+                message += `%0AAjuste Promo Mundialista: -$${dailyDiscount}`;
             } else if (couponDiscount > 0) {
                 message += `%0ASubtotal: $${currentTotalCalc}`;
                 message += `%0ADescuento Cupón (${appliedCouponCode}): -$${couponDiscount}`;
@@ -1922,9 +1951,9 @@
             }
 
             message += `%0A🚚 Envío: $${shippingCost}`;
-            message += `%0A💰 Total Final: $${finalTotal}`;
+            message += `%0A💰 Marcador Final: $${finalTotal}`;
 
-            message += `%0A%0A--- Preferencias ---%0A`;
+            message += `%0A%0A--- Táctica (Preferencias) ---%0A`;
             message += `🥢 Cubiertos: ${cutleryString}%0A`;
             message += `🍶 Soya: ${soySauce}`;
 
@@ -1933,12 +1962,11 @@
             }
 
             if (notes) {
-                message += `%0A📝 Notas: ${encodeURIComponent(notes)}`;
+                message += `%0A📝 Notas de la jugada: ${encodeURIComponent(notes)}`;
             }
 
-            message += "%0A%0A(Envía este mensaje para confirmar tu pedido)";
+            message += "%0A%0A(Envía este mensaje para que ruede el balón)";
 
-            // --- NUEVO: manda el pedido a n8n (no bloquea el WhatsApp) ---
             const pedidoData = {
                 pedido: cart.map(i => ({ nombre: i.name, precio: i.price, categoria: i.category })),
                 extras: extraItems,
@@ -1959,8 +1987,7 @@
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(pedidoData)
-            }).catch(() => {}); // si n8n falla, el pedido por WhatsApp igual se manda
-            // --- FIN nuevo ---
+            }).catch(() => {});
 
             window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
             toggleModal();
