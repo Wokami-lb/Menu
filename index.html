@@ -1423,17 +1423,16 @@
             statusBadge.className = `inline-block text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ml-1 md:ml-2 whitespace-nowrap ${statusColorClass}`;
 
             const promoBanner = document.getElementById('daily-promo');
-            promoBanner.classList.remove('hidden');
-            promoBanner.className = "hidden bg-green-800 text-white text-center py-2 px-4 text-xs md:text-sm font-bold promo-banner shadow-md border-b-2 border-yellow-400";
+            promoBanner.className = "block bg-green-800 text-white text-center py-2 px-4 text-xs md:text-sm font-bold promo-banner shadow-md border-b-2 border-yellow-400";
 
             let promoText = '<i class="fas fa-futbol mr-2 text-white"></i> ¡Rueda el balón en Wokami!';
 
             if (day === 3) { // Miércoles
                 promoText = '<i class="fas fa-stopwatch mr-2 text-yellow-400"></i> <strong>¡MEDIO TIEMPO WOK!</strong> Lo Mein Especial + Agua Fresca = <strong>$140</strong>. ¡Recupera energía al medio tiempo!';
             } else if (day === 4) { // Jueves
-                promoText = '<i class="fas fa-users mr-2 text-yellow-400"></i> <strong>¡CONVOCATORIA GODÍN!</strong> 1 Rollo Clásico + 1 Refresco = <strong>$135</strong> | ¡Arma tu equipo! 2 combos = <strong>$265</strong>.';
+                promoText = '<i class="fas fa-users mr-2 text-yellow-400"></i> <strong>¡CONVOCATORIA GODÍN!</strong> 1 Rollo Clásico + 1 Refresco = <strong>$135</strong>. ¡Ahorra $15 armando tu equipo!';
             } else if (day === 5) { // Viernes
-                promoText = '<i class="fas fa-futbol mr-2 text-white"></i> <strong>¡VIERNES DE GOLEADA!</strong> Kushiagues + Rollo Clásico + Agua = <strong>$200</strong>. ¡Un hat-trick de sabor al carrito!';
+                promoText = '<i class="fas fa-futbol mr-2 text-white"></i> <strong>¡VIERNES DE GOLEADA!</strong> Kushiagues + Rollo Clásico + Agua = <strong>$205</strong>. ¡Un hat-trick de sabor al carrito!';
             } else if (day === 6) { // Sábado
                 promoText = '<i class="fas fa-trophy mr-2 text-yellow-400"></i> <strong>¡SÁBADO DE CAMPEONES!</strong> Wokami Poke + Agua Fresca = <strong>$185</strong>. ¡La jugada más saludable del partido!';
             } else if (day === 0) { // Domingo
@@ -1688,16 +1687,14 @@
 
             if (day === 4) { // Jueves
                 const comboPairs = Math.min(classicRolls.length, refrescos.length);
-                if (comboPairs >= 2) {
-                    discount += 35;
-                } else {
-                    discount += comboPairs * 15;
+                if (comboPairs >= 1) {
+                    discount += 15;
                 }
             }
 
             if (day === 5) { // Viernes
                 if (kushiagues.length >= 1 && classicRolls.length >= 1 && aguasFrescas.length >= 1) {
-                    discount += 20;
+                    discount += 15;
                 }
             }
 
